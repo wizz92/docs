@@ -71,7 +71,7 @@ export default function Layout() {
           )}
           <Box sx={{ flexGrow: 1 }}>
             <Typography variant="h6" noWrap>
-              Портал документации процессов
+              Портал документации процессов 1
             </Typography>
             <Typography variant="caption" sx={{ opacity: 0.8 }} noWrap>
               {domainMeta ? domainMeta.description_ru : 'Все домены компании'}

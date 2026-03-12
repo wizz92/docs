@@ -1,0 +1,95 @@
+{
+  "name": "Найм",
+  "type": "process_l2",
+  "purpose": "Привлечь и нанять нужных специалистов в срок и с нужным качеством.",
+  "description": "Процесс от заявки на найм до выхода сотрудника.",
+  "main_goal": "Вакансия закрыта качественным кандидатом в target timeline.",
+  "when_used": "Регулярно, в рамках управленческого цикла.",
+  "triggers": [
+    "Начало цикла найм",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для найм",
+    "Стратегические приоритеты",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат найм",
+    "Управленческие решения"
+  ],
+  "owner": "Recruiter / Hiring Manager",
+  "participants": [
+    "Recruiter",
+    "Hiring Manager",
+    "HR BP",
+    "Interview panel"
+  ],
+  "linked_l3_subprocesses": [
+    "Формирование заявки на найм",
+    "Проведение отбора",
+    "Принятие решения и оффер"
+  ],
+  "linked_sop": [
+    "Как подготовиться к формирование заявки на найм",
+    "Как провести формирование заявки на найм",
+    "Как оценить результаты формирование заявки на найм",
+    "Как подготовиться к проведение отбора",
+    "Как провести проведение отбора",
+    "Как оценить результаты проведение отбора",
+    "Как подготовиться к принятие решения и оффер",
+    "Как провести принятие решения и оффер",
+    "Как оценить результаты принятие решения и оффер"
+  ],
+  "linked_meetings": [
+    "Recruitment review"
+  ],
+  "process_steps": [
+    {
+      "step": "Подготовить inputs для найм",
+      "description": "Собрать данные, проверить готовность"
+    },
+    {
+      "step": "Провести найм",
+      "description": "Выполнить основные действия процесса"
+    },
+    {
+      "step": "Оценить результат и принять решения",
+      "description": "Проверить outputs, зафиксировать решения"
+    }
+  ],
+  "process_rhythm": [
+    {
+      "horizon": "Per cycle",
+      "ritual": "Recruitment review",
+      "key_question": "Как работает найм?",
+      "result": "Decisions and improvements"
+    }
+  ],
+  "typical_failures": [
+    {
+      "failure": "Найм не проводится регулярно",
+      "symptom": "Пропуски циклов, нет данных",
+      "action": "Зафиксировать cadence, назначить ответственного"
+    }
+  ],
+  "linked_artifacts": [
+    {
+      "name": "Найм",
+      "description": "Основной артефакт процесса Найм"
+    }
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence / wiki",
+    "BI dashboards"
+  ],
+  "metrics_signals": [
+    "Эффективность найм",
+    "Время цикла"
+  ],
+  "review_cadence": "Quarterly review of process design; monthly review of effectiveness.",
+  "access_level": "Management / leads / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Как подготовить release candidate",
+  "type": "sop",
+  "purpose": "Собрать и проверить код для релиза.",
+  "description": "Собрать и проверить код для релиза.",
+  "main_goal": "Собрать и проверить код для релиза.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Sprint завершён, features merged",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Создать release branch",
+    "Запустить full test suite",
+    "Проверить все critical paths",
+    "Собрать changelist",
+    "Получить QA sign-off"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Release Manager",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

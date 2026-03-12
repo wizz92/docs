@@ -1,0 +1,59 @@
+{
+  "name": "Product / Delivery / Production",
+  "type": "process_l1",
+  "purpose": "Обеспечить предсказуемую и качественную delivery продукта от backlog до production.",
+  "description": "Домен охватывает управление backlog, планирование и проведение спринтов, управление релизами.",
+  "main_goal": "Продукт доставляется предсказуемо, качественно и в соответствии с приоритетами.",
+  "scope": "Backlog management, sprint execution, release management, quality assurance.",
+  "when_used": "Постоянно, как системный домен управления.",
+  "triggers": [
+    "Начало нового управленческого цикла",
+    "Изменение стратегических приоритетов",
+    "Регулярный review"
+  ],
+  "inputs": [
+    "Стратегические цели",
+    "Данные из систем",
+    "Feedback от команд"
+  ],
+  "outputs": [
+    "Управленческие решения",
+    "Стандартизированные процессы",
+    "Отчётность"
+  ],
+  "owner": "VP Product / Head of Engineering",
+  "participants": [
+    "Product Owners",
+    "Scrum Masters",
+    "Engineering leads",
+    "QA leads",
+    "Designers"
+  ],
+  "linked_meetings": [
+    "Sprint planning",
+    "Sprint review",
+    "Release readiness review"
+  ],
+  "linked_artifacts": [
+    "Product backlog",
+    "Sprint backlog",
+    "Release notes",
+    "Technical documentation"
+  ],
+  "linked_systems": [
+    "Jira",
+    "GitHub / GitLab",
+    "CI/CD pipeline",
+    "Figma"
+  ],
+  "metrics_signals": [
+    "Sprint velocity",
+    "Release frequency",
+    "Defect rate",
+    "Lead time"
+  ],
+  "review_cadence": "Quarterly review of domain structure; monthly review of effectiveness.",
+  "access_level": "Management / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

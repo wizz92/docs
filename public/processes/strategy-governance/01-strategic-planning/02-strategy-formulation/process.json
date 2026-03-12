@@ -1,0 +1,61 @@
+{
+  "name": "Формирование стратегии",
+  "type": "process_l3",
+  "purpose": "Превратить аналитику в конкретные стратегические решения и приоритеты.",
+  "description": "Проведение стратегической сессии, формулирование ключевых выборов, фиксация стратегии.",
+  "main_goal": "Утверждённый стратегический документ с выборами, приоритетами и ключевыми ставками.",
+  "when_used": "Ежегодно на strategy offsite; при необходимости стратегического pivot.",
+  "cadence": "Annual",
+  "trigger": [
+    "Завершение стратегического анализа",
+    "Решение CEO о необходимости pivot"
+  ],
+  "inputs": [
+    "Strategy briefing / data pack",
+    "Текущая стратегия",
+    "OKR results прошлого периода"
+  ],
+  "outputs": [
+    "Стратегический документ",
+    "Список стратегических ставок",
+    "High-level roadmap"
+  ],
+  "owner": "CEO",
+  "participants": [
+    "CEO",
+    "COO",
+    "CFO",
+    "Heads of Functions"
+  ],
+  "linked_meetings": [
+    "Strategy offsite"
+  ],
+  "linked_artifacts": [
+    "Strategy document",
+    "Strategic bets register"
+  ],
+  "linked_systems": [
+    "Confluence / wiki",
+    "Presentation tools"
+  ],
+  "linked_sop": [
+    "Как подготовить и провести strategy offsite",
+    "Как зафиксировать стратегию в документе",
+    "Как каскадировать стратегию на руководителей"
+  ],
+  "done_criteria": [
+    "Стратегия зафиксирована в документе",
+    "CEO утвердил",
+    "Руководители подтвердили alignment"
+  ],
+  "failure_modes": [
+    "Сессия не привела к решениям",
+    "Слишком много приоритетов — нет фокуса"
+  ],
+  "deviation_response": [
+    "Назначить follow-up сессию с жёстким timeboxing",
+    "Применить forced ranking для сокращения приоритетов"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

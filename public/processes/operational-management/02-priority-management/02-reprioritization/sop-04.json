@@ -1,0 +1,33 @@
+{
+  "name": "Как контролировать последствия reprioritization",
+  "type": "sop",
+  "purpose": "Как контролировать последствия reprioritization.",
+  "description": "Практическая инструкция: как контролировать последствия reprioritization.",
+  "main_goal": "Контролировать последствия reprioritization — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "1 неделя после reprioritization",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Через 1 неделю после reprioritization: проверить, что все затронутые планы обновлены",
+    "Проверить, что вытесненные items корректно помечены (отложены / отменены) в Jira / tracker",
+    "На ближайшем weekly ops review: review impact — есть ли неожиданные последствия?",
+    "Если reprioritization привела к проблемам — зафиксировать lessons learned",
+    "Если reprioritization по одной и той же причине повторяется — эскалировать как системную проблему"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Нет follow-up — непонятно, отработала ли reprioritization",
+    "Повторяющиеся причины не анализируются — хроническая нестабильность планов"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Как подготовить initiative summary и зафиксировать action items",
+  "type": "sop",
+  "purpose": "Как подготовить initiative summary и зафиксировать action items.",
+  "description": "Практическая инструкция: как подготовить initiative summary и зафиксировать action items.",
+  "main_goal": "Подготовить initiative summary и зафиксировать action items — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Подготовка к initiative review",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Для каждой активной инициативы: собрать статус от всех участвующих команд",
+    "Подготовить summary: progress vs plan, key milestones status, blockers, risks, confidence level",
+    "Выделить items, требующие решения management (blocking dependencies, resource needs, scope decisions)",
+    "На initiative review: представить summary, обсудить blocked items",
+    "Зафиксировать action items: что, кто, к какому сроку"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Summary без данных от всех команд — неполная картина",
+    "Action items без owner и due date — не выполняются"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Initiative owner / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

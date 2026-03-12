@@ -1,0 +1,96 @@
+{
+  "name": "Исследование ниш",
+  "type": "process_l2",
+  "purpose": "Системно исследовать рыночные ниши для выявления перспективных направлений роста.",
+  "description": "Процесс сканирования рынка, анализа конкурентной среды и валидации привлекательности ниш.",
+  "main_goal": "Список валидированных ниш с оценкой потенциала и рекомендациями.",
+  "when_used": "Регулярно, в рамках управленческого цикла.",
+  "triggers": [
+    "Запрос CEO на поиск новых направлений",
+    "Квартальный цикл growth review"
+  ],
+  "inputs": [
+    "Рыночные тренды",
+    "Данные о конкурентах",
+    "Customer feedback",
+    "Финансовые модели"
+  ],
+  "outputs": [
+    "Niche assessment report",
+    "Shortlist перспективных ниш",
+    "Go/no-go рекомендации"
+  ],
+  "owner": "Head of BD",
+  "participants": [
+    "Head of BD",
+    "Market analyst",
+    "Product lead"
+  ],
+  "linked_l3_subprocesses": [
+    "Сканирование рынка",
+    "Анализ конкурентной среды",
+    "Валидация ниши"
+  ],
+  "linked_sop": [
+    "Как провести monthly market scan",
+    "Как зарегистрировать новую рыночную возможность",
+    "Как приоритизировать opportunities для deep-dive",
+    "Как собрать данные о конкурентах",
+    "Как подготовить competitive landscape report",
+    "Как обновить competitive intelligence",
+    "Как спланировать niche validation",
+    "Как провести customer discovery для ниши",
+    "Как подготовить go/no-go recommendation"
+  ],
+  "linked_meetings": [
+    "Niche review meeting"
+  ],
+  "process_steps": [
+    {
+      "step": "Сканировать рынок",
+      "description": "Собрать данные о трендах, новых сегментах и потребностях"
+    },
+    {
+      "step": "Провести анализ конкурентов в нише",
+      "description": "Оценить уровень конкуренции, барьеры входа и дифференциаторы"
+    },
+    {
+      "step": "Валидировать привлекательность ниши",
+      "description": "Оценить TAM/SAM, unit economics potential, strategic fit"
+    }
+  ],
+  "process_rhythm": [
+    {
+      "horizon": "Квартал",
+      "ritual": "Niche pipeline review",
+      "key_question": "Какие ниши исследуем и какие результаты?",
+      "result": "Updated niche pipeline"
+    }
+  ],
+  "typical_failures": [
+    {
+      "failure": "Исследование поверхностное",
+      "symptom": "Ниши выглядят привлекательно, но нет данных для решения",
+      "action": "Ввести чек-лист минимальных данных для niche assessment"
+    }
+  ],
+  "linked_artifacts": [
+    {
+      "name": "Исследование ниш",
+      "description": "Основной артефакт процесса Исследование ниш"
+    }
+  ],
+  "linked_systems": [
+    "Market research tools",
+    "BI dashboards",
+    "CRM"
+  ],
+  "metrics_signals": [
+    "Количество исследованных ниш в квартал",
+    "Время от идеи до assessment"
+  ],
+  "review_cadence": "Quarterly review of process design; monthly review of effectiveness.",
+  "access_level": "Management / leads / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

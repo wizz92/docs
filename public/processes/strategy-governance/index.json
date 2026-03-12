@@ -1,0 +1,277 @@
+{
+  "name": "Strategy & Governance",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Strategy & Governance.",
+  "base_path": "processes/strategy-governance",
+  "l1": {
+    "name": "Strategy & Governance",
+    "path": "processes/strategy-governance/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Стратегическое планирование",
+      "folder": "01-strategic-planning",
+      "path": "processes/strategy-governance/01-strategic-planning/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Стратегический анализ",
+          "folder": "01-strategic-analysis",
+          "path": "processes/strategy-governance/01-strategic-planning/01-strategic-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как собрать данные для стратегического анализа",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/01-strategic-planning/01-strategic-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести конкурентный анализ",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/01-strategic-planning/01-strategic-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить strategy briefing",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/01-strategic-planning/01-strategic-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Формирование стратегии",
+          "folder": "02-strategy-formulation",
+          "path": "processes/strategy-governance/01-strategic-planning/02-strategy-formulation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить и провести strategy offsite",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/01-strategic-planning/02-strategy-formulation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как зафиксировать стратегию в документе",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/01-strategic-planning/02-strategy-formulation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как каскадировать стратегию на руководителей",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/01-strategic-planning/02-strategy-formulation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Коммуникация стратегии",
+          "folder": "03-strategy-communication",
+          "path": "processes/strategy-governance/01-strategic-planning/03-strategy-communication/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить all-hands по стратегии",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/01-strategic-planning/03-strategy-communication/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести team-level strategy briefing",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/01-strategic-planning/03-strategy-communication/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как поддерживать актуальность strategy FAQ",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/01-strategic-planning/03-strategy-communication/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Годовое и квартальное целеполагание",
+      "folder": "02-goal-setting",
+      "path": "processes/strategy-governance/02-goal-setting/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Формулирование годовых целей",
+          "folder": "01-annual-goals",
+          "path": "processes/strategy-governance/02-goal-setting/01-annual-goals/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить annual planning session",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/02-goal-setting/01-annual-goals/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как сформулировать company-level OKR",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/02-goal-setting/01-annual-goals/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как донести годовые цели до компании",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/02-goal-setting/01-annual-goals/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Декомпозиция на квартальные OKR",
+          "folder": "02-quarterly-okr",
+          "path": "processes/strategy-governance/02-goal-setting/02-quarterly-okr/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести OKR alignment session",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/02-goal-setting/02-quarterly-okr/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как декомпозировать OKR на уровень команд",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/02-goal-setting/02-quarterly-okr/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как проверить quality квартальных OKR",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/02-goal-setting/02-quarterly-okr/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Ревью и корректировка целей",
+          "folder": "03-goal-review",
+          "path": "processes/strategy-governance/02-goal-setting/03-goal-review/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести monthly OKR review",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/02-goal-setting/03-goal-review/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести quarterly OKR retrospective",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/02-goal-setting/03-goal-review/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как скорректировать OKR mid-quarter",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/02-goal-setting/03-goal-review/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Приоритизация портфеля",
+      "folder": "03-portfolio-prioritization",
+      "path": "processes/strategy-governance/03-portfolio-prioritization/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор инициатив в портфель",
+          "folder": "01-initiative-intake",
+          "path": "processes/strategy-governance/03-portfolio-prioritization/01-initiative-intake/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как зарегистрировать новую инициативу",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/01-initiative-intake/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести первичную оценку инициативы",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/01-initiative-intake/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить portfolio register к review",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/01-initiative-intake/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Приоритизация портфеля",
+          "folder": "02-portfolio-ranking",
+          "path": "processes/strategy-governance/03-portfolio-prioritization/02-portfolio-ranking/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести portfolio prioritization session",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/02-portfolio-ranking/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как распределить ресурсы по инициативам",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/02-portfolio-ranking/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как коммуницировать решения по портфелю",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/02-portfolio-ranking/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Ребалансировка портфеля",
+          "folder": "03-portfolio-rebalancing",
+          "path": "processes/strategy-governance/03-portfolio-prioritization/03-portfolio-rebalancing/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как оценить impact изменений на портфель",
+              "file": "sop-01.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/03-portfolio-rebalancing/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести экстренную ребалансировку",
+              "file": "sop-02.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/03-portfolio-rebalancing/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как зафиксировать решения по ребалансировке",
+              "file": "sop-03.json",
+              "path": "processes/strategy-governance/03-portfolio-prioritization/03-portfolio-rebalancing/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 3,
+    "total_l3": 9,
+    "total_sop": 27,
+    "total_files": 40
+  }
+}

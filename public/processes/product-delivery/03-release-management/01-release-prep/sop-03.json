@@ -1,0 +1,47 @@
+{
+  "name": "Как пройти release readiness checklist",
+  "type": "sop",
+  "purpose": "Проверить все пункты готовности.",
+  "description": "Проверить все пункты готовности.",
+  "main_goal": "Проверить все пункты готовности.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Release candidate + release notes готовы",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Пройти по каждому пункту checklist",
+    "Отметить pass/fail",
+    "При fail — определить action и blocker",
+    "Получить go/no-go решение от Release Manager"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Release Manager",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

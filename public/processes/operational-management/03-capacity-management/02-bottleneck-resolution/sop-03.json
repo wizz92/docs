@@ -1,0 +1,34 @@
+{
+  "name": "Как согласовать resource rebalance",
+  "type": "sop",
+  "purpose": "Как согласовать resource rebalance.",
+  "description": "Практическая инструкция: как согласовать resource rebalance.",
+  "main_goal": "Согласовать resource rebalance — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Management решил о resource rebalance",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Представить варианты ребалансировки: кто, куда, на какой срок, что теряет исходная команда",
+    "Получить согласие обоих Team Leads (отдающего и принимающего)",
+    "Зафиксировать решение: сроки, условия возврата, ожидаемый результат",
+    "Обновить capacity tracker и планы обеих команд",
+    "Уведомить затронутых людей и стейкхолдеров"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Rebalance без согласия отдающей команды — конфликт",
+    "Условия возврата не зафиксированы — «временный» переход становится постоянным",
+    "Планы не обновлены — старые commitments остаются"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead / Heads of Functions",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

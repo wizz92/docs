@@ -1,0 +1,95 @@
+{
+  "name": "Реагирование на инциденты безопасности",
+  "type": "process_l2",
+  "purpose": "Быстро обнаруживать, реагировать и устранять инциденты безопасности.",
+  "description": "Процесс detection, response и post-incident review.",
+  "main_goal": "Инциденты обнаружены рано, устранены быстро, lessons learned применены.",
+  "when_used": "Регулярно, в рамках управленческого цикла.",
+  "triggers": [
+    "Начало цикла реагирование на инциденты безопасности",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для реагирование на инциденты безопасности",
+    "Стратегические приоритеты",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат реагирование на инциденты безопасности",
+    "Управленческие решения"
+  ],
+  "owner": "Security Engineer / Head of IT",
+  "participants": [
+    "Security Engineer",
+    "DevOps",
+    "Head of IT",
+    "Legal"
+  ],
+  "linked_l3_subprocesses": [
+    "Обнаружение инцидента",
+    "Реагирование и устранение",
+    "Post-incident review"
+  ],
+  "linked_sop": [
+    "Как подготовиться к обнаружение инцидента",
+    "Как провести обнаружение инцидента",
+    "Как оценить результаты обнаружение инцидента",
+    "Как подготовиться к реагирование и устранение",
+    "Как провести реагирование и устранение",
+    "Как оценить результаты реагирование и устранение",
+    "Как подготовиться к post-incident review",
+    "Как провести post-incident review",
+    "Как оценить результаты post-incident review"
+  ],
+  "linked_meetings": [
+    "Security Incident Response review"
+  ],
+  "process_steps": [
+    {
+      "step": "Подготовить inputs для реагирование на инциденты безопасности",
+      "description": "Собрать данные, проверить готовность"
+    },
+    {
+      "step": "Провести реагирование на инциденты безопасности",
+      "description": "Выполнить основные действия процесса"
+    },
+    {
+      "step": "Оценить результат и принять решения",
+      "description": "Проверить outputs, зафиксировать решения"
+    }
+  ],
+  "process_rhythm": [
+    {
+      "horizon": "Per cycle",
+      "ritual": "Security Incident Response review",
+      "key_question": "Как работает реагирование на инциденты безопасности?",
+      "result": "Decisions and improvements"
+    }
+  ],
+  "typical_failures": [
+    {
+      "failure": "Реагирование на инциденты безопасности не проводится регулярно",
+      "symptom": "Пропуски циклов, нет данных",
+      "action": "Зафиксировать cadence, назначить ответственного"
+    }
+  ],
+  "linked_artifacts": [
+    {
+      "name": "Реагирование на инциденты безопасности",
+      "description": "Основной артефакт процесса Реагирование на инциденты безопасности"
+    }
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence / wiki",
+    "BI dashboards"
+  ],
+  "metrics_signals": [
+    "Эффективность реагирование на инциденты безопасности",
+    "Время цикла"
+  ],
+  "review_cadence": "Quarterly review of process design; monthly review of effectiveness.",
+  "access_level": "Management / leads / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

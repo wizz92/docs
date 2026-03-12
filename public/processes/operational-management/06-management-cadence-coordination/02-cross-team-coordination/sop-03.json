@@ -1,0 +1,36 @@
+{
+  "name": "Как вести dependency review",
+  "type": "sop",
+  "purpose": "Как вести dependency review.",
+  "description": "Практическая инструкция: как вести dependency review.",
+  "main_goal": "Вести dependency review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Каждый спринт + при обнаружении новой зависимости",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Вести dependency list: dependency, from team, to team, needed by date, status (open / resolved / blocked)",
+    "Каждый спринт: обновить статусы всех open dependencies",
+    "Для blocked > 3 дней: эскалировать — уведомить Operations lead и blocking team lead",
+    "Для critical dependency (blocking > 1 team / critical initiative): вынести на weekly ops review",
+    "После resolution: обновить status, зафиксировать если dependency was late (для pattern analysis)"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Dependency list не ведётся — зависимости «в головах»",
+    "Blocked dependency не эскалируется — тихо ждём",
+    "Late resolutions не отслеживаются — patterns не видны"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Dependency list template"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

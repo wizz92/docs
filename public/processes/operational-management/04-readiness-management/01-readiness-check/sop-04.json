@@ -1,0 +1,36 @@
+{
+  "name": "Как проверить готовность запуска",
+  "type": "sop",
+  "purpose": "Как проверить готовность запуска.",
+  "description": "Практическая инструкция: как проверить готовность запуска.",
+  "main_goal": "Проверить готовность запуска — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "За 3-5 дней до запланированного запуска",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Собрать inputs от всех участвующих функций: product, engineering, marketing, support, legal",
+    "Проверить: feature complete? Коммуникации подготовлены? Support обучен? Monitoring on?",
+    "Выявить blockers to launch: что ещё не готово? Можно ли запуститься без этого?",
+    "Классифицировать blockers: critical (launch невозможен) / important (launch degraded) / nice-to-have",
+    "Подготовить launch readiness summary для go/no-go решения"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Не все функции опрошены — surprise после запуска",
+    "Critical blockers не выявлены — launch с критичными проблемами",
+    "Support не обучен — пользователи без помощи"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Launch readiness checklist"
+  ],
+  "owner": "Launch owner / Product owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

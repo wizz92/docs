@@ -1,0 +1,57 @@
+{
+  "name": "Post-release review",
+  "type": "process_l3",
+  "purpose": "Оценить результат релиза и извлечь уроки.",
+  "description": "Анализ метрик, сбор feedback, фиксация lessons learned.",
+  "main_goal": "Lessons learned зафиксированы, improvements запланированы.",
+  "when_used": "После каждого значимого релиза.",
+  "cadence": "Per major release",
+  "trigger": [
+    "Релиз завершён, прошло 24–48 часов"
+  ],
+  "inputs": [
+    "Release metrics",
+    "Incident reports",
+    "Team feedback"
+  ],
+  "outputs": [
+    "Post-release report",
+    "Improvement items"
+  ],
+  "owner": "Release Manager",
+  "participants": [
+    "Release Manager",
+    "Tech Lead",
+    "QA Lead",
+    "Product Owner"
+  ],
+  "linked_meetings": [
+    "Post-release review meeting"
+  ],
+  "linked_artifacts": [
+    "Post-release report template"
+  ],
+  "linked_systems": [
+    "Monitoring tools",
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как собрать post-release metrics",
+    "Как провести post-release review meeting",
+    "Как обновить release process на основе lessons"
+  ],
+  "done_criteria": [
+    "Report подготовлен",
+    "Improvements добавлены в backlog"
+  ],
+  "failure_modes": [
+    "Review не проводится",
+    "Lessons не применяются"
+  ],
+  "deviation_response": [
+    "Сделать review обязательным",
+    "Track improvements в backlog"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

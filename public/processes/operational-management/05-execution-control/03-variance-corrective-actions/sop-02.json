@@ -1,0 +1,34 @@
+{
+  "name": "Как сформировать corrective action и назначить owner",
+  "type": "sop",
+  "purpose": "Как сформировать corrective action и назначить owner.",
+  "description": "Практическая инструкция: как сформировать corrective action и назначить owner.",
+  "main_goal": "Сформировать corrective action и назначить owner — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Root cause analysis завершён",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "На основе root cause определить corrective action: что конкретно нужно сделать, чтобы вернуться к плану",
+    "Action должен быть конкретным и проверяемым. Плохо: «улучшить коммуникацию». Хорошо: «внедрить daily standup для team X к 15 марта»",
+    "Назначить owner (одного конкретного человека) и due date",
+    "Зафиксировать в corrective actions log",
+    "Если root cause external / uncontrollable — рекомендовать plan adjustment вместо corrective action"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Action абстрактный — невозможно проверить выполнение",
+    "Owner не назначен — никто не делает",
+    "Due date не установлен — «сделаем когда-нибудь»"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Goal owner / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

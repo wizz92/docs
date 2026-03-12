@@ -1,0 +1,57 @@
+{
+  "name": "Revenue & Commercial Operations",
+  "type": "process_l1",
+  "purpose": "Обеспечить устойчивый рост выручки через управление партнёрствами, оптимизацию офферов и аналитику revenue.",
+  "description": "Домен охватывает партнёрский менеджмент, оптимизацию предложений и анализ выручки.",
+  "main_goal": "Выручка растёт предсказуемо, unit economics понятна, коммерческие операции управляемы.",
+  "scope": "Партнёрства, ценообразование, коммерческие операции, revenue analytics.",
+  "when_used": "Постоянно, как системный домен управления.",
+  "triggers": [
+    "Начало нового управленческого цикла",
+    "Изменение стратегических приоритетов",
+    "Регулярный review"
+  ],
+  "inputs": [
+    "Стратегические цели",
+    "Данные из систем",
+    "Feedback от команд"
+  ],
+  "outputs": [
+    "Управленческие решения",
+    "Стандартизированные процессы",
+    "Отчётность"
+  ],
+  "owner": "Head of Revenue / Commercial Director",
+  "participants": [
+    "Head of Revenue",
+    "Partner managers",
+    "Sales",
+    "Finance",
+    "Product"
+  ],
+  "linked_meetings": [
+    "Monthly revenue review",
+    "Partner review",
+    "Offer optimization review"
+  ],
+  "linked_artifacts": [
+    "Revenue dashboard",
+    "Partner register",
+    "Offer catalog"
+  ],
+  "linked_systems": [
+    "CRM",
+    "BI dashboards",
+    "Billing system"
+  ],
+  "metrics_signals": [
+    "MRR/ARR",
+    "Churn rate",
+    "Partner revenue share",
+    "CAC / LTV"
+  ],
+  "review_cadence": "Quarterly review of domain structure; monthly review of effectiveness.",
+  "access_level": "Management / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,105 @@
+{
+  "name": "Управление релизами",
+  "type": "process_l2",
+  "purpose": "Обеспечить предсказуемый и безопасный выпуск изменений в production.",
+  "description": "Процесс подготовки, проведения и анализа релизов.",
+  "main_goal": "Релизы проходят предсказуемо, с минимальным количеством инцидентов.",
+  "when_used": "Регулярно, в рамках управленческого цикла.",
+  "triggers": [
+    "Sprint завершён",
+    "Feature ready for release",
+    "Hotfix needed"
+  ],
+  "inputs": [
+    "Tested code",
+    "Release notes draft",
+    "Deployment checklist"
+  ],
+  "outputs": [
+    "Deployed release",
+    "Release notes",
+    "Post-release report"
+  ],
+  "owner": "Release Manager / Tech Lead",
+  "participants": [
+    "Release Manager",
+    "Tech Lead",
+    "QA Lead",
+    "DevOps",
+    "Product Owner"
+  ],
+  "linked_l3_subprocesses": [
+    "Подготовка релиза",
+    "Проведение релиза",
+    "Post-release review"
+  ],
+  "linked_sop": [
+    "Как подготовить release candidate",
+    "Как написать release notes",
+    "Как пройти release readiness checklist",
+    "Как провести deployment",
+    "Как провести rollback",
+    "Как мониторить релиз после deployment",
+    "Как собрать post-release metrics",
+    "Как провести post-release review meeting",
+    "Как обновить release process на основе lessons"
+  ],
+  "linked_meetings": [
+    "Release readiness review",
+    "Post-release review"
+  ],
+  "process_steps": [
+    {
+      "step": "Подготовить релиз",
+      "description": "Собрать changes, проверить readiness, подготовить release notes"
+    },
+    {
+      "step": "Провести deployment",
+      "description": "Выполнить deployment по checklist, мониторить"
+    },
+    {
+      "step": "Post-release review",
+      "description": "Оценить результат, зафиксировать issues и lessons learned"
+    }
+  ],
+  "process_rhythm": [
+    {
+      "horizon": "Per release",
+      "ritual": "Release readiness review",
+      "key_question": "Готовы ли мы к deployment?",
+      "result": "Go/no-go decision"
+    }
+  ],
+  "typical_failures": [
+    {
+      "failure": "Релиз ломает production",
+      "symptom": "Критические баги после deploy",
+      "action": "Rollback + mandatory QA sign-off перед release"
+    },
+    {
+      "failure": "Релизы непредсказуемы",
+      "symptom": "Нет чёткого schedule",
+      "action": "Ввести release train с фиксированным cadence"
+    }
+  ],
+  "linked_artifacts": [
+    {
+      "name": "Управление релизами",
+      "description": "Основной артефакт процесса Управление релизами"
+    }
+  ],
+  "linked_systems": [
+    "CI/CD pipeline",
+    "GitHub / GitLab",
+    "Monitoring tools"
+  ],
+  "metrics_signals": [
+    "Release frequency",
+    "Rollback rate",
+    "Time to deploy"
+  ],
+  "review_cadence": "Quarterly review of process design; monthly review of effectiveness.",
+  "access_level": "Management / leads / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

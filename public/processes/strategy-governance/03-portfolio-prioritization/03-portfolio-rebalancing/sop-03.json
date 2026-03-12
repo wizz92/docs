@@ -1,0 +1,47 @@
+{
+  "name": "Как зафиксировать решения по ребалансировке",
+  "type": "sop",
+  "purpose": "Обеспечить прозрачность и traceability решений.",
+  "description": "Обеспечить прозрачность и traceability решений.",
+  "main_goal": "Обеспечить прозрачность и traceability решений.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Решение по ребалансировке принято",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Зафиксировать в decision log: дата, причина, решение, affected initiatives",
+    "Обновить portfolio register",
+    "Разослать summary всем stakeholders",
+    "Обновить resource allocation"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "COO",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

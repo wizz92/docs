@@ -1,0 +1,48 @@
+{
+  "name": "Как подготовить competitive landscape report",
+  "type": "sop",
+  "purpose": "Структурировать данные в actionable отчёт.",
+  "description": "Структурировать данные в actionable отчёт.",
+  "main_goal": "Структурировать данные в actionable отчёт.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Данные о конкурентах собраны",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Построить positioning map",
+    "Выделить strengths и weaknesses каждого конкурента",
+    "Определить whitespace opportunities",
+    "Подготовить executive summary",
+    "Согласовать с Head of BD"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Market analyst",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

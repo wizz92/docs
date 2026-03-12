@@ -1,0 +1,36 @@
+{
+  "name": "Как проверить готовность релиза",
+  "type": "sop",
+  "purpose": "Как проверить готовность релиза.",
+  "description": "Практическая инструкция: как проверить готовность релиза.",
+  "main_goal": "Проверить готовность релиза — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "За 1-2 дня до запланированного релиза",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Пройти release checklist: все features готовы? Тесты пройдены? Documentation обновлена?",
+    "Проверить готовность по функциям: support готов? Marketing materials есть? Monitoring настроен?",
+    "Оценить release risks: что может сломаться? Есть ли rollback plan?",
+    "Собрать confirmation от каждой функции: ready / not ready / conditional ready",
+    "Зафиксировать release readiness status для go/no-go решения"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Checklist пройден формально — критичные items пропущены",
+    "Не все функции подтвердили готовность — релиз выходит с gaps",
+    "Rollback plan отсутствует — в случае проблем некуда откатиться"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Release checklist"
+  ],
+  "owner": "Delivery owner / Release manager",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

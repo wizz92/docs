@@ -1,0 +1,33 @@
+{
+  "name": "Как проверить исполнение условий go",
+  "type": "sop",
+  "purpose": "Как проверить исполнение условий go.",
+  "description": "Практическая инструкция: как проверить исполнение условий go.",
+  "main_goal": "Проверить исполнение условий go — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Приближение дедлайна conditions",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Для каждого condition из CONDITIONAL GO: проверить исполнение к дедлайну",
+    "Если condition не выполнено: эскалировать owner condition, обсудить варианты (продлить / снять / переоценить риск)",
+    "Зафиксировать статус каждого condition в decision record",
+    "Если все conditions выполнены — подтвердить полный GO",
+    "Если critical condition не выполнено — пересмотреть go/no-go решение"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Conditions не отслеживаются — CONDITIONAL GO де-факто = GO без условий",
+    "Non-compliance не эскалируется — risks реализуются"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Launch owner / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

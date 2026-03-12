@@ -1,0 +1,277 @@
+{
+  "name": "Finance & Control",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Finance & Control.",
+  "base_path": "processes/finance-control",
+  "l1": {
+    "name": "Finance & Control",
+    "path": "processes/finance-control/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Бюджетирование",
+      "folder": "01-budgeting",
+      "path": "processes/finance-control/01-budgeting/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор бюджетных заявок",
+          "folder": "01-budget-requests",
+          "path": "processes/finance-control/01-budgeting/01-budget-requests/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к сбор бюджетных заявок",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/01-budgeting/01-budget-requests/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести сбор бюджетных заявок",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/01-budgeting/01-budget-requests/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты сбор бюджетных заявок",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/01-budgeting/01-budget-requests/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Формирование и утверждение бюджета",
+          "folder": "02-budget-approval",
+          "path": "processes/finance-control/01-budgeting/02-budget-approval/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к формирование и утверждение бюджета",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/01-budgeting/02-budget-approval/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести формирование и утверждение бюджета",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/01-budgeting/02-budget-approval/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты формирование и утверждение бюджета",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/01-budgeting/02-budget-approval/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Контроль исполнения бюджета",
+          "folder": "03-budget-monitoring",
+          "path": "processes/finance-control/01-budgeting/03-budget-monitoring/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к контроль исполнения бюджета",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/01-budgeting/03-budget-monitoring/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести контроль исполнения бюджета",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/01-budgeting/03-budget-monitoring/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты контроль исполнения бюджета",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/01-budgeting/03-budget-monitoring/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Согласование расходов",
+      "folder": "02-expense-approval",
+      "path": "processes/finance-control/02-expense-approval/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Подача заявки на расход",
+          "folder": "01-expense-request",
+          "path": "processes/finance-control/02-expense-approval/01-expense-request/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к подача заявки на расход",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/02-expense-approval/01-expense-request/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести подача заявки на расход",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/02-expense-approval/01-expense-request/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты подача заявки на расход",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/02-expense-approval/01-expense-request/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Согласование и утверждение",
+          "folder": "02-expense-approval-flow",
+          "path": "processes/finance-control/02-expense-approval/02-expense-approval-flow/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к согласование и утверждение",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/02-expense-approval/02-expense-approval-flow/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести согласование и утверждение",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/02-expense-approval/02-expense-approval-flow/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты согласование и утверждение",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/02-expense-approval/02-expense-approval-flow/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Постоплатный контроль",
+          "folder": "03-post-payment-control",
+          "path": "processes/finance-control/02-expense-approval/03-post-payment-control/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к постоплатный контроль",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/02-expense-approval/03-post-payment-control/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести постоплатный контроль",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/02-expense-approval/03-post-payment-control/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты постоплатный контроль",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/02-expense-approval/03-post-payment-control/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "План-факт анализ",
+      "folder": "03-plan-fact-analysis",
+      "path": "processes/finance-control/03-plan-fact-analysis/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор фактических данных",
+          "folder": "01-actual-data-collection",
+          "path": "processes/finance-control/03-plan-fact-analysis/01-actual-data-collection/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к сбор фактических данных",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/01-actual-data-collection/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести сбор фактических данных",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/01-actual-data-collection/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты сбор фактических данных",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/01-actual-data-collection/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ отклонений",
+          "folder": "02-variance-analysis",
+          "path": "processes/finance-control/03-plan-fact-analysis/02-variance-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к анализ отклонений",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/02-variance-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести анализ отклонений",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/02-variance-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты анализ отклонений",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/02-variance-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Подготовка управленческого отчёта",
+          "folder": "03-management-report",
+          "path": "processes/finance-control/03-plan-fact-analysis/03-management-report/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к подготовка управленческого отчёта",
+              "file": "sop-01.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/03-management-report/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести подготовка управленческого отчёта",
+              "file": "sop-02.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/03-management-report/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты подготовка управленческого отчёта",
+              "file": "sop-03.json",
+              "path": "processes/finance-control/03-plan-fact-analysis/03-management-report/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 3,
+    "total_l3": 9,
+    "total_sop": 27,
+    "total_files": 40
+  }
+}

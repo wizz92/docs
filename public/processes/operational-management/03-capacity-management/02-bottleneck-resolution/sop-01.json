@@ -1,0 +1,34 @@
+{
+  "name": "Как выявить и проанализировать bottleneck",
+  "type": "sop",
+  "purpose": "Как выявить и проанализировать bottleneck.",
+  "description": "Практическая инструкция: как выявить и проанализировать bottleneck.",
+  "main_goal": "Выявить и проанализировать bottleneck — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Обнаружение паттерна recurring delays или blocked work",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Определить симптомы: recurring blocked items, одна роль/команда всегда задерживает, work piling up перед одним этапом",
+    "Собрать данные: сколько items blocked, как долго, кто/что blocking",
+    "Провести root cause analysis: ресурсный дефицит? Процессная проблема? Skill gap? Внешняя зависимость?",
+    "Оценить impact: high (блокирует > 1 команду / критичную инициативу), medium, low",
+    "Задокументировать в bottleneck register: описание, root cause, impact, affected teams"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Симптом принимается за root cause — лечится следствие",
+    "Impact не оценён — не понятно, насколько критично",
+    "Не задокументировано — проблема «известна всем», но никто не решает"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead / Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

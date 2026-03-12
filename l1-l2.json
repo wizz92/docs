@@ -1,0 +1,558 @@
+{
+    "name": "Operational Management",
+    "type": "process_l1",
+    "purpose": "Обеспечить предсказуемое, прозрачное и управляемое исполнение работы между командами, инициативами и функциями компании.",
+    "description": "Операционное управление — домен процессов, который связывает цели компании с планами команд, обеспечивает реалистичное планирование, прозрачный контроль исполнения, межкомандную координацию и регулярное принятие управленческих решений. Не заменяет Scrum и не дублирует delivery-процессы команды. Создаёт систему, в которой приоритеты понятны, планы реалистичны, работа стартует подготовленной, отклонения видны рано, проблемы решаются быстро, а руководство регулярно принимает решения на основе актуальных данных.",
+    "main_goal": "Сделать исполнение работы на уровне компании управляемым, согласованным и устойчивым.",
+    "scope": "Планирование, приоритизация, контроль исполнения, межкомандная координация, readiness, capacity, эскалации и регулярные management review.",
+    "process_steps": [
+        {
+            "step": "Планирование и приоритеты",
+            "description": "Перевести цели в планы, согласовать приоритеты между командами и функциями"
+        },
+        {
+            "step": "Готовность и capacity",
+            "description": "Убедиться, что работа стартует подготовленной, а загрузка команд реалистична"
+        },
+        {
+            "step": "Контроль исполнения",
+            "description": "Отслеживать прогресс по целям и инициативам, анализировать отклонения, корректировать"
+        },
+        {
+            "step": "Координация и эскалации",
+            "description": "Синхронизировать команды, быстро решать межкомандные проблемы и critical blockers"
+        },
+        {
+            "step": "Ритм управления",
+            "description": "Регулярные review, отчётность, принятие решений и follow-up"
+        }
+    ],
+    "when_used": "Постоянно, как сквозной домен управления поверх работы Scrum-команд, проектов и функций.",
+    "triggers": [
+        "Начало квартала, месяца, спринта",
+        "Изменение целей, приоритетов или загрузки",
+        "Критичные проблемы, зависимости или отклонения",
+        "Регулярные управленческие review"
+    ],
+    "inputs": [
+        "Цели компании и функций",
+        "Портфель инициатив",
+        "Backlog и планы команд",
+        "Данные по capacity и загрузке",
+        "Статусы по целям, инициативам и рискам"
+    ],
+    "outputs": [
+        "Согласованный операционный план",
+        "Единый стек приоритетов",
+        "Решения по readiness, загрузке и эскалациям",
+        "Прозрачный статус целей и инициатив",
+        "Регулярные управленческие решения и follow-up"
+    ],
+    "owner": "COO / Head of Operations",
+    "participants": [
+        "CEO",
+        "Heads of Functions",
+        "Team Leads",
+        "Process Owners",
+        "Initiative Owners",
+        "Delivery Leads"
+    ],
+    "linked_meetings": [
+        "Roadmap planning session",
+        "Monthly planning review",
+        "Sprint planning",
+        "Weekly ops review",
+        "Initiative review",
+        "Function review"
+    ],
+    "linked_artifacts": [
+        "Roadmap",
+        "Monthly operational plan",
+        "Sprint backlog",
+        "Priority register",
+        "Capacity tracker",
+        "Goal status tracker",
+        "Initiative tracker",
+        "Escalation log",
+        "Management summary"
+    ],
+    "linked_systems": [
+        "Jira",
+        "Confluence / wiki",
+        "BI / dashboards",
+        "Planning boards"
+    ],
+    "metrics_signals": [
+        "Предсказуемость исполнения (% commitments delivered)",
+        "Частота критичных отклонений",
+        "Количество нерешённых межкомандных проблем",
+        "Скорость принятия и закрытия управленческих решений",
+        "Decision follow-up closure rate"
+    ],
+    "review_cadence": "Quarterly review of domain structure; monthly review of process quality.",
+    "access_level": "Management / process owners; selective read access for leads and teams.",
+    "version": "2.0",
+    "updated_at": "2026-03-12",
+    "children": [
+        {
+            "name": "Операционное планирование",
+            "type": "process_l2",
+            "purpose": "Перевести цели компании и приоритетные инициативы в согласованный и исполнимый план работы на квартал, месяц и ближайшие спринты.",
+            "description": "Процесс согласования операционного плана между командами и функциями. Связывает roadmap, monthly plan, sprint planning и межкомандную синхронизацию в единый цикл.",
+            "main_goal": "Команды работают по согласованному, реалистичному плану, направленному на правильные цели.",
+            "when_used": "В циклах квартал → месяц → спринт, а также при существенном изменении условий.",
+            "triggers": [
+                "Начало квартала",
+                "Начало месяца",
+                "Подготовка к спринту",
+                "Изменение приоритетов или ресурсов"
+            ],
+            "inputs": [
+                "Цели периода",
+                "Портфель инициатив",
+                "Capacity команд",
+                "Текущий статус работ",
+                "Зависимости"
+            ],
+            "outputs": [
+                "Утверждённый roadmap",
+                "Monthly operational plan",
+                "Sprint backlog + sprint goal",
+                "Решения по replanning"
+            ],
+            "owner": "COO / Operations lead",
+            "participants": [
+                "CEO",
+                "Heads of Functions",
+                "Delivery Leads",
+                "Team Leads",
+                "Product Owners"
+            ],
+            "linked_l3_subprocesses": [
+                "Планирование Roadmapа",
+                "Планирование периода (месяц / спринт)",
+                "Перепланирование при изменении условий"
+            ],
+            "linked_sop": [
+                "Как подготовить сессию планирования Roadmap",
+                "Как провести Roadmap session и снять конфликты",
+                "Как утвердить и опубликовать Roadmap",
+                "Как подготовить и провести monthly planning review",
+                "Как подготовить backlog и проверить capacity к спринту",
+                "Как провести sprint planning и зафиксировать sprint goal",
+                "Как согласовать план между командами",
+                "Как опубликовать monthly operational plan",
+                "Что делать, если backlog не ready",
+                "Что делать, если capacity ниже ожидаемой"
+            ],
+            "linked_meetings": [
+                "Roadmap planning session",
+                "Monthly planning review",
+                "Sprint planning",
+                "Cross-team sync"
+            ],
+            "linked_artifacts": [
+                "Roadmap",
+                "Monthly plan",
+                "Sprint backlog",
+                "Dependency list"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "Доля утверждённых планов в срок",
+                "Частота replanning",
+                "% спринтов со срывом commitments из-за плохого планирования"
+            ],
+            "review_cadence": "Quarterly review of process; monthly review of effectiveness",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        },
+        {
+            "name": "Управление приоритетами",
+            "type": "process_l2",
+            "purpose": "Обеспечить единый, прозрачный порядок приоритетов для команд, инициатив и workstreams.",
+            "description": "Приём, оценка и пересмотр приоритетов. Управление competing priorities, urgent requests и изменениями фокуса без хаоса.",
+            "main_goal": "Критичные решения о приоритетах принимаются по понятным правилам и одинаково понимаются всеми.",
+            "when_used": "Постоянно: при новых запросах, изменении контекста, пересмотре порядка работ.",
+            "triggers": [
+                "Новый приоритетный запрос",
+                "Изменение целей или условий",
+                "Urgent work",
+                "Конфликт приоритетов"
+            ],
+            "inputs": [
+                "Новые запросы",
+                "Текущий priority stack",
+                "Business impact / urgency",
+                "Capacity"
+            ],
+            "outputs": [
+                "Approved priorities",
+                "Обновлённый priority stack",
+                "Decision log",
+                "Коммуникация изменений"
+            ],
+            "owner": "COO / Operations lead",
+            "participants": [
+                "Heads of Functions",
+                "Product/Delivery owners",
+                "Team Leads"
+            ],
+            "linked_l3_subprocesses": [
+                "Приём и оценка приоритетных запросов",
+                "Переприоритизация и управление изменениями"
+            ],
+            "linked_sop": [
+                "Как подать и зарегистрировать приоритетный запрос",
+                "Как провести triage и назначить owner на рассмотрение",
+                "Как оценить impact, urgency и сравнить с текущими приоритетами",
+                "Как принять решение по приоритету и зафиксировать",
+                "Как определить и включить urgent work",
+                "Как инициировать reprioritization и оценить влияние",
+                "Как обновить priority stack и согласовать trade-offs",
+                "Как коммуницировать изменения приоритетов",
+                "Как контролировать последствия reprioritization"
+            ],
+            "linked_meetings": [
+                "Priority review",
+                "Weekly ops review"
+            ],
+            "linked_artifacts": [
+                "Priority intake log",
+                "Priority register",
+                "Decision log"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "Частота reprioritization",
+                "Количество urgent requests",
+                "Время от запроса до решения"
+            ],
+            "review_cadence": "Weekly priority review; monthly review stability",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        },
+        {
+            "name": "Управление загрузкой команд",
+            "type": "process_l2",
+            "purpose": "Сопоставлять объём обязательств с реальной capacity команд и критичных ролей.",
+            "description": "Оценка capacity, анализ загрузки, выявление bottlenecks, ребалансировка ресурсов и эскалация перегруза.",
+            "main_goal": "Commitments реалистичны, скрытый перегруз не допускается.",
+            "when_used": "Регулярно в planning cycles и при появлении признаков перегруза.",
+            "triggers": [
+                "Планирование периода / спринта",
+                "Изменение capacity",
+                "Bottleneck",
+                "Срыв commitments"
+            ],
+            "inputs": [
+                "Capacity команд",
+                "Текущие обязательства",
+                "Данные о blocked work и delays"
+            ],
+            "outputs": [
+                "Capacity review",
+                "Load vs capacity view",
+                "Bottleneck register",
+                "Rebalance decisions"
+            ],
+            "owner": "COO / Operations lead",
+            "participants": [
+                "Heads of Functions",
+                "Team Leads",
+                "Delivery owners"
+            ],
+            "linked_l3_subprocesses": [
+                "Оценка capacity и загрузки",
+                "Анализ и устранение узких мест",
+                "Эскалация перегруза"
+            ],
+            "linked_sop": [
+                "Как посчитать capacity команды с учётом отпусков и аллокации",
+                "Как сравнить load vs capacity и определить сигналы перегруза",
+                "Как пересмотреть commitments при перегрузе",
+                "Как обновить capacity review",
+                "Как выявить и проанализировать bottleneck",
+                "Как подготовить варианты устранения bottleneck",
+                "Как согласовать resource rebalance",
+                "Как контролировать устранение bottleneck",
+                "Как определить необходимость эскалации и оформить overload case",
+                "Как вынести перегруз на management level и принять решение",
+                "Как закрыть overload escalation"
+            ],
+            "linked_meetings": [
+                "Capacity review",
+                "Weekly ops review"
+            ],
+            "linked_artifacts": [
+                "Capacity tracker",
+                "Load summary",
+                "Bottleneck register"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "Load / capacity ratio",
+                "Carry-over rate",
+                "Количество overload escalations",
+                "Recurring bottlenecks"
+            ],
+            "review_cadence": "Monthly; more frequent in high-change periods",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        },
+        {
+            "name": "Управление готовностью к старту",
+            "type": "process_l2",
+            "purpose": "Обеспечить, чтобы работа не начиналась в сыром состоянии.",
+            "description": "Проверка готовности backlog, спринта, релиза или запуска. Один паттерн readiness check с разными контекстами + go/no-go решение.",
+            "main_goal": "Снизить проблемы, возникающие из-за старта неподготовленной работы.",
+            "when_used": "Перед planning, стартом спринта, релизом, запуском.",
+            "triggers": [
+                "Подготовка backlog к planning",
+                "Старт спринта",
+                "Подготовка релиза",
+                "Подготовка запуска"
+            ],
+            "inputs": [
+                "Work items",
+                "Capacity",
+                "Dependencies",
+                "Readiness checklists",
+                "Risk assessment"
+            ],
+            "outputs": [
+                "Readiness status",
+                "Go/no-go решение",
+                "Blocker list",
+                "Conditions"
+            ],
+            "owner": "Operations lead / Delivery owner",
+            "participants": [
+                "Team Leads",
+                "Product Owners",
+                "Delivery owners",
+                "Relevant functions"
+            ],
+            "linked_l3_subprocesses": [
+                "Проверка готовности",
+                "Решение go / no-go"
+            ],
+            "linked_sop": [
+                "Как проверить готовность backlog",
+                "Как проверить готовность к спринту",
+                "Как проверить готовность релиза",
+                "Как проверить готовность запуска",
+                "Как документировать результат readiness check",
+                "Как вынести вопрос на go/no-go и определить участников",
+                "Как зафиксировать условия и коммуницировать решение",
+                "Как проверить исполнение условий go"
+            ],
+            "linked_meetings": [
+                "Readiness review",
+                "Go/no-go forum"
+            ],
+            "linked_artifacts": [
+                "Readiness checklists",
+                "Decision record"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "% starts with readiness gaps",
+                "Not-ready items entering sprint",
+                "Go/no-go delay frequency"
+            ],
+            "review_cadence": "Monthly / quarterly quality review",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        },
+        {
+            "name": "Контроль исполнения",
+            "type": "process_l2",
+            "purpose": "Контролировать достижение целей и инициатив, а не только выполнение отдельных задач.",
+            "description": "Трекинг прогресса по целям и инициативам, milestone мониторинг, анализ отклонений, corrective actions и эскалация проблемных инициатив.",
+            "main_goal": "Execution приводит к нужным результатам, отклонения выявляются рано, corrective actions работают.",
+            "when_used": "Регулярно в рамках sprint / monthly / quarterly review циклов.",
+            "triggers": [
+                "Конец спринта / месяца",
+                "Отклонение от плана",
+                "Milestone at risk",
+                "Инициатива в trouble"
+            ],
+            "inputs": [
+                "Sprint results",
+                "Goal targets",
+                "Initiative plans",
+                "Milestones",
+                "KPI / OKR data"
+            ],
+            "outputs": [
+                "Goal/initiative status",
+                "Variance analysis",
+                "Corrective actions",
+                "Recovery plans"
+            ],
+            "owner": "COO / Head of Function",
+            "participants": [
+                "Goal owners",
+                "Initiative owners",
+                "Team Leads",
+                "Operations"
+            ],
+            "linked_l3_subprocesses": [
+                "Трекинг прогресса",
+                "Milestone и delivery мониторинг",
+                "Анализ отклонений и corrective actions",
+                "Эскалация проблемных инициатив"
+            ],
+            "linked_sop": [
+                "Как обновить статус цели и инициативы",
+                "Как провести progress review",
+                "Как привязать sprint results к целям",
+                "Как подготовить initiative summary и зафиксировать action items",
+                "Как определить milestones и вести milestone tracker",
+                "Как вести multi-team delivery board и собирать статусы",
+                "Как эскалировать risk to milestone",
+                "Как проанализировать отклонение и определить root cause",
+                "Как сформировать corrective action и назначить owner",
+                "Как контролировать corrective actions и оценить эффект",
+                "Как определить и эскалировать риски по целям",
+                "Как инициировать escalation и оформить recovery plan",
+                "Как вести follow-up по escalated initiative",
+                "Как закрыть escalation case"
+            ],
+            "linked_meetings": [
+                "Goal review",
+                "Initiative review",
+                "Weekly ops review"
+            ],
+            "linked_artifacts": [
+                "Goal status tracker",
+                "Initiative tracker",
+                "Milestone tracker",
+                "Corrective actions log"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "Goal progress vs plan",
+                "Milestone slippage",
+                "Corrective actions closure rate",
+                "Number of red/yellow goals"
+            ],
+            "review_cadence": "Bi-weekly / monthly depending on cadence",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        },
+        {
+            "name": "Ритм управления и координация",
+            "type": "process_l2",
+            "purpose": "Создать регулярный управленческий цикл и обеспечить координацию между командами.",
+            "description": "Регулярные management reviews, подготовка отчётности, межкомандная координация, escalation management, follow-up решений.",
+            "main_goal": "Управление регулярное и дисциплинированное. Координация работает, проблемы решаются, решения исполняются.",
+            "when_used": "Постоянно, по установленному management cadence.",
+            "triggers": [
+                "Weekly/sprint/monthly review cycle",
+                "Межкомандная зависимость",
+                "Escalation",
+                "Конфликт"
+            ],
+            "inputs": [
+                "Reports and statuses",
+                "Risks and escalations",
+                "Dependencies",
+                "Conflicts"
+            ],
+            "outputs": [
+                "Review decisions",
+                "Resolved escalations",
+                "Inter-team agreements",
+                "Action items"
+            ],
+            "owner": "COO / Operations lead",
+            "participants": [
+                "CEO",
+                "Heads of Functions",
+                "Team Leads",
+                "Relevant owners"
+            ],
+            "linked_l3_subprocesses": [
+                "Регулярные review",
+                "Межкомандная координация",
+                "Управление эскалациями",
+                "Follow-up решений"
+            ],
+            "linked_sop": [
+                "Как подготовить и провести weekly ops review",
+                "Как подготовить management summary по итогам спринта",
+                "Как подготовить и провести initiative review",
+                "Как провести function review",
+                "Как готовить отчётность для review",
+                "Как проводить inter-team sync",
+                "Как организовать handoff между командами",
+                "Как вести dependency review",
+                "Как согласовать ожидания между командами",
+                "Как завести escalation case и определить severity",
+                "Как маршрутизировать escalation и назначить owner",
+                "Как вести трекинг решения и контролировать SLA",
+                "Как закрыть escalation и зафиксировать выводы",
+                "Как фиксировать review decisions и назначать owners",
+                "Как контролировать исполнение решений",
+                "Как разрешать межкомандные конфликты"
+            ],
+            "linked_meetings": [
+                "Weekly ops review",
+                "Sprint-to-management review",
+                "Initiative review",
+                "Function review",
+                "Inter-team sync",
+                "Escalation review"
+            ],
+            "linked_artifacts": [
+                "Management summaries",
+                "Decision logs",
+                "Escalation log",
+                "Dependency list",
+                "Action lists"
+            ],
+            "linked_systems": [
+                "Jira",
+                "Confluence",
+                "Dashboards"
+            ],
+            "metrics_signals": [
+                "Review completion cadence",
+                "Decision follow-up closure rate",
+                "Time to resolve escalation",
+                "Blocked dependency duration"
+            ],
+            "review_cadence": "Built into process: weekly / sprint / monthly layers",
+            "access_level": "Management / leads",
+            "version": "2.0",
+            "updated_at": "2026-03-12"
+        }
+    ]
+}

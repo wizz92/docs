@@ -1,0 +1,70 @@
+{
+  "name": "Управление готовностью к старту",
+  "type": "process_l2",
+  "purpose": "Обеспечить, чтобы работа не начиналась в сыром состоянии.",
+  "description": "Проверка готовности backlog, спринта, релиза или запуска. Один паттерн readiness check с разными контекстами + go/no-go решение.",
+  "main_goal": "Снизить проблемы, возникающие из-за старта неподготовленной работы.",
+  "when_used": "Перед planning, стартом спринта, релизом, запуском.",
+  "triggers": [
+    "Подготовка backlog к planning",
+    "Старт спринта",
+    "Подготовка релиза",
+    "Подготовка запуска"
+  ],
+  "inputs": [
+    "Work items",
+    "Capacity",
+    "Dependencies",
+    "Readiness checklists",
+    "Risk assessment"
+  ],
+  "outputs": [
+    "Readiness status",
+    "Go/no-go решение",
+    "Blocker list",
+    "Conditions"
+  ],
+  "owner": "Operations lead / Delivery owner",
+  "participants": [
+    "Team Leads",
+    "Product Owners",
+    "Delivery owners",
+    "Relevant functions"
+  ],
+  "linked_l3_subprocesses": [
+    "Проверка готовности",
+    "Решение go / no-go"
+  ],
+  "linked_sop": [
+    "Как проверить готовность backlog",
+    "Как проверить готовность к спринту",
+    "Как проверить готовность релиза",
+    "Как проверить готовность запуска",
+    "Как документировать результат readiness check",
+    "Как вынести вопрос на go/no-go и определить участников",
+    "Как зафиксировать условия и коммуницировать решение",
+    "Как проверить исполнение условий go"
+  ],
+  "linked_meetings": [
+    "Readiness review",
+    "Go/no-go forum"
+  ],
+  "linked_artifacts": [
+    "Readiness checklists",
+    "Decision record"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence",
+    "Dashboards"
+  ],
+  "metrics_signals": [
+    "% starts with readiness gaps",
+    "Not-ready items entering sprint",
+    "Go/no-go delay frequency"
+  ],
+  "review_cadence": "Monthly / quarterly quality review",
+  "access_level": "Management / leads",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

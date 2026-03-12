@@ -1,0 +1,58 @@
+{
+  "name": "Формулирование годовых целей",
+  "type": "process_l3",
+  "purpose": "Сформулировать ключевые цели компании на год, привязанные к стратегии.",
+  "description": "Процесс определения 3–5 company-level целей на год с измеримыми key results.",
+  "main_goal": "Утверждённые годовые OKR компании.",
+  "when_used": "В начале финансового года или при смене стратегии.",
+  "cadence": "Annual",
+  "trigger": [
+    "Начало финансового года",
+    "Утверждение новой стратегии"
+  ],
+  "inputs": [
+    "Стратегия компании",
+    "Результаты прошлого года",
+    "Рыночный контекст"
+  ],
+  "outputs": [
+    "Company-level OKR на год",
+    "Пояснительная записка с контекстом"
+  ],
+  "owner": "CEO",
+  "participants": [
+    "CEO",
+    "COO",
+    "CFO",
+    "Heads of Functions"
+  ],
+  "linked_meetings": [
+    "Annual planning session"
+  ],
+  "linked_artifacts": [
+    "Annual OKR document"
+  ],
+  "linked_systems": [
+    "OKR tool",
+    "Confluence / wiki"
+  ],
+  "linked_sop": [
+    "Как подготовить annual planning session",
+    "Как сформулировать company-level OKR",
+    "Как донести годовые цели до компании"
+  ],
+  "done_criteria": [
+    "OKR утверждены CEO",
+    "Опубликованы и доступны руководителям"
+  ],
+  "failure_modes": [
+    "Слишком много целей — нет фокуса",
+    "Key results не измеримы"
+  ],
+  "deviation_response": [
+    "Forced ranking до 3–5 целей",
+    "Переформулировать KR с конкретными метриками"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

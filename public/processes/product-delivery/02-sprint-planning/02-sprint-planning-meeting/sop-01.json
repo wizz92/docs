@@ -1,0 +1,49 @@
+{
+  "name": "Как провести sprint planning meeting",
+  "type": "sop",
+  "purpose": "Эффективно провести sprint planning.",
+  "description": "Эффективно провести sprint planning.",
+  "main_goal": "Эффективно провести sprint planning.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Наступление planning",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Начать с review sprint goal предыдущего спринта",
+    "PO представляет предлагаемый sprint goal",
+    "Команда обсуждает и принимает goal",
+    "Выбрать items из backlog под goal",
+    "Проверить fit с capacity",
+    "Зафиксировать sprint backlog в Jira"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Scrum Master",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

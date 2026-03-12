@@ -1,0 +1,277 @@
+{
+  "name": "Transformation & Automation",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Transformation & Automation.",
+  "base_path": "processes/transformation-automation",
+  "l1": {
+    "name": "Transformation & Automation",
+    "path": "processes/transformation-automation/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Улучшение процессов",
+      "folder": "01-process-improvement",
+      "path": "processes/transformation-automation/01-process-improvement/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Выявление узких мест",
+          "folder": "01-bottleneck-identification",
+          "path": "processes/transformation-automation/01-process-improvement/01-bottleneck-identification/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к выявление узких мест",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/01-process-improvement/01-bottleneck-identification/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести выявление узких мест",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/01-process-improvement/01-bottleneck-identification/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты выявление узких мест",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/01-process-improvement/01-bottleneck-identification/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Проектирование улучшений",
+          "folder": "02-improvement-design",
+          "path": "processes/transformation-automation/01-process-improvement/02-improvement-design/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к проектирование улучшений",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/01-process-improvement/02-improvement-design/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести проектирование улучшений",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/01-process-improvement/02-improvement-design/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты проектирование улучшений",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/01-process-improvement/02-improvement-design/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Внедрение и контроль изменений",
+          "folder": "03-change-implementation",
+          "path": "processes/transformation-automation/01-process-improvement/03-change-implementation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к внедрение и контроль изменений",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/01-process-improvement/03-change-implementation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести внедрение и контроль изменений",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/01-process-improvement/03-change-implementation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты внедрение и контроль изменений",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/01-process-improvement/03-change-implementation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Автоматизация рабочих процессов",
+      "folder": "02-workflow-automation",
+      "path": "processes/transformation-automation/02-workflow-automation/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Идентификация кандидатов на автоматизацию",
+          "folder": "01-automation-candidates",
+          "path": "processes/transformation-automation/02-workflow-automation/01-automation-candidates/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к идентификация кандидатов на автоматизацию",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/02-workflow-automation/01-automation-candidates/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести идентификация кандидатов на автоматизацию",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/02-workflow-automation/01-automation-candidates/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты идентификация кандидатов на автоматизацию",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/02-workflow-automation/01-automation-candidates/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Разработка автоматизации",
+          "folder": "02-automation-development",
+          "path": "processes/transformation-automation/02-workflow-automation/02-automation-development/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к разработка автоматизации",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/02-workflow-automation/02-automation-development/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести разработка автоматизации",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/02-workflow-automation/02-automation-development/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты разработка автоматизации",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/02-workflow-automation/02-automation-development/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Внедрение и мониторинг",
+          "folder": "03-automation-deployment",
+          "path": "processes/transformation-automation/02-workflow-automation/03-automation-deployment/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к внедрение и мониторинг",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/02-workflow-automation/03-automation-deployment/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести внедрение и мониторинг",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/02-workflow-automation/03-automation-deployment/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты внедрение и мониторинг",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/02-workflow-automation/03-automation-deployment/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Внедрение AI use cases",
+      "folder": "03-ai-implementation",
+      "path": "processes/transformation-automation/03-ai-implementation/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор и приоритизация AI use cases",
+          "folder": "01-ai-use-case-intake",
+          "path": "processes/transformation-automation/03-ai-implementation/01-ai-use-case-intake/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к сбор и приоритизация ai use cases",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/03-ai-implementation/01-ai-use-case-intake/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести сбор и приоритизация ai use cases",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/03-ai-implementation/01-ai-use-case-intake/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты сбор и приоритизация ai use cases",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/03-ai-implementation/01-ai-use-case-intake/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Разработка и тестирование AI решения",
+          "folder": "02-ai-development",
+          "path": "processes/transformation-automation/03-ai-implementation/02-ai-development/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к разработка и тестирование ai решения",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/03-ai-implementation/02-ai-development/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести разработка и тестирование ai решения",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/03-ai-implementation/02-ai-development/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты разработка и тестирование ai решения",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/03-ai-implementation/02-ai-development/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Внедрение в production",
+          "folder": "03-ai-production-rollout",
+          "path": "processes/transformation-automation/03-ai-implementation/03-ai-production-rollout/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к внедрение в production",
+              "file": "sop-01.json",
+              "path": "processes/transformation-automation/03-ai-implementation/03-ai-production-rollout/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести внедрение в production",
+              "file": "sop-02.json",
+              "path": "processes/transformation-automation/03-ai-implementation/03-ai-production-rollout/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты внедрение в production",
+              "file": "sop-03.json",
+              "path": "processes/transformation-automation/03-ai-implementation/03-ai-production-rollout/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 3,
+    "total_l3": 9,
+    "total_sop": 27,
+    "total_files": 40
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Как подготовить management summary по итогам спринта",
+  "type": "sop",
+  "purpose": "Как подготовить management summary по итогам спринта.",
+  "description": "Практическая инструкция: как подготовить management summary по итогам спринта.",
+  "main_goal": "Подготовить management summary по итогам спринта — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Конец спринта (в тот же день или следующий)",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Собрать от Team Leads: sprint outcomes, key deliverables, velocity, blockers",
+    "Агрегировать по инициативам: что продвинулось, что нет, почему",
+    "Выделить key signals: что идёт хорошо (top wins), что требует внимания (top issues)",
+    "Для каждого issue: указать severity, owner, recommended action",
+    "Оформить management summary: 1 страница max — executive view, не детали задач",
+    "Опубликовать перед management review"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "1 рабочий день после sprint review",
+  "typical_errors": [
+    "Summary = список выполненных задач — management не видит big picture",
+    "Нет top issues / top wins — всё одинаково серое",
+    "Summary слишком длинный — никто не читает"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Management summary template"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

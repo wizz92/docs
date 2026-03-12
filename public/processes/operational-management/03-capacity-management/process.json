@@ -1,0 +1,73 @@
+{
+  "name": "Управление загрузкой команд",
+  "type": "process_l2",
+  "purpose": "Сопоставлять объём обязательств с реальной capacity команд и критичных ролей.",
+  "description": "Оценка capacity, анализ загрузки, выявление bottlenecks, ребалансировка ресурсов и эскалация перегруза.",
+  "main_goal": "Commitments реалистичны, скрытый перегруз не допускается.",
+  "when_used": "Регулярно в planning cycles и при появлении признаков перегруза.",
+  "triggers": [
+    "Планирование периода / спринта",
+    "Изменение capacity",
+    "Bottleneck",
+    "Срыв commitments"
+  ],
+  "inputs": [
+    "Capacity команд",
+    "Текущие обязательства",
+    "Данные о blocked work и delays"
+  ],
+  "outputs": [
+    "Capacity review",
+    "Load vs capacity view",
+    "Bottleneck register",
+    "Rebalance decisions"
+  ],
+  "owner": "COO / Operations lead",
+  "participants": [
+    "Heads of Functions",
+    "Team Leads",
+    "Delivery owners"
+  ],
+  "linked_l3_subprocesses": [
+    "Оценка capacity и загрузки",
+    "Анализ и устранение узких мест",
+    "Эскалация перегруза"
+  ],
+  "linked_sop": [
+    "Как посчитать capacity команды с учётом отпусков и аллокации",
+    "Как сравнить load vs capacity и определить сигналы перегруза",
+    "Как пересмотреть commitments при перегрузе",
+    "Как обновить capacity review",
+    "Как выявить и проанализировать bottleneck",
+    "Как подготовить варианты устранения bottleneck",
+    "Как согласовать resource rebalance",
+    "Как контролировать устранение bottleneck",
+    "Как определить необходимость эскалации и оформить overload case",
+    "Как вынести перегруз на management level и принять решение",
+    "Как закрыть overload escalation"
+  ],
+  "linked_meetings": [
+    "Capacity review",
+    "Weekly ops review"
+  ],
+  "linked_artifacts": [
+    "Capacity tracker",
+    "Load summary",
+    "Bottleneck register"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence",
+    "Dashboards"
+  ],
+  "metrics_signals": [
+    "Load / capacity ratio",
+    "Carry-over rate",
+    "Количество overload escalations",
+    "Recurring bottlenecks"
+  ],
+  "review_cadence": "Monthly; more frequent in high-change periods",
+  "access_level": "Management / leads",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

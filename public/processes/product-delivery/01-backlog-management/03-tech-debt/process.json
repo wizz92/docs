@@ -1,0 +1,59 @@
+{
+  "name": "Управление техническим долгом",
+  "type": "process_l3",
+  "purpose": "Обеспечить контролируемое управление техническим долгом.",
+  "description": "Процесс выявления, оценки и планирования работы с technical debt.",
+  "main_goal": "Tech debt контролируем, critical debt устраняется планово.",
+  "when_used": "Регулярно и при появлении critical debt.",
+  "cadence": "Quarterly review + continuous",
+  "trigger": [
+    "Обнаружение tech debt",
+    "Quarterly tech debt review"
+  ],
+  "inputs": [
+    "Code quality reports",
+    "Engineer feedback",
+    "Incident post-mortems"
+  ],
+  "outputs": [
+    "Tech debt register",
+    "Remediation plan",
+    "Backlog items для tech debt"
+  ],
+  "owner": "Tech Lead / Head of Engineering",
+  "participants": [
+    "Tech Lead",
+    "Engineers",
+    "Product Owner"
+  ],
+  "linked_meetings": [
+    "Quarterly tech debt review"
+  ],
+  "linked_artifacts": [
+    "Tech debt register"
+  ],
+  "linked_systems": [
+    "SonarQube",
+    "Jira",
+    "GitHub"
+  ],
+  "linked_sop": [
+    "Как зарегистрировать tech debt item",
+    "Как провести quarterly tech debt review",
+    "Как включить tech debt в sprint"
+  ],
+  "done_criteria": [
+    "Tech debt register актуален",
+    "Critical debt имеет remediation plan"
+  ],
+  "failure_modes": [
+    "Tech debt игнорируется",
+    "Нет бюджета на remediation"
+  ],
+  "deviation_response": [
+    "Выделить 15–20% capacity на tech debt",
+    "Эскалировать critical debt на Head of Engineering"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

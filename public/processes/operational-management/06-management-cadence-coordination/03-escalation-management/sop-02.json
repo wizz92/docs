@@ -1,0 +1,38 @@
+{
+  "name": "Как маршрутизировать escalation и назначить owner",
+  "type": "sop",
+  "purpose": "Как маршрутизировать escalation и назначить owner.",
+  "description": "Практическая инструкция: как маршрутизировать escalation и назначить owner.",
+  "main_goal": "Маршрутизировать escalation и назначить owner — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Escalation case зарегистрирован",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "По типу и severity определить functional area: engineering / product / operations / business",
+    "По severity определить уровень owner: Medium — team lead, High — Head of Function, Critical — COO/CEO",
+    "Найти конкретного человека (не команду) — проверить доступность",
+    "Если primary owner недоступен — назначить deputy",
+    "Зафиксировать owner в escalation case, уведомить owner с ожиданием подтверждения",
+    "Для Critical: owner должен подтвердить принятие в течение 15 минут"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "15 минут на маршрутизацию для Critical, 2 часа для High",
+  "typical_errors": [
+    "Назначена команда, а не человек — ответственность размыта",
+    "Owner не подтвердил — case висит без ответственного",
+    "Маршрутизация по формальному признаку, а не по компетенции"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Owner map",
+    "Escalation routing rules"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

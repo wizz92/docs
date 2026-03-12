@@ -1,0 +1,34 @@
+{
+  "name": "Как определить milestones и вести milestone tracker",
+  "type": "sop",
+  "purpose": "Как определить milestones и вести milestone tracker.",
+  "description": "Практическая инструкция: как определить milestones и вести milestone tracker.",
+  "main_goal": "Определить milestones и вести milestone tracker — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Старт инициативы / начало квартала",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "При старте инициативы: определить key milestones (3-7 штук) с датами, owners и deliverables",
+    "Milestone = значимый промежуточный результат, не просто задача. Пример: «MVP ready for testing», не «написать код модуля X»",
+    "Завести milestone tracker: milestone, planned date, actual date, status (on track / at risk / missed), owner",
+    "Обновлять статус каждый спринт / каждую неделю",
+    "При risk to milestone: отметить risk сразу, не ждать даты"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Milestones слишком мелкие (= tasks) — tracking overhead без value",
+    "Milestones слишком абстрактные — непонятно, как проверить completion",
+    "Status обновляется только когда milestone пропущен — поздно"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Initiative owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

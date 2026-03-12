@@ -1,0 +1,36 @@
+{
+  "name": "Как проверить готовность backlog",
+  "type": "sop",
+  "purpose": "Как проверить готовность backlog.",
+  "description": "Практическая инструкция: как проверить готовность backlog.",
+  "main_goal": "Проверить готовность backlog — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "За 1-2 дня до sprint planning",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Для каждого top-priority item в backlog проверить: есть acceptance criteria? Estimation? Owner?",
+    "Проверить зависимости: есть ли blockers от других команд? Согласованы ли?",
+    "Отметить not-ready items: указать конкретно, чего не хватает (AC / estimation / dependency / scope clarity)",
+    "Not-ready items вернуть PO/owner с конкретным списком доработок и дедлайном",
+    "Обновить readiness status: % ready items из top-N приоритетных"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Items без AC берутся в работу — scope creep и переделки",
+    "Not-ready items не возвращаются — проблема накапливается",
+    "Readiness check формальный — все отмечены ready без реальной проверки"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Backlog readiness checklist"
+  ],
+  "owner": "Product Owner / Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

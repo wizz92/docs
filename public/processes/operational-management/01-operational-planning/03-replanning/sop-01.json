@@ -1,0 +1,33 @@
+{
+  "name": "Что делать, если backlog не ready",
+  "type": "sop",
+  "purpose": "Что делать, если backlog не ready.",
+  "description": "Практическая инструкция: что делать, если backlog не ready.",
+  "main_goal": "Что делать, если backlog не ready — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Backlog review показал > 0% not ready items перед planning",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Определить масштаб проблемы: сколько items not ready, какой % sprint scope затронут",
+    "Если < 20% not ready: отложить эти items, добавить ready items из backlog ниже по приоритету",
+    "Если > 20% not ready: уведомить Operations lead, обсудить сокращение scope или сдвиг спринта",
+    "Вернуть not-ready items PO с конкретным списком, что нужно доработать",
+    "Зафиксировать решение в sprint backlog и уведомить команду"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Not-ready items берутся в спринт «авось разберёмся» — scope creep и переделки",
+    "PO не получает обратную связь — проблема повторяется в следующем спринте"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Team Lead / Product Owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

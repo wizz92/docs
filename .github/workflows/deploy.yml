@@ -27,43 +27,23 @@ jobs:
           SERVER_SSH_PORT: ${{ secrets.SERVER_SSH_PORT }}
           PROJECT_DIR: ${{ secrets.PROJECT_DIR }}
           GITHUB_REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ssh -A -p ${SERVER_SSH_PORT:-22} -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_HOST} \
-            "export PROJECT_DIR='${PROJECT_DIR}' GITHUB_REPO='${GITHUB_REPO}' && bash -s" << 'ENDSSH'
+          ssh -p ${SERVER_SSH_PORT:-22} -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_HOST} \
+            "export PROJECT_DIR='${PROJECT_DIR}' GITHUB_REPO='${GITHUB_REPO}' GITHUB_TOKEN='${GITHUB_TOKEN}' && bash -s" << 'ENDSSH'
             set -e
             cd "${PROJECT_DIR:-/var/www/docs}"
 
-            echo "🔧 Настройка SSH для Git..."
-            mkdir -p ~/.ssh
-            chmod 700 ~/.ssh
-
-            if ! grep -q "github.com" ~/.ssh/known_hosts 2>/dev/null; then
-              echo "Добавление GitHub в known_hosts..."
-              ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null || true
-              chmod 600 ~/.ssh/known_hosts
-            fi
-
-            if [ ! -f ~/.ssh/config ] || ! grep -q "Host github.com" ~/.ssh/config; then
-              echo "Настройка SSH config для GitHub..."
-              printf "Host github.com\n  StrictHostKeyChecking no\n  UserKnownHostsFile /dev/null\n" >> ~/.ssh/config
-              chmod 600 ~/.ssh/config
-            fi
-
-            echo "🔧 Проверка и настройка Git remote..."
+            echo "🔧 Настройка Git remote (HTTPS с токеном)..."
             REMOTE_URL=$(git remote get-url origin 2>/dev/null || echo "")
+            HTTPS_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
 
-            if [[ "$REMOTE_URL" == https://github.com/* ]]; then
-              echo "Переключение remote с HTTPS на SSH..."
-              REPO_NAME=$(echo "$REMOTE_URL" | sed 's|https://github.com/||' | sed 's|\.git$||')
-              git remote set-url origin "git@github.com:${REPO_NAME}.git"
-              echo "✅ Remote URL изменен на SSH"
-            elif [[ "$REMOTE_URL" == "" ]]; then
-              echo "⚠️ Remote не настроен, настраиваем..."
-              git remote add origin "git@github.com:${GITHUB_REPO}.git" || true
+            if [[ "$REMOTE_URL" != "$HTTPS_URL" ]]; then
+              git remote set-url origin "$HTTPS_URL" 2>/dev/null || git remote add origin "$HTTPS_URL"
+              echo "✅ Remote URL настроен"
             fi
 
             echo "🔄 Получение изменений из репозитория..."
-            export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
             git fetch origin
             git checkout deploy || git checkout -b deploy
             git pull origin deploy

@@ -1,0 +1,47 @@
+{
+  "name": "Как зарегистрировать tech debt item",
+  "type": "sop",
+  "purpose": "Корректно оформить обнаруженный tech debt.",
+  "description": "Корректно оформить обнаруженный tech debt.",
+  "main_goal": "Корректно оформить обнаруженный tech debt.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Обнаружение tech debt",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Описать: что, где, impact, severity",
+    "Добавить в tech debt register",
+    "Категоризировать: critical / high / medium / low",
+    "При critical — уведомить Tech Lead немедленно"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Tech Lead / Head of Engineering",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

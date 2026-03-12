@@ -1,0 +1,62 @@
+{
+  "name": "Коммуникация стратегии",
+  "type": "process_l3",
+  "purpose": "Донести стратегию до всех уровней компании в понятном и actionable виде.",
+  "description": "Процесс каскадной коммуникации стратегии от руководства до команд.",
+  "main_goal": "Все сотрудники понимают стратегическое направление и свою роль в нём.",
+  "when_used": "После утверждения или существенного обновления стратегии.",
+  "cadence": "Annual + ad-hoc при изменениях",
+  "trigger": [
+    "Стратегия утверждена",
+    "Существенное обновление стратегии"
+  ],
+  "inputs": [
+    "Стратегический документ",
+    "FAQ",
+    "Презентация для команд"
+  ],
+  "outputs": [
+    "All-hands презентация",
+    "Team-level briefings",
+    "Strategy FAQ page"
+  ],
+  "owner": "CEO / Head of Communications",
+  "participants": [
+    "CEO",
+    "Heads of Functions",
+    "Team Leads",
+    "Internal comms"
+  ],
+  "linked_meetings": [
+    "All-hands meeting",
+    "Team strategy briefings"
+  ],
+  "linked_artifacts": [
+    "Strategy deck",
+    "FAQ document"
+  ],
+  "linked_systems": [
+    "Confluence / wiki",
+    "Slack / internal comms"
+  ],
+  "linked_sop": [
+    "Как подготовить all-hands по стратегии",
+    "Как провести team-level strategy briefing",
+    "Как поддерживать актуальность strategy FAQ"
+  ],
+  "done_criteria": [
+    "All-hands проведён",
+    "FAQ опубликован",
+    "Team leads подтвердили, что довели до команд"
+  ],
+  "failure_modes": [
+    "Стратегия донесена формально, но не понята",
+    "Нет обратной связи от команд"
+  ],
+  "deviation_response": [
+    "Провести дополнительные Q&A сессии",
+    "Запустить pulse survey по пониманию стратегии"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

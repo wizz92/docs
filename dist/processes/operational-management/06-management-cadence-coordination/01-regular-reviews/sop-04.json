@@ -1,0 +1,36 @@
+{
+  "name": "Как провести function review",
+  "type": "sop",
+  "purpose": "Как провести function review.",
+  "description": "Практическая инструкция: как провести function review.",
+  "main_goal": "Провести function review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Monthly / quarterly",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Попросить Head of Function подготовить обзор: ключевые результаты, проблемы, people issues, requests",
+    "На review: пройти по обзору, обсудить health функции/команды",
+    "Оценить health: delivery pace, team morale signals, capacity, process issues",
+    "Зафиксировать follow-up actions: что нужно от management, что Head решает сам",
+    "Обновить function health status в общем tracker"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Review формальный — Head отчитывается, но не поднимает реальные проблемы",
+    "People issues не обсуждаются — morale проблемы копятся",
+    "Follow-up не контролируется"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Function review template"
+  ],
+  "owner": "COO",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

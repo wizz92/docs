@@ -1,0 +1,55 @@
+{
+  "name": "Проведение экспериментов",
+  "type": "process_l3",
+  "purpose": "Провести эксперимент и собрать данные.",
+  "description": "Запуск и мониторинг growth experiment, сбор данных для анализа.",
+  "main_goal": "Собранные данные эксперимента, готовые для анализа.",
+  "when_used": "После утверждения плана эксперимента.",
+  "cadence": "Per experiment (1–2 weeks)",
+  "trigger": [
+    "Experiment plan утверждён"
+  ],
+  "inputs": [
+    "Experiment plan",
+    "Ресурсы для эксперимента"
+  ],
+  "outputs": [
+    "Raw experiment data",
+    "Experiment log"
+  ],
+  "owner": "Experiment owner",
+  "participants": [
+    "Experiment owner",
+    "Data analyst",
+    "Marketing/Product"
+  ],
+  "linked_meetings": [
+    "Experiment standup"
+  ],
+  "linked_artifacts": [
+    "Experiment log"
+  ],
+  "linked_systems": [
+    "A/B testing platform",
+    "Analytics tools"
+  ],
+  "linked_sop": [
+    "Как запустить growth experiment",
+    "Как мониторить эксперимент",
+    "Как завершить эксперимент и собрать данные"
+  ],
+  "done_criteria": [
+    "Данные собраны в достаточном объёме",
+    "Эксперимент завершён в срок"
+  ],
+  "failure_modes": [
+    "Эксперимент затянулся",
+    "Данные некачественные"
+  ],
+  "deviation_response": [
+    "Kill эксперимент после дедлайна",
+    "Проверить data collection до запуска"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

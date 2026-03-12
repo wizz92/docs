@@ -1,0 +1,34 @@
+{
+  "name": "Как провести progress review",
+  "type": "sop",
+  "purpose": "Как провести progress review.",
+  "description": "Практическая инструкция: как провести progress review.",
+  "main_goal": "Провести progress review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Запланированный review cycle (bi-weekly / monthly)",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Собрать актуальные статусы всех целей / инициатив в одном view",
+    "Выделить: что on track (не обсуждаем), что behind/at risk (обсуждаем)",
+    "Для каждого behind/at risk: owner озвучивает причину, planned actions, что нужно от management",
+    "Принять решения: approve actions / escalate / adjust target / deprioritize",
+    "Зафиксировать action items с owners и due dates"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Review превращается в status reading — нет обсуждения и решений",
+    "На review обсуждают on-track items — время тратится впустую",
+    "Action items не фиксируются — решения повисают"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "COO / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

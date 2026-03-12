@@ -1,0 +1,54 @@
+{
+  "name": "Решение go / no-go",
+  "type": "process_l3",
+  "purpose": "Принять явное, зафиксированное решение о старте (или отказе от старта) релиза/запуска.",
+  "description": "Формальная точка принятия решения, когда readiness check завершён и нужно решить: стартуем или нет.",
+  "main_goal": "Решение о go/no-go принято осознанно, с учётом рисков, и зафиксировано.",
+  "when_used": "После readiness check для релиза или запуска.",
+  "cadence": "Per release / per launch",
+  "trigger": "Readiness check завершён, нужно решение о старте",
+  "inputs": [
+    "Readiness summary",
+    "Risk assessment",
+    "Blocker list"
+  ],
+  "outputs": [
+    "Go / no-go решение",
+    "Conditions (если conditional go)",
+    "Decision record"
+  ],
+  "owner": "COO / Product owner / Launch owner",
+  "participants": [
+    "Heads of relevant functions",
+    "Delivery owners"
+  ],
+  "linked_meetings": [
+    "Go/no-go forum"
+  ],
+  "linked_artifacts": [
+    "Decision record"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как вынести вопрос на go/no-go и определить участников",
+    "Как зафиксировать условия и коммуницировать решение",
+    "Как проверить исполнение условий go"
+  ],
+  "done_criteria": [
+    "Решение принято",
+    "Решение зафиксировано",
+    "Все участники уведомлены"
+  ],
+  "failure_modes": [
+    "Решение не принимается явно — launch происходит «по инерции»",
+    "Условия go не проверяются"
+  ],
+  "deviation_response": [
+    "Если consensus не достигнут — COO принимает финальное решение"
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

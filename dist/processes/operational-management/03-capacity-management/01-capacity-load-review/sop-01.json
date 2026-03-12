@@ -1,0 +1,36 @@
+{
+  "name": "Как посчитать capacity команды с учётом отпусков и аллокации",
+  "type": "sop",
+  "purpose": "Как посчитать capacity команды с учётом отпусков и аллокации.",
+  "description": "Практическая инструкция: как посчитать capacity команды с учётом отпусков и аллокации.",
+  "main_goal": "Посчитать capacity команды с учётом отпусков и аллокации — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Начало planning cycle",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Определить состав команды на период: кто доступен full-time, кто part-time",
+    "Вычесть отпуска, больничные, planned absences",
+    "Для part-time: указать % аллокации (не добавлять полный capacity)",
+    "Рассчитать доступные story points / человеко-дни на период",
+    "Зафиксировать assumptions: какие аллокации неподтверждённые, какие риски по availability"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Отпуска не учтены — capacity завышен",
+    "Part-time считается как full-time — перегруз",
+    "Assumptions не записаны — при изменении непонятно, что пересчитывать"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Capacity tracker template"
+  ],
+  "owner": "Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

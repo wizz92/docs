@@ -1,0 +1,61 @@
+{
+  "name": "Запуск MVP",
+  "type": "process_l3",
+  "purpose": "Быстро запустить минимальный продукт для проверки product-market fit.",
+  "description": "Сборка команды, разработка MVP, запуск первых клиентов.",
+  "main_goal": "Запущенный MVP с первыми клиентами и данными.",
+  "when_used": "После утверждения business case.",
+  "cadence": "Per venture (4–8 weeks)",
+  "trigger": [
+    "Business case утверждён, бюджет выделен"
+  ],
+  "inputs": [
+    "Business case",
+    "Technical requirements",
+    "First customer leads"
+  ],
+  "outputs": [
+    "Working MVP",
+    "First customer feedback",
+    "Initial metrics"
+  ],
+  "owner": "Venture lead",
+  "participants": [
+    "Venture team",
+    "Product",
+    "Engineering"
+  ],
+  "linked_meetings": [
+    "Weekly venture standup",
+    "MVP launch review"
+  ],
+  "linked_artifacts": [
+    "MVP specification",
+    "Launch checklist"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Product tools",
+    "CRM"
+  ],
+  "linked_sop": [
+    "Как определить scope MVP",
+    "Как организовать venture team",
+    "Как запустить MVP для первых клиентов"
+  ],
+  "done_criteria": [
+    "MVP запущен",
+    "Есть первые клиенты",
+    "Данные собираются"
+  ],
+  "failure_modes": [
+    "MVP scope creep",
+    "Нет первых клиентов"
+  ],
+  "deviation_response": [
+    "Жёстко ограничить scope MVP",
+    "Начать customer outreach параллельно с разработкой"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

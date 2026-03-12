@@ -1,0 +1,33 @@
+{
+  "name": "Как документировать результат readiness check",
+  "type": "sop",
+  "purpose": "Как документировать результат readiness check.",
+  "description": "Практическая инструкция: как документировать результат readiness check.",
+  "main_goal": "Документировать результат readiness check — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "После каждого readiness check",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Заполнить readiness summary: дата, контекст (backlog/sprint/release/launch), status, key findings",
+    "Для not-ready items: указать owner доработки и дедлайн",
+    "Для risks: указать митигацию и owner",
+    "Опубликовать в Confluence / tracker",
+    "Если есть recurring patterns (одни и те же проблемы из спринта в спринт) — отметить для ретро"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Результат не документируется — нет истории для анализа",
+    "Recurring patterns не замечаются — одни и те же проблемы повторяются"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Проводивший readiness check",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

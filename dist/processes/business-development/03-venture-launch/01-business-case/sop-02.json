@@ -1,0 +1,48 @@
+{
+  "name": "Как провести business case review",
+  "type": "sop",
+  "purpose": "Организовать и провести review business case.",
+  "description": "Организовать и провести review business case.",
+  "main_goal": "Организовать и провести review business case.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Business case draft готов",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Разослать business case участникам за 3 дня",
+    "Провести review meeting с CEO, CFO, Head of BD",
+    "Собрать feedback и вопросы",
+    "Доработать по feedback",
+    "Получить go/no-go решение"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

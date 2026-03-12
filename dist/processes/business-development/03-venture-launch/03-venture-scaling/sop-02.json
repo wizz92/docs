@@ -1,0 +1,48 @@
+{
+  "name": "Как подготовить scaling plan",
+  "type": "sop",
+  "purpose": "Спланировать переход от MVP к full operation.",
+  "description": "Спланировать переход от MVP к full operation.",
+  "main_goal": "Спланировать переход от MVP к full operation.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Решение о масштабировании принято",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Определить target scale (клиенты, revenue, team)",
+    "Спланировать поэтапное масштабирование с milestones",
+    "Определить необходимые ресурсы и бюджет",
+    "Определить risks и mitigations",
+    "Согласовать с CEO/CFO"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead / Head of BD",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,95 @@
+{
+  "name": "Внедрение AI use cases",
+  "type": "process_l2",
+  "purpose": "Системно внедрять AI для повышения эффективности бизнес-процессов.",
+  "description": "Процесс сбора, приоритизации, разработки и внедрения AI use cases.",
+  "main_goal": "AI use cases внедрены, ROI измерим, adoption обеспечен.",
+  "when_used": "Регулярно, в рамках управленческого цикла.",
+  "triggers": [
+    "Начало цикла внедрение ai use cases",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для внедрение ai use cases",
+    "Стратегические приоритеты",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат внедрение ai use cases",
+    "Управленческие решения"
+  ],
+  "owner": "Head of AI / Head of Transformation",
+  "participants": [
+    "Head of AI",
+    "Data scientists",
+    "Product",
+    "Business stakeholders"
+  ],
+  "linked_l3_subprocesses": [
+    "Сбор и приоритизация AI use cases",
+    "Разработка и тестирование AI решения",
+    "Внедрение в production"
+  ],
+  "linked_sop": [
+    "Как подготовиться к сбор и приоритизация ai use cases",
+    "Как провести сбор и приоритизация ai use cases",
+    "Как оценить результаты сбор и приоритизация ai use cases",
+    "Как подготовиться к разработка и тестирование ai решения",
+    "Как провести разработка и тестирование ai решения",
+    "Как оценить результаты разработка и тестирование ai решения",
+    "Как подготовиться к внедрение в production",
+    "Как провести внедрение в production",
+    "Как оценить результаты внедрение в production"
+  ],
+  "linked_meetings": [
+    "AI Use Case Implementation review"
+  ],
+  "process_steps": [
+    {
+      "step": "Подготовить inputs для внедрение ai use cases",
+      "description": "Собрать данные, проверить готовность"
+    },
+    {
+      "step": "Провести внедрение ai use cases",
+      "description": "Выполнить основные действия процесса"
+    },
+    {
+      "step": "Оценить результат и принять решения",
+      "description": "Проверить outputs, зафиксировать решения"
+    }
+  ],
+  "process_rhythm": [
+    {
+      "horizon": "Per cycle",
+      "ritual": "AI Use Case Implementation review",
+      "key_question": "Как работает внедрение ai use cases?",
+      "result": "Decisions and improvements"
+    }
+  ],
+  "typical_failures": [
+    {
+      "failure": "Внедрение AI use cases не проводится регулярно",
+      "symptom": "Пропуски циклов, нет данных",
+      "action": "Зафиксировать cadence, назначить ответственного"
+    }
+  ],
+  "linked_artifacts": [
+    {
+      "name": "Внедрение AI use cases",
+      "description": "Основной артефакт процесса Внедрение AI use cases"
+    }
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence / wiki",
+    "BI dashboards"
+  ],
+  "metrics_signals": [
+    "Эффективность внедрение ai use cases",
+    "Время цикла"
+  ],
+  "review_cadence": "Quarterly review of process design; monthly review of effectiveness.",
+  "access_level": "Management / leads / process owners",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Подготовка revenue review",
+  "type": "process_l3",
+  "purpose": "Обеспечить выполнение подготовка revenue review в рамках анализ выручки.",
+  "description": "Процесс подготовки, проведения и контроля качества подготовка revenue review.",
+  "main_goal": "Результат подготовка revenue review соответствует стандартам и ожиданиям.",
+  "when_used": "В рамках анализ выручки, по расписанию или по событию.",
+  "cadence": "Per cycle",
+  "trigger": [
+    "Наступление срока подготовка revenue review",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для подготовка revenue review",
+    "Регламент процесса",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат подготовка revenue review",
+    "Отчёт / summary",
+    "Action items"
+  ],
+  "owner": "Head of Revenue / CFO",
+  "participants": [
+    "Head of Revenue",
+    "Finance analyst",
+    "Data analyst",
+    "CEO"
+  ],
+  "linked_meetings": [
+    "Подготовка revenue review meeting"
+  ],
+  "linked_artifacts": [
+    "Подготовка revenue review template"
+  ],
+  "linked_systems": [
+    "Confluence / wiki",
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как подготовиться к подготовка revenue review",
+    "Как провести подготовка revenue review",
+    "Как оценить результаты подготовка revenue review"
+  ],
+  "done_criteria": [
+    "Результат подготовка revenue review принят",
+    "Отчёт подготовлен"
+  ],
+  "failure_modes": [
+    "Задержка в подготовка revenue review",
+    "Неполные данные"
+  ],
+  "deviation_response": [
+    "Эскалировать на owner",
+    "Перенести на следующий цикл с причиной"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

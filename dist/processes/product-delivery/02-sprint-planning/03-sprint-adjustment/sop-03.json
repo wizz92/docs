@@ -1,0 +1,47 @@
+{
+  "name": "Как провести mid-sprint check",
+  "type": "sop",
+  "purpose": "Провести checkpoint посередине спринта.",
+  "description": "Провести checkpoint посередине спринта.",
+  "main_goal": "Провести checkpoint посередине спринта.",
+  "when_used": "По триггеру процесса.",
+  "trigger": "Середина спринта",
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "steps": [
+    "Оценить % completion vs plan",
+    "Обсудить top risks с командой",
+    "При необходимости — scope adjustment через PO",
+    "Зафиксировать actions"
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_errors": [
+    "Пропущен шаг процедуры",
+    "Неполные входные данные"
+  ],
+  "exception_handling": [
+    "Уведомить owner процесса",
+    "Зафиксировать отклонение и причину"
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Scrum Master",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

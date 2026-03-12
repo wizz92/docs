@@ -1,0 +1,33 @@
+{
+  "name": "Как фиксировать review decisions и назначать owners",
+  "type": "sop",
+  "purpose": "Как фиксировать review decisions и назначать owners.",
+  "description": "Практическая инструкция: как фиксировать review decisions и назначать owners.",
+  "main_goal": "Фиксировать review decisions и назначать owners — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Каждый review meeting",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Во время review: каждое решение фиксировать сразу — что решили, who is accountable",
+    "Для каждого action item: определить конкретный deliverable, owner (один человек), due date",
+    "Опубликовать decision log и action items сразу после review (в тот же день)",
+    "Уведомить каждого owner о его actions"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Решения фиксируются нечётко — разные интерпретации",
+    "Owner не назначен — action ничей",
+    "Actions не публикуются — никто не помнит"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead (ведёт notes)",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

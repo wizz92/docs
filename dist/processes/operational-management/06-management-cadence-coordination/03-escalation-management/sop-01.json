@@ -1,0 +1,37 @@
+{
+  "name": "Как завести escalation case и определить severity",
+  "type": "sop",
+  "purpose": "Как завести escalation case и определить severity.",
+  "description": "Практическая инструкция: как завести escalation case и определить severity.",
+  "main_goal": "Завести escalation case и определить severity — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Проблема не решается на уровне команды",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Описать проблему: что случилось, какой impact, что уже попробовали решить локально",
+    "Определить severity: Critical (блокирует revenue/production/multiple teams) / High (блокирует 1 команду/инициативу) / Medium (замедляет, но не блокирует)",
+    "Классифицировать тип: technical / business / coordination / resource",
+    "Зарегистрировать в escalation log: дата, описание, severity, type, reporter",
+    "Уведомить Operations lead (для Critical — немедленно, для High — в течение 2 часов)"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "Регистрация — в течение 1 часа после обнаружения",
+  "typical_errors": [
+    "Severity завышается — всё «critical», приоритеты размываются",
+    "Severity занижается — реальная проблема не получает нужного внимания",
+    "Escalation подаётся без попытки локального решения"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Escalation log",
+    "Severity criteria guide"
+  ],
+  "owner": "Reporter (Team Lead / affected person)",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

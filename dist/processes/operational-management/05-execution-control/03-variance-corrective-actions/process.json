@@ -1,0 +1,56 @@
+{
+  "name": "Анализ отклонений и corrective actions",
+  "type": "process_l3",
+  "purpose": "Понять, почему результат отклоняется от плана, и предпринять корректирующие действия.",
+  "description": "Анализ variance по целям и инициативам, определение root causes, классификация отклонений, формирование и контроль corrective actions.",
+  "main_goal": "Отклонения проанализированы, root causes понятны, corrective actions назначены и контролируются.",
+  "when_used": "При выявлении значимого отклонения от плана.",
+  "cadence": "По необходимости + на каждом goal/initiative review",
+  "trigger": "Статус behind / at risk / off track",
+  "inputs": [
+    "Goal/initiative status",
+    "Progress data",
+    "Root cause hypotheses"
+  ],
+  "outputs": [
+    "Variance analysis",
+    "Corrective actions с owners",
+    "Updated risk notes"
+  ],
+  "owner": "Goal owner / Initiative owner",
+  "participants": [
+    "Team Leads",
+    "Operations lead"
+  ],
+  "linked_meetings": [
+    "Goal review",
+    "Ops review"
+  ],
+  "linked_artifacts": [
+    "Variance summary",
+    "Corrective actions log"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как проанализировать отклонение и определить root cause",
+    "Как сформировать corrective action и назначить owner",
+    "Как контролировать corrective actions и оценить эффект",
+    "Как определить и эскалировать риски по целям"
+  ],
+  "done_criteria": [
+    "Root cause определён",
+    "Corrective action назначен с owner и due date"
+  ],
+  "failure_modes": [
+    "Отклонение отмечено, но не проанализировано",
+    "Corrective action не имеет owner — не выполняется"
+  ],
+  "deviation_response": [
+    "Если corrective action не выполнен к due date — эскалировать"
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Как определить и эскалировать риски по целям",
+  "type": "sop",
+  "purpose": "Как определить и эскалировать риски по целям.",
+  "description": "Практическая инструкция: как определить и эскалировать риски по целям.",
+  "main_goal": "Определить и эскалировать риски по целям — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "При каждом status update цели/инициативы",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "При каждом status update: оценить, есть ли risk signals (темп ниже плана, blockers, resource loss, dependency at risk)",
+    "Для целей at risk: обновить risk notes — что угрожает, вероятность, impact",
+    "При red status (off track, высокий risk): немедленно эскалировать на management level",
+    "При yellow status (behind, moderate risk): вынести на ближайший review для discussion",
+    "При green → yellow transition: уведомить goal owner и Operations lead"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Risk signals игнорируются — «ещё есть время»",
+    "Red status не эскалируется — management узнаёт слишком поздно",
+    "Risk notes не обновляются — решения принимаются на устаревших данных"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Goal owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

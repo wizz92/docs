@@ -1,0 +1,35 @@
+{
+  "name": "Как закрыть escalation и зафиксировать выводы",
+  "type": "sop",
+  "purpose": "Как закрыть escalation и зафиксировать выводы.",
+  "description": "Практическая инструкция: как закрыть escalation и зафиксировать выводы.",
+  "main_goal": "Закрыть escalation и зафиксировать выводы — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Проблема resolved по мнению owner",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Подтвердить, что проблема решена (с reporter'ом — действительно ли unblocked?)",
+    "Зафиксировать: root cause, resolution, time to resolve",
+    "Определить: нужен ли preventive action? Если проблема может повториться — зафиксировать action",
+    "Закрыть case в escalation log",
+    "Для Critical/High: brief post-mortem (5 мин): что привело к escalation, как предотвратить",
+    "Если один и тот же тип escalation повторяется — вынести как системную проблему"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Case закрыт, но проблема не решена — reporter не спросили",
+    "Root cause не зафиксирован — повторяем те же ошибки",
+    "Repeat escalations не анализируются — хроническая проблема"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

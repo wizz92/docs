@@ -1,0 +1,38 @@
+{
+  "name": "Как подготовить и провести initiative review",
+  "type": "sop",
+  "purpose": "Как подготовить и провести initiative review.",
+  "description": "Практическая инструкция: как подготовить и провести initiative review.",
+  "main_goal": "Подготовить и провести initiative review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Bi-weekly / monthly (зависит от portfolio)",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Собрать актуальные initiative summaries от owners (status, milestones, risks, confidence)",
+    "Сформировать agenda: фокус на at risk / behind инициативах, blocked dependencies, decisions needed",
+    "Highlight problem areas: инициативы с confidence level low или с missed milestones",
+    "Провести review: owner каждой problem initiative даёт 3-5 мин update + recommendation",
+    "Принять решения: continue as-is / adjust plan / add resources / escalate / kill",
+    "Зафиксировать решения и action items"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Все инициативы обсуждаются одинаково — время тратится на healthy ones",
+    "Owner не подготовил summary — review вслепую",
+    "Решения не принимаются — «подождём ещё»"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Initiative review agenda",
+    "Initiative summary template"
+  ],
+  "owner": "COO / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

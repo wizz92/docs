@@ -1,0 +1,59 @@
+{
+  "name": "Подготовка к review cycle",
+  "type": "process_l3",
+  "purpose": "Обеспечить выполнение подготовка к review cycle в рамках оценка эффективности.",
+  "description": "Процесс подготовки, проведения и контроля качества подготовка к review cycle.",
+  "main_goal": "Результат подготовка к review cycle соответствует стандартам и ожиданиям.",
+  "when_used": "В рамках оценка эффективности, по расписанию или по событию.",
+  "cadence": "Per cycle",
+  "trigger": [
+    "Наступление срока подготовка к review cycle",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для подготовка к review cycle",
+    "Регламент процесса",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат подготовка к review cycle",
+    "Отчёт / summary",
+    "Action items"
+  ],
+  "owner": "HR BP / Head of HR",
+  "participants": [
+    "HR BP",
+    "Manager",
+    "Employee",
+    "Head of HR"
+  ],
+  "linked_meetings": [
+    "Подготовка к review cycle meeting"
+  ],
+  "linked_artifacts": [
+    "Подготовка к review cycle template"
+  ],
+  "linked_systems": [
+    "Confluence / wiki",
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как подготовиться к подготовка к review cycle",
+    "Как провести подготовка к review cycle",
+    "Как оценить результаты подготовка к review cycle"
+  ],
+  "done_criteria": [
+    "Результат подготовка к review cycle принят",
+    "Отчёт подготовлен"
+  ],
+  "failure_modes": [
+    "Задержка в подготовка к review cycle",
+    "Неполные данные"
+  ],
+  "deviation_response": [
+    "Эскалировать на owner",
+    "Перенести на следующий цикл с причиной"
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

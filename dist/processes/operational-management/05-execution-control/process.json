@@ -1,0 +1,82 @@
+{
+  "name": "Контроль исполнения",
+  "type": "process_l2",
+  "purpose": "Контролировать достижение целей и инициатив, а не только выполнение отдельных задач.",
+  "description": "Трекинг прогресса по целям и инициативам, milestone мониторинг, анализ отклонений, corrective actions и эскалация проблемных инициатив.",
+  "main_goal": "Execution приводит к нужным результатам, отклонения выявляются рано, corrective actions работают.",
+  "when_used": "Регулярно в рамках sprint / monthly / quarterly review циклов.",
+  "triggers": [
+    "Конец спринта / месяца",
+    "Отклонение от плана",
+    "Milestone at risk",
+    "Инициатива в trouble"
+  ],
+  "inputs": [
+    "Sprint results",
+    "Goal targets",
+    "Initiative plans",
+    "Milestones",
+    "KPI / OKR data"
+  ],
+  "outputs": [
+    "Goal/initiative status",
+    "Variance analysis",
+    "Corrective actions",
+    "Recovery plans"
+  ],
+  "owner": "COO / Head of Function",
+  "participants": [
+    "Goal owners",
+    "Initiative owners",
+    "Team Leads",
+    "Operations"
+  ],
+  "linked_l3_subprocesses": [
+    "Трекинг прогресса",
+    "Milestone и delivery мониторинг",
+    "Анализ отклонений и corrective actions",
+    "Эскалация проблемных инициатив"
+  ],
+  "linked_sop": [
+    "Как обновить статус цели и инициативы",
+    "Как провести progress review",
+    "Как привязать sprint results к целям",
+    "Как подготовить initiative summary и зафиксировать action items",
+    "Как определить milestones и вести milestone tracker",
+    "Как вести multi-team delivery board и собирать статусы",
+    "Как эскалировать risk to milestone",
+    "Как проанализировать отклонение и определить root cause",
+    "Как сформировать corrective action и назначить owner",
+    "Как контролировать corrective actions и оценить эффект",
+    "Как определить и эскалировать риски по целям",
+    "Как инициировать escalation и оформить recovery plan",
+    "Как вести follow-up по escalated initiative",
+    "Как закрыть escalation case"
+  ],
+  "linked_meetings": [
+    "Goal review",
+    "Initiative review",
+    "Weekly ops review"
+  ],
+  "linked_artifacts": [
+    "Goal status tracker",
+    "Initiative tracker",
+    "Milestone tracker",
+    "Corrective actions log"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence",
+    "Dashboards"
+  ],
+  "metrics_signals": [
+    "Goal progress vs plan",
+    "Milestone slippage",
+    "Corrective actions closure rate",
+    "Number of red/yellow goals"
+  ],
+  "review_cadence": "Bi-weekly / monthly depending on cadence",
+  "access_level": "Management / leads",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

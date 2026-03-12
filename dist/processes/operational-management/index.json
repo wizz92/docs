@@ -1,0 +1,619 @@
+{
+  "name": "Operational Management",
+  "type": "process_index",
+  "description": "Master index of all processes and SOPs with relative file paths.",
+  "base_path": "processes/operational-management",
+  "l1": {
+    "name": "Operational Management",
+    "path": "processes/operational-management/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Операционное планирование",
+      "folder": "01-operational-planning",
+      "path": "processes/operational-management/01-operational-planning/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Планирование Roadmapа",
+          "folder": "01-roadmap-planning",
+          "path": "processes/operational-management/01-operational-planning/01-roadmap-planning/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить сессию планирования Roadmap",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/01-operational-planning/01-roadmap-planning/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести Roadmap session и снять конфликты",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/01-operational-planning/01-roadmap-planning/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как утвердить и опубликовать Roadmap",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/01-operational-planning/01-roadmap-planning/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Планирование периода (месяц / спринт)",
+          "folder": "02-period-planning",
+          "path": "processes/operational-management/01-operational-planning/02-period-planning/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить и провести monthly planning review",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/01-operational-planning/02-period-planning/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить backlog и проверить capacity к спринту",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/01-operational-planning/02-period-planning/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести sprint planning и зафиксировать sprint goal",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/01-operational-planning/02-period-planning/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как согласовать план между командами",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/01-operational-planning/02-period-planning/sop-04.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как опубликовать monthly operational plan",
+              "file": "sop-05.json",
+              "path": "processes/operational-management/01-operational-planning/02-period-planning/sop-05.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Перепланирование при изменении условий",
+          "folder": "03-replanning",
+          "path": "processes/operational-management/01-operational-planning/03-replanning/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Что делать, если backlog не ready",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/01-operational-planning/03-replanning/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Что делать, если capacity ниже ожидаемой",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/01-operational-planning/03-replanning/sop-02.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Управление приоритетами",
+      "folder": "02-priority-management",
+      "path": "processes/operational-management/02-priority-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Приём и оценка приоритетных запросов",
+          "folder": "01-priority-intake-review",
+          "path": "processes/operational-management/02-priority-management/01-priority-intake-review/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подать и зарегистрировать приоритетный запрос",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/02-priority-management/01-priority-intake-review/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести triage и назначить owner на рассмотрение",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/02-priority-management/01-priority-intake-review/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить impact, urgency и сравнить с текущими приоритетами",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/02-priority-management/01-priority-intake-review/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как принять решение по приоритету и зафиксировать",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/02-priority-management/01-priority-intake-review/sop-04.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как определить и включить urgent work",
+              "file": "sop-05.json",
+              "path": "processes/operational-management/02-priority-management/01-priority-intake-review/sop-05.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Переприоритизация и управление изменениями",
+          "folder": "02-reprioritization",
+          "path": "processes/operational-management/02-priority-management/02-reprioritization/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как инициировать reprioritization и оценить влияние",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/02-priority-management/02-reprioritization/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обновить priority stack и согласовать trade-offs",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/02-priority-management/02-reprioritization/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как коммуницировать изменения приоритетов",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/02-priority-management/02-reprioritization/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как контролировать последствия reprioritization",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/02-priority-management/02-reprioritization/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Управление загрузкой команд",
+      "folder": "03-capacity-management",
+      "path": "processes/operational-management/03-capacity-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Оценка capacity и загрузки",
+          "folder": "01-capacity-load-review",
+          "path": "processes/operational-management/03-capacity-management/01-capacity-load-review/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как посчитать capacity команды с учётом отпусков и аллокации",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/03-capacity-management/01-capacity-load-review/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как сравнить load vs capacity и определить сигналы перегруза",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/03-capacity-management/01-capacity-load-review/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как пересмотреть commitments при перегрузе",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/03-capacity-management/01-capacity-load-review/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обновить capacity review",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/03-capacity-management/01-capacity-load-review/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ и устранение узких мест",
+          "folder": "02-bottleneck-resolution",
+          "path": "processes/operational-management/03-capacity-management/02-bottleneck-resolution/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как выявить и проанализировать bottleneck",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/03-capacity-management/02-bottleneck-resolution/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить варианты устранения bottleneck",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/03-capacity-management/02-bottleneck-resolution/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как согласовать resource rebalance",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/03-capacity-management/02-bottleneck-resolution/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как контролировать устранение bottleneck",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/03-capacity-management/02-bottleneck-resolution/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Эскалация перегруза",
+          "folder": "03-overload-escalation",
+          "path": "processes/operational-management/03-capacity-management/03-overload-escalation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как определить необходимость эскалации и оформить overload case",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/03-capacity-management/03-overload-escalation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как вынести перегруз на management level и принять решение",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/03-capacity-management/03-overload-escalation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как закрыть overload escalation",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/03-capacity-management/03-overload-escalation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Управление готовностью к старту",
+      "folder": "04-readiness-management",
+      "path": "processes/operational-management/04-readiness-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Проверка готовности",
+          "folder": "01-readiness-check",
+          "path": "processes/operational-management/04-readiness-management/01-readiness-check/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как проверить готовность backlog",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/04-readiness-management/01-readiness-check/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как проверить готовность к спринту",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/04-readiness-management/01-readiness-check/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как проверить готовность релиза",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/04-readiness-management/01-readiness-check/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как проверить готовность запуска",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/04-readiness-management/01-readiness-check/sop-04.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как документировать результат readiness check",
+              "file": "sop-05.json",
+              "path": "processes/operational-management/04-readiness-management/01-readiness-check/sop-05.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Решение go / no-go",
+          "folder": "02-go-no-go-decision",
+          "path": "processes/operational-management/04-readiness-management/02-go-no-go-decision/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как вынести вопрос на go/no-go и определить участников",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/04-readiness-management/02-go-no-go-decision/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как зафиксировать условия и коммуницировать решение",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/04-readiness-management/02-go-no-go-decision/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как проверить исполнение условий go",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/04-readiness-management/02-go-no-go-decision/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Контроль исполнения",
+      "folder": "05-execution-control",
+      "path": "processes/operational-management/05-execution-control/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Трекинг прогресса",
+          "folder": "01-progress-tracking",
+          "path": "processes/operational-management/05-execution-control/01-progress-tracking/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как обновить статус цели и инициативы",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/05-execution-control/01-progress-tracking/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести progress review",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/05-execution-control/01-progress-tracking/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как привязать sprint results к целям",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/05-execution-control/01-progress-tracking/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить initiative summary и зафиксировать action items",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/05-execution-control/01-progress-tracking/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Milestone и delivery мониторинг",
+          "folder": "02-milestone-delivery-monitoring",
+          "path": "processes/operational-management/05-execution-control/02-milestone-delivery-monitoring/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как определить milestones и вести milestone tracker",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/05-execution-control/02-milestone-delivery-monitoring/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как вести multi-team delivery board и собирать статусы",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/05-execution-control/02-milestone-delivery-monitoring/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как эскалировать risk to milestone",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/05-execution-control/02-milestone-delivery-monitoring/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ отклонений и corrective actions",
+          "folder": "03-variance-corrective-actions",
+          "path": "processes/operational-management/05-execution-control/03-variance-corrective-actions/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как проанализировать отклонение и определить root cause",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/05-execution-control/03-variance-corrective-actions/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как сформировать corrective action и назначить owner",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/05-execution-control/03-variance-corrective-actions/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как контролировать corrective actions и оценить эффект",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/05-execution-control/03-variance-corrective-actions/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как определить и эскалировать риски по целям",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/05-execution-control/03-variance-corrective-actions/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Эскалация проблемных инициатив",
+          "folder": "04-problem-initiative-escalation",
+          "path": "processes/operational-management/05-execution-control/04-problem-initiative-escalation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как инициировать escalation и оформить recovery plan",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/05-execution-control/04-problem-initiative-escalation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как вести follow-up по escalated initiative",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/05-execution-control/04-problem-initiative-escalation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как закрыть escalation case",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/05-execution-control/04-problem-initiative-escalation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ритм управления и координация",
+      "folder": "06-management-cadence-coordination",
+      "path": "processes/operational-management/06-management-cadence-coordination/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Регулярные review",
+          "folder": "01-regular-reviews",
+          "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить и провести weekly ops review",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить management summary по итогам спринта",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить и провести initiative review",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести function review",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/sop-04.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как готовить отчётность для review",
+              "file": "sop-05.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/01-regular-reviews/sop-05.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Межкомандная координация",
+          "folder": "02-cross-team-coordination",
+          "path": "processes/operational-management/06-management-cadence-coordination/02-cross-team-coordination/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как проводить inter-team sync",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/02-cross-team-coordination/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как организовать handoff между командами",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/02-cross-team-coordination/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как вести dependency review",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/02-cross-team-coordination/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как согласовать ожидания между командами",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/02-cross-team-coordination/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Управление эскалациями",
+          "folder": "03-escalation-management",
+          "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как завести escalation case и определить severity",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как маршрутизировать escalation и назначить owner",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как вести трекинг решения и контролировать SLA",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-03.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как закрыть escalation и зафиксировать выводы",
+              "file": "sop-04.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-04.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Follow-up решений",
+          "folder": "04-decision-followup",
+          "path": "processes/operational-management/06-management-cadence-coordination/04-decision-followup/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как фиксировать review decisions и назначать owners",
+              "file": "sop-01.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/04-decision-followup/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как контролировать исполнение решений",
+              "file": "sop-02.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/04-decision-followup/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как разрешать межкомандные конфликты",
+              "file": "sop-03.json",
+              "path": "processes/operational-management/06-management-cadence-coordination/04-decision-followup/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 6,
+    "total_l3": 18,
+    "total_sop": 68,
+    "total_files": 94
+  }
+}

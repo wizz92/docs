@@ -1,0 +1,39 @@
+{
+  "name": "Как подготовить и провести weekly ops review",
+  "type": "sop",
+  "purpose": "Как подготовить и провести weekly ops review.",
+  "description": "Практическая инструкция: как подготовить и провести weekly ops review.",
+  "main_goal": "Подготовить и провести weekly ops review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Еженедельно, фиксированный день/время",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "За 1 день до review: собрать входные данные — статусы инициатив, open escalations, blockers, capacity issues",
+    "Подготовить agenda: top issues (не более 5), key decisions needed, escalations",
+    "Правило: не обсуждаем on-track items. Фокус на problems, decisions, blockers",
+    "Провести review (30-45 мин): пройти по agenda, принять решения, зафиксировать actions",
+    "В конце: зачитать actions с owners и due dates",
+    "Опубликовать meeting notes и action items в тот же день"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "Notes опубликованы в тот же день",
+  "typical_errors": [
+    "Review без agenda — превращается в хаотичное обсуждение",
+    "Обсуждение on-track items — время тратится, решения не принимаются",
+    "Notes не публикуются — решения теряются",
+    "Review длится > 1 часа — неэффективно"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Weekly ops review agenda template",
+    "Meeting notes template"
+  ],
+  "owner": "COO / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

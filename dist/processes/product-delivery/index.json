@@ -1,0 +1,277 @@
+{
+  "name": "Product / Delivery / Production",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Product / Delivery / Production.",
+  "base_path": "processes/product-delivery",
+  "l1": {
+    "name": "Product / Delivery / Production",
+    "path": "processes/product-delivery/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Управление бэклогом",
+      "folder": "01-backlog-management",
+      "path": "processes/product-delivery/01-backlog-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор и приоритизация требований",
+          "folder": "01-requirements-intake",
+          "path": "processes/product-delivery/01-backlog-management/01-requirements-intake/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как зарегистрировать новый request",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/01-backlog-management/01-requirements-intake/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести weekly intake review",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/01-backlog-management/01-requirements-intake/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как приоритизировать backlog items",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/01-backlog-management/01-requirements-intake/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Grooming backlog",
+          "folder": "02-backlog-grooming",
+          "path": "processes/product-delivery/01-backlog-management/02-backlog-grooming/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить items к refinement session",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/01-backlog-management/02-backlog-grooming/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести backlog refinement session",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/01-backlog-management/02-backlog-grooming/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как управлять Definition of Ready",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/01-backlog-management/02-backlog-grooming/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Управление техническим долгом",
+          "folder": "03-tech-debt",
+          "path": "processes/product-delivery/01-backlog-management/03-tech-debt/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как зарегистрировать tech debt item",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/01-backlog-management/03-tech-debt/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести quarterly tech debt review",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/01-backlog-management/03-tech-debt/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как включить tech debt в sprint",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/01-backlog-management/03-tech-debt/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Планирование спринта",
+      "folder": "02-sprint-planning",
+      "path": "processes/product-delivery/02-sprint-planning/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Подготовка к планированию спринта",
+          "folder": "01-sprint-prep",
+          "path": "processes/product-delivery/02-sprint-planning/01-sprint-prep/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как проверить readiness к sprint planning",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/02-sprint-planning/01-sprint-prep/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как определить capacity команды на спринт",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/02-sprint-planning/01-sprint-prep/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обработать carry-over items",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/02-sprint-planning/01-sprint-prep/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Проведение sprint planning",
+          "folder": "02-sprint-planning-meeting",
+          "path": "processes/product-delivery/02-sprint-planning/02-sprint-planning-meeting/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести sprint planning meeting",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/02-sprint-planning/02-sprint-planning-meeting/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как сформулировать sprint goal",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/02-sprint-planning/02-sprint-planning-meeting/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обработать scope change request mid-sprint",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/02-sprint-planning/02-sprint-planning-meeting/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Корректировка спринта mid-sprint",
+          "folder": "03-sprint-adjustment",
+          "path": "processes/product-delivery/02-sprint-planning/03-sprint-adjustment/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как мониторить sprint progress",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/02-sprint-planning/03-sprint-adjustment/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как реагировать на sprint risks",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/02-sprint-planning/03-sprint-adjustment/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести mid-sprint check",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/02-sprint-planning/03-sprint-adjustment/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Управление релизами",
+      "folder": "03-release-management",
+      "path": "processes/product-delivery/03-release-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Подготовка релиза",
+          "folder": "01-release-prep",
+          "path": "processes/product-delivery/03-release-management/01-release-prep/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить release candidate",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/03-release-management/01-release-prep/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как написать release notes",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/03-release-management/01-release-prep/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как пройти release readiness checklist",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/03-release-management/01-release-prep/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Проведение релиза",
+          "folder": "02-release-execution",
+          "path": "processes/product-delivery/03-release-management/02-release-execution/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести deployment",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/03-release-management/02-release-execution/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести rollback",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/03-release-management/02-release-execution/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как мониторить релиз после deployment",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/03-release-management/02-release-execution/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Post-release review",
+          "folder": "03-post-release-review",
+          "path": "processes/product-delivery/03-release-management/03-post-release-review/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как собрать post-release metrics",
+              "file": "sop-01.json",
+              "path": "processes/product-delivery/03-release-management/03-post-release-review/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести post-release review meeting",
+              "file": "sop-02.json",
+              "path": "processes/product-delivery/03-release-management/03-post-release-review/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обновить release process на основе lessons",
+              "file": "sop-03.json",
+              "path": "processes/product-delivery/03-release-management/03-post-release-review/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 3,
+    "total_l3": 9,
+    "total_sop": 27,
+    "total_files": 40
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "name": "Business Development & Growth",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Business Development & Growth.",
+  "base_path": "processes/business-development",
+  "l1": {
+    "name": "Business Development & Growth",
+    "path": "processes/business-development/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Исследование ниш",
+      "folder": "01-niche-research",
+      "path": "processes/business-development/01-niche-research/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сканирование рынка",
+          "folder": "01-market-scanning",
+          "path": "processes/business-development/01-niche-research/01-market-scanning/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как провести monthly market scan",
+              "file": "sop-01.json",
+              "path": "processes/business-development/01-niche-research/01-market-scanning/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как зарегистрировать новую рыночную возможность",
+              "file": "sop-02.json",
+              "path": "processes/business-development/01-niche-research/01-market-scanning/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как приоритизировать opportunities для deep-dive",
+              "file": "sop-03.json",
+              "path": "processes/business-development/01-niche-research/01-market-scanning/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ конкурентной среды",
+          "folder": "02-competitive-analysis",
+          "path": "processes/business-development/01-niche-research/02-competitive-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как собрать данные о конкурентах",
+              "file": "sop-01.json",
+              "path": "processes/business-development/01-niche-research/02-competitive-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить competitive landscape report",
+              "file": "sop-02.json",
+              "path": "processes/business-development/01-niche-research/02-competitive-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как обновить competitive intelligence",
+              "file": "sop-03.json",
+              "path": "processes/business-development/01-niche-research/02-competitive-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Валидация ниши",
+          "folder": "03-niche-validation",
+          "path": "processes/business-development/01-niche-research/03-niche-validation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как спланировать niche validation",
+              "file": "sop-01.json",
+              "path": "processes/business-development/01-niche-research/03-niche-validation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести customer discovery для ниши",
+              "file": "sop-02.json",
+              "path": "processes/business-development/01-niche-research/03-niche-validation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить go/no-go recommendation",
+              "file": "sop-03.json",
+              "path": "processes/business-development/01-niche-research/03-niche-validation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Тестирование гипотез роста",
+      "folder": "02-growth-testing",
+      "path": "processes/business-development/02-growth-testing/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Формулирование гипотез роста",
+          "folder": "01-hypothesis-formulation",
+          "path": "processes/business-development/02-growth-testing/01-hypothesis-formulation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как написать hypothesis card",
+              "file": "sop-01.json",
+              "path": "processes/business-development/02-growth-testing/01-hypothesis-formulation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как приоритизировать hypothesis backlog",
+              "file": "sop-02.json",
+              "path": "processes/business-development/02-growth-testing/01-hypothesis-formulation/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как спланировать growth experiment",
+              "file": "sop-03.json",
+              "path": "processes/business-development/02-growth-testing/01-hypothesis-formulation/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Проведение экспериментов",
+          "folder": "02-experiment-execution",
+          "path": "processes/business-development/02-growth-testing/02-experiment-execution/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как запустить growth experiment",
+              "file": "sop-01.json",
+              "path": "processes/business-development/02-growth-testing/02-experiment-execution/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как мониторить эксперимент",
+              "file": "sop-02.json",
+              "path": "processes/business-development/02-growth-testing/02-experiment-execution/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как завершить эксперимент и собрать данные",
+              "file": "sop-03.json",
+              "path": "processes/business-development/02-growth-testing/02-experiment-execution/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ результатов экспериментов",
+          "folder": "03-experiment-analysis",
+          "path": "processes/business-development/02-growth-testing/03-experiment-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как проанализировать результаты эксперимента",
+              "file": "sop-01.json",
+              "path": "processes/business-development/02-growth-testing/03-experiment-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить experiment decision report",
+              "file": "sop-02.json",
+              "path": "processes/business-development/02-growth-testing/03-experiment-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести experiment retrospective",
+              "file": "sop-03.json",
+              "path": "processes/business-development/02-growth-testing/03-experiment-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Запуск нового направления",
+      "folder": "03-venture-launch",
+      "path": "processes/business-development/03-venture-launch/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Подготовка бизнес-кейса",
+          "folder": "01-business-case",
+          "path": "processes/business-development/03-venture-launch/01-business-case/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовить business case для нового направления",
+              "file": "sop-01.json",
+              "path": "processes/business-development/03-venture-launch/01-business-case/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести business case review",
+              "file": "sop-02.json",
+              "path": "processes/business-development/03-venture-launch/01-business-case/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оформить budget request для venture",
+              "file": "sop-03.json",
+              "path": "processes/business-development/03-venture-launch/01-business-case/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Запуск MVP",
+          "folder": "02-mvp-launch",
+          "path": "processes/business-development/03-venture-launch/02-mvp-launch/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как определить scope MVP",
+              "file": "sop-01.json",
+              "path": "processes/business-development/03-venture-launch/02-mvp-launch/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как организовать venture team",
+              "file": "sop-02.json",
+              "path": "processes/business-development/03-venture-launch/02-mvp-launch/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как запустить MVP для первых клиентов",
+              "file": "sop-03.json",
+              "path": "processes/business-development/03-venture-launch/02-mvp-launch/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Масштабирование нового направления",
+          "folder": "03-venture-scaling",
+          "path": "processes/business-development/03-venture-launch/03-venture-scaling/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как оценить readiness к масштабированию",
+              "file": "sop-01.json",
+              "path": "processes/business-development/03-venture-launch/03-venture-scaling/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как подготовить scaling plan",
+              "file": "sop-02.json",
+              "path": "processes/business-development/03-venture-launch/03-venture-scaling/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как построить operations для нового направления",
+              "file": "sop-03.json",
+              "path": "processes/business-development/03-venture-launch/03-venture-scaling/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 3,
+    "total_l3": 9,
+    "total_sop": 27,
+    "total_files": 40
+  }
+}

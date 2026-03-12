@@ -1,0 +1,38 @@
+{
+  "name": "Как провести sprint planning и зафиксировать sprint goal",
+  "type": "sop",
+  "purpose": "Как провести sprint planning и зафиксировать sprint goal.",
+  "description": "Практическая инструкция: как провести sprint planning и зафиксировать sprint goal.",
+  "main_goal": "Провести sprint planning и зафиксировать sprint goal — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "trigger": "Sprint planning meeting",
+  "preconditions": [],
+  "inputs": [],
+  "steps": [
+    "Озвучить фокус спринта: какие цели месяца / roadmap покрывает этот спринт",
+    "Сформулировать sprint goal: одно предложение, описывающее ключевой результат спринта",
+    "Отобрать items из backlog: начать с highest priority, двигаться вниз пока capacity позволяет",
+    "Для каждого item подтвердить: estimation, owner, dependencies resolved",
+    "Зафиксировать sprint backlog — заморозить scope (изменения только через PO с согласованием)",
+    "Опубликовать sprint goal и backlog — убедиться, что вся команда видит и понимает"
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_errors": [
+    "Sprint goal не сформулирован — нет фокуса, спринт превращается в набор задач",
+    "Scope не заморожен — постоянные добавления разрушают plan",
+    "Items без owner — никто не чувствует ответственности"
+  ],
+  "exception_handling": [],
+  "linked_templates_forms_links": [
+    "Sprint backlog (Jira)",
+    "Sprint goal template"
+  ],
+  "owner": "Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

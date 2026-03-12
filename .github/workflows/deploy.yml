@@ -28,7 +28,7 @@ jobs:
           PROJECT_DIR: ${{ secrets.PROJECT_DIR }}
           GITHUB_REPO: ${{ github.repository }}
         run: |
-          ssh -p ${SERVER_SSH_PORT:-22} -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_HOST} \
+          ssh -A -p ${SERVER_SSH_PORT:-22} -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_HOST} \
             "export PROJECT_DIR='${PROJECT_DIR}' GITHUB_REPO='${GITHUB_REPO}' && bash -s" << 'ENDSSH'
             set -e
             cd "${PROJECT_DIR:-/var/www/docs}"

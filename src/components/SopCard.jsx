@@ -22,7 +22,7 @@ export default function SopCard({ data }) {
           <Grid item xs={12} md={5}>
             <Field label="Назначение" value={data.purpose} />
             <Field label="Основная цель" value={data.main_goal} />
-            <Field label="Триггер" value={Array.isArray(data.trigger) ? data.trigger.join(', ') : data.trigger} />
+            <Field label="Триггер" value={data.triggers?.join(', ')} />
             <Field label="SLA" value={data.sla} />
             <Field label="Владелец" value={data.owner} />
             <Field label="Где хранится результат" value={data.result_location} />
@@ -33,13 +33,13 @@ export default function SopCard({ data }) {
           </Grid>
 
           <Grid item xs={12} md={7}>
-            {data.steps?.length > 0 && (
+            {data.process_steps?.length > 0 && (
               <Box sx={{ mb: 2 }}>
                 <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                   Шаги
                 </Typography>
                 <List dense disablePadding>
-                  {data.steps.map((step, i) => (
+                  {data.process_steps.map((item, i) => (
                     <ListItem key={i} alignItems="flex-start" sx={{ px: 0 }}>
                       <ListItemIcon sx={{ minWidth: 36 }}>
                         <Avatar
@@ -53,30 +53,28 @@ export default function SopCard({ data }) {
                           {i + 1}
                         </Avatar>
                       </ListItemIcon>
-                      <ListItemText primary={step} primaryTypographyProps={{ variant: 'body2' }} />
+                      <ListItemText
+                        primary={item.step}
+                        secondary={item.description || undefined}
+                        primaryTypographyProps={{ variant: 'body2' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
                     </ListItem>
                   ))}
                 </List>
               </Box>
             )}
 
-            {data.typical_errors?.length > 0 && (
+            {data.typical_failures?.length > 0 && (
               <Alert severity="warning" sx={{ mb: 2 }}>
                 <Typography variant="subtitle2" gutterBottom>Типичные ошибки</Typography>
                 <ul style={{ margin: 0, paddingLeft: 18 }}>
-                  {data.typical_errors.map((e, i) => (
-                    <li key={i}><Typography variant="body2">{e}</Typography></li>
-                  ))}
-                </ul>
-              </Alert>
-            )}
-
-            {data.exception_handling?.length > 0 && (
-              <Alert severity="info" sx={{ mb: 2 }}>
-                <Typography variant="subtitle2" gutterBottom>Exception handling</Typography>
-                <ul style={{ margin: 0, paddingLeft: 18 }}>
-                  {data.exception_handling.map((e, i) => (
-                    <li key={i}><Typography variant="body2">{e}</Typography></li>
+                  {data.typical_failures.map((f, i) => (
+                    <li key={i}>
+                      <Typography variant="body2">
+                        {f.failure}{f.action ? ` — ${f.action}` : ''}
+                      </Typography>
+                    </li>
                   ))}
                 </ul>
               </Alert>

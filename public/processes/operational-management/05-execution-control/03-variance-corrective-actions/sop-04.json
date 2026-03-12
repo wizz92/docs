@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как определить и эскалировать риски по целям.",
   "main_goal": "Определить и эскалировать риски по целям — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "При каждом status update цели/инициативы",
+  "triggers": [
+    "При каждом status update цели/инициативы"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "При каждом status update: оценить, есть ли risk signals (темп ниже плана, blockers, resource loss, dependency at risk)",
-    "Для целей at risk: обновить risk notes — что угрожает, вероятность, impact",
-    "При red status (off track, высокий risk): немедленно эскалировать на management level",
-    "При yellow status (behind, moderate risk): вынести на ближайший review для discussion",
-    "При green → yellow transition: уведомить goal owner и Operations lead"
+  "process_steps": [
+    {
+      "step": "При каждом status update: оценить, есть ли risk signals (темп ниже плана, blockers, resource loss, dependency at risk)",
+      "description": ""
+    },
+    {
+      "step": "Для целей at risk: обновить risk notes — что угрожает, вероятность, impact",
+      "description": ""
+    },
+    {
+      "step": "При red status (off track, высокий risk): немедленно эскалировать на management level",
+      "description": ""
+    },
+    {
+      "step": "При yellow status (behind, moderate risk): вынести на ближайший review для discussion",
+      "description": ""
+    },
+    {
+      "step": "При green → yellow transition: уведомить goal owner и Operations lead",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Risk signals игнорируются — «ещё есть время»",
-    "Red status не эскалируется — management узнаёт слишком поздно",
-    "Risk notes не обновляются — решения принимаются на устаревших данных"
+  "typical_failures": [
+    {
+      "failure": "Risk signals игнорируются — «ещё есть время»",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Red status не эскалируется — management узнаёт слишком поздно",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Risk notes не обновляются — решения принимаются на устаревших данных",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Goal owner",
   "version": "2.0",

@@ -6,7 +6,9 @@
   "main_goal": "Management регулярно видит состояние работы и принимает решения, а не реагирует ситуативно.",
   "when_used": "Постоянно, по установленному cadence.",
   "cadence": "Weekly + per sprint + monthly",
-  "trigger": "Наступление review cycle",
+  "triggers": [
+    "Наступление review cycle"
+  ],
   "inputs": [
     "Reports and statuses",
     "Goal/initiative signals",
@@ -54,13 +56,22 @@
     "Решения зафиксированы",
     "Action items назначены"
   ],
-  "failure_modes": [
-    "Review отменяется / переносится постоянно",
-    "Review без решений — только status reading",
-    "Actions не follow-up'ятся"
-  ],
-  "deviation_response": [
-    "Если review пропущен — provести make-up или async decision round"
+  "typical_failures": [
+    {
+      "failure": "Review отменяется / переносится постоянно",
+      "symptom": "",
+      "action": "Если review пропущен — provести make-up или async decision round"
+    },
+    {
+      "failure": "Review без решений — только status reading",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Actions не follow-up'ятся",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

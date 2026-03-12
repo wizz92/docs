@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как посчитать capacity команды с учётом отпусков и аллокации.",
   "main_goal": "Посчитать capacity команды с учётом отпусков и аллокации — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Начало planning cycle",
+  "triggers": [
+    "Начало planning cycle"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Определить состав команды на период: кто доступен full-time, кто part-time",
-    "Вычесть отпуска, больничные, planned absences",
-    "Для part-time: указать % аллокации (не добавлять полный capacity)",
-    "Рассчитать доступные story points / человеко-дни на период",
-    "Зафиксировать assumptions: какие аллокации неподтверждённые, какие риски по availability"
+  "process_steps": [
+    {
+      "step": "Определить состав команды на период: кто доступен full-time, кто part-time",
+      "description": ""
+    },
+    {
+      "step": "Вычесть отпуска, больничные, planned absences",
+      "description": ""
+    },
+    {
+      "step": "Для part-time: указать % аллокации (не добавлять полный capacity)",
+      "description": ""
+    },
+    {
+      "step": "Рассчитать доступные story points / человеко-дни на период",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать assumptions: какие аллокации неподтверждённые, какие риски по availability",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Отпуска не учтены — capacity завышен",
-    "Part-time считается как full-time — перегруз",
-    "Assumptions не записаны — при изменении непонятно, что пересчитывать"
+  "typical_failures": [
+    {
+      "failure": "Отпуска не учтены — capacity завышен",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Part-time считается как full-time — перегруз",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Assumptions не записаны — при изменении непонятно, что пересчитывать",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Capacity tracker template"
   ],

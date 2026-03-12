@@ -6,7 +6,7 @@
   "main_goal": "Готовая к тестированию гипотеза с чётким планом.",
   "when_used": "При появлении идеи роста или результатов niche validation.",
   "cadence": "Continuous",
-  "trigger": [
+  "triggers": [
     "Новая идея роста",
     "Результат niche validation"
   ],
@@ -44,13 +44,17 @@
     "Success criteria определены",
     "Эксперимент спланирован"
   ],
-  "failure_modes": [
-    "Гипотеза слишком размытая",
-    "Нет success criteria"
-  ],
-  "deviation_response": [
-    "Использовать шаблон hypothesis card",
-    "Не допускать к тестированию без criteria"
+  "typical_failures": [
+    {
+      "failure": "Гипотеза слишком размытая",
+      "symptom": "",
+      "action": "Использовать шаблон hypothesis card"
+    },
+    {
+      "failure": "Нет success criteria",
+      "symptom": "",
+      "action": "Не допускать к тестированию без criteria"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как согласовать план между командами.",
   "main_goal": "Согласовать план между командами — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "После завершения sprint planning всех команд",
+  "triggers": [
+    "После завершения sprint planning всех команд"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "После sprint planning каждой команды: собрать sprint goals и ключевые deliverables",
-    "Провести cross-team sync (15-20 мин): каждая команда озвучивает sprint goal и зависимости",
-    "Выявить пересечения и зависимости: кто от кого ждёт deliverable, к какому дню",
-    "Зафиксировать межкомандные обязательства: что, кому, когда",
-    "Если конфликт — эскалировать на Operations lead для resolution"
+  "process_steps": [
+    {
+      "step": "После sprint planning каждой команды: собрать sprint goals и ключевые deliverables",
+      "description": ""
+    },
+    {
+      "step": "Провести cross-team sync (15-20 мин): каждая команда озвучивает sprint goal и зависимости",
+      "description": ""
+    },
+    {
+      "step": "Выявить пересечения и зависимости: кто от кого ждёт deliverable, к какому дню",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать межкомандные обязательства: что, кому, когда",
+      "description": ""
+    },
+    {
+      "step": "Если конфликт — эскалировать на Operations lead для resolution",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Cross-team sync не проводится — зависимости выясняются поздно",
-    "Обязательства фиксируются устно — забываются",
-    "Конфликты не эскалируются — копятся и взрываются"
+  "typical_failures": [
+    {
+      "failure": "Cross-team sync не проводится — зависимости выясняются поздно",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Обязательства фиксируются устно — забываются",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Конфликты не эскалируются — копятся и взрываются",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Dependency tracker",
     "Cross-team sync agenda"

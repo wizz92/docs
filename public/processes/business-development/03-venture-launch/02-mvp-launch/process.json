@@ -6,7 +6,7 @@
   "main_goal": "Запущенный MVP с первыми клиентами и данными.",
   "when_used": "После утверждения business case.",
   "cadence": "Per venture (4–8 weeks)",
-  "trigger": [
+  "triggers": [
     "Business case утверждён, бюджет выделен"
   ],
   "inputs": [
@@ -48,13 +48,17 @@
     "Есть первые клиенты",
     "Данные собираются"
   ],
-  "failure_modes": [
-    "MVP scope creep",
-    "Нет первых клиентов"
-  ],
-  "deviation_response": [
-    "Жёстко ограничить scope MVP",
-    "Начать customer outreach параллельно с разработкой"
+  "typical_failures": [
+    {
+      "failure": "MVP scope creep",
+      "symptom": "",
+      "action": "Жёстко ограничить scope MVP"
+    },
+    {
+      "failure": "Нет первых клиентов",
+      "symptom": "",
+      "action": "Начать customer outreach параллельно с разработкой"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

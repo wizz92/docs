@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как эскалировать risk to milestone.",
   "main_goal": "Эскалировать risk to milestone — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Обнаружение риска пропуска milestone",
+  "triggers": [
+    "Обнаружение риска пропуска milestone"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "При обнаружении risk to milestone: немедленно отметить в tracker (не ждать следующего review)",
-    "Описать risk: что угрожает, какой impact, что нужно для митигации",
-    "Уведомить initiative owner и Operations lead",
-    "Вынести на ближайший initiative review / weekly ops review для решения",
-    "Если milestone missed: зафиксировать причину, определить new date или escalate"
+  "process_steps": [
+    {
+      "step": "При обнаружении risk to milestone: немедленно отметить в tracker (не ждать следующего review)",
+      "description": ""
+    },
+    {
+      "step": "Описать risk: что угрожает, какой impact, что нужно для митигации",
+      "description": ""
+    },
+    {
+      "step": "Уведомить initiative owner и Operations lead",
+      "description": ""
+    },
+    {
+      "step": "Вынести на ближайший initiative review / weekly ops review для решения",
+      "description": ""
+    },
+    {
+      "step": "Если milestone missed: зафиксировать причину, определить new date или escalate",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,11 +38,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В тот же рабочий день",
-  "typical_errors": [
-    "Risk замалчивается — milestone просто молча пропускается",
-    "Нет analysis причины miss — проблема повторяется"
+  "typical_failures": [
+    {
+      "failure": "Risk замалчивается — milestone просто молча пропускается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Нет analysis причины miss — проблема повторяется",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Team Lead / Initiative owner",
   "version": "2.0",

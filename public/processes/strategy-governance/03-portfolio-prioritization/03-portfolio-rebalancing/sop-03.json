@@ -5,7 +5,9 @@
   "description": "Обеспечить прозрачность и traceability решений.",
   "main_goal": "Обеспечить прозрачность и traceability решений.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Решение по ребалансировке принято",
+  "triggers": [
+    "Решение по ребалансировке принято"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,11 +16,23 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Зафиксировать в decision log: дата, причина, решение, affected initiatives",
-    "Обновить portfolio register",
-    "Разослать summary всем stakeholders",
-    "Обновить resource allocation"
+  "process_steps": [
+    {
+      "step": "Зафиксировать в decision log: дата, причина, решение, affected initiatives",
+      "description": ""
+    },
+    {
+      "step": "Обновить portfolio register",
+      "description": ""
+    },
+    {
+      "step": "Разослать summary всем stakeholders",
+      "description": ""
+    },
+    {
+      "step": "Обновить resource allocation",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -30,13 +44,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

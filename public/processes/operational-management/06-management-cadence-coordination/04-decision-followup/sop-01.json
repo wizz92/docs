@@ -5,14 +5,28 @@
   "description": "Практическая инструкция: как фиксировать review decisions и назначать owners.",
   "main_goal": "Фиксировать review decisions и назначать owners — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Каждый review meeting",
+  "triggers": [
+    "Каждый review meeting"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Во время review: каждое решение фиксировать сразу — что решили, who is accountable",
-    "Для каждого action item: определить конкретный deliverable, owner (один человек), due date",
-    "Опубликовать decision log и action items сразу после review (в тот же день)",
-    "Уведомить каждого owner о его actions"
+  "process_steps": [
+    {
+      "step": "Во время review: каждое решение фиксировать сразу — что решили, who is accountable",
+      "description": ""
+    },
+    {
+      "step": "Для каждого action item: определить конкретный deliverable, owner (один человек), due date",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать decision log и action items сразу после review (в тот же день)",
+      "description": ""
+    },
+    {
+      "step": "Уведомить каждого owner о его actions",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -20,12 +34,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Решения фиксируются нечётко — разные интерпретации",
-    "Owner не назначен — action ничей",
-    "Actions не публикуются — никто не помнит"
+  "typical_failures": [
+    {
+      "failure": "Решения фиксируются нечётко — разные интерпретации",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Owner не назначен — action ничей",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Actions не публикуются — никто не помнит",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Operations lead (ведёт notes)",
   "version": "2.0",

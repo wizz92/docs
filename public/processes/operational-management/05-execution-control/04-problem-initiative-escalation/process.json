@@ -6,7 +6,9 @@
   "main_goal": "Проблемные инициативы не зависают — решения принимаются, recovery plans исполняются.",
   "when_used": "Когда инициатива off track / red status / critical blockers.",
   "cadence": "По необходимости",
-  "trigger": "Инициатива в red status / critical blocker / missed critical milestone",
+  "triggers": [
+    "Инициатива в red status / critical blocker / missed critical milestone"
+  ],
   "inputs": [
     "Initiative status",
     "Variance analysis",
@@ -45,12 +47,17 @@
     "Recovery plan создан",
     "Management decision принято"
   ],
-  "failure_modes": [
-    "Проблемная инициатива тихо умирает без escalation",
-    "Recovery plan формальный — не исполняется"
-  ],
-  "deviation_response": [
-    "Если recovery plan не работает через 2 спринта — пересмотреть: continue / pivot / kill"
+  "typical_failures": [
+    {
+      "failure": "Проблемная инициатива тихо умирает без escalation",
+      "symptom": "",
+      "action": "Если recovery plan не работает через 2 спринта — пересмотреть: continue / pivot / kill"
+    },
+    {
+      "failure": "Recovery plan формальный — не исполняется",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

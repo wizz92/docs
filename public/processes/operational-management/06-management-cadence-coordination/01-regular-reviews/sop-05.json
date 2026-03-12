@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: как готовить отчётность для review.",
   "main_goal": "Готовить отчётность для review — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "За 1 день до соответствующего review",
+  "triggers": [
+    "За 1 день до соответствующего review"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Определить, для какого review готовится отчёт: weekly / sprint / initiative / function",
-    "Собрать данные: из Jira (sprint data), из trackers (goals, initiatives), от Team Leads (blockers, risks)",
-    "Для sprint report: velocity, completion rate, carry-over, key deliverables, blockers",
-    "Для initiative report: status per initiative, RAG status (Red/Amber/Green), milestones, confidence",
-    "Присвоить RAG status по критериям: Green = on track, Amber = at risk but manageable, Red = off track / needs decision",
-    "Оформить в стандартном формате (1 page per report). Фокус на сигналах, а не на деталях"
+  "process_steps": [
+    {
+      "step": "Определить, для какого review готовится отчёт: weekly / sprint / initiative / function",
+      "description": ""
+    },
+    {
+      "step": "Собрать данные: из Jira (sprint data), из trackers (goals, initiatives), от Team Leads (blockers, risks)",
+      "description": ""
+    },
+    {
+      "step": "Для sprint report: velocity, completion rate, carry-over, key deliverables, blockers",
+      "description": ""
+    },
+    {
+      "step": "Для initiative report: status per initiative, RAG status (Red/Amber/Green), milestones, confidence",
+      "description": ""
+    },
+    {
+      "step": "Присвоить RAG status по критериям: Green = on track, Amber = at risk but manageable, Red = off track / needs decision",
+      "description": ""
+    },
+    {
+      "step": "Оформить в стандартном формате (1 page per report). Фокус на сигналах, а не на деталях",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,12 +42,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Отчёт = dump данных без выводов — management не понимает, что важно",
-    "RAG status субъективен без критериев — всё зелёное",
-    "Отчёт готовится за 5 минут до review — качество низкое"
+  "typical_failures": [
+    {
+      "failure": "Отчёт = dump данных без выводов — management не понимает, что важно",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "RAG status субъективен без критериев — всё зелёное",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Отчёт готовится за 5 минут до review — качество низкое",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Sprint status template",
     "Initiative report template",

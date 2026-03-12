@@ -7,6 +7,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Slide from '@mui/material/Slide';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -20,6 +21,7 @@ export default function Layout() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hideAppBar, setHideAppBar] = useState(false);
   const { masterIndex, loading, loadDomainIndex } = useProcessData();
 
   const domainMatch = useMatch('/domain/:domainId/*');
@@ -39,6 +41,22 @@ export default function Layout() {
 
   const domainName = domainMeta?.name_ru || domainIndex?.l1?.name || 'Process Portal';
 
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      setHideAppBar(scrollingDown && currentScrollY > 64);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const drawer = (
     <Sidebar
       masterIndex={masterIndex}
@@ -52,41 +70,40 @@ export default function Layout() {
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}
-        elevation={1}
-      >
-        <Toolbar>
-          {!isDesktop && (
-            <IconButton
-              color="inherit"
-              edge="start"
-              onClick={() => setMobileOpen(true)}
-              sx={{ mr: 1 }}
-              aria-label="Открыть меню"
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h6" noWrap>
-              Портал документации процессов
-            </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.8 }} noWrap>
-              {domainMeta ? domainMeta.description_ru : 'Все домены компании'}
-            </Typography>
-          </Box>
-          {domainMeta && (
-            <Chip
-              label={domainName}
-              size="small"
-              color="secondary"
-              icon={<Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: domainMeta.color || '#4caf50', ml: 1 }} />}
-            />
-          )}
-        </Toolbar>
-      </AppBar>
+      <Slide appear={false} direction="down" in={!hideAppBar}>
+        <AppBar
+          position="fixed"
+          sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}
+          elevation={1}
+        >
+          <Toolbar>
+            {!isDesktop && (
+              <IconButton
+                color="inherit"
+                edge="start"
+                onClick={() => setMobileOpen(true)}
+                sx={{ mr: 1 }}
+                aria-label="Открыть меню"
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" noWrap>
+                Портал документации процессов
+              </Typography>
+            </Box>
+            {domainMeta && (
+              <Chip
+                label={domainName}
+                size="small"
+                color="secondary"
+                icon={<Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: domainMeta.color || '#4caf50', ml: 1 }} />}
+              />
+            )}
+          </Toolbar>
+        </AppBar>
+      </Slide>
 
       {isDesktop ? (
         <Drawer

@@ -6,7 +6,7 @@
   "main_goal": "Lessons learned зафиксированы, improvements запланированы.",
   "when_used": "После каждого значимого релиза.",
   "cadence": "Per major release",
-  "trigger": [
+  "triggers": [
     "Релиз завершён, прошло 24–48 часов"
   ],
   "inputs": [
@@ -44,13 +44,17 @@
     "Report подготовлен",
     "Improvements добавлены в backlog"
   ],
-  "failure_modes": [
-    "Review не проводится",
-    "Lessons не применяются"
-  ],
-  "deviation_response": [
-    "Сделать review обязательным",
-    "Track improvements в backlog"
+  "typical_failures": [
+    {
+      "failure": "Review не проводится",
+      "symptom": "",
+      "action": "Сделать review обязательным"
+    },
+    {
+      "failure": "Lessons не применяются",
+      "symptom": "",
+      "action": "Track improvements в backlog"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

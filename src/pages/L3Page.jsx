@@ -91,16 +91,12 @@ export default function L3Page() {
           )}
 
           {/* 6. Риски и реагирование */}
-          {(l3Data.failure_modes?.length > 0 || l3Data.typical_failures?.length > 0) && (
+          {l3Data.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">
                 Риски и реагирование
               </SectionHeading>
-              <FailuresTable
-                items={l3Data.typical_failures}
-                failures={l3Data.failure_modes}
-                deviations={l3Data.deviation_response}
-              />
+              <FailuresTable items={l3Data.typical_failures} />
             </>
           )}
         </>

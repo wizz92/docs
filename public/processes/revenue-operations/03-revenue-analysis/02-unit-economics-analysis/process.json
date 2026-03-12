@@ -6,7 +6,7 @@
   "main_goal": "Результат анализ unit economics соответствует стандартам и ожиданиям.",
   "when_used": "В рамках анализ выручки, по расписанию или по событию.",
   "cadence": "Per cycle",
-  "trigger": [
+  "triggers": [
     "Наступление срока анализ unit economics",
     "Запрос от руководства"
   ],
@@ -46,13 +46,17 @@
     "Результат анализ unit economics принят",
     "Отчёт подготовлен"
   ],
-  "failure_modes": [
-    "Задержка в анализ unit economics",
-    "Неполные данные"
-  ],
-  "deviation_response": [
-    "Эскалировать на owner",
-    "Перенести на следующий цикл с причиной"
+  "typical_failures": [
+    {
+      "failure": "Задержка в анализ unit economics",
+      "symptom": "",
+      "action": "Эскалировать на owner"
+    },
+    {
+      "failure": "Неполные данные",
+      "symptom": "",
+      "action": "Перенести на следующий цикл с причиной"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

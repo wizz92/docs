@@ -6,7 +6,7 @@
   "main_goal": "Структурированная оценка конкурентной среды с выводами.",
   "when_used": "При оценке новой ниши или перед запуском инициативы.",
   "cadence": "Per niche assessment",
-  "trigger": [
+  "triggers": [
     "Решение о deep-dive в нишу"
   ],
   "inputs": [
@@ -43,13 +43,17 @@
     "Отчёт подготовлен",
     "Ключевые threats и opportunities выделены"
   ],
-  "failure_modes": [
-    "Данные о конкурентах неполны",
-    "Анализ слишком описательный"
-  ],
-  "deviation_response": [
-    "Использовать multiple sources для cross-validation",
-    "Фокусировать анализ на actionable insights"
+  "typical_failures": [
+    {
+      "failure": "Данные о конкурентах неполны",
+      "symptom": "",
+      "action": "Использовать multiple sources для cross-validation"
+    },
+    {
+      "failure": "Анализ слишком описательный",
+      "symptom": "",
+      "action": "Фокусировать анализ на actionable insights"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

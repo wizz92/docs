@@ -5,7 +5,9 @@
   "description": "Откатить релиз при проблемах.",
   "main_goal": "Откатить релиз при проблемах.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Critical issue после deployment",
+  "triggers": [
+    "Critical issue после deployment"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Принять решение о rollback",
-    "Выполнить rollback по rollback plan",
-    "Подтвердить: production restored",
-    "Уведомить stakeholders",
-    "Создать incident ticket для investigation"
+  "process_steps": [
+    {
+      "step": "Принять решение о rollback",
+      "description": ""
+    },
+    {
+      "step": "Выполнить rollback по rollback plan",
+      "description": ""
+    },
+    {
+      "step": "Подтвердить: production restored",
+      "description": ""
+    },
+    {
+      "step": "Уведомить stakeholders",
+      "description": ""
+    },
+    {
+      "step": "Создать incident ticket для investigation",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

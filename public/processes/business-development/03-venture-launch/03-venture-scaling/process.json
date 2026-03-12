@@ -6,7 +6,7 @@
   "main_goal": "Масштабируемое бизнес-направление с predictable economics.",
   "when_used": "После подтверждения product-market fit на MVP.",
   "cadence": "Per venture",
-  "trigger": [
+  "triggers": [
     "MVP показал positive results",
     "Решение о масштабировании"
   ],
@@ -48,13 +48,17 @@
     "Unit economics positive",
     "Operations процессы работают"
   ],
-  "failure_modes": [
-    "Преждевременное масштабирование",
-    "Unit economics не сходятся"
-  ],
-  "deviation_response": [
-    "Требовать proven unit economics перед scaling",
-    "Масштабировать поэтапно с checkpoints"
+  "typical_failures": [
+    {
+      "failure": "Преждевременное масштабирование",
+      "symptom": "",
+      "action": "Требовать proven unit economics перед scaling"
+    },
+    {
+      "failure": "Unit economics не сходятся",
+      "symptom": "",
+      "action": "Масштабировать поэтапно с checkpoints"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

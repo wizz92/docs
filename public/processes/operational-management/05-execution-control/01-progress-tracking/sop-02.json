@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как провести progress review.",
   "main_goal": "Провести progress review — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Запланированный review cycle (bi-weekly / monthly)",
+  "triggers": [
+    "Запланированный review cycle (bi-weekly / monthly)"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Собрать актуальные статусы всех целей / инициатив в одном view",
-    "Выделить: что on track (не обсуждаем), что behind/at risk (обсуждаем)",
-    "Для каждого behind/at risk: owner озвучивает причину, planned actions, что нужно от management",
-    "Принять решения: approve actions / escalate / adjust target / deprioritize",
-    "Зафиксировать action items с owners и due dates"
+  "process_steps": [
+    {
+      "step": "Собрать актуальные статусы всех целей / инициатив в одном view",
+      "description": ""
+    },
+    {
+      "step": "Выделить: что on track (не обсуждаем), что behind/at risk (обсуждаем)",
+      "description": ""
+    },
+    {
+      "step": "Для каждого behind/at risk: owner озвучивает причину, planned actions, что нужно от management",
+      "description": ""
+    },
+    {
+      "step": "Принять решения: approve actions / escalate / adjust target / deprioritize",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать action items с owners и due dates",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Review превращается в status reading — нет обсуждения и решений",
-    "На review обсуждают on-track items — время тратится впустую",
-    "Action items не фиксируются — решения повисают"
+  "typical_failures": [
+    {
+      "failure": "Review превращается в status reading — нет обсуждения и решений",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "На review обсуждают on-track items — время тратится впустую",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Action items не фиксируются — решения повисают",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "COO / Operations lead",
   "version": "2.0",

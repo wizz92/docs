@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как вести dependency review.",
   "main_goal": "Вести dependency review — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Каждый спринт + при обнаружении новой зависимости",
+  "triggers": [
+    "Каждый спринт + при обнаружении новой зависимости"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Вести dependency list: dependency, from team, to team, needed by date, status (open / resolved / blocked)",
-    "Каждый спринт: обновить статусы всех open dependencies",
-    "Для blocked > 3 дней: эскалировать — уведомить Operations lead и blocking team lead",
-    "Для critical dependency (blocking > 1 team / critical initiative): вынести на weekly ops review",
-    "После resolution: обновить status, зафиксировать если dependency was late (для pattern analysis)"
+  "process_steps": [
+    {
+      "step": "Вести dependency list: dependency, from team, to team, needed by date, status (open / resolved / blocked)",
+      "description": ""
+    },
+    {
+      "step": "Каждый спринт: обновить статусы всех open dependencies",
+      "description": ""
+    },
+    {
+      "step": "Для blocked > 3 дней: эскалировать — уведомить Operations lead и blocking team lead",
+      "description": ""
+    },
+    {
+      "step": "Для critical dependency (blocking > 1 team / critical initiative): вынести на weekly ops review",
+      "description": ""
+    },
+    {
+      "step": "После resolution: обновить status, зафиксировать если dependency was late (для pattern analysis)",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Dependency list не ведётся — зависимости «в головах»",
-    "Blocked dependency не эскалируется — тихо ждём",
-    "Late resolutions не отслеживаются — patterns не видны"
+  "typical_failures": [
+    {
+      "failure": "Dependency list не ведётся — зависимости «в головах»",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Blocked dependency не эскалируется — тихо ждём",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Late resolutions не отслеживаются — patterns не видны",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Dependency list template"
   ],

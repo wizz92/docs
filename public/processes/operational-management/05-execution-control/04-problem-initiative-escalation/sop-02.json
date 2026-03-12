@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как вести follow-up по escalated initiative.",
   "main_goal": "Вести follow-up по escalated initiative — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Management decision по recovery принято",
+  "triggers": [
+    "Management decision по recovery принято"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Добавить escalated initiative в отдельный tracking (или flag в initiative tracker)",
-    "Каждую неделю: проверить статус recovery actions — done / in progress / blocked",
-    "Если action blocked — немедленно эскалировать blocker",
-    "На каждом initiative review: separate slot для escalated initiatives",
-    "Обновлять confidence level: recovery работает / не работает"
+  "process_steps": [
+    {
+      "step": "Добавить escalated initiative в отдельный tracking (или flag в initiative tracker)",
+      "description": ""
+    },
+    {
+      "step": "Каждую неделю: проверить статус recovery actions — done / in progress / blocked",
+      "description": ""
+    },
+    {
+      "step": "Если action blocked — немедленно эскалировать blocker",
+      "description": ""
+    },
+    {
+      "step": "На каждом initiative review: separate slot для escalated initiatives",
+      "description": ""
+    },
+    {
+      "step": "Обновлять confidence level: recovery работает / не работает",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,11 +38,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Follow-up не ведётся — escalation формальная, ничего не меняется",
-    "Частота check-in слишком редкая для critical initiative"
+  "typical_failures": [
+    {
+      "failure": "Follow-up не ведётся — escalation формальная, ничего не меняется",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Частота check-in слишком редкая для critical initiative",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Operations lead",
   "version": "2.0",

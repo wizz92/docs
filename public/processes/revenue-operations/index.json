@@ -266,12 +266,80 @@
           ]
         }
       ]
+    },
+    {
+      "name": "ORM: Управління review-сторінками бренду",
+      "folder": "04-orm-review-management",
+      "path": "processes/revenue-operations/04-orm-review-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Створення review-сторінки бренду",
+          "folder": "01-review-page-creation",
+          "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як зареєструвати review-сторінку бренду",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як підготувати пошти для публікації відгуків",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/sop-02.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Наповнення review-сторінки відгуками",
+          "folder": "02-review-content-publishing",
+          "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як опублікувати відгук на review-сторінці бренду",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як відправити реквести Sitejabber",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як виконати задачі по інших майданчиках",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Адміністрування review-сторінки",
+          "folder": "03-review-page-administration",
+          "path": "processes/revenue-operations/04-orm-review-management/03-review-page-administration/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як адмініструвати review-сторінки",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/03-review-page-administration/sop-01.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
     }
   ],
   "summary": {
-    "total_l2": 3,
-    "total_l3": 9,
-    "total_sop": 27,
-    "total_files": 40
+    "total_l2": 4,
+    "total_l3": 12,
+    "total_sop": 33,
+    "total_files": 50
   }
 }

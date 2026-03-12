@@ -556,25 +556,25 @@
           "type": "process_l3",
           "sops": [
             {
-              "name": "Как завести escalation case и определить severity",
+              "name": "Как определить необходимость эскалации и попробовать решить по горизонтали",
               "file": "sop-01.json",
               "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-01.json",
               "type": "sop"
             },
             {
-              "name": "Как маршрутизировать escalation и назначить owner",
+              "name": "Как подготовить факты и варианты для эскалации",
               "file": "sop-02.json",
               "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-02.json",
               "type": "sop"
             },
             {
-              "name": "Как вести трекинг решения и контролировать SLA",
+              "name": "Как провести эскалацию к руководителю",
               "file": "sop-03.json",
               "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-03.json",
               "type": "sop"
             },
             {
-              "name": "Как закрыть escalation и зафиксировать выводы",
+              "name": "Как зафиксировать решение в Jira и закрыть эскалацию",
               "file": "sop-04.json",
               "path": "processes/operational-management/06-management-cadence-coordination/03-escalation-management/sop-04.json",
               "type": "sop"

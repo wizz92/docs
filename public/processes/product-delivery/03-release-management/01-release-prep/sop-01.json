@@ -5,7 +5,9 @@
   "description": "Собрать и проверить код для релиза.",
   "main_goal": "Собрать и проверить код для релиза.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Sprint завершён, features merged",
+  "triggers": [
+    "Sprint завершён, features merged"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Создать release branch",
-    "Запустить full test suite",
-    "Проверить все critical paths",
-    "Собрать changelist",
-    "Получить QA sign-off"
+  "process_steps": [
+    {
+      "step": "Создать release branch",
+      "description": ""
+    },
+    {
+      "step": "Запустить full test suite",
+      "description": ""
+    },
+    {
+      "step": "Проверить все critical paths",
+      "description": ""
+    },
+    {
+      "step": "Собрать changelist",
+      "description": ""
+    },
+    {
+      "step": "Получить QA sign-off",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

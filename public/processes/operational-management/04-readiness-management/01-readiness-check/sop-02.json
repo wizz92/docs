@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как проверить готовность к спринту.",
   "main_goal": "Проверить готовность к спринту — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Перед стартом спринта",
+  "triggers": [
+    "Перед стартом спринта"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Проверить capacity: все ли члены команды доступны? Учтены отпуска?",
-    "Проверить sprint backlog: все items ready? Sprint goal сформулирован?",
-    "Проверить внешние зависимости: API / данные / решения от других команд — получены?",
-    "Оценить sprint risks: что может пойти не так? Есть ли митигации?",
-    "Зафиксировать readiness decision: GO (всё ready) / CONDITIONAL GO (есть risks, но manageable) / NO GO (критичные blockers)"
+  "process_steps": [
+    {
+      "step": "Проверить capacity: все ли члены команды доступны? Учтены отпуска?",
+      "description": ""
+    },
+    {
+      "step": "Проверить sprint backlog: все items ready? Sprint goal сформулирован?",
+      "description": ""
+    },
+    {
+      "step": "Проверить внешние зависимости: API / данные / решения от других команд — получены?",
+      "description": ""
+    },
+    {
+      "step": "Оценить sprint risks: что может пойти не так? Есть ли митигации?",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать readiness decision: GO (всё ready) / CONDITIONAL GO (есть risks, но manageable) / NO GO (критичные blockers)",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Зависимости не проверены — блокер через 2 дня после старта",
-    "Risks не оценены — surprise в середине спринта",
-    "NO GO не используется — спринт стартует всегда, даже когда не должен"
+  "typical_failures": [
+    {
+      "failure": "Зависимости не проверены — блокер через 2 дня после старта",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Risks не оценены — surprise в середине спринта",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "NO GO не используется — спринт стартует всегда, даже когда не должен",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Sprint readiness checklist"
   ],

@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как проводить inter-team sync.",
   "main_goal": "Проводить inter-team sync — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Еженедельно / по sprint cycle",
+  "triggers": [
+    "Еженедельно / по sprint cycle"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Собрать вопросы от команд заранее (async в shared doc / Slack thread)",
-    "Провести sync (15-20 мин): каждая команда — 2 мин на ключевое + вопросы/зависимости",
-    "Для каждой зависимости: зафиксировать что, от кого, к какому сроку",
-    "Для каждого решения/обязательства: зафиксировать в shared action list",
-    "Опубликовать notes и actions, проверить исполнение на следующем sync"
+  "process_steps": [
+    {
+      "step": "Собрать вопросы от команд заранее (async в shared doc / Slack thread)",
+      "description": ""
+    },
+    {
+      "step": "Провести sync (15-20 мин): каждая команда — 2 мин на ключевое + вопросы/зависимости",
+      "description": ""
+    },
+    {
+      "step": "Для каждой зависимости: зафиксировать что, от кого, к какому сроку",
+      "description": ""
+    },
+    {
+      "step": "Для каждого решения/обязательства: зафиксировать в shared action list",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать notes и actions, проверить исполнение на следующем sync",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Sync без подготовки — превращается в status reading",
-    "Решения не фиксируются — забываются к следующему sync",
-    "Follow-up не проверяется — actions зависают"
+  "typical_failures": [
+    {
+      "failure": "Sync без подготовки — превращается в status reading",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Решения не фиксируются — забываются к следующему sync",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Follow-up не проверяется — actions зависают",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Sync agenda template",
     "Cross-team action list"

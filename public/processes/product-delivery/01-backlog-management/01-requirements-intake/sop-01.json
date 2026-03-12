@@ -5,7 +5,9 @@
   "description": "Корректно оформить incoming request.",
   "main_goal": "Корректно оформить incoming request.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Поступление нового request",
+  "triggers": [
+    "Поступление нового request"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Заполнить intake form: описание, requester, urgency",
-    "Категоризировать: feature / bug / tech debt / improvement",
-    "Присвоить initial priority",
-    "Добавить в backlog",
-    "Уведомить Product Owner"
+  "process_steps": [
+    {
+      "step": "Заполнить intake form: описание, requester, urgency",
+      "description": ""
+    },
+    {
+      "step": "Категоризировать: feature / bug / tech debt / improvement",
+      "description": ""
+    },
+    {
+      "step": "Присвоить initial priority",
+      "description": ""
+    },
+    {
+      "step": "Добавить в backlog",
+      "description": ""
+    },
+    {
+      "step": "Уведомить Product Owner",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

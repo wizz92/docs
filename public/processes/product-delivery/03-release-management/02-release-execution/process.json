@@ -6,7 +6,7 @@
   "main_goal": "Релиз успешно развёрнут, production stable.",
   "when_used": "В release window.",
   "cadence": "Per release",
-  "trigger": [
+  "triggers": [
     "Release readiness: go"
   ],
   "inputs": [
@@ -45,13 +45,17 @@
     "Monitoring green",
     "No critical issues"
   ],
-  "failure_modes": [
-    "Deployment failed",
-    "Critical bug in production"
-  ],
-  "deviation_response": [
-    "Немедленный rollback",
-    "Notify stakeholders, start investigation"
+  "typical_failures": [
+    {
+      "failure": "Deployment failed",
+      "symptom": "",
+      "action": "Немедленный rollback"
+    },
+    {
+      "failure": "Critical bug in production",
+      "symptom": "",
+      "action": "Notify stakeholders, start investigation"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

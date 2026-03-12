@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как вынести вопрос на go/no-go и определить участников.",
   "main_goal": "Вынести вопрос на go/no-go и определить участников — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Readiness check завершён",
+  "triggers": [
+    "Readiness check завершён"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Собрать readiness summary и risk assessment от readiness check",
-    "Определить участников решения: owner launch + heads затронутых функций + COO для critical launches",
-    "Назначить go/no-go meeting или принять решение асинхронно (для low-risk launches)",
-    "Подготовить 3 варианта: GO / CONDITIONAL GO (с conditions) / NO GO (с reasons)",
-    "Представить recommendation с обоснованием"
+  "process_steps": [
+    {
+      "step": "Собрать readiness summary и risk assessment от readiness check",
+      "description": ""
+    },
+    {
+      "step": "Определить участников решения: owner launch + heads затронутых функций + COO для critical launches",
+      "description": ""
+    },
+    {
+      "step": "Назначить go/no-go meeting или принять решение асинхронно (для low-risk launches)",
+      "description": ""
+    },
+    {
+      "step": "Подготовить 3 варианта: GO / CONDITIONAL GO (с conditions) / NO GO (с reasons)",
+      "description": ""
+    },
+    {
+      "step": "Представить recommendation с обоснованием",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,11 +38,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Не все ключевые функции участвуют — решение неполное",
-    "Нет recommendation — meeting уходит в обсуждение без решения"
+  "typical_failures": [
+    {
+      "failure": "Не все ключевые функции участвуют — решение неполное",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Нет recommendation — meeting уходит в обсуждение без решения",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Launch owner / Product owner",
   "version": "2.0",

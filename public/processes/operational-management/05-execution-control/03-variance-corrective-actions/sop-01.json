@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: как проанализировать отклонение и определить root cause.",
   "main_goal": "Проанализировать отклонение и определить root cause — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Статус цели/инициативы = behind / at risk / off track",
+  "triggers": [
+    "Статус цели/инициативы = behind / at risk / off track"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Определить масштаб отклонения: факт vs план, в числах или % ",
-    "Классифицировать тип: execution gap (плохое исполнение) / planning gap (нереалистичный план) / external factor / resource gap",
-    "Определить характер: разовый / системный / нарастающий",
-    "Определить controllability: полностью контролируемый / частично / неконтролируемый",
-    "Провести root cause analysis: задать «почему?» 3-5 раз до реальной причины",
-    "Зафиксировать в variance summary: отклонение, тип, root cause, controllability"
+  "process_steps": [
+    {
+      "step": "Определить масштаб отклонения: факт vs план, в числах или % ",
+      "description": ""
+    },
+    {
+      "step": "Классифицировать тип: execution gap (плохое исполнение) / planning gap (нереалистичный план) / external factor / resource gap",
+      "description": ""
+    },
+    {
+      "step": "Определить характер: разовый / системный / нарастающий",
+      "description": ""
+    },
+    {
+      "step": "Определить controllability: полностью контролируемый / частично / неконтролируемый",
+      "description": ""
+    },
+    {
+      "step": "Провести root cause analysis: задать «почему?» 3-5 раз до реальной причины",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать в variance summary: отклонение, тип, root cause, controllability",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,12 +42,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Все отклонения объясняются «нехваткой времени» — реальный root cause не найден",
-    "Системное отклонение принимается за разовое — проблема не решается",
-    "Root cause analysis не проводится — сразу jump to action"
+  "typical_failures": [
+    {
+      "failure": "Все отклонения объясняются «нехваткой времени» — реальный root cause не найден",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Системное отклонение принимается за разовое — проблема не решается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Root cause analysis не проводится — сразу jump to action",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Goal owner / Initiative owner",
   "version": "2.0",

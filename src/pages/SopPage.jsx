@@ -38,8 +38,7 @@ export default function SopPage() {
   if (error) return <Alert severity="error">Ошибка загрузки: {error.message}</Alert>;
   if (!sopEntry) return <Alert severity="warning">SOP не найден.</Alert>;
 
-  const triggers = sopData?.triggers
-    || (sopData?.trigger && (Array.isArray(sopData.trigger) ? sopData.trigger : [sopData.trigger]));
+  const triggers = sopData?.triggers;
 
   return (
     <Box>
@@ -105,21 +104,26 @@ export default function SopPage() {
           {/* 2. Схема процесса — not applicable for SOP */}
 
           {/* 3. Логика процесса */}
-          {sopData.steps?.length > 0 && (
+          {sopData.process_steps?.length > 0 && (
             <>
               <SectionHeading caption="Последовательность шагов выполнения инструкции">
                 Логика процесса
               </SectionHeading>
               <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
                 <List dense disablePadding>
-                  {sopData.steps.map((step, i) => (
+                  {sopData.process_steps.map((item, i) => (
                     <ListItem key={i} alignItems="flex-start" sx={{ px: 0 }}>
                       <ListItemIcon sx={{ minWidth: 36 }}>
                         <Avatar sx={{ width: 26, height: 26, fontSize: 13, bgcolor: 'primary.main' }}>
                           {i + 1}
                         </Avatar>
                       </ListItemIcon>
-                      <ListItemText primary={step} primaryTypographyProps={{ variant: 'body2' }} />
+                      <ListItemText
+                        primary={item.step}
+                        secondary={item.description || undefined}
+                        primaryTypographyProps={{ variant: 'body2' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
                     </ListItem>
                   ))}
                 </List>
@@ -143,15 +147,12 @@ export default function SopPage() {
           )}
 
           {/* 6. Риски и реагирование */}
-          {(sopData.typical_errors?.length > 0 || sopData.exception_handling?.length > 0) && (
+          {sopData.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">
                 Риски и реагирование
               </SectionHeading>
-              <FailuresTable
-                failures={sopData.typical_errors}
-                deviations={sopData.exception_handling}
-              />
+              <FailuresTable items={sopData.typical_failures} />
             </>
           )}
         </>

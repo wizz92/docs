@@ -5,7 +5,9 @@
   "description": "Провести сессию ранжирования портфеля.",
   "main_goal": "Провести сессию ранжирования портфеля.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Portfolio register актуализирован",
+  "triggers": [
+    "Portfolio register актуализирован"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,13 +16,31 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Разослать актуальный portfolio register участникам",
-    "На сессии: пройти по каждой инициативе, обсудить scoring",
-    "Провести forced ranking: top / middle / bottom",
-    "Сверить top с capacity — убрать лишнее",
-    "Зафиксировать финальный ranked list",
-    "Разослать решения"
+  "process_steps": [
+    {
+      "step": "Разослать актуальный portfolio register участникам",
+      "description": ""
+    },
+    {
+      "step": "На сессии: пройти по каждой инициативе, обсудить scoring",
+      "description": ""
+    },
+    {
+      "step": "Провести forced ranking: top / middle / bottom",
+      "description": ""
+    },
+    {
+      "step": "Сверить top с capacity — убрать лишнее",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать финальный ranked list",
+      "description": ""
+    },
+    {
+      "step": "Разослать решения",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -32,13 +52,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

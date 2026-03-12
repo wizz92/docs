@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: как пересмотреть commitments при перегрузе.",
   "main_goal": "Пересмотреть commitments при перегрузе — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Load/capacity ratio > 95% (Red)",
+  "triggers": [
+    "Load/capacity ratio > 95% (Red)"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Если load > capacity: определить, на сколько % нужно сократить scope",
-    "Ранжировать items по приоритету — убрать lowest priority items до выравнивания load/capacity",
-    "Для вытесненных items: определить — отложить на следующий спринт или переназначить другой команде",
-    "Согласовать решение с PO / Operations lead",
-    "Уведомить стейкхолдеров о сокращении scope и причинах",
-    "Обновить sprint backlog / план"
+  "process_steps": [
+    {
+      "step": "Если load > capacity: определить, на сколько % нужно сократить scope",
+      "description": ""
+    },
+    {
+      "step": "Ранжировать items по приоритету — убрать lowest priority items до выравнивания load/capacity",
+      "description": ""
+    },
+    {
+      "step": "Для вытесненных items: определить — отложить на следующий спринт или переназначить другой команде",
+      "description": ""
+    },
+    {
+      "step": "Согласовать решение с PO / Operations lead",
+      "description": ""
+    },
+    {
+      "step": "Уведомить стейкхолдеров о сокращении scope и причинах",
+      "description": ""
+    },
+    {
+      "step": "Обновить sprint backlog / план",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,11 +42,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Scope не сокращается при перегрузе — команда «обещает всё» и срывает",
-    "Стейкхолдеры не уведомлены — ожидания не скорректированы"
+  "typical_failures": [
+    {
+      "failure": "Scope не сокращается при перегрузе — команда «обещает всё» и срывает",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Стейкхолдеры не уведомлены — ожидания не скорректированы",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Team Lead",
   "version": "2.0",

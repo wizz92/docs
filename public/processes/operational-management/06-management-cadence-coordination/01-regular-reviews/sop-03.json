@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: как подготовить и провести initiative review.",
   "main_goal": "Подготовить и провести initiative review — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Bi-weekly / monthly (зависит от portfolio)",
+  "triggers": [
+    "Bi-weekly / monthly (зависит от portfolio)"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Собрать актуальные initiative summaries от owners (status, milestones, risks, confidence)",
-    "Сформировать agenda: фокус на at risk / behind инициативах, blocked dependencies, decisions needed",
-    "Highlight problem areas: инициативы с confidence level low или с missed milestones",
-    "Провести review: owner каждой problem initiative даёт 3-5 мин update + recommendation",
-    "Принять решения: continue as-is / adjust plan / add resources / escalate / kill",
-    "Зафиксировать решения и action items"
+  "process_steps": [
+    {
+      "step": "Собрать актуальные initiative summaries от owners (status, milestones, risks, confidence)",
+      "description": ""
+    },
+    {
+      "step": "Сформировать agenda: фокус на at risk / behind инициативах, blocked dependencies, decisions needed",
+      "description": ""
+    },
+    {
+      "step": "Highlight problem areas: инициативы с confidence level low или с missed milestones",
+      "description": ""
+    },
+    {
+      "step": "Провести review: owner каждой problem initiative даёт 3-5 мин update + recommendation",
+      "description": ""
+    },
+    {
+      "step": "Принять решения: continue as-is / adjust plan / add resources / escalate / kill",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать решения и action items",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,12 +42,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Все инициативы обсуждаются одинаково — время тратится на healthy ones",
-    "Owner не подготовил summary — review вслепую",
-    "Решения не принимаются — «подождём ещё»"
+  "typical_failures": [
+    {
+      "failure": "Все инициативы обсуждаются одинаково — время тратится на healthy ones",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Owner не подготовил summary — review вслепую",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Решения не принимаются — «подождём ещё»",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Initiative review agenda",
     "Initiative summary template"

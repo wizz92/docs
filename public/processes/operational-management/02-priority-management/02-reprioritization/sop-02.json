@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как обновить priority stack и согласовать trade-offs.",
   "main_goal": "Обновить priority stack и согласовать trade-offs — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Варианты reprioritization подготовлены",
+  "triggers": [
+    "Варианты reprioritization подготовлены"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Представить варианты reprioritization со стейкхолдерами: что выигрываем, что теряем",
-    "Принять решение: выбрать вариант, зафиксировать обоснование",
-    "Обновить priority register: новый порядок, убранные/добавленные items",
-    "Для каждого затронутого commitment определить: сдвиг сроков / сокращение scope / отмена",
-    "Зафиксировать trade-off решения в decision log"
+  "process_steps": [
+    {
+      "step": "Представить варианты reprioritization со стейкхолдерами: что выигрываем, что теряем",
+      "description": ""
+    },
+    {
+      "step": "Принять решение: выбрать вариант, зафиксировать обоснование",
+      "description": ""
+    },
+    {
+      "step": "Обновить priority register: новый порядок, убранные/добавленные items",
+      "description": ""
+    },
+    {
+      "step": "Для каждого затронутого commitment определить: сдвиг сроков / сокращение scope / отмена",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать trade-off решения в decision log",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,11 +38,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Priority register не обновлён — два источника правды",
-    "Trade-offs не зафиксированы — через месяц никто не помнит, почему так решили"
+  "typical_failures": [
+    {
+      "failure": "Priority register не обновлён — два источника правды",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Trade-offs не зафиксированы — через месяц никто не помнит, почему так решили",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "COO / designated priority owner",
   "version": "2.0",

@@ -39,7 +39,7 @@ function Arrow() {
 export default function ProcessDiagram({ data }) {
   if (!data) return null;
 
-  const trigger = data.triggers?.[0] || (Array.isArray(data.trigger) ? data.trigger[0] : data.trigger) || 'Триггер';
+  const trigger = data.triggers?.[0] || 'Триггер';
   const output = data.outputs?.[0] || 'Результат';
 
   if (!data.process_steps?.length) return null;

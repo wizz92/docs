@@ -5,7 +5,9 @@
   "description": "Корректно оформить обнаруженный tech debt.",
   "main_goal": "Корректно оформить обнаруженный tech debt.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Обнаружение tech debt",
+  "triggers": [
+    "Обнаружение tech debt"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,11 +16,23 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Описать: что, где, impact, severity",
-    "Добавить в tech debt register",
-    "Категоризировать: critical / high / medium / low",
-    "При critical — уведомить Tech Lead немедленно"
+  "process_steps": [
+    {
+      "step": "Описать: что, где, impact, severity",
+      "description": ""
+    },
+    {
+      "step": "Добавить в tech debt register",
+      "description": ""
+    },
+    {
+      "step": "Категоризировать: critical / high / medium / low",
+      "description": ""
+    },
+    {
+      "step": "При critical — уведомить Tech Lead немедленно",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -30,13 +44,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

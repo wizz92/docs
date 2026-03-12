@@ -6,7 +6,9 @@
   "main_goal": "Решение о go/no-go принято осознанно, с учётом рисков, и зафиксировано.",
   "when_used": "После readiness check для релиза или запуска.",
   "cadence": "Per release / per launch",
-  "trigger": "Readiness check завершён, нужно решение о старте",
+  "triggers": [
+    "Readiness check завершён, нужно решение о старте"
+  ],
   "inputs": [
     "Readiness summary",
     "Risk assessment",
@@ -42,12 +44,17 @@
     "Решение зафиксировано",
     "Все участники уведомлены"
   ],
-  "failure_modes": [
-    "Решение не принимается явно — launch происходит «по инерции»",
-    "Условия go не проверяются"
-  ],
-  "deviation_response": [
-    "Если consensus не достигнут — COO принимает финальное решение"
+  "typical_failures": [
+    {
+      "failure": "Решение не принимается явно — launch происходит «по инерции»",
+      "symptom": "",
+      "action": "Если consensus не достигнут — COO принимает финальное решение"
+    },
+    {
+      "failure": "Условия go не проверяются",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

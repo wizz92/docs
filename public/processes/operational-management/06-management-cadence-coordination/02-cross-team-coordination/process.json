@@ -6,7 +6,9 @@
   "main_goal": "Потери от рассинхронизации, неясных ожиданий и плохо управляемых зависимостей — минимальны.",
   "when_used": "Постоянно при наличии cross-team work и shared deliverables.",
   "cadence": "Weekly / per sprint",
-  "trigger": "Shared deliverables / dependencies / handoffs",
+  "triggers": [
+    "Shared deliverables / dependencies / handoffs"
+  ],
   "inputs": [
     "Plans and statuses from teams",
     "Dependencies",
@@ -47,12 +49,17 @@
     "Handoffs согласованы",
     "Conflicts resolved"
   ],
-  "failure_modes": [
-    "Dependencies не отслеживаются — blockers-surprise",
-    "Handoffs не формализованы — потеря качества"
-  ],
-  "deviation_response": [
-    "При blocked dependency > 3 дней — эскалировать"
+  "typical_failures": [
+    {
+      "failure": "Dependencies не отслеживаются — blockers-surprise",
+      "symptom": "",
+      "action": "При blocked dependency > 3 дней — эскалировать"
+    },
+    {
+      "failure": "Handoffs не формализованы — потеря качества",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

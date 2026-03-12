@@ -8,7 +8,7 @@ import ChipList from './ChipList';
 export default function ProcessCard({ data }) {
   if (!data) return null;
 
-  const triggers = data.triggers || (data.trigger && (Array.isArray(data.trigger) ? data.trigger : [data.trigger]));
+  const triggers = data.triggers;
 
   return (
     <Card sx={{ mb: 3 }}>

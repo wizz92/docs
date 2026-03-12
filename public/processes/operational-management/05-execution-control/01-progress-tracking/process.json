@@ -6,7 +6,9 @@
   "main_goal": "Прогресс по целям и инициативам прозрачен и актуален.",
   "when_used": "Регулярно в рамках sprint / monthly review циклов.",
   "cadence": "Per sprint + monthly",
-  "trigger": "Конец спринта / плановый review",
+  "triggers": [
+    "Конец спринта / плановый review"
+  ],
   "inputs": [
     "Sprint results",
     "Goal targets",
@@ -47,12 +49,17 @@
     "Все цели и инициативы имеют актуальный статус",
     "Отклонения выявлены и отмечены"
   ],
-  "failure_modes": [
-    "Статусы не обновляются — картина устаревшая",
-    "Sprint результаты не связаны с целями — execution без фокуса"
-  ],
-  "deviation_response": [
-    "Если статус не обновлён к дедлайну — Operations lead запрашивает update"
+  "typical_failures": [
+    {
+      "failure": "Статусы не обновляются — картина устаревшая",
+      "symptom": "",
+      "action": "Если статус не обновлён к дедлайну — Operations lead запрашивает update"
+    },
+    {
+      "failure": "Sprint результаты не связаны с целями — execution без фокуса",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

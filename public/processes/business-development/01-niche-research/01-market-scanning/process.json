@@ -6,7 +6,7 @@
   "main_goal": "Актуальная карта рыночных возможностей.",
   "when_used": "Регулярно, как часть growth pipeline.",
   "cadence": "Monthly",
-  "trigger": [
+  "triggers": [
     "Наступление даты monthly scan",
     "Появление значимого рыночного события"
   ],
@@ -43,13 +43,17 @@
     "Отчёт подготовлен и разослан",
     "Новые opportunities зарегистрированы"
   ],
-  "failure_modes": [
-    "Данные устарели",
-    "Пропущен важный тренд"
-  ],
-  "deviation_response": [
-    "Автоматизировать мониторинг ключевых источников",
-    "Добавить cross-check с customer-facing командами"
+  "typical_failures": [
+    {
+      "failure": "Данные устарели",
+      "symptom": "",
+      "action": "Автоматизировать мониторинг ключевых источников"
+    },
+    {
+      "failure": "Пропущен важный тренд",
+      "symptom": "",
+      "action": "Добавить cross-check с customer-facing командами"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

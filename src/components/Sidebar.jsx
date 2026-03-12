@@ -39,17 +39,6 @@ export default function Sidebar({ masterIndex, domainId, domainIndex, domainMeta
 
   return (
     <Box sx={{ overflow: 'auto', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Portal header */}
-      <Box sx={{ px: 2, pt: 2, pb: 1 }}>
-        <Typography variant="subtitle2" fontWeight={700} sx={{ textTransform: 'uppercase', letterSpacing: 0.5 }}>
-          Process Portal
-        </Typography>
-        <Typography variant="caption" color="text.secondary" display="block">
-          Документация процессов компании
-        </Typography>
-      </Box>
-
-      <Divider />
 
       {/* Global navigation */}
       <List dense disablePadding sx={{ py: 0.5 }}>

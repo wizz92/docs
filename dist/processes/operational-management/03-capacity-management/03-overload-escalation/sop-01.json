@@ -5,14 +5,28 @@
   "description": "Практическая инструкция: как определить необходимость эскалации и оформить overload case.",
   "main_goal": "Определить необходимость эскалации и оформить overload case — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Локальные меры по снижению load исчерпаны",
+  "triggers": [
+    "Локальные меры по снижению load исчерпаны"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Проверить: load > capacity + все low-priority items уже убраны + scope уже сокращён = локальные меры исчерпаны",
-    "Оформить overload case: команда, текущий load/capacity, что уже предпринято, что нужно от management",
-    "Указать варианты: сократить commitments по инициативе X / перебросить ресурсы / сдвинуть deadline",
-    "Направить case Operations lead для вынесения на management level"
+  "process_steps": [
+    {
+      "step": "Проверить: load > capacity + все low-priority items уже убраны + scope уже сокращён = локальные меры исчерпаны",
+      "description": ""
+    },
+    {
+      "step": "Оформить overload case: команда, текущий load/capacity, что уже предпринято, что нужно от management",
+      "description": ""
+    },
+    {
+      "step": "Указать варианты: сократить commitments по инициативе X / перебросить ресурсы / сдвинуть deadline",
+      "description": ""
+    },
+    {
+      "step": "Направить case Operations lead для вынесения на management level",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -20,11 +34,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Эскалация без попыток локального решения — «переложить проблему наверх»",
-    "Нет конкретных вариантов — management не знает, что решать"
+  "typical_failures": [
+    {
+      "failure": "Эскалация без попыток локального решения — «переложить проблему наверх»",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Нет конкретных вариантов — management не знает, что решать",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Team Lead",
   "version": "2.0",

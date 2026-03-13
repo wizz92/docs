@@ -8,7 +8,13 @@ export default function BreadcrumbsNav({ domainId, domainIndex, domainMeta }) {
   const { l2Folder, l3Folder, sopFile } = useParams();
   const location = useLocation();
 
-  if (location.pathname === '/') return null;
+  if (
+    location.pathname === '/'
+    || location.pathname === '/registry'
+    || location.pathname === '/dictionaries'
+  ) {
+    return null;
+  }
 
   const crumbs = [{ label: 'Домены', to: '/' }];
 

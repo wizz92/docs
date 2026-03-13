@@ -6,7 +6,7 @@
   "main_goal": "Проблемы выявлены рано, корректировки приняты без потери sprint goal.",
   "when_used": "Ежедневно во время спринта.",
   "cadence": "Daily during sprint",
-  "trigger": [
+  "triggers": [
     "Daily standup выявил risk"
   ],
   "inputs": [
@@ -44,13 +44,17 @@
     "Корректировки приняты",
     "Sprint goal защищён"
   ],
-  "failure_modes": [
-    "Проблемы замалчиваются",
-    "Нет action на daily"
-  ],
-  "deviation_response": [
-    "Активно спрашивать о blockers",
-    "Визуализировать burndown"
+  "typical_failures": [
+    {
+      "failure": "Проблемы замалчиваются",
+      "symptom": "",
+      "action": "Активно спрашивать о blockers"
+    },
+    {
+      "failure": "Нет action на daily",
+      "symptom": "",
+      "action": "Визуализировать burndown"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

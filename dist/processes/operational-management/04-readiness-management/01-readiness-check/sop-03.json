@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как проверить готовность релиза.",
   "main_goal": "Проверить готовность релиза — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "За 1-2 дня до запланированного релиза",
+  "triggers": [
+    "За 1-2 дня до запланированного релиза"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Пройти release checklist: все features готовы? Тесты пройдены? Documentation обновлена?",
-    "Проверить готовность по функциям: support готов? Marketing materials есть? Monitoring настроен?",
-    "Оценить release risks: что может сломаться? Есть ли rollback plan?",
-    "Собрать confirmation от каждой функции: ready / not ready / conditional ready",
-    "Зафиксировать release readiness status для go/no-go решения"
+  "process_steps": [
+    {
+      "step": "Пройти release checklist: все features готовы? Тесты пройдены? Documentation обновлена?",
+      "description": ""
+    },
+    {
+      "step": "Проверить готовность по функциям: support готов? Marketing materials есть? Monitoring настроен?",
+      "description": ""
+    },
+    {
+      "step": "Оценить release risks: что может сломаться? Есть ли rollback plan?",
+      "description": ""
+    },
+    {
+      "step": "Собрать confirmation от каждой функции: ready / not ready / conditional ready",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать release readiness status для go/no-go решения",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Checklist пройден формально — критичные items пропущены",
-    "Не все функции подтвердили готовность — релиз выходит с gaps",
-    "Rollback plan отсутствует — в случае проблем некуда откатиться"
+  "typical_failures": [
+    {
+      "failure": "Checklist пройден формально — критичные items пропущены",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не все функции подтвердили готовность — релиз выходит с gaps",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Rollback plan отсутствует — в случае проблем некуда откатиться",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Release checklist"
   ],

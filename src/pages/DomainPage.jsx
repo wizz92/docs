@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import AddIcon from '@mui/icons-material/Add';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
 import SubprocessTable from '../components/SubprocessTable';
@@ -64,30 +66,12 @@ export default function DomainPage() {
       <Paper variant="outlined" sx={{ p: { xs: 2.5, md: 3.5 }, mb: 4, bgcolor: 'grey.50' }}>
         <Grid container spacing={3} alignItems="center">
           <Grid item xs={12} md={7}>
-            <Chip
-              size="small"
-              label={`${domainMeta?.category || 'Domain'} · ${domainIndex.l1?.name}`}
-              color="primary"
-              variant="outlined"
-              icon={
-                <Box
-                  sx={{
-                    width: 6, height: 6, borderRadius: '50%',
-                    bgcolor: domainMeta?.color || '#4caf50', ml: 1,
-                  }}
-                />
-              }
-              sx={{ mb: 2 }}
-            />
             <Typography variant="h4" fontWeight={700} gutterBottom>
               {domainMeta?.name_ru || domainIndex.l1?.name}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 2, maxWidth: 560 }}>
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 1.5, maxWidth: 560 }}>
               {domainMeta?.description_ru || l1Data?.description}
             </Typography>
-            {l1Data?.purpose && (
-              <Chip label={l1Data.purpose} size="small" variant="outlined" sx={{ maxWidth: '100%' }} />
-            )}
           </Grid>
           <Grid item xs={12} md={5}>
             <Grid container spacing={1}>
@@ -126,9 +110,20 @@ export default function DomainPage() {
           {/* 3. Логика процесса — skipped at L1 if no steps */}
 
           {/* 4. Подпроцессы */}
-          <SectionHeading caption="Дочерние процессы следующего уровня">
-            Подпроцессы
-          </SectionHeading>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 5, mb: 2 }}>
+            <SectionHeading caption="Дочерние процессы следующего уровня">
+              Подпроцессы
+            </SectionHeading>
+            <Button
+              component={RouterLink}
+              to={`/domain/${domainId}/create/l2`}
+              size="small"
+              variant="outlined"
+              startIcon={<AddIcon />}
+            >
+              Create L2
+            </Button>
+          </Box>
           <SubprocessTable
             showL3
             rows={domainIndex.l2_processes?.map((l2) => ({

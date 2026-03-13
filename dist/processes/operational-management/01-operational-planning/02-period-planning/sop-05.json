@@ -5,14 +5,28 @@
   "description": "Практическая инструкция: как опубликовать monthly operational plan.",
   "main_goal": "Опубликовать monthly operational plan — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Monthly planning review завершён",
+  "triggers": [
+    "Monthly planning review завершён"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Финализировать monthly plan: приоритеты, инициативы, owners, milestones, зависимости",
-    "Опубликовать в Confluence: использовать стандартный шаблон monthly plan",
-    "Отправить summary всем Heads и Team Leads с ссылкой",
-    "На ближайшем weekly ops review: подтвердить, что план понят и принят"
+  "process_steps": [
+    {
+      "step": "Финализировать monthly plan: приоритеты, инициативы, owners, milestones, зависимости",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать в Confluence: использовать стандартный шаблон monthly plan",
+      "description": ""
+    },
+    {
+      "step": "Отправить summary всем Heads и Team Leads с ссылкой",
+      "description": ""
+    },
+    {
+      "step": "На ближайшем weekly ops review: подтвердить, что план понят и принят",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -20,11 +34,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "1 рабочий день после review",
-  "typical_errors": [
-    "План опубликован, но никто не уведомлён",
-    "План не обсуждён на review — формальный документ"
+  "typical_failures": [
+    {
+      "failure": "План опубликован, но никто не уведомлён",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "План не обсуждён на review — формальный документ",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Monthly plan template (Confluence)"
   ],

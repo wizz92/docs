@@ -10,12 +10,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import HomeIcon from '@mui/icons-material/Home';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import TuneIcon from '@mui/icons-material/Tune';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { sortDomains } from '../utils/domainOrder';
 
 export default function Sidebar({ masterIndex, domainId, domainIndex, domainMeta, loading, onClose }) {
   const { l2Folder, l3Folder, sopFile } = useParams();
@@ -35,7 +36,7 @@ export default function Sidebar({ masterIndex, domainId, domainIndex, domainMeta
     onClose?.();
   };
 
-  const domains = masterIndex.domains || [];
+  const domains = sortDomains(masterIndex.domains || [], masterIndex);
 
   return (
     <Box sx={{ overflow: 'auto', display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -55,18 +56,6 @@ export default function Sidebar({ masterIndex, domainId, domainIndex, domainMeta
           />
         </ListItemButton>
         <ListItemButton
-          selected={location.pathname === '/architecture'}
-          onClick={() => go('/architecture')}
-        >
-          <ListItemIcon sx={{ minWidth: 32 }}>
-            <AccountTreeIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText
-            primary="Архитектура процессов"
-            primaryTypographyProps={{ variant: 'body2', fontWeight: location.pathname === '/architecture' ? 700 : 500 }}
-          />
-        </ListItemButton>
-        <ListItemButton
           selected={location.pathname === '/registry'}
           onClick={() => go('/registry')}
         >
@@ -76,6 +65,18 @@ export default function Sidebar({ masterIndex, domainId, domainIndex, domainMeta
           <ListItemText
             primary="Реестр процессов"
             primaryTypographyProps={{ variant: 'body2', fontWeight: location.pathname === '/registry' ? 700 : 500 }}
+          />
+        </ListItemButton>
+        <ListItemButton
+          selected={location.pathname === '/dictionaries'}
+          onClick={() => go('/dictionaries')}
+        >
+          <ListItemIcon sx={{ minWidth: 32 }}>
+            <TuneIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText
+            primary="Справочники"
+            primaryTypographyProps={{ variant: 'body2', fontWeight: location.pathname === '/dictionaries' ? 700 : 500 }}
           />
         </ListItemButton>
       </List>

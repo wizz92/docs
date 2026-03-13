@@ -6,7 +6,7 @@
   "main_goal": "Утверждённый business case с budget allocation.",
   "when_used": "После подтверждения гипотезы.",
   "cadence": "Per venture",
-  "trigger": [
+  "triggers": [
     "Гипотеза подтверждена, решение о подготовке business case"
   ],
   "inputs": [
@@ -44,13 +44,17 @@
     "Business case утверждён CEO/CFO",
     "Budget выделен"
   ],
-  "failure_modes": [
-    "Оптимистичные прогнозы",
-    "Не учтены риски"
-  ],
-  "deviation_response": [
-    "Требовать pessimistic scenario",
-    "Включить risk assessment в шаблон"
+  "typical_failures": [
+    {
+      "failure": "Оптимистичные прогнозы",
+      "symptom": "",
+      "action": "Требовать pessimistic scenario"
+    },
+    {
+      "failure": "Не учтены риски",
+      "symptom": "",
+      "action": "Включить risk assessment в шаблон"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

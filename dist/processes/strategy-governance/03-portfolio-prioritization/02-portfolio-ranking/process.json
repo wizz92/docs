@@ -6,7 +6,7 @@
   "main_goal": "Приоритизированный портфель с чёткими решениями: что делаем, что откладываем, что убираем.",
   "when_used": "Перед началом квартала и при существенном изменении ресурсов.",
   "cadence": "Quarterly",
-  "trigger": [
+  "triggers": [
     "Начало квартального цикла",
     "Существенное изменение capacity"
   ],
@@ -47,13 +47,17 @@
     "Решения по ресурсам зафиксированы",
     "Parked list утверждён"
   ],
-  "failure_modes": [
-    "Не удалось достигнуть consensus по ranking",
-    "Capacity переоценена"
-  ],
-  "deviation_response": [
-    "CEO принимает финальное решение при отсутствии consensus",
-    "Пересчитать capacity с buffer 20%"
+  "typical_failures": [
+    {
+      "failure": "Не удалось достигнуть consensus по ranking",
+      "symptom": "",
+      "action": "CEO принимает финальное решение при отсутствии consensus"
+    },
+    {
+      "failure": "Capacity переоценена",
+      "symptom": "",
+      "action": "Пересчитать capacity с buffer 20%"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

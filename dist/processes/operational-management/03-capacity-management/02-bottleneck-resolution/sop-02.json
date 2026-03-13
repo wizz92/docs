@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как подготовить варианты устранения bottleneck.",
   "main_goal": "Подготовить варианты устранения bottleneck — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Bottleneck задокументирован, root cause определён",
+  "triggers": [
+    "Bottleneck задокументирован, root cause определён"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "На основе root cause определить категорию решения: rebalance ресурсов / процессное изменение / найм / снижение scope",
-    "Подготовить 2-3 варианта с описанием: что делаем, сколько стоит (время/деньги), какой expected effect",
-    "Для resource rebalance: определить, кто перемещается, из какой команды, на какой срок, что теряет исходная команда",
-    "Согласовать варианты с затронутыми Team Leads",
-    "Представить recommendation на management review / weekly ops review"
+  "process_steps": [
+    {
+      "step": "На основе root cause определить категорию решения: rebalance ресурсов / процессное изменение / найм / снижение scope",
+      "description": ""
+    },
+    {
+      "step": "Подготовить 2-3 варианта с описанием: что делаем, сколько стоит (время/деньги), какой expected effect",
+      "description": ""
+    },
+    {
+      "step": "Для resource rebalance: определить, кто перемещается, из какой команды, на какой срок, что теряет исходная команда",
+      "description": ""
+    },
+    {
+      "step": "Согласовать варианты с затронутыми Team Leads",
+      "description": ""
+    },
+    {
+      "step": "Представить recommendation на management review / weekly ops review",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Один вариант без альтернатив — нет осознанного выбора",
-    "Не учтены последствия для исходной команды при rebalance",
-    "Решение не согласовано с Team Leads — resistance при исполнении"
+  "typical_failures": [
+    {
+      "failure": "Один вариант без альтернатив — нет осознанного выбора",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не учтены последствия для исходной команды при rebalance",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Решение не согласовано с Team Leads — resistance при исполнении",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Operations lead",
   "version": "2.0",

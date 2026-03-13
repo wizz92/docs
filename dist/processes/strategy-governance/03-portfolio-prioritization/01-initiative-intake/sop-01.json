@@ -5,7 +5,9 @@
   "description": "Корректно оформить и зарегистрировать инициативу в портфеле.",
   "main_goal": "Корректно оформить и зарегистрировать инициативу в портфеле.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Появление новой идеи или запроса",
+  "triggers": [
+    "Появление новой идеи или запроса"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Заполнить initiative proposal по шаблону",
-    "Определить owner инициативы",
-    "Провести первичный scoring: impact, effort, alignment",
-    "Добавить в portfolio register",
-    "Уведомить Head of Strategy"
+  "process_steps": [
+    {
+      "step": "Заполнить initiative proposal по шаблону",
+      "description": ""
+    },
+    {
+      "step": "Определить owner инициативы",
+      "description": ""
+    },
+    {
+      "step": "Провести первичный scoring: impact, effort, alignment",
+      "description": ""
+    },
+    {
+      "step": "Добавить в portfolio register",
+      "description": ""
+    },
+    {
+      "step": "Уведомить Head of Strategy",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

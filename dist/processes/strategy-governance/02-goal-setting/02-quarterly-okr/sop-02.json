@@ -5,7 +5,9 @@
   "description": "Помочь Team Leads сформулировать team-level OKR.",
   "main_goal": "Помочь Team Leads сформулировать team-level OKR.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Function-level OKR утверждены",
+  "triggers": [
+    "Function-level OKR утверждены"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,11 +16,23 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Head of Function проводит сессию с Team Leads",
-    "Каждый TL формулирует 2–3 OKR для своей команды",
-    "Проверить alignment с function OKR",
-    "Утвердить и опубликовать"
+  "process_steps": [
+    {
+      "step": "Head of Function проводит сессию с Team Leads",
+      "description": ""
+    },
+    {
+      "step": "Каждый TL формулирует 2–3 OKR для своей команды",
+      "description": ""
+    },
+    {
+      "step": "Проверить alignment с function OKR",
+      "description": ""
+    },
+    {
+      "step": "Утвердить и опубликовать",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -30,13 +44,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

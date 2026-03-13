@@ -19,7 +19,7 @@ export default function useProcessData() {
 
   useEffect(() => {
     mounted.current = true;
-    fetchJson('/processes/index.json')
+    fetchJson('/api/processes')
       .then((data) => {
         if (mounted.current) {
           setMasterIndex(data);
@@ -35,10 +35,16 @@ export default function useProcessData() {
     return () => { mounted.current = false; };
   }, []);
 
-  const loadJson = useCallback((path) => fetchJson(path.startsWith('/') ? path : `/${path}`), []);
+  const loadJson = useCallback((path) => {
+    const normalized = path.startsWith('/') ? path : `/${path}`;
+    if (normalized.startsWith('/processes/')) {
+      return fetchJson(`/api${normalized}`);
+    }
+    return fetchJson(normalized);
+  }, []);
 
   const loadDomainIndex = useCallback(
-    (domainId) => fetchJson(`/processes/${domainId}/index.json`),
+    (domainId) => fetchJson(`/api/processes/${domainId}`),
     [],
   );
 

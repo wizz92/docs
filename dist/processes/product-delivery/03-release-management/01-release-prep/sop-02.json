@@ -5,7 +5,9 @@
   "description": "Подготовить release notes для stakeholders.",
   "main_goal": "Подготовить release notes для stakeholders.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Release candidate готов",
+  "triggers": [
+    "Release candidate готов"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Собрать список изменений из Jira",
-    "Написать user-facing описание для каждого change",
-    "Выделить breaking changes и required actions",
-    "Согласовать с Product Owner",
-    "Опубликовать"
+  "process_steps": [
+    {
+      "step": "Собрать список изменений из Jira",
+      "description": ""
+    },
+    {
+      "step": "Написать user-facing описание для каждого change",
+      "description": ""
+    },
+    {
+      "step": "Выделить breaking changes и required actions",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с Product Owner",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

@@ -5,7 +5,9 @@
   "description": "Собрать данные о качестве релиза.",
   "main_goal": "Собрать данные о качестве релиза.",
   "when_used": "По триггеру процесса.",
-  "trigger": "24 часа после release",
+  "triggers": [
+    "24 часа после release"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,11 +16,23 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Собрать: error rates, response times, user reports",
-    "Сравнить с pre-release baseline",
-    "Выделить anomalies",
-    "Подготовить data summary"
+  "process_steps": [
+    {
+      "step": "Собрать: error rates, response times, user reports",
+      "description": ""
+    },
+    {
+      "step": "Сравнить с pre-release baseline",
+      "description": ""
+    },
+    {
+      "step": "Выделить anomalies",
+      "description": ""
+    },
+    {
+      "step": "Подготовить data summary",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -30,13 +44,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

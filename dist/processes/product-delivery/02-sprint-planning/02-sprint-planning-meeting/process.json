@@ -6,7 +6,7 @@
   "main_goal": "Sprint goal и sprint backlog утверждены.",
   "when_used": "В начале каждого спринта.",
   "cadence": "Per sprint (bi-weekly)",
-  "trigger": [
+  "triggers": [
     "Наступление sprint planning"
   ],
   "inputs": [
@@ -43,13 +43,17 @@
     "Sprint backlog зафиксирован",
     "Capacity не превышена"
   ],
-  "failure_modes": [
-    "Planning затягивается",
-    "Goal размытый"
-  ],
-  "deviation_response": [
-    "Timebox planning до 2 часов",
-    "Начинать с sprint goal, не с items"
+  "typical_failures": [
+    {
+      "failure": "Planning затягивается",
+      "symptom": "",
+      "action": "Timebox planning до 2 часов"
+    },
+    {
+      "failure": "Goal размытый",
+      "symptom": "",
+      "action": "Начинать с sprint goal, не с items"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

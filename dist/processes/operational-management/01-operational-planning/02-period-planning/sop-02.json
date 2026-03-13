@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как подготовить backlog и проверить capacity к спринту.",
   "main_goal": "Подготовить backlog и проверить capacity к спринту — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "За 1-2 дня до sprint planning",
+  "triggers": [
+    "За 1-2 дня до sprint planning"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Product Owner / Team Lead: убедиться, что top items в backlog имеют acceptance criteria и estimation",
-    "Проверить capacity команды: учесть отпуска, больничные, частичную аллокацию",
-    "Сопоставить объём planned work с доступным capacity — если load > 80% capacity, сократить scope",
-    "Проверить зависимости: есть ли блокеры от других команд? Согласованы ли handoffs?",
-    "Отметить items, которые not ready — вернуть PO на доработку, не брать в спринт"
+  "process_steps": [
+    {
+      "step": "Product Owner / Team Lead: убедиться, что top items в backlog имеют acceptance criteria и estimation",
+      "description": ""
+    },
+    {
+      "step": "Проверить capacity команды: учесть отпуска, больничные, частичную аллокацию",
+      "description": ""
+    },
+    {
+      "step": "Сопоставить объём planned work с доступным capacity — если load > 80% capacity, сократить scope",
+      "description": ""
+    },
+    {
+      "step": "Проверить зависимости: есть ли блокеры от других команд? Согласованы ли handoffs?",
+      "description": ""
+    },
+    {
+      "step": "Отметить items, которые not ready — вернуть PO на доработку, не брать в спринт",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Backlog items без acceptance criteria берутся в спринт — scope creep",
-    "Capacity считается без учёта отпусков — перегруз",
-    "Зависимости не проверены — блокер выясняется в середине спринта"
+  "typical_failures": [
+    {
+      "failure": "Backlog items без acceptance criteria берутся в спринт — scope creep",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Capacity считается без учёта отпусков — перегруз",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Зависимости не проверены — блокер выясняется в середине спринта",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Capacity tracker",
     "Backlog readiness checklist"

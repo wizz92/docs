@@ -6,7 +6,7 @@
   "main_goal": "Все requests зарегистрированы и приоритизированы.",
   "when_used": "Непрерывно.",
   "cadence": "Continuous",
-  "trigger": [
+  "triggers": [
     "Поступление нового request"
   ],
   "inputs": [
@@ -40,13 +40,17 @@
     "Все requests зарегистрированы",
     "Первичный priority присвоен"
   ],
-  "failure_modes": [
-    "Requests теряются",
-    "Дублирование items"
-  ],
-  "deviation_response": [
-    "Единая точка входа через intake form",
-    "Дедупликация при регистрации"
+  "typical_failures": [
+    {
+      "failure": "Requests теряются",
+      "symptom": "",
+      "action": "Единая точка входа через intake form"
+    },
+    {
+      "failure": "Дублирование items",
+      "symptom": "",
+      "action": "Дедупликация при регистрации"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

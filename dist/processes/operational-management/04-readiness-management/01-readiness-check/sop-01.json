@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как проверить готовность backlog.",
   "main_goal": "Проверить готовность backlog — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "За 1-2 дня до sprint planning",
+  "triggers": [
+    "За 1-2 дня до sprint planning"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Для каждого top-priority item в backlog проверить: есть acceptance criteria? Estimation? Owner?",
-    "Проверить зависимости: есть ли blockers от других команд? Согласованы ли?",
-    "Отметить not-ready items: указать конкретно, чего не хватает (AC / estimation / dependency / scope clarity)",
-    "Not-ready items вернуть PO/owner с конкретным списком доработок и дедлайном",
-    "Обновить readiness status: % ready items из top-N приоритетных"
+  "process_steps": [
+    {
+      "step": "Для каждого top-priority item в backlog проверить: есть acceptance criteria? Estimation? Owner?",
+      "description": ""
+    },
+    {
+      "step": "Проверить зависимости: есть ли blockers от других команд? Согласованы ли?",
+      "description": ""
+    },
+    {
+      "step": "Отметить not-ready items: указать конкретно, чего не хватает (AC / estimation / dependency / scope clarity)",
+      "description": ""
+    },
+    {
+      "step": "Not-ready items вернуть PO/owner с конкретным списком доработок и дедлайном",
+      "description": ""
+    },
+    {
+      "step": "Обновить readiness status: % ready items из top-N приоритетных",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Items без AC берутся в работу — scope creep и переделки",
-    "Not-ready items не возвращаются — проблема накапливается",
-    "Readiness check формальный — все отмечены ready без реальной проверки"
+  "typical_failures": [
+    {
+      "failure": "Items без AC берутся в работу — scope creep и переделки",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Not-ready items не возвращаются — проблема накапливается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Readiness check формальный — все отмечены ready без реальной проверки",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Backlog readiness checklist"
   ],

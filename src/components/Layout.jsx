@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useMatch } from 'react-router-dom';
+import { Outlet, useMatch, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from './Sidebar';
 import BreadcrumbsNav from './Breadcrumbs';
@@ -20,6 +22,7 @@ const DRAWER_WIDTH = 280;
 export default function Layout() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hideAppBar, setHideAppBar] = useState(false);
   const { masterIndex, loading, loadDomainIndex } = useProcessData();
@@ -28,6 +31,8 @@ export default function Layout() {
   const domainId = domainMatch?.params?.domainId || null;
   const [domainIndex, setDomainIndex] = useState(null);
   const domainMeta = masterIndex?.domains?.find((d) => d.id === domainId) || null;
+
+  const [snackbar, setSnackbar] = useState('');
 
   useEffect(() => {
     if (!domainId || !masterIndex) {
@@ -93,6 +98,21 @@ export default function Layout() {
                 Портал документации процессов
               </Typography>
             </Box>
+            <Button
+              color="inherit"
+              variant="outlined"
+              size="small"
+              sx={{ mr: 1 }}
+              onClick={() => {
+                if (!domainId) {
+                  setSnackbar('Сначала выберите домен слева.');
+                  return;
+                }
+                navigate(`/domain/${domainId}/create/l2`);
+              }}
+            >
+              Создать процесс
+            </Button>
             {domainMeta && (
               <Chip
                 label={domainName}
@@ -148,6 +168,15 @@ export default function Layout() {
         />
         <Outlet />
       </Box>
+      <Snackbar
+        open={!!snackbar}
+        autoHideDuration={4000}
+        onClose={(_e, reason) => {
+          if (reason === 'clickaway') return;
+          setSnackbar('');
+        }}
+        message={snackbar}
+      />
     </Box>
   );
 }

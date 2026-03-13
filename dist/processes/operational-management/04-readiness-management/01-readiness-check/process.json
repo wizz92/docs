@@ -6,7 +6,9 @@
   "main_goal": "Работа не стартует в сыром виде — проблемы выявляются до начала, а не в процессе.",
   "when_used": "Перед стартом спринта, релиза, запуска или включением work item в plan.",
   "cadence": "Per sprint / per release / per launch",
-  "trigger": "Приближение старта работы (спринт, релиз, запуск)",
+  "triggers": [
+    "Приближение старта работы (спринт, релиз, запуск)"
+  ],
   "inputs": [
     "Work items / backlog",
     "Capacity",
@@ -48,12 +50,17 @@
     "Not-ready items отмечены",
     "Решение зафиксировано"
   ],
-  "failure_modes": [
-    "Readiness check формальный — галочки без реальной проверки",
-    "Not-ready items берутся в работу"
-  ],
-  "deviation_response": [
-    "Если > 30% items not ready — эскалировать на Operations lead"
+  "typical_failures": [
+    {
+      "failure": "Readiness check формальный — галочки без реальной проверки",
+      "symptom": "",
+      "action": "Если > 30% items not ready — эскалировать на Operations lead"
+    },
+    {
+      "failure": "Not-ready items берутся в работу",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

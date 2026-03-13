@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как согласовать ожидания между командами.",
   "main_goal": "Согласовать ожидания между командами — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Старт cross-team work / cross-functional initiative",
+  "triggers": [
+    "Старт cross-team work / cross-functional initiative"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "При старте cross-team work: явно зафиксировать что каждая сторона ожидает от другой (deliverable, format, timing)",
-    "Зафиксировать acceptance criteria: как принимающая сторона будет оценивать результат",
-    "При изменении expectations: немедленно уведомить другую сторону и пересогласовать",
-    "При конфликте ожиданий: вынести на sync / Operations lead для медиации",
-    "Зафиксировать согласование в shared doc — не в переписке"
+  "process_steps": [
+    {
+      "step": "При старте cross-team work: явно зафиксировать что каждая сторона ожидает от другой (deliverable, format, timing)",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать acceptance criteria: как принимающая сторона будет оценивать результат",
+      "description": ""
+    },
+    {
+      "step": "При изменении expectations: немедленно уведомить другую сторону и пересогласовать",
+      "description": ""
+    },
+    {
+      "step": "При конфликте ожиданий: вынести на sync / Operations lead для медиации",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать согласование в shared doc — не в переписке",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Ожидания не проговорены — каждая сторона предполагает своё",
-    "Изменения не коммуницируются — surprise при handoff",
-    "Конфликт не эскалируется — стороны молча недовольны"
+  "typical_failures": [
+    {
+      "failure": "Ожидания не проговорены — каждая сторона предполагает своё",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Изменения не коммуницируются — surprise при handoff",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Конфликт не эскалируется — стороны молча недовольны",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Initiative owner / Team Leads",
   "version": "2.0",

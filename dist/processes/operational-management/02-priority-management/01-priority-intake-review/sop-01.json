@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как подать и зарегистрировать приоритетный запрос.",
   "main_goal": "Подать и зарегистрировать приоритетный запрос — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Появление потребности в приоритетном включении работы",
+  "triggers": [
+    "Появление потребности в приоритетном включении работы"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Заполнить priority intake form: что нужно, зачем, к какому сроку, impact (high/medium/low), urgency (high/medium/low)",
-    "Указать, какую цель или инициативу затрагивает запрос",
-    "Для urgent request: отметить флаг «urgent» и указать, что произойдёт если не сделать в ближайшие 1-2 дня",
-    "Отправить форму — запрос попадает в intake log автоматически",
-    "Если запрос пришёл через чат/устно — Operations lead переносит в log и просит заявителя дозаполнить"
+  "process_steps": [
+    {
+      "step": "Заполнить priority intake form: что нужно, зачем, к какому сроку, impact (high/medium/low), urgency (high/medium/low)",
+      "description": ""
+    },
+    {
+      "step": "Указать, какую цель или инициативу затрагивает запрос",
+      "description": ""
+    },
+    {
+      "step": "Для urgent request: отметить флаг «urgent» и указать, что произойдёт если не сделать в ближайшие 1-2 дня",
+      "description": ""
+    },
+    {
+      "step": "Отправить форму — запрос попадает в intake log автоматически",
+      "description": ""
+    },
+    {
+      "step": "Если запрос пришёл через чат/устно — Operations lead переносит в log и просит заявителя дозаполнить",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Запрос без impact — невозможно провести triage",
-    "Urgent флаг ставится на всё — обесценивается",
-    "Запрос подан только устно — теряется"
+  "typical_failures": [
+    {
+      "failure": "Запрос без impact — невозможно провести triage",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Urgent флаг ставится на всё — обесценивается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Запрос подан только устно — теряется",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Priority intake form (Confluence / Jira)"
   ],

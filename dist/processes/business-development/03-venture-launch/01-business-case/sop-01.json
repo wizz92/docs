@@ -5,7 +5,9 @@
   "description": "Написать структурированный business case.",
   "main_goal": "Написать структурированный business case.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Решение о подготовке business case",
+  "triggers": [
+    "Решение о подготовке business case"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,13 +16,31 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Собрать validation data и market insights",
-    "Описать opportunity и target customer",
-    "Построить financial model: 3 сценария",
-    "Определить required resources и timeline",
-    "Описать ключевые risks и mitigations",
-    "Согласовать с CFO"
+  "process_steps": [
+    {
+      "step": "Собрать validation data и market insights",
+      "description": ""
+    },
+    {
+      "step": "Описать opportunity и target customer",
+      "description": ""
+    },
+    {
+      "step": "Построить financial model: 3 сценария",
+      "description": ""
+    },
+    {
+      "step": "Определить required resources и timeline",
+      "description": ""
+    },
+    {
+      "step": "Описать ключевые risks и mitigations",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с CFO",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -32,13 +52,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

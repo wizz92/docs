@@ -8,8 +8,9 @@ import DomainPage from './pages/DomainPage';
 import L2Page from './pages/L2Page';
 import L3Page from './pages/L3Page';
 import SopPage from './pages/SopPage';
-import ArchitecturePage from './pages/ArchitecturePage';
 import RegistryPage from './pages/RegistryPage';
+import DictionariesPage from './pages/DictionariesPage';
+import EditorPage from './pages/EditorPage';
 
 export default function App() {
   return (
@@ -19,12 +20,18 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<DomainsPage />} />
-            <Route path="architecture" element={<ArchitecturePage />} />
             <Route path="registry" element={<RegistryPage />} />
+            <Route path="dictionaries" element={<DictionariesPage />} />
             <Route path="domain/:domainId" element={<DomainPage />} />
+            <Route path="domain/:domainId/create/l2" element={<EditorPage />} />
             <Route path="domain/:domainId/l2/:l2Folder" element={<L2Page />} />
+            <Route path="domain/:domainId/l2/:l2Folder/edit" element={<EditorPage />} />
+            <Route path="domain/:domainId/l2/:l2Folder/create/l3" element={<EditorPage />} />
             <Route path="domain/:domainId/l3/:l2Folder/:l3Folder" element={<L3Page />} />
+            <Route path="domain/:domainId/l3/:l2Folder/:l3Folder/edit" element={<EditorPage />} />
+            <Route path="domain/:domainId/l3/:l2Folder/:l3Folder/create/sop" element={<EditorPage />} />
             <Route path="domain/:domainId/sop/:l2Folder/:l3Folder/:sopFile" element={<SopPage />} />
+            <Route path="domain/:domainId/sop/:l2Folder/:l3Folder/:sopFile/edit" element={<EditorPage />} />
           </Route>
         </Routes>
       </HashRouter>

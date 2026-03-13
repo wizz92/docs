@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как определить milestones и вести milestone tracker.",
   "main_goal": "Определить milestones и вести milestone tracker — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Старт инициативы / начало квартала",
+  "triggers": [
+    "Старт инициативы / начало квартала"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "При старте инициативы: определить key milestones (3-7 штук) с датами, owners и deliverables",
-    "Milestone = значимый промежуточный результат, не просто задача. Пример: «MVP ready for testing», не «написать код модуля X»",
-    "Завести milestone tracker: milestone, planned date, actual date, status (on track / at risk / missed), owner",
-    "Обновлять статус каждый спринт / каждую неделю",
-    "При risk to milestone: отметить risk сразу, не ждать даты"
+  "process_steps": [
+    {
+      "step": "При старте инициативы: определить key milestones (3-7 штук) с датами, owners и deliverables",
+      "description": ""
+    },
+    {
+      "step": "Milestone = значимый промежуточный результат, не просто задача. Пример: «MVP ready for testing», не «написать код модуля X»",
+      "description": ""
+    },
+    {
+      "step": "Завести milestone tracker: milestone, planned date, actual date, status (on track / at risk / missed), owner",
+      "description": ""
+    },
+    {
+      "step": "Обновлять статус каждый спринт / каждую неделю",
+      "description": ""
+    },
+    {
+      "step": "При risk to milestone: отметить risk сразу, не ждать даты",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,12 +38,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Milestones слишком мелкие (= tasks) — tracking overhead без value",
-    "Milestones слишком абстрактные — непонятно, как проверить completion",
-    "Status обновляется только когда milestone пропущен — поздно"
+  "typical_failures": [
+    {
+      "failure": "Milestones слишком мелкие (= tasks) — tracking overhead без value",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Milestones слишком абстрактные — непонятно, как проверить completion",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Status обновляется только когда milestone пропущен — поздно",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Initiative owner",
   "version": "2.0",

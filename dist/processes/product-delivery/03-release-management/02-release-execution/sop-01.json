@@ -5,7 +5,9 @@
   "description": "Выполнить deployment в production.",
   "main_goal": "Выполнить deployment в production.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Go decision получен",
+  "triggers": [
+    "Go decision получен"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,12 +16,27 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Уведомить команду о начале deployment",
-    "Запустить deployment по runbook",
-    "Мониторить logs и metrics",
-    "Подтвердить success или trigger rollback",
-    "Уведомить stakeholders о результате"
+  "process_steps": [
+    {
+      "step": "Уведомить команду о начале deployment",
+      "description": ""
+    },
+    {
+      "step": "Запустить deployment по runbook",
+      "description": ""
+    },
+    {
+      "step": "Мониторить logs и metrics",
+      "description": ""
+    },
+    {
+      "step": "Подтвердить success или trigger rollback",
+      "description": ""
+    },
+    {
+      "step": "Уведомить stakeholders о результате",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -31,13 +48,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

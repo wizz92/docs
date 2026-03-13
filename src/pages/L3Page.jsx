@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
 import ProcessSteps from '../components/ProcessSteps';
@@ -34,8 +38,31 @@ export default function L3Page() {
 
   return (
     <Box>
-      <Chip label="L3 Подпроцесс" size="small" color="secondary" sx={{ mb: 1 }} />
-      <Typography variant="h4" gutterBottom>{l3Entry.name}</Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1.5,
+          mb: 2,
+          flexWrap: 'wrap',
+        }}
+      >
+        <Typography variant="h4" sx={{ mr: 1 }}>
+          {l3Entry.name}
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Chip label="L3 Подпроцесс" size="small" color="secondary" />
+          <IconButton
+            component={RouterLink}
+            to={`/domain/${domainId}/l3/${l2Folder}/${l3Folder}/edit`}
+            size="small"
+            color="primary"
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+        </Box>
+      </Box>
 
       {l3Data ? (
         <>
@@ -62,12 +89,23 @@ export default function L3Page() {
             </>
           )}
 
-          {/* 4. Подпроцессы */}
+          {/* 4. SOPs */}
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 5, mb: 2 }}>
+            <SectionHeading caption="Дочерние процессы следующего уровня">
+              Подпроцессы
+            </SectionHeading>
+            <Button
+              component={RouterLink}
+              to={`/domain/${domainId}/l3/${l2Folder}/${l3Folder}/create/sop`}
+              size="small"
+              variant="outlined"
+              startIcon={<AddIcon />}
+            >
+              Create SOP
+            </Button>
+          </Box>
           {l3Entry.sops?.length > 0 && (
             <>
-              <SectionHeading caption="Дочерние процессы следующего уровня">
-                Подпроцессы
-              </SectionHeading>
               <SubprocessTable
                 rows={l3Entry.sops.map((sop) => ({
                   key: sop.file,

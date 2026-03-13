@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
@@ -42,12 +44,35 @@ export default function SopPage() {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.5 }}>
-        <Chip label="SOP Инструкция" size="small" color="warning" />
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1.5,
+          mb: 1,
+        }}
+      >
+        <Typography variant="h4" sx={{ mr: 1 }}>
+          {sopEntry.name}
+        </Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 0.75 }}>
+          <Chip label="SOP Инструкция" size="small" color="warning" />
+          <IconButton
+            component={RouterLink}
+            to={`/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}/edit`}
+            size="small"
+            color="primary"
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+        </Box>
+      </Box>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 0.75, mb: 1.5 }}>
         {l2Entry && <Chip label={l2Entry.name} size="small" variant="outlined" />}
         {l3Entry && <Chip label={l3Entry.name} size="small" variant="outlined" />}
       </Box>
-      <Typography variant="h4" gutterBottom>{sopEntry.name}</Typography>
 
       {sopData ? (
         <>

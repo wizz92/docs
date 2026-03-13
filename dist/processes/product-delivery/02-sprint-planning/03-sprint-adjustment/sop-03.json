@@ -5,7 +5,9 @@
   "description": "Провести checkpoint посередине спринта.",
   "main_goal": "Провести checkpoint посередине спринта.",
   "when_used": "По триггеру процесса.",
-  "trigger": "Середина спринта",
+  "triggers": [
+    "Середина спринта"
+  ],
   "preconditions": [
     "Определены ответственные",
     "Доступны необходимые данные и инструменты"
@@ -14,11 +16,23 @@
     "Данные предыдущего этапа",
     "Регламент / шаблон"
   ],
-  "steps": [
-    "Оценить % completion vs plan",
-    "Обсудить top risks с командой",
-    "При необходимости — scope adjustment через PO",
-    "Зафиксировать actions"
+  "process_steps": [
+    {
+      "step": "Оценить % completion vs plan",
+      "description": ""
+    },
+    {
+      "step": "Обсудить top risks с командой",
+      "description": ""
+    },
+    {
+      "step": "При необходимости — scope adjustment через PO",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать actions",
+      "description": ""
+    }
   ],
   "outputs": [
     "Результат выполнения",
@@ -30,13 +44,17 @@
     "Stakeholders уведомлены"
   ],
   "sla": "Согласно регламенту процесса",
-  "typical_errors": [
-    "Пропущен шаг процедуры",
-    "Неполные входные данные"
-  ],
-  "exception_handling": [
-    "Уведомить owner процесса",
-    "Зафиксировать отклонение и причину"
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
   ],
   "linked_templates_forms_links": [
     "Шаблон в Confluence"

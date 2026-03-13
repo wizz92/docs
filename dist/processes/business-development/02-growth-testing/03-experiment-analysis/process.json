@@ -6,7 +6,7 @@
   "main_goal": "Решение по гипотезе: scale / pivot / kill.",
   "when_used": "После завершения эксперимента.",
   "cadence": "Per experiment",
-  "trigger": [
+  "triggers": [
     "Эксперимент завершён, данные собраны"
   ],
   "inputs": [
@@ -43,13 +43,17 @@
     "Рекомендация сформулирована",
     "Решение принято"
   ],
-  "failure_modes": [
-    "Анализ поверхностный",
-    "Confirmation bias"
-  ],
-  "deviation_response": [
-    "Требовать statistical significance",
-    "Привлечь independent reviewer"
+  "typical_failures": [
+    {
+      "failure": "Анализ поверхностный",
+      "symptom": "",
+      "action": "Требовать statistical significance"
+    },
+    {
+      "failure": "Confirmation bias",
+      "symptom": "",
+      "action": "Привлечь independent reviewer"
+    }
   ],
   "version": "1.0",
   "updated_at": "2026-03-12"

@@ -5,15 +5,32 @@
   "description": "Практическая инструкция: как утвердить и опубликовать roadmap.",
   "main_goal": "Утвердить и опубликовать roadmap — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Roadmap session завершена",
+  "triggers": [
+    "Roadmap session завершена"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "После сессии: финализировать roadmap документ с учётом всех решений (в тот же день)",
-    "Отправить финальную версию CEO на утверждение",
-    "После утверждения: опубликовать Roadmap в Confluence / wiki",
-    "Отправить уведомление всем Team Leads и Heads с ссылкой и summary ключевых решений",
-    "Убедиться, что каждый owner подтвердил свою часть roadmap"
+  "process_steps": [
+    {
+      "step": "После сессии: финализировать roadmap документ с учётом всех решений (в тот же день)",
+      "description": ""
+    },
+    {
+      "step": "Отправить финальную версию CEO на утверждение",
+      "description": ""
+    },
+    {
+      "step": "После утверждения: опубликовать Roadmap в Confluence / wiki",
+      "description": ""
+    },
+    {
+      "step": "Отправить уведомление всем Team Leads и Heads с ссылкой и summary ключевых решений",
+      "description": ""
+    },
+    {
+      "step": "Убедиться, что каждый owner подтвердил свою часть roadmap",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -21,11 +38,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "1 рабочий день после сессии",
-  "typical_errors": [
-    "Публикация задерживается — команды начинают спринт без roadmap",
-    "Не все owners подтвердили свою часть — ответственность размыта"
+  "typical_failures": [
+    {
+      "failure": "Публикация задерживается — команды начинают спринт без roadmap",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не все owners подтвердили свою часть — ответственность размыта",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [
     "Roadmap (Confluence)",
     "Notification template"

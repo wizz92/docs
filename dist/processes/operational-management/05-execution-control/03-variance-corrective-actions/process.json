@@ -6,7 +6,9 @@
   "main_goal": "Отклонения проанализированы, root causes понятны, corrective actions назначены и контролируются.",
   "when_used": "При выявлении значимого отклонения от плана.",
   "cadence": "По необходимости + на каждом goal/initiative review",
-  "trigger": "Статус behind / at risk / off track",
+  "triggers": [
+    "Статус behind / at risk / off track"
+  ],
   "inputs": [
     "Goal/initiative status",
     "Progress data",
@@ -44,12 +46,17 @@
     "Root cause определён",
     "Corrective action назначен с owner и due date"
   ],
-  "failure_modes": [
-    "Отклонение отмечено, но не проанализировано",
-    "Corrective action не имеет owner — не выполняется"
-  ],
-  "deviation_response": [
-    "Если corrective action не выполнен к due date — эскалировать"
+  "typical_failures": [
+    {
+      "failure": "Отклонение отмечено, но не проанализировано",
+      "symptom": "",
+      "action": "Если corrective action не выполнен к due date — эскалировать"
+    },
+    {
+      "failure": "Corrective action не имеет owner — не выполняется",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

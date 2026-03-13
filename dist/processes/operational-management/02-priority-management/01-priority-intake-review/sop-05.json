@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: как определить и включить urgent work.",
   "main_goal": "Определить и включить urgent work — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Поступление запроса с флагом urgent",
+  "triggers": [
+    "Поступление запроса с флагом urgent"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Проверить критерии urgent: критичный баг в production / блокер для revenue / compliance deadline / safety issue",
-    "Если не подходит под критерии — направить в обычный intake process",
-    "Если urgent подтверждён: определить, какую плановую работу вытесняет (не просто «добавить сверху»)",
-    "Согласовать с Team Lead вытеснение: что откладывается, какой impact на sprint goal",
-    "Зафиксировать в sprint backlog: urgent item добавлен, вытесненный item отмечен",
-    "После завершения urgent work: провести brief review — была ли ургентность реальной, можно ли предотвратить в будущем"
+  "process_steps": [
+    {
+      "step": "Проверить критерии urgent: критичный баг в production / блокер для revenue / compliance deadline / safety issue",
+      "description": ""
+    },
+    {
+      "step": "Если не подходит под критерии — направить в обычный intake process",
+      "description": ""
+    },
+    {
+      "step": "Если urgent подтверждён: определить, какую плановую работу вытесняет (не просто «добавить сверху»)",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с Team Lead вытеснение: что откладывается, какой impact на sprint goal",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать в sprint backlog: urgent item добавлен, вытесненный item отмечен",
+      "description": ""
+    },
+    {
+      "step": "После завершения urgent work: провести brief review — была ли ургентность реальной, можно ли предотвратить в будущем",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,12 +42,23 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "Решение о включении — в тот же рабочий день",
-  "typical_errors": [
-    "Urgent work добавляется без вытеснения — перегруз команды",
-    "Всё называется urgent — слово теряет смысл",
-    "Причина ургентности не анализируется — повторяется"
+  "typical_failures": [
+    {
+      "failure": "Urgent work добавляется без вытеснения — перегруз команды",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Всё называется urgent — слово теряет смысл",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Причина ургентности не анализируется — повторяется",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Operations lead / Team Lead",
   "version": "2.0",

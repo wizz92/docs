@@ -13,7 +13,6 @@
   ],
   "inputs": [
     "Цели периода",
-    "Портфель инициатив",
     "Capacity команд",
     "Текущий статус работ",
     "Зависимости"
@@ -74,5 +73,11 @@
   "review_cadence": "Quarterly review of process; monthly review of effectiveness",
   "access_level": "Management / leads",
   "version": "2.0",
-  "updated_at": "2026-03-12"
+  "updated_at": "2026-03-13",
+  "process_steps": [
+    {
+      "step": "Test",
+      "description": "test test test test test test test "
+    }
+  ]
 }

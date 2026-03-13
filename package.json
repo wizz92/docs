@@ -5,8 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "node server/index.js",
+    "dev:all": "npm run dev:server & npm run dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "NODE_ENV=production node server/index.js",
+    "db:seed": "node scripts/seedEmbeddedDbFromJson.mjs",
+    "db:verify": "node scripts/verifyDbParity.mjs",
+    "db:rebuild-dict": "node scripts/rebuildDictionariesFromDb.mjs",
+    "db:migrate": "npm run db:seed && npm run db:verify && npm run db:rebuild-dict"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -14,6 +21,8 @@
     "@mui/icons-material": "^7.3.9",
     "@mui/material": "^7.3.9",
     "@vitejs/plugin-react": "^5.1.4",
+    "express": "^5.2.1",
+    "nedb-promises": "^6.2.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",

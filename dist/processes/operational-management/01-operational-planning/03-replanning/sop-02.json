@@ -5,16 +5,36 @@
   "description": "Практическая инструкция: что делать, если capacity ниже ожидаемой.",
   "main_goal": "Что делать, если capacity ниже ожидаемой — выполнено.",
   "when_used": "По наступлении триггера.",
-  "trigger": "Capacity пересчёт показал значительный deficit vs план",
+  "triggers": [
+    "Capacity пересчёт показал значительный deficit vs план"
+  ],
   "preconditions": [],
   "inputs": [],
-  "steps": [
-    "Пересчитать реальный capacity: учесть незапланированные отпуска, болезни, аллокации",
-    "Сопоставить с planned scope: какой deficit?",
-    "Если deficit < 15%: убрать lowest-priority items из sprint backlog",
-    "Если deficit > 15%: эскалировать на Operations lead — обсудить варианты: сократить scope, сдвинуть сроки, перебросить ресурсы",
-    "Обновить sprint backlog и sprint goal, уведомить стейкхолдеров об изменениях",
-    "Зафиксировать причину capacity drop для анализа на ретро"
+  "process_steps": [
+    {
+      "step": "Пересчитать реальный capacity: учесть незапланированные отпуска, болезни, аллокации",
+      "description": ""
+    },
+    {
+      "step": "Сопоставить с planned scope: какой deficit?",
+      "description": ""
+    },
+    {
+      "step": "Если deficit < 15%: убрать lowest-priority items из sprint backlog",
+      "description": ""
+    },
+    {
+      "step": "Если deficit > 15%: эскалировать на Operations lead — обсудить варианты: сократить scope, сдвинуть сроки, перебросить ресурсы",
+      "description": ""
+    },
+    {
+      "step": "Обновить sprint backlog и sprint goal, уведомить стейкхолдеров об изменениях",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать причину capacity drop для анализа на ретро",
+      "description": ""
+    }
   ],
   "outputs": [],
   "result_location": "Jira / Confluence / трекер",
@@ -22,11 +42,18 @@
     "Все шаги выполнены, результат зафиксирован"
   ],
   "sla": "В рамках текущего цикла",
-  "typical_errors": [
-    "Capacity drop игнорируется — команда берёт прежний объём и срывает commitments",
-    "Причина не анализируется — ситуация повторяется"
+  "typical_failures": [
+    {
+      "failure": "Capacity drop игнорируется — команда берёт прежний объём и срывает commitments",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Причина не анализируется — ситуация повторяется",
+      "symptom": "",
+      "action": ""
+    }
   ],
-  "exception_handling": [],
   "linked_templates_forms_links": [],
   "owner": "Team Lead",
   "version": "2.0",

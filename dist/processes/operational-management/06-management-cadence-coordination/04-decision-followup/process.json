@@ -6,7 +6,9 @@
   "main_goal": "Решения не теряются, actions выполняются, конфликты разрешаются.",
   "when_used": "После каждого review, при возникновении межкомандных конфликтов.",
   "cadence": "Weekly",
-  "trigger": "Решение принято на review / межкомандный конфликт",
+  "triggers": [
+    "Решение принято на review / межкомандный конфликт"
+  ],
   "inputs": [
     "Review decisions",
     "Action items",
@@ -44,12 +46,17 @@
     "Overdue actions эскалированы",
     "Conflicts resolved"
   ],
-  "failure_modes": [
-    "Actions не трекаются — теряются между review",
-    "Conflicts не разрешаются — копятся"
-  ],
-  "deviation_response": [
-    "Overdue action > 1 неделя — эскалировать на ops review"
+  "typical_failures": [
+    {
+      "failure": "Actions не трекаются — теряются между review",
+      "symptom": "",
+      "action": "Overdue action > 1 неделя — эскалировать на ops review"
+    },
+    {
+      "failure": "Conflicts не разрешаются — копятся",
+      "symptom": "",
+      "action": ""
+    }
   ],
   "version": "2.0",
   "updated_at": "2026-03-12"

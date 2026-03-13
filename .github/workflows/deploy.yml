@@ -55,10 +55,23 @@ jobs:
 
             echo "📌 Node.js версия: $(node -v)"
 
-            echo "🔨 Сборка проекта..."
+            echo "📦 Установка зависимостей..."
+            npm install --production=false
+
+            echo "🔨 Сборка фронтенда..."
             npm run build
 
+            echo "🚀 Перезапуск сервера через PM2..."
+            if pm2 describe docs > /dev/null 2>&1; then
+              pm2 restart docs
+            else
+              pm2 start server/index.js --name docs
+            fi
+            pm2 save
+
             echo "✅ Деплой завершен успешно!"
+            echo "📋 Статус сервера:"
+            pm2 status docs
           ENDSSH
 
       - name: ✅ Deployment status

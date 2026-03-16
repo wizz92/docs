@@ -23,6 +23,7 @@ export default function App() {
             <Route path="registry" element={<RegistryPage />} />
             <Route path="dictionaries" element={<DictionariesPage />} />
             <Route path="domain/:domainId" element={<DomainPage />} />
+            <Route path="domain/:domainId/l1/edit" element={<EditorPage />} />
             <Route path="domain/:domainId/create/l2" element={<EditorPage />} />
             <Route path="domain/:domainId/l2/:l2Folder" element={<L2Page />} />
             <Route path="domain/:domainId/l2/:l2Folder/edit" element={<EditorPage />} />

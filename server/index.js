@@ -1,7 +1,9 @@
+import 'dotenv/config';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import processRoutes from './routes/processes.js';
+import { connect as connectMongo } from './services/db/mongoClient.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -22,6 +24,17 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(PUBLIC));
 }
 
-app.listen(PORT, () => {
-  console.log(`Process Editor API running on http://localhost:${PORT}`);
+async function start() {
+  if (process.env.DATA_BACKEND === 'mongodb') {
+    await connectMongo();
+    console.log('MongoDB connected');
+  }
+  app.listen(PORT, () => {
+    console.log(`Process Editor API running on http://localhost:${PORT}`);
+  });
+}
+
+start().catch((err) => {
+  console.error('Server failed to start:', err);
+  process.exit(1);
 });

@@ -1,20 +1,23 @@
 import { JsonProcessRepository } from './jsonProcessRepository.js';
 import { JsonTemplateRepository } from './jsonTemplateRepository.js';
 import { JsonDictionaryRepository } from './jsonDictionaryRepository.js';
-import { DbProcessRepository } from './dbProcessRepository.js';
-import { DbDictionaryRepository } from './dbDictionaryRepository.js';
+import { MongoProcessRepository } from './mongoProcessRepository.js';
+import { MongoDictionaryRepository } from './mongoDictionaryRepository.js';
 
-// Select backend: 'embedded-db' (default) or 'json'
-const backend = process.env.DATA_BACKEND || 'embedded-db';
+const backend = process.env.DATA_BACKEND || 'json';
+
+if (backend === 'mongodb' && !process.env.MONGODB_URI) {
+  throw new Error('MONGODB_URI is required when DATA_BACKEND=mongodb');
+}
 
 let processRepository;
 let templateRepository;
 let dictionaryRepository;
 
-if (backend === 'embedded-db') {
-  processRepository = new DbProcessRepository();
+if (backend === 'mongodb') {
+  processRepository = new MongoProcessRepository();
   templateRepository = new JsonTemplateRepository();
-  dictionaryRepository = new DbDictionaryRepository();
+  dictionaryRepository = new MongoDictionaryRepository();
 } else {
   processRepository = new JsonProcessRepository();
   templateRepository = new JsonTemplateRepository();
@@ -22,4 +25,3 @@ if (backend === 'embedded-db') {
 }
 
 export { processRepository, templateRepository, dictionaryRepository };
-

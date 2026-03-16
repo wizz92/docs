@@ -39,7 +39,8 @@ export default function DictionariesPage() {
       const json = await res.json();
       const normalized = {};
       KEYS.forEach((k) => {
-        normalized[k] = Array.isArray(json[k]) ? json[k] : [];
+        const arr = Array.isArray(json[k]) ? json[k] : [];
+        normalized[k] = arr.map((t) => (typeof t === 'string' ? t : (t && t.label) || '')).filter(Boolean);
       });
       setData(normalized);
       setOriginal(normalized);

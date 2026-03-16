@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Field from './Field';
 import ChipList from './ChipList';
+import DoneCriteriaList from './DoneCriteriaList';
 
 export default function SopCard({ data }) {
   if (!data) return null;
@@ -29,7 +30,7 @@ export default function SopCard({ data }) {
             <ChipList label="Preconditions" items={data.preconditions} />
             <ChipList label="Входы (inputs)" items={data.inputs} />
             <ChipList label="Выходы (outputs)" items={data.outputs} color="secondary" />
-            <ChipList label="Done criteria" items={data.done_criteria} color="success" />
+            <DoneCriteriaList label="Done criteria" items={data.done_criteria} />
           </Grid>
 
           <Grid item xs={12} md={7}>

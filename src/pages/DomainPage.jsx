@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import AddIcon from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
+import ProcessMediaSection from '../components/ProcessMediaSection';
 import FailuresTable from '../components/FailuresTable';
 import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 
 function StatCard({ label, value }) {
@@ -45,6 +49,7 @@ function computeStats(index) {
 
 export default function DomainPage() {
   const { domainId } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, domainMeta, loading, error, loadJson } = useDomainData(domainId);
   const [l1Data, setL1Data] = useState(null);
 
@@ -66,9 +71,43 @@ export default function DomainPage() {
       <Paper variant="outlined" sx={{ p: { xs: 2.5, md: 3.5 }, mb: 4, bgcolor: 'grey.50' }}>
         <Grid container spacing={3} alignItems="center">
           <Grid item xs={12} md={7}>
-            <Typography variant="h4" fontWeight={700} gutterBottom>
-              {domainMeta?.name_ru || domainIndex.l1?.name}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+              <Typography variant="h4" fontWeight={700}>
+                {domainMeta?.name_ru || domainIndex.l1?.name}
+              </Typography>
+              <Chip label="L1 Процесс" size="small" color="primary" />
+              {l1Data?.archived && (
+                <Chip label="Архивный" size="small" color="default" variant="outlined" />
+              )}
+              <IconButton
+                component={RouterLink}
+                to={`/domain/${domainId}/l1/edit`}
+                size="small"
+                color="primary"
+              >
+                <EditIcon fontSize="small" />
+              </IconButton>
+              {!l1Data?.archived && (
+                <Button
+                  size="small"
+                  color="error"
+                  onClick={async () => {
+                    // eslint-disable-next-line no-alert
+                    const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L1 процесс (мягкое удаление)? Его можно будет восстановить позже, но он исчезнет из навигации.');
+                    if (!confirmed) return;
+                    try {
+                      const redirect = await archiveProcess('process_l1', { domainId });
+                      if (redirect) navigate(redirect);
+                    } catch (e) {
+                      // eslint-disable-next-line no-alert
+                      window.alert(e.message || 'Не удалось заархивировать процесс');
+                    }
+                  }}
+                >
+                  Archive
+                </Button>
+              )}
+            </Box>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 1.5, maxWidth: 560 }}>
               {domainMeta?.description_ru || l1Data?.description}
             </Typography>
@@ -146,7 +185,10 @@ export default function DomainPage() {
             </>
           )}
 
-          {/* 6. Риски и реагирование */}
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={l1Data} />
+
+          {/* 7. Риски и реагирование */}
           {l1Data.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">

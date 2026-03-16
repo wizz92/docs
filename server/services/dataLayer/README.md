@@ -1,35 +1,45 @@
-## Data layer and future DB migration
+## Data layer
 
-This folder contains storage-agnostic repositories and their JSON-backed implementations:
+This folder contains storage-agnostic repositories and their implementations:
 
 - `repositories.js` – JSDoc typedefs for `ProcessRepository`, `TemplateRepository`, and `DictionaryRepository`.
-- `jsonProcessRepository.js` – implements `ProcessRepository` using the existing `public/processes/**` JSON tree, `folderManager`, and `indexUpdater`.
-- `jsonTemplateRepository.js` – implements `TemplateRepository` over the `templates/template-*.json` files.
-- `jsonDictionaryRepository.js` – implements `DictionaryRepository` over `public/dictionaries/dictionaries.json` and the dictionary scanner.
-- `index.js` – exports singleton instances: `processRepository`, `templateRepository`, `dictionaryRepository`, currently always JSON-backed, with a `DATA_BACKEND` switch point for future databases.
+- `index.js` – exports singleton instances based on `DATA_BACKEND` env var (`json` or `mongodb`).
 
-### Follow-up: align frontend reads to the data layer
+### JSON backend (default)
 
-Currently the frontend hooks:
+- `jsonProcessRepository.js` – implements `ProcessRepository` using the `public/processes/**` JSON tree.
+- `jsonDictionaryRepository.js` – implements `DictionaryRepository` over `public/dictionaries/dictionaries.json`.
+- `jsonTemplateRepository.js` – implements `TemplateRepository` over `templates/template-*.json` files.
 
-- `src/hooks/useProcessData.js`
-- `src/hooks/useProcessEditor.js`
+### MongoDB backend
 
-still read JSON directly from `/processes/**` (served from `public/processes/**`) for most view operations, and only use the `/api/processes/**` endpoints for writes.
+- `mongoProcessRepository.js` – implements `ProcessRepository` using Mongoose (`ProcessDocument`, `MasterIndex`).
+- `mongoDictionaryRepository.js` – implements `DictionaryRepository` using Mongoose (`Dictionary`).
+- Templates stay file-based (`jsonTemplateRepository.js`) for all backends.
 
-To fully decouple the app from JSON files and prepare for a Mongo-like backend:
+### Helpers
 
-1. **Add read endpoints backed by `ProcessRepository`**  
-   - e.g. `GET /api/processes/:domainId/index` → `processRepository.getDomainIndex(domainId)`  
-   - e.g. `GET /api/processes/:domainId/path/*rest` → `processRepository.getProcessByPath(domainId, rest)`
+- `processRepositoryHelpers.js` – shared utilities: `buildDomainTree`, `nextNumberedFolder`, `nextSopFileName`, `toKebab`.
+- `rebuildDictionariesFromDb.js` – aggregates strings from process data and rebuilds the dictionary.
 
-2. **Switch `useProcessData` to use the API instead of static JSON**  
-   - Replace `fetch('/processes/index.json')` with `fetch('/api/processes')`.  
-   - Replace per-domain index fetches like `/processes/<domainId>/index.json` with `/api/processes/<domainId>` or the new `index` endpoint.  
-   - For detailed JSON loads, route them through the new `path/*` API endpoint.
+### Switching to MongoDB
 
-3. **Keep URLs and response shapes stable**  
-   - Ensure the API responses match the current JSON structures so pages do not need to change their expectations.
+1. Install and start MongoDB (local: `brew services start mongodb-community`, or use Atlas).
+2. Set env vars in `.env`:
+   ```
+   DATA_BACKEND=mongodb
+   MONGODB_URI=mongodb://localhost:27017/processportal
+   ```
+3. Run the migration to import JSON data: `npm run db:seed-mongo`
+   - For incremental re-runs without wiping: `npm run db:seed-mongo -- --upsert`
+4. Start the server: `npm run dev:server`
 
-Once these steps are done, turning on a DB-backed implementation (by adding e.g. a `MongoProcessRepository` and wiring it into `DATA_BACKEND=db`) will transparently move all reads and writes off the filesystem while keeping the rest of the app unchanged.
+The frontend requires no code changes when switching: it uses only the `/api/processes` and `/api/dictionaries` endpoints, which have the same response shape for both backends. The app bar shows a "Data: JSON" or "Data: MongoDB" indicator (from `GET /api/backend`) so you can confirm which backend is active.
 
+### Rebuilding dictionaries
+
+- `npm run db:rebuild-dict` – rebuilds dictionaries from process data (works for both JSON and MongoDB backends).
+
+### Schema
+
+See `schema.md` for the full MongoDB collection and field documentation.

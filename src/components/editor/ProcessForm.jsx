@@ -13,6 +13,7 @@ import StringArrayInput from './StringArrayInput';
 import ObjectArrayInput from './ObjectArrayInput';
 import AutocompleteArrayInput from './AutocompleteArrayInput';
 import AutocompleteInput from './AutocompleteInput';
+import { DRAWER_WIDTH } from '../Layout';
 
 const STEP_FIELDS = [
   { key: 'step', label: 'Step (3-5 words)' },
@@ -32,6 +33,11 @@ const RHYTHM_FIELDS = [
   { key: 'result', label: 'Result' },
 ];
 
+const MATERIALS_FIELDS = [
+  { key: 'label', label: 'Название материала' },
+  { key: 'url', label: 'URL' },
+];
+
 const LABELS = {
   name: 'Название', purpose: 'Назначение', description: 'Описание',
   main_goal: 'Основная цель', when_used: 'Когда используется',
@@ -47,11 +53,29 @@ const LABELS = {
   linked_templates_forms_links: 'Шаблоны / ссылки',
   process_steps: 'Этапы процесса', typical_failures: 'Типовые сбои',
   process_rhythm: 'Ритм процесса',
+  video_guides: 'Видео-инструкции',
+  additional_materials: 'Дополнительные материалы',
 };
 
-const AUTO_MANAGED = new Set(['linked_sop', 'linked_l3_subprocesses', 'type', 'version', 'updated_at']);
+const AUTO_MANAGED = new Set(['linked_sop', 'linked_l3_subprocesses', 'type', 'version', 'updated_at', 'archived']);
+
+/** Dictionary values may be string[] (legacy) or { id, label }[]; return labels for options. */
+function getDictionaryLabels(dictionary, key) {
+  const arr = dictionary[key];
+  if (!Array.isArray(arr)) return [];
+  return arr.map((t) => (typeof t === 'string' ? t : (t && t.label) || ''));
+}
 
 const FIELD_ORDER = {
+  process_l1: [
+    '_section:Идентификация', 'name', 'purpose', 'description', 'main_goal',
+    '_section:Контекст', 'scope', 'when_used', 'owner', 'access_level', 'review_cadence',
+    '_section:Триггеры и I/O', 'triggers', 'inputs', 'outputs',
+    '_section:Участники', 'participants',
+    '_section:Этапы процесса', 'process_steps',
+    '_section:Связи', 'linked_meetings', 'linked_artifacts', 'linked_systems', 'metrics_signals',
+    '_section:Материалы', 'video_guides', 'additional_materials',
+  ],
   process_l2: [
     '_section:Идентификация', 'name', 'purpose', 'description', 'main_goal',
     '_section:Контекст', 'when_used', 'owner', 'access_level', 'review_cadence',
@@ -61,6 +85,7 @@ const FIELD_ORDER = {
     '_section:Ритм процесса', 'process_rhythm',
     '_section:Типовые сбои', 'typical_failures',
     '_section:Связи', 'linked_meetings', 'linked_artifacts', 'linked_systems', 'metrics_signals',
+    '_section:Материалы', 'video_guides', 'additional_materials',
     '_section:Автоуправляемые (read-only)', 'linked_l3_subprocesses', 'linked_sop',
   ],
   process_l3: [
@@ -72,6 +97,7 @@ const FIELD_ORDER = {
     '_section:Типовые сбои', 'typical_failures',
     '_section:Done criteria', 'done_criteria',
     '_section:Связи', 'linked_meetings', 'linked_artifacts', 'linked_systems', 'metrics_signals',
+    '_section:Материалы', 'video_guides', 'additional_materials',
     '_section:Автоуправляемые (read-only)', 'linked_sop',
   ],
   sop: [
@@ -82,10 +108,25 @@ const FIELD_ORDER = {
     '_section:Типовые сбои', 'typical_failures',
     '_section:Done criteria', 'done_criteria',
     '_section:Связи', 'linked_templates_forms_links',
+    '_section:Материалы', 'video_guides', 'additional_materials',
   ],
 };
 
 const FIELD_DEFS = {
+  process_l1: {
+    name: { type: 'string', required: true }, purpose: { type: 'string', required: true, multiline: true },
+    description: { type: 'string', required: true, multiline: true }, main_goal: { type: 'string', required: true, multiline: true },
+    scope: { type: 'string', required: false, multiline: true },
+    when_used: { type: 'string', required: true }, owner: { type: 'string', required: true, suggestions: 'owner' },
+    access_level: { type: 'string', required: true }, review_cadence: { type: 'string', required: true },
+    triggers: { type: 'string[]', required: true }, inputs: { type: 'string[]', required: true },
+    outputs: { type: 'string[]', required: true }, participants: { type: 'string[]', required: true, suggestions: 'participants' },
+    linked_meetings: { type: 'string[]', suggestions: 'linked_meetings' }, linked_artifacts: { type: 'string[]', suggestions: 'linked_artifacts' },
+    linked_systems: { type: 'string[]', suggestions: 'linked_systems' }, metrics_signals: { type: 'string[]', required: true, suggestions: 'metrics_signals' },
+    process_steps: { type: 'object[]', required: false, shape: 'step' },
+    video_guides: { type: 'string[]', required: false },
+    additional_materials: { type: 'object[]', required: false, shape: 'materials' },
+  },
   process_l2: {
     name: { type: 'string', required: true }, purpose: { type: 'string', required: true, multiline: true },
     description: { type: 'string', required: true, multiline: true }, main_goal: { type: 'string', required: true, multiline: true },
@@ -98,6 +139,8 @@ const FIELD_DEFS = {
     process_steps: { type: 'object[]', required: true, shape: 'step' },
     process_rhythm: { type: 'object[]', shape: 'rhythm' },
     typical_failures: { type: 'object[]', shape: 'failure' },
+    video_guides: { type: 'string[]', required: false },
+    additional_materials: { type: 'object[]', required: false, shape: 'materials' },
     linked_l3_subprocesses: { type: 'string[]', readOnly: true },
     linked_sop: { type: 'string[]', readOnly: true },
   },
@@ -113,6 +156,8 @@ const FIELD_DEFS = {
     process_steps: { type: 'object[]', required: true, shape: 'step' },
     typical_failures: { type: 'object[]', required: true, shape: 'failure' },
     done_criteria: { type: 'string[]', required: true },
+    video_guides: { type: 'string[]', required: false },
+    additional_materials: { type: 'object[]', required: false, shape: 'materials' },
     linked_sop: { type: 'string[]', readOnly: true },
   },
   sop: {
@@ -126,18 +171,47 @@ const FIELD_DEFS = {
     typical_failures: { type: 'object[]', shape: 'failure' },
     done_criteria: { type: 'string[]', required: true },
     linked_templates_forms_links: { type: 'string[]' },
+    video_guides: { type: 'string[]', required: false },
+    additional_materials: { type: 'object[]', required: false, shape: 'materials' },
   },
 };
 
-const SHAPES = { step: STEP_FIELDS, failure: FAILURE_FIELDS, rhythm: RHYTHM_FIELDS };
+const SHAPES = { step: STEP_FIELDS, failure: FAILURE_FIELDS, rhythm: RHYTHM_FIELDS, materials: MATERIALS_FIELDS };
 
 function fieldError(errors, fieldName) {
   return errors.filter(e => e.includes(`"${fieldName}"`)).join('; ') || undefined;
 }
 
+/** Build per-row, per-subfield errors for ObjectArrayInput from errorsByField keys like "process_steps.0.step". */
+function buildRowErrors(errorsByField, fieldName) {
+  if (!errorsByField || typeof errorsByField !== 'object') return undefined;
+  const prefix = `${fieldName}.`;
+  const rowErrors = {};
+  for (const key of Object.keys(errorsByField)) {
+    if (!key.startsWith(prefix)) continue;
+    const rest = key.slice(prefix.length);
+    const parts = rest.split('.');
+    if (parts.length === 1) {
+      const idx = parseInt(parts[0], 10);
+      if (!Number.isNaN(idx)) {
+        rowErrors[idx] = rowErrors[idx] || {};
+        rowErrors[idx]._ = (errorsByField[key] || []).join('; ');
+      }
+    } else if (parts.length === 2) {
+      const [idxStr, subKey] = parts;
+      const idx = parseInt(idxStr, 10);
+      if (!Number.isNaN(idx) && subKey) {
+        rowErrors[idx] = rowErrors[idx] || {};
+        rowErrors[idx][subKey] = (errorsByField[key] || []).join('; ');
+      }
+    }
+  }
+  return Object.keys(rowErrors).length ? rowErrors : undefined;
+}
+
 export default function ProcessForm({
   processType, formData, setField, slug, setSlug,
-  errors, warnings, saving, mode, onValidate, onSave,
+  errors, errorsByField, warnings, saving, mode, onValidate, onSave,
   dictionary = {},
 }) {
   const [validationRun, setValidationRun] = useState(false);
@@ -154,8 +228,29 @@ export default function ProcessForm({
     await onSave();
   };
 
+  const actionButtons = (
+    <Box sx={{ display: 'flex', gap: 2 }}>
+      <Button
+        variant="outlined"
+        onClick={handleValidate}
+        disabled={saving}
+        startIcon={<CheckCircleIcon />}
+      >
+        Validate
+      </Button>
+      <Button
+        variant="contained"
+        onClick={handleSave}
+        disabled={saving}
+        startIcon={saving ? <CircularProgress size={18} /> : <SaveIcon />}
+      >
+        {mode === 'create' ? 'Create' : 'Save'}
+      </Button>
+    </Box>
+  );
+
   return (
-    <Box>
+    <Box sx={mode === 'edit' ? { pb: 10 } : undefined}>
       {/* Slug for create mode */}
       {mode === 'create' && processType !== 'sop' && (
         <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
@@ -209,7 +304,9 @@ export default function ProcessForm({
         const def = defs[item];
         if (!def) return null;
         const label = LABELS[item] || item;
-        const err = fieldError(errors, item);
+        const err = (errorsByField && errorsByField[item] && errorsByField[item].length)
+          ? errorsByField[item].join('; ')
+          : fieldError(errors, item);
 
         if (def.readOnly) {
           const val = formData[item];
@@ -233,7 +330,7 @@ export default function ProcessForm({
                 required={def.required}
                 value={formData[item] || ''}
                 onChange={(v) => setField(item, v)}
-                options={dictionary[def.suggestions] || []}
+                options={getDictionaryLabels(dictionary, def.suggestions)}
                 error={err}
                 multiline={def.multiline}
               />
@@ -266,7 +363,7 @@ export default function ProcessForm({
                 required={def.required}
                 value={formData[item] || []}
                 onChange={(v) => setField(item, v)}
-                options={dictionary[def.suggestions] || []}
+                options={getDictionaryLabels(dictionary, def.suggestions)}
                 error={err}
               />
             );
@@ -285,6 +382,7 @@ export default function ProcessForm({
 
         if (def.type === 'object[]') {
           const shapeFields = SHAPES[def.shape] || STEP_FIELDS;
+          const rowErrors = buildRowErrors(errorsByField, item);
           return (
             <ObjectArrayInput
               key={item}
@@ -294,6 +392,7 @@ export default function ProcessForm({
               onChange={(v) => setField(item, v)}
               fields={shapeFields}
               error={err}
+              rowErrors={rowErrors}
             />
           );
         }
@@ -301,26 +400,32 @@ export default function ProcessForm({
         return null;
       })}
 
-      {/* Action buttons */}
-      <Divider sx={{ my: 3 }} />
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <Button
-          variant="outlined"
-          onClick={handleValidate}
-          disabled={saving}
-          startIcon={<CheckCircleIcon />}
+      {/* Action buttons: in-flow for create, fixed bar for edit */}
+      {mode === 'create' && (
+        <>
+          <Divider sx={{ my: 3 }} />
+          {actionButtons}
+        </>
+      )}
+      {mode === 'edit' && (
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: 0,
+            left: { xs: 0, md: DRAWER_WIDTH },
+            right: 0,
+            zIndex: 1100,
+            bgcolor: 'background.paper',
+            borderTop: 1,
+            borderColor: 'divider',
+            p: 2,
+            display: 'flex',
+            justifyContent: 'flex-end',
+          }}
         >
-          Validate
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleSave}
-          disabled={saving}
-          startIcon={saving ? <CircularProgress size={18} /> : <SaveIcon />}
-        >
-          {mode === 'create' ? 'Create' : 'Save'}
-        </Button>
-      </Box>
+          {actionButtons}
+        </Box>
+      )}
     </Box>
   );
 }

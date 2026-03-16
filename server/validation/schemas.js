@@ -5,6 +5,7 @@ const stepShape = { step: { required: true }, description: { required: false } }
 const failureShape = { failure: { required: true }, symptom: { required: false }, action: { required: true } };
 const failureShapeOptional = { failure: { required: false }, symptom: { required: false }, action: { required: false } };
 const rhythmShape = { horizon: { required: false }, ritual: { required: false }, key_question: { required: false }, result: { required: false } };
+const materialsShape = { label: { required: true }, url: { required: true } };
 
 const DEPRECATED_FIELDS = [
   'trigger', 'steps', 'typical_errors', 'exception_handling',
@@ -24,6 +25,10 @@ const commonFields = {
   owner:       { required: true, type: 'string' },
   version:     { required: false, type: 'string' },
   updated_at:  { required: false, type: 'string' },
+  metrics_signals:   { required: true,  type: 'string[]' },
+  archived:    { required: false, type: 'string' },
+  video_guides: { required: false, type: 'string[]' },
+  additional_materials: { required: false, type: 'object[]', shape: materialsShape },
 };
 
 const schemas = {
@@ -37,7 +42,6 @@ const schemas = {
       linked_artifacts:  { required: false, type: 'string[]' },
       linked_systems:    { required: false, type: 'string[]' },
       process_steps:     { required: false, type: 'object[]', shape: stepShape },
-      metrics_signals:   { required: true,  type: 'string[]' },
       review_cadence:    { required: true,  type: 'string' },
       access_level:      { required: true,  type: 'string' },
     },
@@ -57,7 +61,6 @@ const schemas = {
       typical_failures:          { required: false, type: 'object[]', shape: failureShapeOptional },
       linked_artifacts:          { required: false, type: 'string[]' },
       linked_systems:            { required: false, type: 'string[]' },
-      metrics_signals:           { required: true,  type: 'string[]' },
       review_cadence:            { required: true,  type: 'string' },
       access_level:              { required: true,  type: 'string' },
     },
@@ -74,7 +77,6 @@ const schemas = {
       linked_meetings:   { required: false, type: 'string[]' },
       linked_artifacts:  { required: false, type: 'string[]' },
       linked_systems:    { required: false, type: 'string[]' },
-      metrics_signals:   { required: true,  type: 'string[]' },
       linked_sop:        { required: true,  type: 'string[]' },
       done_criteria:     { required: true,  type: 'string[]' },
       typical_failures:  { required: true,  type: 'object[]', shape: failureShape },

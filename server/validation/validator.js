@@ -1,34 +1,50 @@
 import { schemas, DEPRECATED_FIELDS } from './schemas.js';
+import { PROCESS_TYPE_LABELS } from '../services/dictionaryTerms.js';
+
+const LABEL_TO_TYPE_KEY = Object.fromEntries(
+  Object.entries(PROCESS_TYPE_LABELS).map(([k, v]) => [v, k]),
+);
 
 /**
  * Validate a process/SOP JSON object against the schema for its type.
  * @param {object} data   - The JSON body to validate
  * @param {string} expectedType - One of: process_l1, process_l2, process_l3, sop
- * @returns {{ valid: boolean, errors: string[], warnings: string[] }}
+ * @returns {{ valid: boolean, errors: string[], warnings: string[], errorsByField: Record<string, string[]> }}
  */
 export function validate(data, expectedType) {
   const errors = [];
   const warnings = [];
+  /** @type {Record<string, string[]>} */
+  const errorsByField = {};
   const schema = schemas[expectedType];
 
+  function addError(fieldPath, message) {
+    errors.push(message);
+    if (!errorsByField[fieldPath]) errorsByField[fieldPath] = [];
+    errorsByField[fieldPath].push(message);
+  }
+
   if (!schema) {
-    return { valid: false, errors: [`Unknown type "${expectedType}"`], warnings };
+    return { valid: false, errors: [`Unknown type "${expectedType}"`], warnings, errorsByField };
   }
 
   if (typeof data !== 'object' || data === null || Array.isArray(data)) {
-    return { valid: false, errors: ['Body must be a JSON object'], warnings };
+    return { valid: false, errors: ['Body must be a JSON object'], warnings, errorsByField };
   }
 
   // Reject deprecated fields
   for (const dep of DEPRECATED_FIELDS) {
     if (dep in data) {
-      errors.push(`Deprecated field "${dep}" is not allowed. See INSTRUCTIONS.md for replacements.`);
+      addError(dep, `Deprecated field "${dep}" is not allowed. See INSTRUCTIONS.md for replacements.`);
     }
   }
 
-  // Type field must match
-  if (data.type !== schema.expectedType) {
-    errors.push(`Field "type" must be "${schema.expectedType}", got "${data.type ?? '(missing)'}"`);
+  // Type field must match (accepts type key, label, or ObjectId when caller already passed expectedType)
+  const rawType = typeof data.type === 'string' ? data.type.trim() : '';
+  const normalizedType = LABEL_TO_TYPE_KEY[rawType] || rawType;
+  const isObjectId = /^[a-fA-F0-9]{24}$/.test(rawType);
+  if (!isObjectId && normalizedType !== schema.expectedType) {
+    addError('type', `Field "type" must be "${schema.expectedType}", got "${data.type ?? '(missing)'}"`);
   }
 
   // Validate each declared field
@@ -37,7 +53,7 @@ export function validate(data, expectedType) {
     const val = data[field];
 
     if (rule.required && (val === undefined || val === null)) {
-      errors.push(`Required field "${field}" is missing`);
+      addError(field, `Required field "${field}" is missing`);
       continue;
     }
 
@@ -46,22 +62,22 @@ export function validate(data, expectedType) {
     switch (rule.type) {
       case 'string':
         if (typeof val !== 'string') {
-          errors.push(`Field "${field}" must be a string`);
+          addError(field, `Field "${field}" must be a string`);
         } else if (rule.required && val.trim() === '') {
-          errors.push(`Required field "${field}" must not be empty`);
+          addError(field, `Required field "${field}" must not be empty`);
         }
         break;
 
       case 'string[]':
         if (!Array.isArray(val)) {
-          errors.push(`Field "${field}" must be an array of strings`);
+          addError(field, `Field "${field}" must be an array of strings`);
         } else {
           if (rule.required && val.length === 0) {
-            errors.push(`Required field "${field}" must have at least 1 element`);
+            addError(field, `Required field "${field}" must have at least 1 element`);
           }
           for (let i = 0; i < val.length; i++) {
             if (typeof val[i] !== 'string') {
-              errors.push(`Field "${field}[${i}]" must be a string`);
+              addError(`${field}.${i}`, `Field "${field}[${i}]" must be a string`);
             }
           }
         }
@@ -69,23 +85,23 @@ export function validate(data, expectedType) {
 
       case 'object[]':
         if (!Array.isArray(val)) {
-          errors.push(`Field "${field}" must be an array of objects`);
+          addError(field, `Field "${field}" must be an array of objects`);
         } else {
           if (rule.required && val.length === 0) {
-            errors.push(`Required field "${field}" must have at least 1 element`);
+            addError(field, `Required field "${field}" must have at least 1 element`);
           }
           if (rule.shape) {
             for (let i = 0; i < val.length; i++) {
               const item = val[i];
               if (typeof item !== 'object' || item === null || Array.isArray(item)) {
-                errors.push(`Field "${field}[${i}]" must be an object`);
+                addError(`${field}.${i}`, `Field "${field}[${i}]" must be an object`);
                 continue;
               }
               for (const [key, keyRule] of Object.entries(rule.shape)) {
                 if (keyRule.required && (item[key] === undefined || item[key] === null)) {
-                  errors.push(`Field "${field}[${i}].${key}" is required`);
+                  addError(`${field}.${i}.${key}`, `Field "${field}[${i}].${key}" is required`);
                 } else if (item[key] !== undefined && typeof item[key] !== 'string') {
-                  errors.push(`Field "${field}[${i}].${key}" must be a string`);
+                  addError(`${field}.${i}.${key}`, `Field "${field}[${i}].${key}" must be a string`);
                 }
               }
             }
@@ -110,7 +126,22 @@ export function validate(data, expectedType) {
     }
   }
 
-  return { valid: errors.length === 0, errors, warnings };
+  return { valid: errors.length === 0, errors, warnings, errorsByField };
+}
+
+/**
+ * Map a label or legacy type string to a schema key (e.g. "Process L2" → "process_l2").
+ * Returns null if unrecognised.
+ * @param {string} typeValue
+ * @returns {string|null}
+ */
+export function resolveTypeKey(typeValue) {
+  if (typeof typeValue !== 'string') return null;
+  const trimmed = typeValue.trim();
+  const fromLabel = LABEL_TO_TYPE_KEY[trimmed];
+  if (fromLabel) return fromLabel;
+  if (schemas[trimmed]) return trimmed;
+  return null;
 }
 
 /**

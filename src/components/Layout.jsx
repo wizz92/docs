@@ -17,7 +17,7 @@ import Sidebar from './Sidebar';
 import BreadcrumbsNav from './Breadcrumbs';
 import useProcessData from '../hooks/useProcessData';
 
-const DRAWER_WIDTH = 280;
+export const DRAWER_WIDTH = 280;
 
 export default function Layout() {
   const theme = useTheme();
@@ -33,6 +33,14 @@ export default function Layout() {
   const domainMeta = masterIndex?.domains?.find((d) => d.id === domainId) || null;
 
   const [snackbar, setSnackbar] = useState('');
+  const [backendInfo, setBackendInfo] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/backend')
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => data && setBackendInfo({ backend: data.backend, mongodbConnected: data.mongodbConnected }))
+      .catch(() => setBackendInfo(null));
+  }, []);
 
   useEffect(() => {
     if (!domainId || !masterIndex) {
@@ -113,6 +121,14 @@ export default function Layout() {
             >
               Создать процесс
             </Button>
+            {backendInfo?.backend && (
+              <Chip
+                label={backendInfo.backend === 'mongodb' ? 'Data: MongoDB' : 'Data: JSON'}
+                size="small"
+                variant="outlined"
+                sx={{ mr: 1, opacity: 0.9 }}
+              />
+            )}
             {domainMeta && (
               <Chip
                 label={domainName}

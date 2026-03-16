@@ -31,6 +31,9 @@ export async function rebuildDomainIndex(domainId) {
     let l2Data;
     try {
       l2Data = await readJson(l2ProcessPath);
+      if (l2Data.archived) {
+        continue;
+      }
     } catch {
       continue;
     }
@@ -48,6 +51,9 @@ export async function rebuildDomainIndex(domainId) {
       let l3Data;
       try {
         l3Data = await readJson(l3ProcessPath);
+        if (l3Data.archived) {
+          continue;
+        }
       } catch {
         continue;
       }
@@ -62,6 +68,9 @@ export async function rebuildDomainIndex(domainId) {
         let sopData;
         try {
           sopData = await readJson(path.join(l3Dir, sopFile));
+          if (sopData.archived) {
+            continue;
+          }
         } catch {
           continue;
         }

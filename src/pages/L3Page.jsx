@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -13,13 +13,16 @@ import ProcessDiagram from '../components/ProcessDiagram';
 import ProcessSteps from '../components/ProcessSteps';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
+import ProcessMediaSection from '../components/ProcessMediaSection';
 import FailuresTable from '../components/FailuresTable';
 import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 
 export default function L3Page() {
   const { domainId, l2Folder, l3Folder } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [l3Data, setL3Data] = useState(null);
 
@@ -61,6 +64,26 @@ export default function L3Page() {
           >
             <EditIcon fontSize="small" />
           </IconButton>
+          {!l3Data?.archived && (
+            <Button
+              size="small"
+              color="error"
+              onClick={async () => {
+                // eslint-disable-next-line no-alert
+                const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L3 подпроцесс (мягкое удаление)? Он будет удалён из навигации.');
+                if (!confirmed) return;
+                try {
+                  const redirect = await archiveProcess('process_l3', { domainId, l2Folder, l3Folder });
+                  if (redirect) navigate(redirect);
+                } catch (e) {
+                  // eslint-disable-next-line no-alert
+                  window.alert(e.message || 'Не удалось заархивировать подпроцесс');
+                }
+              }}
+            >
+              Archive
+            </Button>
+          )}
         </Box>
       </Box>
 
@@ -127,8 +150,10 @@ export default function L3Page() {
               <ProcessConnectionsSection data={l3Data} />
             </>
           )}
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={l3Data} />
 
-          {/* 6. Риски и реагирование */}
+          {/* 7. Риски и реагирование */}
           {l3Data.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">

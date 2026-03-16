@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
@@ -16,13 +17,17 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Field from '../components/Field';
 import ChipList from '../components/ChipList';
+import DoneCriteriaList from '../components/DoneCriteriaList';
 import FailuresTable from '../components/FailuresTable';
+import ProcessMediaSection from '../components/ProcessMediaSection';
 import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 
 export default function SopPage() {
   const { domainId, l2Folder, l3Folder, sopFile } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [sopData, setSopData] = useState(null);
 
@@ -67,6 +72,26 @@ export default function SopPage() {
           >
             <EditIcon fontSize="small" />
           </IconButton>
+          {!sopData?.archived && (
+            <Button
+              size="small"
+              color="error"
+              onClick={async () => {
+                // eslint-disable-next-line no-alert
+                const confirmed = window.confirm('Вы уверены, что хотите скрыть эту SOP инструкцию (мягкое удаление)? Она будет удалена из навигации.');
+                if (!confirmed) return;
+                try {
+                  const redirect = await archiveProcess('sop', { domainId, l2Folder, l3Folder, sopFile });
+                  if (redirect) navigate(redirect);
+                } catch (e) {
+                  // eslint-disable-next-line no-alert
+                  window.alert(e.message || 'Не удалось заархивировать SOP');
+                }
+              }}
+            >
+              Archive
+            </Button>
+          )}
         </Box>
       </Box>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 0.75, mb: 1.5 }}>
@@ -121,7 +146,7 @@ export default function SopPage() {
             {sopData.done_criteria?.length > 0 && (
               <>
                 <Divider sx={{ my: 2.5 }} />
-                <ChipList label="Done criteria" items={sopData.done_criteria} color="success" />
+                <DoneCriteriaList label="Done criteria" items={sopData.done_criteria} />
               </>
             )}
           </Paper>
@@ -171,7 +196,10 @@ export default function SopPage() {
             </>
           )}
 
-          {/* 6. Риски и реагирование */}
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={sopData} />
+
+          {/* 7. Риски и реагирование */}
           {sopData.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">

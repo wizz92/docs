@@ -424,3 +424,6 @@
 {"$$indexCreated":{"fieldName":"domainId","unique":false,"sparse":false}}
 {"$$indexCreated":{"fieldName":"type","unique":false,"sparse":false}}
 {"$$indexCreated":{"fieldName":"domainPath","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"domainId"}}
+{"$$indexCreated":{"fieldName":"type"}}
+{"$$indexCreated":{"fieldName":"domainPath","unique":true}}

@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Field from './Field';
 import ChipList from './ChipList';
+import DoneCriteriaList from './DoneCriteriaList';
 
 export default function ProcessIdentitySection({ data }) {
   if (!data) return null;
@@ -56,7 +57,7 @@ export default function ProcessIdentitySection({ data }) {
       {data.done_criteria?.length > 0 && (
         <>
           <Divider sx={{ my: 2.5 }} />
-          <ChipList label="Done criteria" items={data.done_criteria} color="success" />
+          <DoneCriteriaList label="Done criteria" items={data.done_criteria} />
         </>
       )}
     </Paper>

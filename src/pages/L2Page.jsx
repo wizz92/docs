@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -19,9 +19,11 @@ import ProcessSteps from '../components/ProcessSteps';
 import RhythmTable from '../components/RhythmTable';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
+import ProcessMediaSection from '../components/ProcessMediaSection';
 import FailuresTable from '../components/FailuresTable';
 import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 
 function MetaItem({ icon: Icon, children }) {
@@ -36,6 +38,7 @@ function MetaItem({ icon: Icon, children }) {
 
 export default function L2Page() {
   const { domainId, l2Folder } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [l2Data, setL2Data] = useState(null);
 
@@ -76,6 +79,26 @@ export default function L2Page() {
           >
             <EditIcon fontSize="small" />
           </IconButton>
+          {!l2Data?.archived && (
+            <Button
+              size="small"
+              color="error"
+              onClick={async () => {
+                // eslint-disable-next-line no-alert
+                const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L2 процесс (мягкое удаление)? Он будет удалён из навигации.');
+                if (!confirmed) return;
+                try {
+                  const redirect = await archiveProcess('process_l2', { domainId, l2Folder });
+                  if (redirect) navigate(redirect);
+                } catch (e) {
+                  // eslint-disable-next-line no-alert
+                  window.alert(e.message || 'Не удалось заархивировать процесс');
+                }
+              }}
+            >
+              Archive
+            </Button>
+          )}
         </Box>
       </Box>
 
@@ -131,7 +154,10 @@ export default function L2Page() {
           </SectionHeading>
           <ProcessConnectionsSection data={l2Data} />
 
-          {/* 6. Риски и реагирование */}
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={l2Data} />
+
+          {/* 7. Риски и реагирование */}
           {l2Data.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">

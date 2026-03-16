@@ -1,6 +1,122 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+
+/** Type key to label, matching API response shape (process_type labels). */
+const PROCESS_TYPE_LABELS = {
+  process_l1: 'Process L1',
+  process_l2: 'Process L2',
+  process_l3: 'Process L3',
+  sop: 'SOP',
+};
 
 const cache = new Map();
+
+/**
+ * Relative API path for edit mode (used for GET load and PUT save).
+ * @param {string} processType - process_l1, process_l2, process_l3, sop
+ * @param {{ l2Folder?: string, l3Folder?: string, sopFile?: string }} params
+ * @returns {string}
+ */
+export function getEditApiPath(processType, { l2Folder, l3Folder, sopFile }) {
+  if (processType === 'process_l1') return 'process.json';
+  if (processType === 'sop') return `${l2Folder}/${l3Folder}/${sopFile}`;
+  if (processType === 'process_l3') return `${l2Folder}/${l3Folder}/process.json`;
+  return `${l2Folder}/process.json`;
+}
+
+/**
+ * Build fetch request for save (create or update).
+ * @param {'create'|'edit'} mode
+ * @param {string} processType - process_l2, process_l3, sop
+ * @param {{ domainId: string, l2Folder?: string, l3Folder?: string, sopFile?: string, slug?: string }} params
+ * @param {object} formData
+ * @returns {{ url: string, method: string, body: object }}
+ */
+export function getSaveRequest(mode, processType, params, formData) {
+  const { domainId, l2Folder, l3Folder, sopFile, slug } = params;
+  if (mode === 'create') {
+    if (processType === 'process_l2') {
+      return { url: `/api/processes/${domainId}/l2`, method: 'POST', body: { slug, data: formData } };
+    }
+    if (processType === 'process_l3') {
+      return { url: `/api/processes/${domainId}/${l2Folder}/l3`, method: 'POST', body: { slug, data: formData } };
+    }
+    return { url: `/api/processes/${domainId}/${l2Folder}/${l3Folder}/sop`, method: 'POST', body: { data: formData } };
+  }
+  const editPath = getEditApiPath(processType, { l2Folder, l3Folder, sopFile });
+  return {
+    url: `/api/processes/${domainId}/${editPath}`,
+    method: 'PUT',
+    body: { data: formData },
+  };
+}
+
+/**
+ * Soft-archive an existing process by fetching it, setting archived=true, and saving via PUT.
+ * Returns a redirect path for the caller to navigate to on success.
+ * @param {string} processType - process_l1, process_l2, process_l3, sop
+ * @param {{ domainId: string, l2Folder?: string, l3Folder?: string, sopFile?: string }} params
+ * @returns {Promise<string|null>}
+ */
+export async function archiveProcess(processType, params) {
+  const { domainId, l2Folder, l3Folder, sopFile } = params;
+  const editPath = getEditApiPath(processType, { l2Folder, l3Folder, sopFile });
+  const url = `/api/processes/${domainId}/${editPath}`;
+
+  const getRes = await fetch(url);
+  if (!getRes.ok) {
+    const errText = await getRes.text().catch(() => '');
+    throw new Error(`Не удалось загрузить процесс для архивации: ${getRes.status} ${errText}`);
+  }
+  const data = await getRes.json();
+  const updated = { ...data, archived: true };
+
+  const putRes = await fetch(url, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: updated }),
+  });
+
+  const result = await putRes.json().catch(() => ({}));
+  if (!putRes.ok) {
+    const message = result.error || (result.errors && result.errors.join('; ')) || 'Не удалось заархивировать процесс';
+    throw new Error(message);
+  }
+
+  if (processType === 'process_l1') {
+    return `/domain/${domainId}`;
+  }
+  if (processType === 'process_l2') {
+    return `/domain/${domainId}`;
+  }
+  if (processType === 'process_l3') {
+    return `/domain/${domainId}/l2/${l2Folder}`;
+  }
+  if (processType === 'sop') {
+    return `/domain/${domainId}/l3/${l2Folder}/${l3Folder}`;
+  }
+  return null;
+}
+
+/**
+ * Return pathname to navigate to after successful save.
+ * @param {'create'|'edit'} mode
+ * @param {string} processType - process_l2, process_l3, sop
+ * @param {{ domainId: string, l2Folder?: string, l3Folder?: string, sopFile?: string }} params
+ * @param {object} result - API response (folder, file, path)
+ * @returns {string}
+ */
+export function getRedirectAfterSave(mode, processType, params, result) {
+  const { domainId, l2Folder, l3Folder, sopFile } = params;
+  if (mode === 'create') {
+    if (processType === 'process_l2') return `/domain/${domainId}/l2/${result.folder}`;
+    if (processType === 'process_l3') return `/domain/${domainId}/l3/${l2Folder}/${result.folder}`;
+    return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${result.file}`;
+  }
+  if (processType === 'process_l1') return `/domain/${domainId}`;
+  if (processType === 'sop') return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}`;
+  if (processType === 'process_l3') return `/domain/${domainId}/l3/${l2Folder}/${l3Folder}`;
+  return `/domain/${domainId}/l2/${l2Folder}`;
+}
 
 async function fetchJson(path) {
   if (cache.has(path)) return cache.get(path);
@@ -22,12 +138,24 @@ async function fetchJson(path) {
  * @param {string} [opts.existingPath] - relative path for edit mode (e.g. "processes/dom/01-x/process.json")
  */
 export default function useProcessEditor({ mode, processType, domainId, l2Folder, l3Folder, sopFile }) {
-  const [formData, setFormData] = useState({ type: processType });
+  const [formData, setFormData] = useState({
+    type: PROCESS_TYPE_LABELS[processType] ?? processType,
+  });
   const [slug, setSlug] = useState('');
   const [errors, setErrors] = useState([]);
+  const [errorsByField, setErrorsByField] = useState({});
   const [warnings, setWarnings] = useState([]);
   const [saving, setSaving] = useState(false);
   const [loaded, setLoaded] = useState(mode === 'create');
+
+  useEffect(() => {
+    if (mode === 'create') {
+      setFormData((prev) => ({
+        ...prev,
+        type: PROCESS_TYPE_LABELS[processType] ?? processType,
+      }));
+    }
+  }, [mode, processType]);
 
   const setField = useCallback((key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -50,6 +178,7 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
 
   const validate = useCallback(async () => {
     setErrors([]);
+    setErrorsByField({});
     setWarnings([]);
     try {
       const res = await fetch('/api/validate', {
@@ -59,10 +188,12 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
       });
       const result = await res.json();
       setErrors(result.errors || []);
+      setErrorsByField(result.errorsByField || {});
       setWarnings(result.warnings || []);
       return result.valid;
     } catch (err) {
       setErrors([err.message]);
+      setErrorsByField({});
       return false;
     }
   }, [formData, processType]);
@@ -70,36 +201,13 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
   const save = useCallback(async () => {
     setSaving(true);
     setErrors([]);
+    setErrorsByField({});
     setWarnings([]);
 
-    try {
-      let url, method, body;
+    const params = { domainId, l2Folder, l3Folder, sopFile, slug };
 
-      if (mode === 'create') {
-        if (processType === 'process_l2') {
-          url = `/api/processes/${domainId}/l2`;
-          body = { slug, data: formData };
-        } else if (processType === 'process_l3') {
-          url = `/api/processes/${domainId}/${l2Folder}/l3`;
-          body = { slug, data: formData };
-        } else {
-          url = `/api/processes/${domainId}/${l2Folder}/${l3Folder}/sop`;
-          body = { data: formData };
-        }
-        method = 'POST';
-      } else {
-        let filePath;
-        if (processType === 'sop') {
-          filePath = `${l2Folder}/${l3Folder}/${sopFile}`;
-        } else if (processType === 'process_l3') {
-          filePath = `${l2Folder}/${l3Folder}/process.json`;
-        } else {
-          filePath = `${l2Folder}/process.json`;
-        }
-        url = `/api/processes/${domainId}/${filePath}`;
-        method = 'PUT';
-        body = { data: formData };
-      }
+    try {
+      const { url, method, body } = getSaveRequest(mode, processType, params, formData);
 
       const res = await fetch(url, {
         method,
@@ -111,6 +219,7 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
 
       if (!res.ok) {
         setErrors(result.errors || [result.error || 'Save failed']);
+        setErrorsByField(result.errorsByField || {});
         setWarnings(result.warnings || []);
         setSaving(false);
         return null;
@@ -118,26 +227,10 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
 
       setWarnings(result.warnings || []);
       setSaving(false);
-
-      // Return navigation path after successful save
-      if (mode === 'create') {
-        if (processType === 'process_l2') {
-          return `/domain/${domainId}/l2/${result.folder}`;
-        } else if (processType === 'process_l3') {
-          return `/domain/${domainId}/l3/${l2Folder}/${result.folder}`;
-        } else {
-          return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${result.file}`;
-        }
-      }
-      // Edit mode: return current view path
-      if (processType === 'sop') {
-        return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}`;
-      } else if (processType === 'process_l3') {
-        return `/domain/${domainId}/l3/${l2Folder}/${l3Folder}`;
-      }
-      return `/domain/${domainId}/l2/${l2Folder}`;
+      return getRedirectAfterSave(mode, processType, params, result);
     } catch (err) {
       setErrors([err.message]);
+      setErrorsByField({});
       setSaving(false);
       return null;
     }
@@ -146,7 +239,7 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
   return {
     formData, setFormData, setField,
     slug, setSlug,
-    errors, warnings,
+    errors, errorsByField, warnings,
     saving, loaded,
     loadExisting, validate, save,
   };

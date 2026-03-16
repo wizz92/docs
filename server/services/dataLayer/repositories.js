@@ -1,6 +1,6 @@
 /**
  * Repository interfaces for the data layer.
- * These are storage-agnostic contracts; implementations can be JSON/FS, Mongo, etc.
+ * These are storage-agnostic contracts; the current implementation is JSON/FS.
  */
 
 /**
@@ -31,8 +31,9 @@
  * @property {(next: any) => Promise<any>} saveDictionaries
  */
 
-// This file only defines typedefs for documentation / tooling.
-// Implementations are provided by concrete repositories (e.g. jsonProcessRepository).
+// Implementations: jsonProcessRepository (JSON/FS), mongoProcessRepository (MongoDB/Mongoose),
+// jsonDictionaryRepository (JSON/FS), mongoDictionaryRepository (MongoDB/Mongoose),
+// jsonTemplateRepository (JSON/FS, used for all backends).
 
 export {};
 

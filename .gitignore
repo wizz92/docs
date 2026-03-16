@@ -3,3 +3,5 @@ dist/
 .DS_Store
 *.py
 node_modules
+.env
+.cursor/

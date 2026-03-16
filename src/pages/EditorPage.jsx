@@ -8,9 +8,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Typography from '@mui/material/Typography';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import ProcessForm from '../components/editor/ProcessForm';
-import useProcessEditor from '../hooks/useProcessEditor';
+import useProcessEditor, { getEditApiPath } from '../hooks/useProcessEditor';
 
 const TYPE_LABEL = {
+  process_l1: 'L1 Процесс',
   process_l2: 'L2 Процесс',
   process_l3: 'L3 Подпроцесс',
   sop: 'SOP Инструкция',
@@ -28,21 +29,36 @@ function resolveContext(params, pathname) {
   if (pathname.endsWith('/create/sop')) {
     return { mode: 'create', processType: 'sop', domainId, l2Folder, l3Folder, sopFile };
   }
-  if (sopFile) {
+  if (pathname.endsWith('/l1/edit')) {
+    const processType = 'process_l1';
     return {
-      mode: 'edit', processType: 'sop', domainId, l2Folder, l3Folder, sopFile,
-      existingPath: `processes/${domainId}/${l2Folder}/${l3Folder}/${sopFile}`,
+      mode: 'edit',
+      processType,
+      domainId,
+      l2Folder,
+      l3Folder,
+      sopFile,
+      existingPath: `processes/${domainId}/process.json`,
+    };
+  }
+  if (sopFile) {
+    const processType = 'sop';
+    return {
+      mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+      existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
     };
   }
   if (l3Folder) {
+    const processType = 'process_l3';
     return {
-      mode: 'edit', processType: 'process_l3', domainId, l2Folder, l3Folder, sopFile,
-      existingPath: `processes/${domainId}/${l2Folder}/${l3Folder}/process.json`,
+      mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+      existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
     };
   }
+  const processType = 'process_l2';
   return {
-    mode: 'edit', processType: 'process_l2', domainId, l2Folder, l3Folder, sopFile,
-    existingPath: `processes/${domainId}/${l2Folder}/process.json`,
+    mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+    existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
   };
 }
 
@@ -55,7 +71,7 @@ export default function EditorPage() {
   const [createType, setCreateType] = useState(ctx.processType);
   const {
     formData, setField, slug, setSlug,
-    errors, warnings, saving, loaded,
+    errors, errorsByField, warnings, saving, loaded,
     loadExisting, validate, save,
   } = useProcessEditor({ ...ctx, processType: ctx.mode === 'create' ? createType : ctx.processType });
 
@@ -96,7 +112,7 @@ export default function EditorPage() {
           size="small"
           color={ctx.mode === 'create' ? 'success' : 'primary'}
         />
-        <Chip label={typeLabel} size="small" variant="outlined" />
+        <Chip label={formData.type || typeLabel} size="small" variant="outlined" />
         {ctx.mode === 'create' && location.pathname.endsWith('/create/l2') && (
           <ToggleButtonGroup
             size="small"
@@ -142,6 +158,7 @@ export default function EditorPage() {
         slug={slug}
         setSlug={setSlug}
         errors={errors}
+        errorsByField={errorsByField}
         warnings={warnings}
         saving={saving}
         mode={ctx.mode}

@@ -199,5 +199,5 @@ Use this file as the first stop for any new AI agent or developer learning the p
    - `server/services/dataLayer/mongoProcessRepository.js`, `server/services/indexUpdater.js`.
    - `server/services/processDictionaryRefs.js`, `server/services/dictionaryTerms.js`.
 
-Understanding these pieces will give a new agent enough context to safely extend the system (e.g. adding new fields, new views, or new validation rules) without breaking the existing behavior.
+Understanding these pieces will give a new agent enough context to safely extend the system (e.g. adding new fields, new views, or new validation rules) without breaking the existing behavior. 
 

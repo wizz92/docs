@@ -53,8 +53,9 @@ const schemas = {
     fields: {
       ...commonFields,
       participants:              { required: true,  type: 'string[]' },
-      linked_l3_subprocesses:    { required: true,  type: 'string[]' },
-      linked_sop:                { required: true,  type: 'string[]' },
+      // Derived fields (computed by index rebuild); allow missing/empty on create/edit.
+      linked_l3_subprocesses:    { required: false, type: 'string[]' },
+      linked_sop:                { required: false, type: 'string[]' },
       linked_meetings:           { required: false, type: 'string[]' },
       process_steps:             { required: true,  type: 'object[]', shape: stepShape },
       process_rhythm:            { required: false, type: 'object[]', shape: rhythmShape },
@@ -77,7 +78,8 @@ const schemas = {
       linked_meetings:   { required: false, type: 'string[]' },
       linked_artifacts:  { required: false, type: 'string[]' },
       linked_systems:    { required: false, type: 'string[]' },
-      linked_sop:        { required: true,  type: 'string[]' },
+      // Derived field (computed by index rebuild); allow missing/empty on create/edit.
+      linked_sop:        { required: false, type: 'string[]' },
       done_criteria:     { required: true,  type: 'string[]' },
       typical_failures:  { required: true,  type: 'object[]', shape: failureShape },
     },

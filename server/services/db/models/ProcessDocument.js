@@ -59,8 +59,9 @@ const l1DataSchema = new Schema(
 const l2DataSchema = new Schema(
   {
     ...commonDataFields,
-    linked_l3_subprocesses: { type: [String], required: true },
-    linked_sop: { type: [String], required: true },
+    // Derived fields (computed by index rebuild); allow missing/empty on create/edit.
+    linked_l3_subprocesses: { type: [String], default: undefined },
+    linked_sop: { type: [String], default: undefined },
     linked_meetings: { type: [Mixed], default: undefined },
     process_steps: { type: [processStepSchema], required: true },
     process_rhythm: { type: [rhythmSchema], default: undefined },
@@ -81,7 +82,8 @@ const l3DataSchema = new Schema(
     linked_meetings: { type: [Mixed], default: undefined },
     linked_artifacts: { type: [Mixed], default: undefined },
     linked_systems: { type: [Mixed], default: undefined },
-    linked_sop: { type: [String], required: true },
+    // Derived field (computed by index rebuild); allow missing/empty on create/edit.
+    linked_sop: { type: [String], default: undefined },
     done_criteria: { type: [String], required: true },
     typical_failures: { type: [failureSchema], required: true },
   },

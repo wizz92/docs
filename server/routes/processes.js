@@ -80,7 +80,9 @@ async function createProcessPipeline(req, res, typeKey, runCreate) {
   if (!data) {
     return res.status(400).json({ error: '"data" is required' });
   }
+
   const result = validate(data, typeKey);
+
   if (!result.valid) return res.status(422).json(result);
 
   const dict = await dictionaryRepository.getDictionaries();

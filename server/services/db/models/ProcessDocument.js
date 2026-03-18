@@ -93,6 +93,8 @@ const l3DataSchema = new Schema(
 const sopDataSchema = new Schema(
   {
     ...commonDataFields,
+    // SOP view/editor does not collect metrics_signals; allow missing.
+    metrics_signals: { type: [Mixed], required: false },
     preconditions: { type: [String], required: true },
     process_steps: { type: [processStepSchema], required: true },
     result_location: { type: String, required: true },

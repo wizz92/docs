@@ -90,6 +90,8 @@ const schemas = {
     expectedType: 'sop',
     fields: {
       ...commonFields,
+      // SOP view/editor does not collect metrics_signals; treat it as optional.
+      metrics_signals: { required: false, type: 'string[]' },
       preconditions:                { required: true,  type: 'string[]' },
       process_steps:                { required: true,  type: 'object[]', shape: stepShape },
       result_location:              { required: true,  type: 'string' },

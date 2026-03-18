@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { appendFileSync } from 'node:fs';
 import mongoose from 'mongoose';
 import { validate, autoFill, resolveTypeKey } from '../validation/validator.js';
 import { schemas } from '../validation/schemas.js';
@@ -15,6 +16,16 @@ import { PROCESS_TYPE_LABELS } from '../services/dictionaryTerms.js';
 const router = Router();
 
 const DEFAULT_VIDEO_GUIDE = 'https://www.youtube.com/embed/eVTXPUF4Oz4?si=SdkBLM1XYIEPR03N';
+
+const DEBUG_LOG_PATH = '/Users/wizz/mindmap/.cursor/debug-f2c240.log';
+
+function logDebug(payload) {
+  try {
+    appendFileSync(DEBUG_LOG_PATH, `${JSON.stringify(payload)}\n`, 'utf8');
+  } catch {
+    // ignore - never break API flow
+  }
+}
 
 function wildcardPath(param) {
   return Array.isArray(param) ? param.join('/') : String(param);
@@ -81,7 +92,45 @@ async function createProcessPipeline(req, res, typeKey, runCreate) {
     return res.status(400).json({ error: '"data" is required' });
   }
 
+  // #region agent log
+  logDebug({
+    sessionId: 'f2c240',
+    runId: 'sop_create_debug_pre',
+    hypothesisId: 'H1',
+    location: 'server/routes/processes.js:createProcessPipeline:before-validate',
+    message: 'Create payload snapshot (key presence)',
+    data: {
+      typeKey,
+      has_metrics_signals: Object.prototype.hasOwnProperty.call(data, 'metrics_signals'),
+      metrics_signals_type: Object.prototype.hasOwnProperty.call(data, 'metrics_signals')
+        ? (Array.isArray(data.metrics_signals) ? 'array' : typeof data.metrics_signals)
+        : 'missing',
+      metrics_signals_len: Array.isArray(data.metrics_signals) ? data.metrics_signals.length : null,
+      keys_preview: Object.keys(data).slice(0, 60),
+    },
+    timestamp: Date.now(),
+  });
+  // #endregion agent log
+
   const result = validate(data, typeKey);
+
+  // #region agent log
+  if (!result.valid) {
+    logDebug({
+      sessionId: 'f2c240',
+      runId: 'sop_create_debug_after-validate',
+      hypothesisId: 'H1',
+      location: 'server/routes/processes.js:createProcessPipeline:after-validate',
+      message: 'Create validation failed',
+      data: {
+        typeKey,
+        errors: result.errors.slice(0, 6),
+        errorsByFieldKeys: result.errorsByField ? Object.keys(result.errorsByField) : [],
+      },
+      timestamp: Date.now(),
+    });
+  }
+  // #endregion agent log
 
   if (!result.valid) return res.status(422).json(result);
 

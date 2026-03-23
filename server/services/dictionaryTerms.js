@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import { PROCESS_TYPE_LABELS } from '../../shared/processTypeLabels.js';
+
+export { PROCESS_TYPE_LABELS };
 
 export const DICTIONARY_KEYS = [
   'owner',
@@ -10,25 +13,17 @@ export const DICTIONARY_KEYS = [
   'process_type',
 ];
 
-/** Maps old string type IDs and level keys to human-readable process_type labels. */
-export const PROCESS_TYPE_LABELS = {
-  process_l1: 'Process L1',
-  process_l2: 'Process L2',
-  process_l3: 'Process L3',
-  sop: 'SOP',
-};
-
 /** The fixed set of process_type labels that must always exist in the dictionary. */
 const FIXED_PROCESS_TYPE_LABELS = Object.values(PROCESS_TYPE_LABELS);
 
+const PROCESS_TYPE_ORDER = ['process_l1', 'process_l2', 'process_l3', 'sop'];
+
 /** Default process type terms (id + label) for seeding when dictionary has no process_type. */
 export function getProcessTypeTerms() {
-  return [
-    { id: new mongoose.Types.ObjectId(), label: 'Process L1' },
-    { id: new mongoose.Types.ObjectId(), label: 'Process L2' },
-    { id: new mongoose.Types.ObjectId(), label: 'Process L3' },
-    { id: new mongoose.Types.ObjectId(), label: 'SOP' },
-  ];
+  return PROCESS_TYPE_ORDER.map((key) => ({
+    id: new mongoose.Types.ObjectId(),
+    label: PROCESS_TYPE_LABELS[key],
+  }));
 }
 
 /**

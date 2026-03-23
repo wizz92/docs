@@ -1,12 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-
-/** Type key to label, matching API response shape (process_type labels). */
-const PROCESS_TYPE_LABELS = {
-  process_l1: 'Process L1',
-  process_l2: 'Process L2',
-  process_l3: 'Process L3',
-  sop: 'SOP',
-};
+import { PROCESS_TYPE_LABELS } from '../../shared/processTypeLabels.js';
 
 const cache = new Map();
 
@@ -31,6 +24,31 @@ export function getEditApiPath(processType, { l2Folder, l3Folder, sopFile }) {
  * @param {object} formData
  * @returns {{ url: string, method: string, body: object }}
  */
+/**
+ * Client-side checks before validate/save in create mode (parent folders + slug).
+ * @param {string} processType - process_l2, process_l3, sop
+ * @param {{ l2Folder?: string, l3Folder?: string, slug?: string }} params
+ * @returns {string[]} human-readable blockers; empty if OK
+ */
+export function getCreateBlockingErrors(processType, { domainId, l2Folder, l3Folder, slug }) {
+  const errs = [];
+  if (!String(domainId || '').trim()) {
+    errs.push('Выберите домен (L1) в форме создания.');
+  }
+  if (processType === 'process_l2') {
+    if (!String(slug || '').trim()) errs.push('Укажите slug (kebab-case) для L2.');
+  }
+  if (processType === 'process_l3') {
+    if (!String(slug || '').trim()) errs.push('Укажите slug (kebab-case) для L3.');
+    if (!String(l2Folder || '').trim()) errs.push('Выберите родительский L2 процесс.');
+  }
+  if (processType === 'sop') {
+    if (!String(l2Folder || '').trim()) errs.push('Выберите родительский L2 процесс.');
+    if (!String(l3Folder || '').trim()) errs.push('Выберите родительский L3 подпроцесс.');
+  }
+  return errs;
+}
+
 export function getSaveRequest(mode, processType, params, formData) {
   const { domainId, l2Folder, l3Folder, sopFile, slug } = params;
   if (mode === 'create') {
@@ -68,7 +86,8 @@ export async function archiveProcess(processType, params) {
     throw new Error(`Не удалось загрузить процесс для архивации: ${getRes.status} ${errText}`);
   }
   const data = await getRes.json();
-  const updated = { ...data, archived: true };
+  // Schema requires `archived` as string (same as `updated_at`); use archive date YYYY-MM-DD.
+  const updated = { ...data, archived: new Date().toISOString().slice(0, 10) };
 
   const putRes = await fetch(url, {
     method: 'PUT',
@@ -176,15 +195,27 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
     }
   }, []);
 
-  const validate = useCallback(async () => {
+  /**
+   * @param {{ data?: object, type?: string }} [opts] - optional overrides for JSON import (avoids stale closure before setState flushes)
+   */
+  const validate = useCallback(async (opts) => {
+    const data = opts?.data ?? formData;
+    const typeKey = opts?.type ?? processType;
     setErrors([]);
     setErrorsByField({});
     setWarnings([]);
+    if (mode === 'create') {
+      const blockers = getCreateBlockingErrors(typeKey, { domainId, l2Folder, l3Folder, slug });
+      if (blockers.length) {
+        setErrors(blockers);
+        return false;
+      }
+    }
     try {
       const res = await fetch('/api/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: processType, data: formData }),
+        body: JSON.stringify({ type: typeKey, data }),
       });
       const result = await res.json();
       setErrors(result.errors || []);
@@ -196,7 +227,13 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
       setErrorsByField({});
       return false;
     }
-  }, [formData, processType]);
+  }, [mode, formData, processType, domainId, l2Folder, l3Folder, slug]);
+
+  const clearValidation = useCallback(() => {
+    setErrors([]);
+    setErrorsByField({});
+    setWarnings([]);
+  }, []);
 
   const save = useCallback(async () => {
     setSaving(true);
@@ -205,6 +242,15 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
     setWarnings([]);
 
     const params = { domainId, l2Folder, l3Folder, sopFile, slug };
+
+    if (mode === 'create') {
+      const blockers = getCreateBlockingErrors(processType, { domainId, l2Folder, l3Folder, slug });
+      if (blockers.length) {
+        setErrors(blockers);
+        setSaving(false);
+        return null;
+      }
+    }
 
     try {
       const { url, method, body } = getSaveRequest(mode, processType, params, formData);
@@ -241,6 +287,6 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
     slug, setSlug,
     errors, errorsByField, warnings,
     saving, loaded,
-    loadExisting, validate, save,
+    loadExisting, validate, clearValidation, save,
   };
 }

@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import processRoutes from './routes/processes.js';
+import { createApp } from './createApp.js';
 import { connect as connectMongo } from './services/db/mongoClient.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -11,11 +11,7 @@ const PUBLIC = path.join(ROOT, 'public');
 const DIST = path.join(ROOT, 'dist');
 const PORT = process.env.PORT || 3001;
 
-const app = express();
-
-app.use(express.json({ limit: '1mb' }));
-
-app.use('/api', processRoutes);
+const app = createApp();
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(DIST));

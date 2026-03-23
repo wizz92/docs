@@ -15,6 +15,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import UpdateIcon from '@mui/icons-material/Update';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
+import SipocDiagram from '../components/SipocDiagram';
 import ProcessSteps from '../components/ProcessSteps';
 import RhythmTable from '../components/RhythmTable';
 import SubprocessTable from '../components/SubprocessTable';
@@ -25,6 +26,7 @@ import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
 
 function MetaItem({ icon: Icon, children }) {
   if (!children) return null;
@@ -84,15 +86,15 @@ export default function L2Page() {
               size="small"
               color="error"
               onClick={async () => {
-                // eslint-disable-next-line no-alert
-                const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L2 процесс (мягкое удаление)? Он будет удалён из навигации.');
+                const confirmed = confirmArchive(
+                  'Вы уверены, что хотите скрыть этот L2 процесс (мягкое удаление)? Он будет удалён из навигации.',
+                );
                 if (!confirmed) return;
                 try {
                   const redirect = await archiveProcess('process_l2', { domainId, l2Folder });
                   if (redirect) navigate(redirect);
                 } catch (e) {
-                  // eslint-disable-next-line no-alert
-                  window.alert(e.message || 'Не удалось заархивировать процесс');
+                  alertArchiveFailure(e, 'Не удалось заархивировать процесс');
                 }
               }}
             >
@@ -112,6 +114,7 @@ export default function L2Page() {
             Схема процесса
           </SectionHeading>
           <ProcessDiagram data={l2Data} />
+          <SipocDiagram data={l2Data} />
 
           {/* 3. Логика процесса */}
           {(l2Data.process_steps?.length > 0 || l2Data.process_rhythm?.length > 0) && (
@@ -131,7 +134,7 @@ export default function L2Page() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/l2/${l2Folder}/create/l3`}
+              to={`/domain/${domainId}/create?level=process_l3&l2=${encodeURIComponent(l2Folder)}`}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}

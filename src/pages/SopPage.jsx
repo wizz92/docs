@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
-import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Field from '../components/Field';
 import ChipList from '../components/ChipList';
-import DoneCriteriaList from '../components/DoneCriteriaList';
 import FailuresTable from '../components/FailuresTable';
+import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessMediaSection from '../components/ProcessMediaSection';
+import ProcessSteps from '../components/ProcessSteps';
 import SectionHeading from '../components/SectionHeading';
+import SipocDiagram from '../components/SipocDiagram';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
 
 export default function SopPage() {
   const { domainId, l2Folder, l3Folder, sopFile } = useParams();
@@ -44,8 +40,6 @@ export default function SopPage() {
   if (loading) return <LoadingSkeleton />;
   if (error) return <Alert severity="error">Ошибка загрузки: {error.message}</Alert>;
   if (!sopEntry) return <Alert severity="warning">SOP не найден.</Alert>;
-
-  const triggers = sopData?.triggers;
 
   return (
     <Box>
@@ -77,15 +71,15 @@ export default function SopPage() {
               size="small"
               color="error"
               onClick={async () => {
-                // eslint-disable-next-line no-alert
-                const confirmed = window.confirm('Вы уверены, что хотите скрыть эту SOP инструкцию (мягкое удаление)? Она будет удалена из навигации.');
+                const confirmed = confirmArchive(
+                  'Вы уверены, что хотите скрыть эту SOP инструкцию (мягкое удаление)? Она будет удалена из навигации.',
+                );
                 if (!confirmed) return;
                 try {
                   const redirect = await archiveProcess('sop', { domainId, l2Folder, l3Folder, sopFile });
                   if (redirect) navigate(redirect);
                 } catch (e) {
-                  // eslint-disable-next-line no-alert
-                  window.alert(e.message || 'Не удалось заархивировать SOP');
+                  alertArchiveFailure(e, 'Не удалось заархивировать SOP');
                 }
               }}
             >
@@ -102,56 +96,10 @@ export default function SopPage() {
       {sopData ? (
         <>
           {/* 1. О процессе */}
-          <Paper variant="outlined" sx={{ p: { xs: 2, md: 3 }, mb: 3 }}>
-            <Typography variant="overline" color="text.secondary" sx={{ mb: 2, display: 'block' }}>
-              О процессе
-            </Typography>
-            <Field label="Назначение" value={sopData.purpose} />
-            <Field label="Описание" value={sopData.description} />
-            <Field label="Основная цель" value={sopData.main_goal} />
+          <ProcessIdentitySection variant="sop" data={sopData} />
 
-            <Divider sx={{ my: 2.5 }} />
-
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
-                <Field label="Владелец" value={sopData.owner} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Field label="SLA" value={sopData.sla} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={6}>
-                <ChipList label="Триггеры" items={triggers} color="primary" />
-              </Grid>
-            </Grid>
-
-            <ChipList label="Preconditions" items={sopData.preconditions} />
-
-            {(sopData.inputs?.length > 0 || sopData.outputs?.length > 0) && (
-              <>
-                <Divider sx={{ my: 2.5 }} />
-                <Typography variant="overline" color="text.secondary" sx={{ mb: 1.5, display: 'block' }}>
-                  Входы и выходы
-                </Typography>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <ChipList label="Входы (inputs)" items={sopData.inputs} />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <ChipList label="Выходы (outputs)" items={sopData.outputs} color="secondary" />
-                  </Grid>
-                </Grid>
-              </>
-            )}
-
-            {sopData.done_criteria?.length > 0 && (
-              <>
-                <Divider sx={{ my: 2.5 }} />
-                <DoneCriteriaList label="Done criteria" items={sopData.done_criteria} />
-              </>
-            )}
-          </Paper>
-
-          {/* 2. Схема процесса — not applicable for SOP */}
+          {/* 2. SIPOC */}
+          <SipocDiagram data={sopData} />
 
           {/* 3. Логика процесса */}
           {sopData.process_steps?.length > 0 && (
@@ -159,25 +107,12 @@ export default function SopPage() {
               <SectionHeading caption="Последовательность шагов выполнения инструкции">
                 Логика процесса
               </SectionHeading>
-              <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
-                <List dense disablePadding>
-                  {sopData.process_steps.map((item, i) => (
-                    <ListItem key={i} alignItems="flex-start" sx={{ px: 0 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}>
-                        <Avatar sx={{ width: 26, height: 26, fontSize: 13, bgcolor: 'primary.main' }}>
-                          {i + 1}
-                        </Avatar>
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={item.step}
-                        secondary={item.description || undefined}
-                        primaryTypographyProps={{ variant: 'body2' }}
-                        secondaryTypographyProps={{ variant: 'body2' }}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </Paper>
+              <ProcessSteps
+                hideTitle
+                items={sopData.process_steps}
+                primaryTypographyProps={{ variant: 'body2', fontWeight: 400 }}
+                secondaryTypographyProps={{ variant: 'body2' }}
+              />
             </>
           )}
 

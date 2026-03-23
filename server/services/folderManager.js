@@ -60,8 +60,13 @@ export async function createL2Folder(domainId, slug, data) {
  * @returns {{ folderName: string, filePath: string }}
  */
 export async function createL3Folder(domainId, l2Folder, slug, data) {
+  const l2ProcessPath = path.join(PROCESSES_DIR, domainId, l2Folder, 'process.json');
+  const l2Stat = await fs.stat(l2ProcessPath).catch(() => null);
+  if (!l2Stat || !l2Stat.isFile()) {
+    throw new Error(`L2 parent not found: ${domainId}/${l2Folder}`);
+  }
+
   const l2Dir = path.join(PROCESSES_DIR, domainId, l2Folder);
-  await ensureDir(l2Dir);
   const nn = await nextNumber(l2Dir);
   const kebab = toKebab(slug);
   const folderName = `${nn}-${kebab}`;
@@ -77,8 +82,13 @@ export async function createL3Folder(domainId, l2Folder, slug, data) {
  * @returns {{ fileName: string, filePath: string }}
  */
 export async function createSopFile(domainId, l2Folder, l3Folder, data) {
+  const l3ProcessPath = path.join(PROCESSES_DIR, domainId, l2Folder, l3Folder, 'process.json');
+  const l3Stat = await fs.stat(l3ProcessPath).catch(() => null);
+  if (!l3Stat || !l3Stat.isFile()) {
+    throw new Error(`L3 parent not found: ${domainId}/${l2Folder}/${l3Folder}`);
+  }
+
   const l3Dir = path.join(PROCESSES_DIR, domainId, l2Folder, l3Folder);
-  await ensureDir(l3Dir);
   const nn = await nextNumber(l3Dir, 'sop');
   const fileName = `sop-${nn}.json`;
   const filePath = path.join(l3Dir, fileName);

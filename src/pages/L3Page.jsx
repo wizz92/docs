@@ -10,6 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
+import SipocDiagram from '../components/SipocDiagram';
 import ProcessSteps from '../components/ProcessSteps';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
@@ -19,6 +20,7 @@ import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
 
 export default function L3Page() {
   const { domainId, l2Folder, l3Folder } = useParams();
@@ -69,15 +71,15 @@ export default function L3Page() {
               size="small"
               color="error"
               onClick={async () => {
-                // eslint-disable-next-line no-alert
-                const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L3 подпроцесс (мягкое удаление)? Он будет удалён из навигации.');
+                const confirmed = confirmArchive(
+                  'Вы уверены, что хотите скрыть этот L3 подпроцесс (мягкое удаление)? Он будет удалён из навигации.',
+                );
                 if (!confirmed) return;
                 try {
                   const redirect = await archiveProcess('process_l3', { domainId, l2Folder, l3Folder });
                   if (redirect) navigate(redirect);
                 } catch (e) {
-                  // eslint-disable-next-line no-alert
-                  window.alert(e.message || 'Не удалось заархивировать подпроцесс');
+                  alertArchiveFailure(e, 'Не удалось заархивировать подпроцесс');
                 }
               }}
             >
@@ -99,6 +101,7 @@ export default function L3Page() {
                 Схема процесса
               </SectionHeading>
               <ProcessDiagram data={l3Data} />
+              <SipocDiagram data={l3Data} />
             </>
           )}
 
@@ -119,7 +122,7 @@ export default function L3Page() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/l3/${l2Folder}/${l3Folder}/create/sop`}
+              to={`/domain/${domainId}/create?level=sop&l2=${encodeURIComponent(l2Folder)}&l3=${encodeURIComponent(l3Folder)}`}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}

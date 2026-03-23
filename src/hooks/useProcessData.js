@@ -2,6 +2,11 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 const cache = new Map();
 
+/** Call after creates/updates so the next fetch of list endpoints is fresh (e.g. domain counts). */
+export function clearProcessApiCache() {
+  cache.clear();
+}
+
 async function fetchJson(path) {
   // Avoid caching individual process JSON responses so views always see latest data after save.
   const useCache = !(path.startsWith('/api/processes/') && path !== '/api/processes');

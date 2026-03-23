@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useMatch, useNavigate } from 'react-router-dom';
+import { Outlet, useMatch, useNavigate, useParams } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
@@ -11,7 +11,6 @@ import Slide from '@mui/material/Slide';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from './Sidebar';
 import BreadcrumbsNav from './Breadcrumbs';
@@ -27,12 +26,13 @@ export default function Layout() {
   const [hideAppBar, setHideAppBar] = useState(false);
   const { masterIndex, loading, loadDomainIndex } = useProcessData();
 
+  const routeParams = useParams();
   const domainMatch = useMatch('/domain/:domainId/*');
-  const domainId = domainMatch?.params?.domainId || null;
+  /** Prefer leaf route `useParams().domainId` so `/domain/:id/create` and other nested routes always resolve (useMatch can be null in some nested cases). */
+  const domainId = routeParams.domainId ?? domainMatch?.params?.domainId ?? null;
   const [domainIndex, setDomainIndex] = useState(null);
   const domainMeta = masterIndex?.domains?.find((d) => d.id === domainId) || null;
 
-  const [snackbar, setSnackbar] = useState('');
   const [backendInfo, setBackendInfo] = useState(null);
 
   useEffect(() => {
@@ -112,11 +112,7 @@ export default function Layout() {
               size="small"
               sx={{ mr: 1 }}
               onClick={() => {
-                if (!domainId) {
-                  setSnackbar('Сначала выберите домен слева.');
-                  return;
-                }
-                navigate(`/domain/${domainId}/create/l2`);
+                navigate('/create');
               }}
             >
               Создать процесс
@@ -184,15 +180,6 @@ export default function Layout() {
         />
         <Outlet />
       </Box>
-      <Snackbar
-        open={!!snackbar}
-        autoHideDuration={4000}
-        onClose={(_e, reason) => {
-          if (reason === 'clickaway') return;
-          setSnackbar('');
-        }}
-        message={snackbar}
-      />
     </Box>
   );
 }

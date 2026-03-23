@@ -3,7 +3,8 @@ import { fileURLToPath } from 'url';
 import { readJson } from '../folderManager.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const TEMPLATES_DIR = path.resolve(__dirname, '../../templates');
+/** Repo root `templates/` (not `server/templates`). From dataLayer: ../../../ = project root. */
+const TEMPLATES_DIR = path.resolve(__dirname, '../../../templates');
 
 /**
  * JSON/Filesystem-backed implementation of TemplateRepository.

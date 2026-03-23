@@ -22,9 +22,11 @@ export default function App() {
             <Route index element={<DomainsPage />} />
             <Route path="registry" element={<RegistryPage />} />
             <Route path="dictionaries" element={<DictionariesPage />} />
+            <Route path="create" element={<EditorPage />} />
             <Route path="domain/:domainId" element={<DomainPage />} />
             <Route path="domain/:domainId/l1/edit" element={<EditorPage />} />
             <Route path="domain/:domainId/create/l2" element={<EditorPage />} />
+            <Route path="domain/:domainId/create" element={<EditorPage />} />
             <Route path="domain/:domainId/l2/:l2Folder" element={<L2Page />} />
             <Route path="domain/:domainId/l2/:l2Folder/edit" element={<EditorPage />} />
             <Route path="domain/:domainId/l2/:l2Folder/create/l3" element={<EditorPage />} />

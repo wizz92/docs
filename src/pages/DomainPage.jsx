@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
+import SipocDiagram from '../components/SipocDiagram';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
 import ProcessMediaSection from '../components/ProcessMediaSection';
@@ -20,6 +21,7 @@ import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
 
 function StatCard({ label, value }) {
   return (
@@ -92,15 +94,15 @@ export default function DomainPage() {
                   size="small"
                   color="error"
                   onClick={async () => {
-                    // eslint-disable-next-line no-alert
-                    const confirmed = window.confirm('Вы уверены, что хотите скрыть этот L1 процесс (мягкое удаление)? Его можно будет восстановить позже, но он исчезнет из навигации.');
+                    const confirmed = confirmArchive(
+                      'Вы уверены, что хотите скрыть этот L1 процесс (мягкое удаление)? Его можно будет восстановить позже, но он исчезнет из навигации.',
+                    );
                     if (!confirmed) return;
                     try {
                       const redirect = await archiveProcess('process_l1', { domainId });
                       if (redirect) navigate(redirect);
                     } catch (e) {
-                      // eslint-disable-next-line no-alert
-                      window.alert(e.message || 'Не удалось заархивировать процесс');
+                      alertArchiveFailure(e, 'Не удалось заархивировать процесс');
                     }
                   }}
                 >
@@ -143,6 +145,7 @@ export default function DomainPage() {
                 Схема процесса
               </SectionHeading>
               <ProcessDiagram data={l1Data} />
+              <SipocDiagram data={l1Data} />
             </>
           )}
 
@@ -155,7 +158,7 @@ export default function DomainPage() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/create/l2`}
+              to={`/domain/${domainId}/create`}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}

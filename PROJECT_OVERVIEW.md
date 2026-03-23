@@ -105,6 +105,7 @@ Use this file as the first stop for any new AI agent or developer learning the p
   - `/domain/:domainId/l2/:l2Folder` – L2 page (`L2Page`).
   - `/domain/:domainId/l3/:l2Folder/:l3Folder` – L3 page (`L3Page`).
   - `/domain/:domainId/sop/:l2Folder/:l3Folder/:sopFile` – SOP page (`SopPage`).
+  - `/create` and `/domain/:domainId/create` – unified create (`EditorPage`): **«Уровень и родитель»** includes **домен (L1)**, уровень (L2/L3/SOP) и родители; на `/create` домен без `:domainId` в URL хранится в состоянии формы. Legacy paths `/domain/.../create/l2`, `/create/l3`, `/create/sop` still work.
   - `/domain/.../edit` and `/domain/.../create/...` – process editor (`EditorPage`).
 - **Layout**:
   - `Layout` defines main shell, app bar, and left sidebar (`Sidebar`) for domain/L2/L3/SOP navigation.

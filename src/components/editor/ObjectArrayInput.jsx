@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import FormHelperText from '@mui/material/FormHelperText';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
@@ -8,10 +9,10 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 /**
- * @param {{ label: string, value: object[], onChange: function, fields: {key:string, label:string, multiline?:boolean}[], required?: boolean, error?: string, rowErrors?: Record<number, Record<string, string>> }} props
+ * @param {{ label: string, sectionHelp?: string, value: object[], onChange: function, fields: {key:string, label:string, multiline?:boolean, helpText?:string}[], required?: boolean, error?: string, rowErrors?: Record<number, Record<string, string>> }} props
  * rowErrors: row index -> subfield key -> error message (key '_' = row-level error)
  */
-export default function ObjectArrayInput({ label, value = [], onChange, fields, required, error, rowErrors }) {
+export default function ObjectArrayInput({ label, sectionHelp, value = [], onChange, fields, required, error, rowErrors, readOnly }) {
   const addRow = () => {
     const empty = {};
     fields.forEach(f => { empty[f.key] = ''; });
@@ -27,9 +28,19 @@ export default function ObjectArrayInput({ label, value = [], onChange, fields, 
 
   return (
     <Box sx={{ mb: 2 }}>
-      <Typography variant="subtitle2" color={error ? 'error' : 'text.secondary'} sx={{ mb: 0.5 }}>
-        {label}{required ? ' *' : ''}
-      </Typography>
+      <Box
+        sx={{
+          mb: 0.5,
+          typography: 'subtitle2',
+          color: error ? 'error' : 'text.secondary',
+        }}
+      >
+        {label}
+        {required ? ' *' : ''}
+      </Box>
+      {sectionHelp && !error && (
+        <FormHelperText sx={{ mx: 0, mt: 0, mb: 1, whiteSpace: 'pre-wrap' }}>{sectionHelp}</FormHelperText>
+      )}
       {error && (
         <Typography variant="caption" color="error" sx={{ mb: 0.5, display: 'block' }}>
           {error}
@@ -58,12 +69,15 @@ export default function ObjectArrayInput({ label, value = [], onChange, fields, 
                     multiline={f.multiline}
                     minRows={f.multiline ? 2 : undefined}
                     error={!!cellError}
-                    helperText={cellError}
+                    helperText={cellError || f.helpText || ''}
+                    FormHelperTextProps={f.helpText && !cellError ? { sx: { whiteSpace: 'pre-wrap' } } : undefined}
+                    slotProps={readOnly ? { input: { readOnly: true } } : undefined}
                     sx={{ flex: f.multiline ? '1 1 100%' : '1 1 200px' }}
                   />
                 );
               })}
             </Box>
+            {!readOnly && (
             <IconButton
             size="small"
             onClick={() => removeRow(idx)}
@@ -72,12 +86,15 @@ export default function ObjectArrayInput({ label, value = [], onChange, fields, 
           >
             <DeleteIcon fontSize="small" />
             </IconButton>
+            )}
           </Paper>
         );
       })}
+      {!readOnly && (
       <Button size="small" startIcon={<AddIcon />} onClick={addRow}>
         Add
       </Button>
+      )}
     </Box>
   );
 }

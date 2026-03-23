@@ -99,6 +99,82 @@ export function resolveProcessDictionaryRefs(processData, dictionaryValues) {
 }
 
 /**
+ * Ensure dictionary-backed fields only use known labels or ids (same resolution as {@link labelsToIds}).
+ * Unknown values are rejected so MongoDB does not store orphan strings.
+ *
+ * @param {Record<string, any>} processData
+ * @param {Record<string, Array<{ id: string, label: string }>>} dictionaryValues
+ * @returns {{ valid: boolean, errors: string[], errorsByField: Record<string, string[]> }}
+ */
+export function validateDictionaryRefValues(processData, dictionaryValues) {
+  /** @type {string[]} */
+  const errors = [];
+  /** @type {Record<string, string[]>} */
+  const errorsByField = {};
+
+  function addError(fieldPath, message) {
+    errors.push(message);
+    if (!errorsByField[fieldPath]) errorsByField[fieldPath] = [];
+    errorsByField[fieldPath].push(message);
+  }
+
+  if (!processData || !dictionaryValues) {
+    return { valid: true, errors: [], errorsByField: {} };
+  }
+
+  const labelToId = buildLabelToIdMap(dictionaryValues);
+  const idSet = {};
+  for (const key of DICTIONARY_KEYS) {
+    idSet[key] = new Set();
+    const terms = dictionaryValues[key];
+    if (Array.isArray(terms)) {
+      for (const t of terms) {
+        const id = t && (t.id != null ? t.id : t.slug);
+        if (id != null) idSet[key].add(idToString(id));
+      }
+    }
+  }
+
+  for (const [field, kind] of Object.entries(REF_FIELDS)) {
+    if (field === 'type') continue;
+
+    const labelMap = labelToId[field];
+    const ids = idSet[field];
+    if (!labelMap || !ids) continue;
+
+    const val = processData[field];
+    if (kind === 'string') {
+      if (typeof val !== 'string' || !val.trim()) continue;
+      const trimmed = val.trim();
+      const known =
+        Object.prototype.hasOwnProperty.call(labelMap, trimmed) || ids.has(trimmed);
+      if (!known) {
+        addError(
+          field,
+          `Field "${field}" must match an entry in the dictionary (unknown: "${trimmed}")`,
+        );
+      }
+    } else if (kind === 'string[]' && Array.isArray(val)) {
+      val.forEach((s, i) => {
+        if (typeof s !== 'string' || !s.trim()) return;
+        const trimmed = s.trim();
+        const known =
+          Object.prototype.hasOwnProperty.call(labelMap, trimmed) || ids.has(trimmed);
+        if (!known) {
+          const fp = `${field}.${i}`;
+          addError(
+            fp,
+            `Field "${field}[${i}]" must match an entry in the dictionary (unknown: "${trimmed}")`,
+          );
+        }
+      });
+    }
+  }
+
+  return { valid: errors.length === 0, errors, errorsByField };
+}
+
+/**
  * Convert dictionary-backed fields in process data from labels (or ids) to ids for storage.
  * Accepts labels; if a value is not found as label, treats it as id if it exists in dictionary.
  * Mutates data in place and returns it. Unknown values are left as-is.

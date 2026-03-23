@@ -2,15 +2,17 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
 export default function AutocompleteInput({
-  label, value = '', onChange, options = [], required, error, multiline,
+  label, value = '', onChange, options = [], required, error, multiline, helpText, readOnly,
 }) {
   return (
     <Autocomplete
       freeSolo
+      disabled={readOnly}
       options={options}
       value={value}
       onChange={(_e, newValue) => onChange(newValue ?? '')}
       onInputChange={(_e, newInput, reason) => {
+        if (readOnly) return;
         if (reason === 'input') onChange(newInput);
       }}
       renderInput={(params) => (
@@ -23,7 +25,9 @@ export default function AutocompleteInput({
           multiline={multiline}
           minRows={multiline ? 2 : undefined}
           error={!!error}
-          helperText={error}
+          helperText={error || helpText || ''}
+          FormHelperTextProps={helpText && !error ? { sx: { whiteSpace: 'pre-wrap' } } : undefined}
+          slotProps={readOnly ? { input: { readOnly: true } } : undefined}
           sx={{ mb: 2, mt: 1 }}
         />
       )}

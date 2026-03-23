@@ -104,6 +104,14 @@ export class MongoProcessRepository {
   }
 
   async createL3(domainId, l2Folder, slug, data) {
+    const parentL2 = await ProcessDocument.findOne({ domainId, level: 'l2', folderPath: l2Folder }).lean().exec();
+    if (!parentL2) {
+      throw new Error(`L2 parent not found: ${l2Folder}`);
+    }
+    if (parentL2.data?.archived) {
+      throw new Error(`L2 parent is archived: ${l2Folder}`);
+    }
+
     const existing = await ProcessDocument.find({ domainId }).lean().exec();
     const folderName = nextNumberedFolder(existing, 'l3', slug, l2Folder);
     const folderPath = `${l2Folder}/${folderName}`;
@@ -128,6 +136,15 @@ export class MongoProcessRepository {
   }
 
   async createSop(domainId, l2Folder, l3Folder, data) {
+    const l3Path = `${l2Folder}/${l3Folder}`;
+    const parentL3 = await ProcessDocument.findOne({ domainId, level: 'l3', folderPath: l3Path }).lean().exec();
+    if (!parentL3) {
+      throw new Error(`L3 parent not found: ${l3Path}`);
+    }
+    if (parentL3.data?.archived) {
+      throw new Error(`L3 parent is archived: ${l3Path}`);
+    }
+
     const existing = await ProcessDocument.find({ domainId }).lean().exec();
     const folderPath = `${l2Folder}/${l3Folder}`;
     const fileName = nextSopFileName(existing, folderPath);

@@ -11,7 +11,10 @@
     "preview": "vite preview",
     "start": "NODE_ENV=production node server/index.js",
     "db:rebuild-dict": "node scripts/rebuildDictionariesFromDb.mjs",
-    "db:seed-mongo": "node -r dotenv/config scripts/seedMongoFromJson.mjs"
+    "db:seed-mongo": "node -r dotenv/config scripts/seedMongoFromJson.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:field-help": "node scripts/extractFieldHelp.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -26,5 +29,8 @@
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",
     "vite": "^7.3.1"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.0"
   }
 }

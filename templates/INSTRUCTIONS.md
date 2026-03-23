@@ -320,3 +320,9 @@ public/processes/
 | Нет `owner` | Нарушение правил prompt.md | Всегда указывай конкретное имя или роль |
 | Нет `triggers` | Диаграмма показывает «Триггер» как placeholder | Всегда заполняй `triggers` (массив) |
 | `summary` не пересчитан | Неверная статистика на странице домена | Пересчитывай после каждого изменения |
+
+---
+
+## 10. Подсказки в форме создания
+
+После правок в `templates/template-*.json` выполни в корне проекта `npm run generate:field-help`, чтобы обновить тексты подсказок (tooltips) в UI создания процессов (`src/components/editor/fieldHelp.json`). Ручные дополнения — в `src/components/editor/fieldHelpManual.js`.

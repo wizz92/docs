@@ -1,0 +1,64 @@
+{
+  "name": "Эскалация проблемных инициатив",
+  "type": "process_l3",
+  "purpose": "Обеспечить быстрое реагирование на инициативы, которые в trouble.",
+  "description": "Когда инициатива off track и corrective actions недостаточны — эскалация, формирование recovery plan, контроль исполнения.",
+  "main_goal": "Проблемные инициативы не зависают — решения принимаются, recovery plans исполняются.",
+  "when_used": "Когда инициатива off track / red status / critical blockers.",
+  "cadence": "По необходимости",
+  "triggers": [
+    "Инициатива в red status / critical blocker / missed critical milestone"
+  ],
+  "inputs": [
+    "Initiative status",
+    "Variance analysis",
+    "Attempted corrective actions"
+  ],
+  "outputs": [
+    "Escalation case",
+    "Recovery plan",
+    "Management decision"
+  ],
+  "owner": "Initiative owner / Operations lead",
+  "participants": [
+    "Heads of Functions",
+    "COO",
+    "Affected team leads"
+  ],
+  "linked_meetings": [
+    "Initiative review",
+    "Ops review"
+  ],
+  "linked_artifacts": [
+    "Recovery plan",
+    "Escalation record"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как инициировать escalation и оформить recovery plan",
+    "Как вести follow-up по escalated initiative",
+    "Как закрыть escalation case"
+  ],
+  "done_criteria": [
+    "Escalation зафиксирована",
+    "Recovery plan создан",
+    "Management decision принято"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Проблемная инициатива тихо умирает без escalation",
+      "symptom": "",
+      "action": "Если recovery plan не работает через 2 спринта — пересмотреть: continue / pivot / kill"
+    },
+    {
+      "failure": "Recovery plan формальный — не исполняется",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

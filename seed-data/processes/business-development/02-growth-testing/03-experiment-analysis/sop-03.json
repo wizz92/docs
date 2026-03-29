@@ -1,0 +1,65 @@
+{
+  "name": "Как провести experiment retrospective",
+  "type": "sop",
+  "purpose": "Извлечь уроки из эксперимента.",
+  "description": "Извлечь уроки из эксперимента.",
+  "main_goal": "Извлечь уроки из эксперимента.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Решение по эксперименту принято"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Собрать участников эксперимента",
+      "description": ""
+    },
+    {
+      "step": "Обсудить: что сработало, что нет, что улучшить",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать lessons learned",
+      "description": ""
+    },
+    {
+      "step": "Обновить experiment playbook",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Data analyst",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

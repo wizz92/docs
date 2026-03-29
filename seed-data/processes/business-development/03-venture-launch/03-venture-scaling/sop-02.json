@@ -1,0 +1,69 @@
+{
+  "name": "Как подготовить scaling plan",
+  "type": "sop",
+  "purpose": "Спланировать переход от MVP к full operation.",
+  "description": "Спланировать переход от MVP к full operation.",
+  "main_goal": "Спланировать переход от MVP к full operation.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Решение о масштабировании принято"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Определить target scale (клиенты, revenue, team)",
+      "description": ""
+    },
+    {
+      "step": "Спланировать поэтапное масштабирование с milestones",
+      "description": ""
+    },
+    {
+      "step": "Определить необходимые ресурсы и бюджет",
+      "description": ""
+    },
+    {
+      "step": "Определить risks и mitigations",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с CEO/CFO",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead / Head of BD",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

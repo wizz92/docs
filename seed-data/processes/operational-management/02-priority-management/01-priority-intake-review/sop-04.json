@@ -1,0 +1,69 @@
+{
+  "name": "Как принять решение по приоритету и зафиксировать",
+  "type": "sop",
+  "purpose": "Как принять решение по приоритету и зафиксировать.",
+  "description": "Практическая инструкция: как принять решение по приоритету и зафиксировать.",
+  "main_goal": "Принять решение по приоритету и зафиксировать — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Оценка запроса готова"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "На priority review (или асинхронно для простых кейсов): озвучить запрос, impact, trade-off",
+      "description": ""
+    },
+    {
+      "step": "Принять решение: включить в приоритеты / отклонить / отложить до следующего цикла",
+      "description": ""
+    },
+    {
+      "step": "Если включается — определить: в какой спринт/месяц, кто owner delivery, что вытесняется",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать решение в decision log: дата, запрос, решение, обоснование, owner",
+      "description": ""
+    },
+    {
+      "step": "Уведомить заявителя о решении, при отказе — объяснить причину",
+      "description": ""
+    },
+    {
+      "step": "Обновить priority register",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Решение не фиксируется — через неделю никто не помнит",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Заявитель не уведомлён — повторно эскалирует",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Priority register не обновлён — расходится с реальностью",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Decision log",
+    "Priority register"
+  ],
+  "owner": "COO / designated priority owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

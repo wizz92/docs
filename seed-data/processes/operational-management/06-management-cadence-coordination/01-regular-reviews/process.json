@@ -1,0 +1,78 @@
+{
+  "name": "Регулярные review",
+  "type": "process_l3",
+  "purpose": "Создать регулярный управленческий цикл обзоров, решений и follow-up.",
+  "description": "Организация и проведение weekly ops review, sprint-to-management review, initiative review, function review. Включает подготовку отчётности для review.",
+  "main_goal": "Management регулярно видит состояние работы и принимает решения, а не реагирует ситуативно.",
+  "when_used": "Постоянно, по установленному cadence.",
+  "cadence": "Weekly + per sprint + monthly",
+  "triggers": [
+    "Наступление review cycle"
+  ],
+  "inputs": [
+    "Reports and statuses",
+    "Goal/initiative signals",
+    "Risks, blockers, escalations",
+    "Capacity shifts"
+  ],
+  "outputs": [
+    "Review outcomes",
+    "Management decisions",
+    "Action items",
+    "Follow-up list"
+  ],
+  "owner": "COO / Operations lead",
+  "participants": [
+    "CEO",
+    "Heads of Functions",
+    "Relevant owners",
+    "Operations"
+  ],
+  "linked_meetings": [
+    "Weekly ops review",
+    "Sprint-to-management review",
+    "Initiative review",
+    "Function review"
+  ],
+  "linked_artifacts": [
+    "Review agenda",
+    "Management summary",
+    "Decision log",
+    "Action list"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как подготовить и провести weekly ops review",
+    "Как подготовить management summary по итогам спринта",
+    "Как подготовить и провести initiative review",
+    "Как провести function review",
+    "Как готовить отчётность для review"
+  ],
+  "done_criteria": [
+    "Review проведён по cadence",
+    "Решения зафиксированы",
+    "Action items назначены"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Review отменяется / переносится постоянно",
+      "symptom": "",
+      "action": "Если review пропущен — provести make-up или async decision round"
+    },
+    {
+      "failure": "Review без решений — только status reading",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Actions не follow-up'ятся",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

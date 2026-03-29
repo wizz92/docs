@@ -1,0 +1,65 @@
+{
+  "name": "Как оценить readiness к масштабированию",
+  "type": "sop",
+  "purpose": "Определить, готов ли venture к scaling.",
+  "description": "Определить, готов ли venture к scaling.",
+  "main_goal": "Определить, готов ли venture к scaling.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "MVP работает 2+ месяца"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Оценить ключевые метрики: retention, unit economics, NPS",
+      "description": ""
+    },
+    {
+      "step": "Сравнить с target thresholds из business case",
+      "description": ""
+    },
+    {
+      "step": "Оценить operational readiness",
+      "description": ""
+    },
+    {
+      "step": "Подготовить recommendation: scale / pivot / more data needed",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead / Head of BD",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

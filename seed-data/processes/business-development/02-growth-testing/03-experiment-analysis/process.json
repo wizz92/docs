@@ -1,0 +1,60 @@
+{
+  "name": "Анализ результатов экспериментов",
+  "type": "process_l3",
+  "purpose": "Проанализировать результаты и принять data-driven решение.",
+  "description": "Сравнение результатов с success criteria, формулирование рекомендации.",
+  "main_goal": "Решение по гипотезе: scale / pivot / kill.",
+  "when_used": "После завершения эксперимента.",
+  "cadence": "Per experiment",
+  "triggers": [
+    "Эксперимент завершён, данные собраны"
+  ],
+  "inputs": [
+    "Experiment data",
+    "Success criteria"
+  ],
+  "outputs": [
+    "Analysis report",
+    "Decision recommendation"
+  ],
+  "owner": "Data analyst",
+  "participants": [
+    "Data analyst",
+    "Head of Growth",
+    "Experiment owner"
+  ],
+  "linked_meetings": [
+    "Experiment retrospective"
+  ],
+  "linked_artifacts": [
+    "Analysis report"
+  ],
+  "linked_systems": [
+    "Analytics tools",
+    "BI dashboards"
+  ],
+  "linked_sop": [
+    "Как проанализировать результаты эксперимента",
+    "Как подготовить experiment decision report",
+    "Как провести experiment retrospective"
+  ],
+  "done_criteria": [
+    "Анализ завершён",
+    "Рекомендация сформулирована",
+    "Решение принято"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Анализ поверхностный",
+      "symptom": "",
+      "action": "Требовать statistical significance"
+    },
+    {
+      "failure": "Confirmation bias",
+      "symptom": "",
+      "action": "Привлечь independent reviewer"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

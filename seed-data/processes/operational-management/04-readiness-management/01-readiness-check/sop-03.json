@@ -1,0 +1,64 @@
+{
+  "name": "Как проверить готовность релиза",
+  "type": "sop",
+  "purpose": "Как проверить готовность релиза.",
+  "description": "Практическая инструкция: как проверить готовность релиза.",
+  "main_goal": "Проверить готовность релиза — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "За 1-2 дня до запланированного релиза"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Пройти release checklist: все features готовы? Тесты пройдены? Documentation обновлена?",
+      "description": ""
+    },
+    {
+      "step": "Проверить готовность по функциям: support готов? Marketing materials есть? Monitoring настроен?",
+      "description": ""
+    },
+    {
+      "step": "Оценить release risks: что может сломаться? Есть ли rollback plan?",
+      "description": ""
+    },
+    {
+      "step": "Собрать confirmation от каждой функции: ready / not ready / conditional ready",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать release readiness status для go/no-go решения",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Checklist пройден формально — критичные items пропущены",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не все функции подтвердили готовность — релиз выходит с gaps",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Rollback plan отсутствует — в случае проблем некуда откатиться",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Release checklist"
+  ],
+  "owner": "Delivery owner / Release manager",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Как приоритизировать backlog items",
+  "type": "sop",
+  "purpose": "Обновить приоритеты на основе текущих целей.",
+  "description": "Обновить приоритеты на основе текущих целей.",
+  "main_goal": "Обновить приоритеты на основе текущих целей.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Перед backlog refinement"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Сверить текущие приоритеты с quarterly OKR",
+      "description": ""
+    },
+    {
+      "step": "Применить RICE scoring для спорных items",
+      "description": ""
+    },
+    {
+      "step": "Обновить priority в Jira",
+      "description": ""
+    },
+    {
+      "step": "Переместить top items в refinement queue",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Product Owner",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

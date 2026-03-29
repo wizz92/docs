@@ -1,0 +1,60 @@
+{
+  "name": "Как утвердить и опубликовать Roadmap",
+  "type": "sop",
+  "purpose": "Как утвердить и опубликовать Roadmap.",
+  "description": "Практическая инструкция: как утвердить и опубликовать roadmap.",
+  "main_goal": "Утвердить и опубликовать roadmap — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Roadmap session завершена"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "После сессии: финализировать roadmap документ с учётом всех решений (в тот же день)",
+      "description": ""
+    },
+    {
+      "step": "Отправить финальную версию CEO на утверждение",
+      "description": ""
+    },
+    {
+      "step": "После утверждения: опубликовать Roadmap в Confluence / wiki",
+      "description": ""
+    },
+    {
+      "step": "Отправить уведомление всем Team Leads и Heads с ссылкой и summary ключевых решений",
+      "description": ""
+    },
+    {
+      "step": "Убедиться, что каждый owner подтвердил свою часть roadmap",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "1 рабочий день после сессии",
+  "typical_failures": [
+    {
+      "failure": "Публикация задерживается — команды начинают спринт без roadmap",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не все owners подтвердили свою часть — ответственность размыта",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Roadmap (Confluence)",
+    "Notification template"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

@@ -23,19 +23,21 @@ import SearchIcon from '@mui/icons-material/Search';
 import DownloadIcon from '@mui/icons-material/Download';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import useProcessData from '../hooks/useProcessData';
+import { companyClientPath, DEFAULT_COMPANY_SLUG } from '../../shared/companies.js';
 
 const TYPE_COLORS = { process_l1: 'primary', process_l2: 'info', process_l3: 'secondary', sop: 'warning' };
 const TYPE_LABELS = { process_l1: 'L1', process_l2: 'L2', process_l3: 'L3', sop: 'SOP' };
 
-function buildRows(domainId, index) {
+function buildRows(domainId, index, companyId) {
   const rows = [];
   if (!index) return rows;
+  const p = (suffix) => companyClientPath(companyId, suffix);
 
   rows.push({
     name: index.l1.name,
     type: 'process_l1',
     path: index.l1.path,
-    link: `/domain/${domainId}`,
+    link: p(`domain/${domainId}`),
     parent: '—',
     domain: domainId,
     sopCount: '—',
@@ -47,7 +49,7 @@ function buildRows(domainId, index) {
       name: l2.name,
       type: 'process_l2',
       path: l2.path,
-      link: `/domain/${domainId}/l2/${l2.folder}`,
+      link: p(`domain/${domainId}/l2/${l2.folder}`),
       parent: index.l1.name,
       domain: domainId,
       sopCount: l2SopCount,
@@ -58,7 +60,7 @@ function buildRows(domainId, index) {
         name: l3.name,
         type: 'process_l3',
         path: l3.path,
-        link: `/domain/${domainId}/l3/${l2.folder}/${l3.folder}`,
+        link: p(`domain/${domainId}/l3/${l2.folder}/${l3.folder}`),
         parent: l2.name,
         domain: domainId,
         sopCount: l3.sops?.length || 0,
@@ -69,7 +71,7 @@ function buildRows(domainId, index) {
           name: sop.name,
           type: 'sop',
           path: sop.path,
-          link: `/domain/${domainId}/sop/${l2.folder}/${l3.folder}/${sop.file}`,
+          link: p(`domain/${domainId}/sop/${l2.folder}/${l3.folder}/${sop.file}`),
           parent: l3.name,
           domain: domainId,
           sopCount: '—',
@@ -102,11 +104,18 @@ export default function RegistryPage() {
 
   const allRows = useMemo(() => {
     const rows = [];
+    const domainCompany = Object.fromEntries(
+      (masterIndex?.domains || []).map((d) => [
+        d.id,
+        d.companyId || DEFAULT_COMPANY_SLUG,
+      ]),
+    );
     for (const [domainId, idx] of Object.entries(allDomainIndexes)) {
-      rows.push(...buildRows(domainId, idx));
+      const companyId = domainCompany[domainId] || DEFAULT_COMPANY_SLUG;
+      rows.push(...buildRows(domainId, idx, companyId));
     }
     return rows;
-  }, [allDomainIndexes]);
+  }, [allDomainIndexes, masterIndex]);
 
   const filteredRows = useMemo(() => {
     let rows = allRows;

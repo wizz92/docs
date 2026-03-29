@@ -1,0 +1,65 @@
+{
+  "name": "Как подготовить portfolio register к review",
+  "type": "sop",
+  "purpose": "Обеспечить актуальность данных перед portfolio review.",
+  "description": "Обеспечить актуальность данных перед portfolio review.",
+  "main_goal": "Обеспечить актуальность данных перед portfolio review.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "За 1 неделю до portfolio review"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Запросить обновлённый статус от каждого initiative owner",
+      "description": ""
+    },
+    {
+      "step": "Обновить scoring при наличии новых данных",
+      "description": ""
+    },
+    {
+      "step": "Отметить completed / cancelled инициативы",
+      "description": ""
+    },
+    {
+      "step": "Подготовить summary для review",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Head of Strategy / PMO",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

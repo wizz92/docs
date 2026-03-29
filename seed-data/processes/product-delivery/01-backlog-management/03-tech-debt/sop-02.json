@@ -1,0 +1,69 @@
+{
+  "name": "Как провести quarterly tech debt review",
+  "type": "sop",
+  "purpose": "Оценить состояние tech debt и спланировать remediation.",
+  "description": "Оценить состояние tech debt и спланировать remediation.",
+  "main_goal": "Оценить состояние tech debt и спланировать remediation.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Начало квартала"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Актуализировать tech debt register",
+      "description": ""
+    },
+    {
+      "step": "Оценить accumulated impact",
+      "description": ""
+    },
+    {
+      "step": "Приоритизировать: что fix в этом квартале",
+      "description": ""
+    },
+    {
+      "step": "Создать backlog items для top tech debt",
+      "description": ""
+    },
+    {
+      "step": "Согласовать allocation с Product Owner",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Tech Lead / Head of Engineering",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

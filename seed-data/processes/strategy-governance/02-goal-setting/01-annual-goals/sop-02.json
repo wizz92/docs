@@ -1,0 +1,69 @@
+{
+  "name": "Как сформулировать company-level OKR",
+  "type": "sop",
+  "purpose": "Написать чёткие, измеримые OKR для компании.",
+  "description": "Написать чёткие, измеримые OKR для компании.",
+  "main_goal": "Написать чёткие, измеримые OKR для компании.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "По итогам annual planning session"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Выбрать 3–5 objectives из решений сессии",
+      "description": ""
+    },
+    {
+      "step": "Для каждого objective написать 2–3 key results",
+      "description": ""
+    },
+    {
+      "step": "Проверить: каждый KR должен быть измеримым и с дедлайном",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с CEO",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать в OKR tool",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "CEO",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

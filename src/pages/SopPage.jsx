@@ -1,26 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Field from '../components/Field';
 import ChipList from '../components/ChipList';
 import FailuresTable from '../components/FailuresTable';
+import ProcessIdentitySection from '../components/ProcessIdentitySection';
+import ProcessMediaSection from '../components/ProcessMediaSection';
+import ProcessSteps from '../components/ProcessSteps';
 import SectionHeading from '../components/SectionHeading';
+import SipocDiagram from '../components/SipocDiagram';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 export default function SopPage() {
-  const { domainId, l2Folder, l3Folder, sopFile } = useParams();
+  const { domainId, l2Folder, l3Folder, sopFile, companyId } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [sopData, setSopData] = useState(null);
 
@@ -38,92 +42,78 @@ export default function SopPage() {
   if (error) return <Alert severity="error">Ошибка загрузки: {error.message}</Alert>;
   if (!sopEntry) return <Alert severity="warning">SOP не найден.</Alert>;
 
-  const triggers = sopData?.triggers
-    || (sopData?.trigger && (Array.isArray(sopData.trigger) ? sopData.trigger : [sopData.trigger]));
-
   return (
     <Box>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.5 }}>
-        <Chip label="SOP Инструкция" size="small" color="warning" />
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1.5,
+          mb: 1,
+        }}
+      >
+        <Typography variant="h4" sx={{ mr: 1 }}>
+          {sopEntry.name}
+        </Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 0.75 }}>
+          <Chip label="SOP Инструкция" size="small" color="warning" />
+          <IconButton
+            component={RouterLink}
+            to={companyClientPath(companyId, `domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}/edit`)}
+            size="small"
+            color="primary"
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+          {!sopData?.archived && (
+            <Button
+              size="small"
+              color="error"
+              onClick={async () => {
+                const confirmed = confirmArchive(
+                  'Вы уверены, что хотите скрыть эту SOP инструкцию (мягкое удаление)? Она будет удалена из навигации.',
+                );
+                if (!confirmed) return;
+                try {
+                  const redirect = await archiveProcess('sop', { domainId, l2Folder, l3Folder, sopFile, companyId });
+                  if (redirect) navigate(redirect);
+                } catch (e) {
+                  alertArchiveFailure(e, 'Не удалось заархивировать SOP');
+                }
+              }}
+            >
+              Archive
+            </Button>
+          )}
+        </Box>
+      </Box>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 0.75, mb: 1.5 }}>
         {l2Entry && <Chip label={l2Entry.name} size="small" variant="outlined" />}
         {l3Entry && <Chip label={l3Entry.name} size="small" variant="outlined" />}
       </Box>
-      <Typography variant="h4" gutterBottom>{sopEntry.name}</Typography>
 
       {sopData ? (
         <>
           {/* 1. О процессе */}
-          <Paper variant="outlined" sx={{ p: { xs: 2, md: 3 }, mb: 3 }}>
-            <Typography variant="overline" color="text.secondary" sx={{ mb: 2, display: 'block' }}>
-              О процессе
-            </Typography>
-            <Field label="Назначение" value={sopData.purpose} />
-            <Field label="Описание" value={sopData.description} />
-            <Field label="Основная цель" value={sopData.main_goal} />
+          <ProcessIdentitySection variant="sop" data={sopData} />
 
-            <Divider sx={{ my: 2.5 }} />
-
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
-                <Field label="Владелец" value={sopData.owner} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Field label="SLA" value={sopData.sla} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={6}>
-                <ChipList label="Триггеры" items={triggers} color="primary" />
-              </Grid>
-            </Grid>
-
-            <ChipList label="Preconditions" items={sopData.preconditions} />
-
-            {(sopData.inputs?.length > 0 || sopData.outputs?.length > 0) && (
-              <>
-                <Divider sx={{ my: 2.5 }} />
-                <Typography variant="overline" color="text.secondary" sx={{ mb: 1.5, display: 'block' }}>
-                  Входы и выходы
-                </Typography>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <ChipList label="Входы (inputs)" items={sopData.inputs} />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <ChipList label="Выходы (outputs)" items={sopData.outputs} color="secondary" />
-                  </Grid>
-                </Grid>
-              </>
-            )}
-
-            {sopData.done_criteria?.length > 0 && (
-              <>
-                <Divider sx={{ my: 2.5 }} />
-                <ChipList label="Done criteria" items={sopData.done_criteria} color="success" />
-              </>
-            )}
-          </Paper>
-
-          {/* 2. Схема процесса — not applicable for SOP */}
+          {/* 2. SIPOC */}
+          <SipocDiagram data={sopData} />
 
           {/* 3. Логика процесса */}
-          {sopData.steps?.length > 0 && (
+          {sopData.process_steps?.length > 0 && (
             <>
               <SectionHeading caption="Последовательность шагов выполнения инструкции">
                 Логика процесса
               </SectionHeading>
-              <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
-                <List dense disablePadding>
-                  {sopData.steps.map((step, i) => (
-                    <ListItem key={i} alignItems="flex-start" sx={{ px: 0 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}>
-                        <Avatar sx={{ width: 26, height: 26, fontSize: 13, bgcolor: 'primary.main' }}>
-                          {i + 1}
-                        </Avatar>
-                      </ListItemIcon>
-                      <ListItemText primary={step} primaryTypographyProps={{ variant: 'body2' }} />
-                    </ListItem>
-                  ))}
-                </List>
-              </Paper>
+              <ProcessSteps
+                hideTitle
+                items={sopData.process_steps}
+                primaryTypographyProps={{ variant: 'body2', fontWeight: 400 }}
+                secondaryTypographyProps={{ variant: 'body2' }}
+              />
             </>
           )}
 
@@ -142,16 +132,16 @@ export default function SopPage() {
             </>
           )}
 
-          {/* 6. Риски и реагирование */}
-          {(sopData.typical_errors?.length > 0 || sopData.exception_handling?.length > 0) && (
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={sopData} />
+
+          {/* 7. Риски и реагирование */}
+          {sopData.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">
                 Риски и реагирование
               </SectionHeading>
-              <FailuresTable
-                failures={sopData.typical_errors}
-                deviations={sopData.exception_handling}
-              />
+              <FailuresTable items={sopData.typical_failures} />
             </>
           )}
         </>

@@ -2,12 +2,22 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 const cache = new Map();
 
+/** Call after creates/updates so the next fetch of list endpoints is fresh (e.g. domain counts). */
+export function clearProcessApiCache() {
+  cache.clear();
+}
+
 async function fetchJson(path) {
-  if (cache.has(path)) return cache.get(path);
+  // Avoid caching individual process JSON responses so views always see latest data after save.
+  const useCache = !(path.startsWith('/api/processes/') && path !== '/api/processes');
+
+  if (useCache && cache.has(path)) return cache.get(path);
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
   const data = await res.json();
-  cache.set(path, data);
+  if (useCache) {
+    cache.set(path, data);
+  }
   return data;
 }
 
@@ -19,7 +29,7 @@ export default function useProcessData() {
 
   useEffect(() => {
     mounted.current = true;
-    fetchJson('/processes/index.json')
+    fetchJson('/api/processes')
       .then((data) => {
         if (mounted.current) {
           setMasterIndex(data);
@@ -35,14 +45,28 @@ export default function useProcessData() {
     return () => { mounted.current = false; };
   }, []);
 
-  const loadJson = useCallback((path) => fetchJson(path.startsWith('/') ? path : `/${path}`), []);
+  const refreshMasterIndex = useCallback(async () => {
+    clearProcessApiCache();
+    const res = await fetch('/api/processes');
+    if (!res.ok) throw new Error(`Failed to refresh master index: ${res.status}`);
+    const data = await res.json();
+    setMasterIndex(data);
+  }, []);
+
+  const loadJson = useCallback((path) => {
+    const normalized = path.startsWith('/') ? path : `/${path}`;
+    if (normalized.startsWith('/processes/')) {
+      return fetchJson(`/api${normalized}`);
+    }
+    return fetchJson(normalized);
+  }, []);
 
   const loadDomainIndex = useCallback(
-    (domainId) => fetchJson(`/processes/${domainId}/index.json`),
+    (domainId) => fetchJson(`/api/processes/${domainId}`),
     [],
   );
 
-  return { masterIndex, loading, error, loadJson, loadDomainIndex };
+  return { masterIndex, loading, error, loadJson, loadDomainIndex, refreshMasterIndex };
 }
 
 export function useDomainData(domainId) {

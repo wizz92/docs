@@ -1,0 +1,55 @@
+{
+  "name": "Как опубликовать monthly operational plan",
+  "type": "sop",
+  "purpose": "Как опубликовать monthly operational plan.",
+  "description": "Практическая инструкция: как опубликовать monthly operational plan.",
+  "main_goal": "Опубликовать monthly operational plan — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Monthly planning review завершён"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Финализировать monthly plan: приоритеты, инициативы, owners, milestones, зависимости",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать в Confluence: использовать стандартный шаблон monthly plan",
+      "description": ""
+    },
+    {
+      "step": "Отправить summary всем Heads и Team Leads с ссылкой",
+      "description": ""
+    },
+    {
+      "step": "На ближайшем weekly ops review: подтвердить, что план понят и принят",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "1 рабочий день после review",
+  "typical_failures": [
+    {
+      "failure": "План опубликован, но никто не уведомлён",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "План не обсуждён на review — формальный документ",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Monthly plan template (Confluence)"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

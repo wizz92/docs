@@ -1,0 +1,62 @@
+{
+  "name": "Как согласовать resource rebalance",
+  "type": "sop",
+  "purpose": "Как согласовать resource rebalance.",
+  "description": "Практическая инструкция: как согласовать resource rebalance.",
+  "main_goal": "Согласовать resource rebalance — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Management решил о resource rebalance"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Представить варианты ребалансировки: кто, куда, на какой срок, что теряет исходная команда",
+      "description": ""
+    },
+    {
+      "step": "Получить согласие обоих Team Leads (отдающего и принимающего)",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать решение: сроки, условия возврата, ожидаемый результат",
+      "description": ""
+    },
+    {
+      "step": "Обновить capacity tracker и планы обеих команд",
+      "description": ""
+    },
+    {
+      "step": "Уведомить затронутых людей и стейкхолдеров",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Rebalance без согласия отдающей команды — конфликт",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Условия возврата не зафиксированы — «временный» переход становится постоянным",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Планы не обновлены — старые commitments остаются",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead / Heads of Functions",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

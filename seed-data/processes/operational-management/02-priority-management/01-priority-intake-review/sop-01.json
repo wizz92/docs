@@ -1,0 +1,64 @@
+{
+  "name": "Как подать и зарегистрировать приоритетный запрос",
+  "type": "sop",
+  "purpose": "Как подать и зарегистрировать приоритетный запрос.",
+  "description": "Практическая инструкция: как подать и зарегистрировать приоритетный запрос.",
+  "main_goal": "Подать и зарегистрировать приоритетный запрос — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Появление потребности в приоритетном включении работы"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Заполнить priority intake form: что нужно, зачем, к какому сроку, impact (high/medium/low), urgency (high/medium/low)",
+      "description": ""
+    },
+    {
+      "step": "Указать, какую цель или инициативу затрагивает запрос",
+      "description": ""
+    },
+    {
+      "step": "Для urgent request: отметить флаг «urgent» и указать, что произойдёт если не сделать в ближайшие 1-2 дня",
+      "description": ""
+    },
+    {
+      "step": "Отправить форму — запрос попадает в intake log автоматически",
+      "description": ""
+    },
+    {
+      "step": "Если запрос пришёл через чат/устно — Operations lead переносит в log и просит заявителя дозаполнить",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Запрос без impact — невозможно провести triage",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Urgent флаг ставится на всё — обесценивается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Запрос подан только устно — теряется",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Priority intake form (Confluence / Jira)"
+  ],
+  "owner": "Заявитель (стейкхолдер)",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

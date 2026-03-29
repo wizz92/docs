@@ -1,0 +1,64 @@
+{
+  "name": "Подготовка релиза",
+  "type": "process_l3",
+  "purpose": "Убедиться, что релиз готов к deployment.",
+  "description": "Сборка changeset, тестирование, подготовка release notes и checklist.",
+  "main_goal": "Релиз прошёл все проверки и готов к deploy.",
+  "when_used": "Перед каждым релизом.",
+  "cadence": "Per release",
+  "triggers": [
+    "Sprint завершён",
+    "Features merged"
+  ],
+  "inputs": [
+    "Merged code",
+    "Test results",
+    "Release checklist template"
+  ],
+  "outputs": [
+    "Release candidate",
+    "Release notes",
+    "Completed checklist"
+  ],
+  "owner": "Release Manager",
+  "participants": [
+    "Release Manager",
+    "QA Lead",
+    "Tech Lead"
+  ],
+  "linked_meetings": [
+    "Release readiness review"
+  ],
+  "linked_artifacts": [
+    "Release checklist",
+    "Release notes template"
+  ],
+  "linked_systems": [
+    "CI/CD pipeline",
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как подготовить release candidate",
+    "Как написать release notes",
+    "Как пройти release readiness checklist"
+  ],
+  "done_criteria": [
+    "Все тесты пройдены",
+    "Release notes готовы",
+    "Checklist пройден"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Тесты не пройдены",
+      "symptom": "",
+      "action": "Не релизить без green tests"
+    },
+    {
+      "failure": "Missing sign-off",
+      "symptom": "",
+      "action": "Обязательный sign-off от QA Lead"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

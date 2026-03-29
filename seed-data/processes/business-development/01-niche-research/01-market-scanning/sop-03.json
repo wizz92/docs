@@ -1,0 +1,65 @@
+{
+  "name": "Как приоритизировать opportunities для deep-dive",
+  "type": "sop",
+  "purpose": "Выбрать наиболее перспективные возможности для детального анализа.",
+  "description": "Выбрать наиболее перспективные возможности для детального анализа.",
+  "main_goal": "Выбрать наиболее перспективные возможности для детального анализа.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Накопилось 5+ opportunities в pipeline"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Оценить каждую opportunity по критериям: размер, fit, барьеры",
+      "description": ""
+    },
+    {
+      "step": "Ранжировать по composite score",
+      "description": ""
+    },
+    {
+      "step": "Выбрать top-3 для deep-dive",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с Head of BD",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Market analyst",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

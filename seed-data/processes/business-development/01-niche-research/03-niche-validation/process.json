@@ -1,0 +1,62 @@
+{
+  "name": "Валидация ниши",
+  "type": "process_l3",
+  "purpose": "Подтвердить или опровергнуть привлекательность ниши до выделения значимых ресурсов.",
+  "description": "Процесс проверки ключевых гипотез о нише: размер, потребность, willingness to pay.",
+  "main_goal": "Go/no-go решение по нише с обоснованием.",
+  "when_used": "После competitive analysis, перед запуском growth hypothesis.",
+  "cadence": "Per niche",
+  "triggers": [
+    "Competitive analysis завершён",
+    "Ниша выглядит перспективной"
+  ],
+  "inputs": [
+    "Competitive report",
+    "Market data",
+    "Customer interviews"
+  ],
+  "outputs": [
+    "Niche validation report",
+    "Go/no-go recommendation"
+  ],
+  "owner": "Head of BD",
+  "participants": [
+    "Head of BD",
+    "Product lead",
+    "Finance"
+  ],
+  "linked_meetings": [
+    "Niche validation review"
+  ],
+  "linked_artifacts": [
+    "Validation report"
+  ],
+  "linked_systems": [
+    "Survey tools",
+    "CRM",
+    "Analytics"
+  ],
+  "linked_sop": [
+    "Как спланировать niche validation",
+    "Как провести customer discovery для ниши",
+    "Как подготовить go/no-go recommendation"
+  ],
+  "done_criteria": [
+    "Ключевые гипотезы проверены",
+    "Есть data-driven рекомендация"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Валидация поверхностная — нет реальных данных",
+      "symptom": "",
+      "action": "Требовать минимум 5 customer interviews"
+    },
+    {
+      "failure": "Confirmation bias",
+      "symptom": "",
+      "action": "Привлечь devil's advocate на review"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

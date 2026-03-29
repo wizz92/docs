@@ -19,8 +19,9 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import Field from '../components/Field';
 import ChipList from '../components/ChipList';
 import useProcessData from '../hooks/useProcessData';
+import { companyClientPath, DEFAULT_COMPANY_SLUG } from '../../shared/companies.js';
 
-function L2AccordionContent({ domainId, l2Entry, loadJson }) {
+function L2AccordionContent({ companyId, domainId, l2Entry, loadJson }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ function L2AccordionContent({ domainId, l2Entry, loadJson }) {
               <ListItemButton
                 key={l3.folder}
                 component={RouterLink}
-                to={`/domain/${domainId}/l3/${l2Entry.folder}/${l3.folder}`}
+                to={companyClientPath(companyId, `domain/${domainId}/l3/${l2Entry.folder}/${l3.folder}`)}
                 sx={{ borderRadius: 1, mb: 0.5, bgcolor: 'action.hover' }}
               >
                 <ListItemText
@@ -81,7 +82,7 @@ function L2AccordionContent({ domainId, l2Entry, loadJson }) {
       <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
         <Button
           component={RouterLink}
-          to={`/domain/${domainId}/l2/${l2Entry.folder}`}
+          to={companyClientPath(companyId, `domain/${domainId}/l2/${l2Entry.folder}`)}
           size="small"
           endIcon={<OpenInNewIcon />}
         >
@@ -191,14 +192,24 @@ function DomainSection({ domainMeta, loadDomainIndex, loadJson }) {
                 </AccordionSummary>
                 <AccordionDetails>
                   {expanded === l2.folder && (
-                    <L2AccordionContent domainId={domainMeta.id} l2Entry={l2} loadJson={loadJson} />
+                    <L2AccordionContent
+                      companyId={domainMeta.companyId || DEFAULT_COMPANY_SLUG}
+                      domainId={domainMeta.id}
+                      l2Entry={l2}
+                      loadJson={loadJson}
+                    />
                   )}
                 </AccordionDetails>
               </Accordion>
             ))}
 
             <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-              <Button component={RouterLink} to={`/domain/${domainMeta.id}`} size="small" endIcon={<OpenInNewIcon />}>
+              <Button
+                component={RouterLink}
+                to={companyClientPath(domainMeta.companyId || DEFAULT_COMPANY_SLUG, `domain/${domainMeta.id}`)}
+                size="small"
+                endIcon={<OpenInNewIcon />}
+              >
                 Открыть домен
               </Button>
             </Box>

@@ -1,0 +1,345 @@
+{
+  "name": "Revenue & Commercial Operations",
+  "type": "process_index",
+  "description": "Index of all processes and SOPs for Revenue & Commercial Operations.",
+  "base_path": "processes/revenue-operations",
+  "l1": {
+    "name": "Revenue & Commercial Operations",
+    "path": "processes/revenue-operations/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [
+    {
+      "name": "Управление партнёрствами",
+      "folder": "01-partner-management",
+      "path": "processes/revenue-operations/01-partner-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Поиск и отбор партнёров",
+          "folder": "01-partner-search",
+          "path": "processes/revenue-operations/01-partner-management/01-partner-search/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к поиск и отбор партнёров",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/01-partner-management/01-partner-search/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести поиск и отбор партнёров",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/01-partner-management/01-partner-search/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты поиск и отбор партнёров",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/01-partner-management/01-partner-search/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Онбординг партнёра",
+          "folder": "02-partner-onboarding",
+          "path": "processes/revenue-operations/01-partner-management/02-partner-onboarding/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к онбординг партнёра",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/01-partner-management/02-partner-onboarding/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести онбординг партнёра",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/01-partner-management/02-partner-onboarding/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты онбординг партнёра",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/01-partner-management/02-partner-onboarding/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Мониторинг эффективности партнёров",
+          "folder": "03-partner-monitoring",
+          "path": "processes/revenue-operations/01-partner-management/03-partner-monitoring/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к мониторинг эффективности партнёров",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/01-partner-management/03-partner-monitoring/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести мониторинг эффективности партнёров",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/01-partner-management/03-partner-monitoring/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты мониторинг эффективности партнёров",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/01-partner-management/03-partner-monitoring/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Оптимизация офферов",
+      "folder": "02-offer-optimization",
+      "path": "processes/revenue-operations/02-offer-optimization/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Анализ текущих офферов",
+          "folder": "01-offer-analysis",
+          "path": "processes/revenue-operations/02-offer-optimization/01-offer-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к анализ текущих офферов",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/02-offer-optimization/01-offer-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести анализ текущих офферов",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/02-offer-optimization/01-offer-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты анализ текущих офферов",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/02-offer-optimization/01-offer-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Тестирование новых офферов",
+          "folder": "02-offer-testing",
+          "path": "processes/revenue-operations/02-offer-optimization/02-offer-testing/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к тестирование новых офферов",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/02-offer-optimization/02-offer-testing/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести тестирование новых офферов",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/02-offer-optimization/02-offer-testing/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты тестирование новых офферов",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/02-offer-optimization/02-offer-testing/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Внедрение оптимизированного оффера",
+          "folder": "03-offer-rollout",
+          "path": "processes/revenue-operations/02-offer-optimization/03-offer-rollout/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к внедрение оптимизированного оффера",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/02-offer-optimization/03-offer-rollout/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести внедрение оптимизированного оффера",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/02-offer-optimization/03-offer-rollout/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты внедрение оптимизированного оффера",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/02-offer-optimization/03-offer-rollout/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Анализ выручки",
+      "folder": "03-revenue-analysis",
+      "path": "processes/revenue-operations/03-revenue-analysis/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Сбор данных по выручке",
+          "folder": "01-revenue-data-collection",
+          "path": "processes/revenue-operations/03-revenue-analysis/01-revenue-data-collection/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к сбор данных по выручке",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/01-revenue-data-collection/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести сбор данных по выручке",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/01-revenue-data-collection/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты сбор данных по выручке",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/01-revenue-data-collection/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Анализ unit economics",
+          "folder": "02-unit-economics-analysis",
+          "path": "processes/revenue-operations/03-revenue-analysis/02-unit-economics-analysis/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к анализ unit economics",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/02-unit-economics-analysis/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести анализ unit economics",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/02-unit-economics-analysis/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты анализ unit economics",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/02-unit-economics-analysis/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Подготовка revenue review",
+          "folder": "03-revenue-review-prep",
+          "path": "processes/revenue-operations/03-revenue-analysis/03-revenue-review-prep/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Как подготовиться к подготовка revenue review",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/03-revenue-review-prep/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как провести подготовка revenue review",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/03-revenue-review-prep/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Как оценить результаты подготовка revenue review",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/03-revenue-analysis/03-revenue-review-prep/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ORM: Управління review-сторінками бренду",
+      "folder": "04-orm-review-management",
+      "path": "processes/revenue-operations/04-orm-review-management/process.json",
+      "type": "process_l2",
+      "l3_processes": [
+        {
+          "name": "Створення review-сторінки бренду",
+          "folder": "01-review-page-creation",
+          "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як зареєструвати review-сторінку бренду",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як підготувати пошти для публікації відгуків",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/04-orm-review-management/01-review-page-creation/sop-02.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Наповнення review-сторінки відгуками",
+          "folder": "02-review-content-publishing",
+          "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як опублікувати відгук на review-сторінці бренду",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-01.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як відправити реквести Sitejabber",
+              "file": "sop-02.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-02.json",
+              "type": "sop"
+            },
+            {
+              "name": "Як виконати задачі по інших майданчиках",
+              "file": "sop-03.json",
+              "path": "processes/revenue-operations/04-orm-review-management/02-review-content-publishing/sop-03.json",
+              "type": "sop"
+            }
+          ]
+        },
+        {
+          "name": "Адміністрування review-сторінки",
+          "folder": "03-review-page-administration",
+          "path": "processes/revenue-operations/04-orm-review-management/03-review-page-administration/process.json",
+          "type": "process_l3",
+          "sops": [
+            {
+              "name": "Як адмініструвати review-сторінки",
+              "file": "sop-01.json",
+              "path": "processes/revenue-operations/04-orm-review-management/03-review-page-administration/sop-01.json",
+              "type": "sop"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_l2": 4,
+    "total_l3": 12,
+    "total_sop": 33,
+    "total_files": 51
+  }
+}

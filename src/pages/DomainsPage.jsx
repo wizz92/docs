@@ -1,11 +1,8 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
@@ -13,15 +10,19 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import useProcessData from '../hooks/useProcessData';
+import { sortDomains } from '../utils/domainOrder';
+import {
+  companyLabelFromSlug,
+  companyClientPath,
+  DEFAULT_COMPANY_SLUG,
+} from '../../shared/companies.js';
+import { DOMAIN_CATALOG, getCategorySlugForDomain, REQUIRED_CATEGORY_SLUGS } from '../../shared/domainCatalog.js';
 
-const CATEGORY_ORDER = ['Strategy', 'Operations', 'Core', 'Growth', 'Revenue', 'Support', 'Development'];
-const CATEGORY_LABEL = {
-  Strategy: 'Стратегия', Operations: 'Операции', Core: 'Продукт',
-  Growth: 'Рост', Revenue: 'Выручка', Support: 'Поддержка', Development: 'Развитие',
-};
+const SECTION_SPACING = 4;
+const SECTION_GAP = 3;
 
 function StatPill({ value, label }) {
   return (
@@ -36,76 +37,68 @@ function StatPill({ value, label }) {
   );
 }
 
-function DomainCard({ domain, stats }) {
-  const l2 = stats?.total_l2 ?? '–';
-  const l3 = stats?.total_l3 ?? '–';
-  const sop = stats?.total_sop ?? '–';
-
-  return (
-    <Card
-      sx={{
-        height: '100%',
-        borderLeft: `4px solid ${domain.color || '#1976d2'}`,
-        transition: 'box-shadow .15s, transform .15s',
-        '&:hover': { boxShadow: 4, transform: 'translateY(-2px)' },
-      }}
-    >
-      <CardActionArea
-        component={RouterLink}
-        to={`/domain/${domain.id}`}
-        sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'flex-start' }}
-      >
-        <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-          <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 0.5, lineHeight: 1.3 }}>
-            {domain.name_ru}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ mb: 'auto', pb: 1.5, fontSize: 13, lineHeight: 1.5 }}
-          >
-            {domain.description_ru}
-          </Typography>
-
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
-            <Chip label={`${l2} L2`} size="small" variant="outlined" sx={{ fontSize: 11 }} />
-            <Chip label={`${l3} L3`} size="small" variant="outlined" sx={{ fontSize: 11 }} />
-            <Chip label={`${sop} SOP`} size="small" variant="outlined" sx={{ fontSize: 11 }} />
-            <Box sx={{ flexGrow: 1 }} />
-            <ArrowForwardIcon fontSize="small" color="action" />
-          </Box>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
-}
-
 export default function DomainsPage() {
-  const { masterIndex, loading, error, loadDomainIndex } = useProcessData();
+  const { companyId } = useParams();
+  const { masterIndex, loading, error, loadDomainIndex, refreshMasterIndex } = useProcessData();
   const [domainStats, setDomainStats] = useState({});
+  const [scaffoldCat, setScaffoldCat] = useState(null);
+  const [scaffoldError, setScaffoldError] = useState(null);
+
+  const domains = useMemo(() => {
+    const all = masterIndex?.domains || [];
+    const inCompany = all.filter(
+      (d) => (d.companyId || DEFAULT_COMPANY_SLUG) === companyId,
+    );
+    return sortDomains(inCompany, masterIndex);
+  }, [masterIndex, companyId]);
+
+  const presentCategorySlugs = useMemo(() => {
+    const s = new Set(domains.map((d) => getCategorySlugForDomain(d)));
+    return s;
+  }, [domains]);
+
+  const missingCatalogEntries = useMemo(
+    () => DOMAIN_CATALOG.filter((c) => !presentCategorySlugs.has(c.categorySlug)),
+    [presentCategorySlugs],
+  );
+
+  const categoryCoverageCount = useMemo(
+    () => REQUIRED_CATEGORY_SLUGS.filter((s) => presentCategorySlugs.has(s)).length,
+    [presentCategorySlugs],
+  );
+
+  async function scaffoldCategory(categorySlug) {
+    if (!companyId) return;
+    setScaffoldError(null);
+    setScaffoldCat(categorySlug);
+    try {
+      const res = await fetch(`/api/companies/${companyId}/scaffold`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ categorySlugs: [categorySlug] }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `HTTP ${res.status}`);
+      }
+      await refreshMasterIndex();
+    } catch (e) {
+      setScaffoldError(e.message || String(e));
+    } finally {
+      setScaffoldCat(null);
+    }
+  }
 
   useEffect(() => {
-    if (!masterIndex?.domains) return;
-    masterIndex.domains.forEach((d) => {
+    if (!domains.length) return;
+    domains.forEach((d) => {
       loadDomainIndex(d.id)
         .then((idx) => {
           if (idx?.summary) setDomainStats((prev) => ({ ...prev, [d.id]: idx.summary }));
         })
         .catch(() => {});
     });
-  }, [masterIndex, loadDomainIndex]);
-
-  const domains = masterIndex?.domains || [];
-
-  const grouped = useMemo(() => {
-    const map = {};
-    domains.forEach((d) => {
-      const cat = d.category || 'Other';
-      if (!map[cat]) map[cat] = [];
-      map[cat].push(d);
-    });
-    return CATEGORY_ORDER.filter((c) => map[c]).map((c) => ({ category: c, items: map[c] }));
-  }, [domains]);
+  }, [domains, loadDomainIndex]);
 
   const totalL2 = Object.values(domainStats).reduce((n, s) => n + (s.total_l2 || 0), 0);
   const totalL3 = Object.values(domainStats).reduce((n, s) => n + (s.total_l3 || 0), 0);
@@ -114,55 +107,120 @@ export default function DomainsPage() {
 
   if (loading) return <LoadingSkeleton />;
   if (error) return <Alert severity="error">Ошибка загрузки: {error.message}</Alert>;
+  if (!companyId) {
+    return <Alert severity="warning">Не указана компания.</Alert>;
+  }
+
+  const companyTitle = companyLabelFromSlug(companyId);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: SECTION_SPACING,
+      }}
+    >
       {/* Hero */}
       <Paper
         elevation={0}
         sx={{
+          position: 'relative',
+          overflow: 'hidden',
           p: { xs: 3, md: 4 },
-          mb: 4,
-          background: 'linear-gradient(135deg, #f5f7fa 0%, #e8edf5 100%)',
+          py: { xs: 3, md: 5 },
+          background: 'linear-gradient(135deg, #f5f7fa 0%, #e3ecff 40%, #e8edf5 100%)',
           border: '1px solid',
           borderColor: 'divider',
           borderRadius: 3,
+          boxShadow: '0 18px 45px rgba(15, 23, 42, 0.06)',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: '-40%',
+            background:
+              'radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.16), transparent 60%), radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.16), transparent 55%)',
+            opacity: 0.9,
+          },
+          '& > *': {
+            position: 'relative',
+            zIndex: 1,
+          },
         }}
       >
-        <Grid container spacing={4} alignItems="center">
+        <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
           <Grid item xs={12} md={7}>
             <Typography
               variant="overline"
-              sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 1.5, mb: 1, display: 'block' }}
+              sx={{
+                color: 'primary.main',
+                fontWeight: 700,
+                letterSpacing: 1.5,
+                mb: 1,
+                display: 'block',
+                textTransform: 'uppercase',
+              }}
             >
               Operating System Documentation
             </Typography>
-            <Typography variant="h4" fontWeight={800} gutterBottom sx={{ lineHeight: 1.2 }}>
-              Портал процессов компании
+            <Typography
+              variant="h3"
+              fontWeight={800}
+              gutterBottom
+              sx={{
+                lineHeight: 1.1,
+                mb: 1.5,
+                fontSize: { xs: 26, sm: 30, md: 34 },
+              }}
+            >
+              {companyTitle}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 520, mb: 3 }}>
-              Единая архитектура от стратегии до операций.
-              Каждый домен — это набор L2-процессов, L3-подпроцессов и пошаговых SOP-инструкций.
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ maxWidth: 560, mb: 2.5, fontSize: { xs: 14, md: 15 } }}
+            >
+              Домены уровня L1 внутри компании (L0). Каждый домен — набор L2-процессов,
+              L3-подпроцессов и пошаговых SOP-инструкций.
             </Typography>
-            <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
-              <Button
-                component={RouterLink}
-                to="/architecture"
-                variant="contained"
-                disableElevation
-                startIcon={<AccountTreeIcon />}
-                size="medium"
-              >
-                Архитектура
-              </Button>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: 1.5,
+                alignItems: { xs: 'stretch', sm: 'center' },
+              }}
+            >
               <Button
                 component={RouterLink}
                 to="/registry"
-                variant="outlined"
+                variant="contained"
+                disableElevation
                 startIcon={<ListAltIcon />}
                 size="medium"
+                sx={{
+                  px: 2.75,
+                  py: 1.1,
+                  borderRadius: 2,
+                  fontWeight: 600,
+                }}
               >
                 Реестр процессов
+              </Button>
+              <Button
+                component={RouterLink}
+                to="/dictionaries"
+                variant="outlined"
+                startIcon={<AccountTreeIcon />}
+                size="medium"
+                sx={{
+                  px: 2.5,
+                  py: 1.05,
+                  borderRadius: 2,
+                  borderStyle: 'dashed',
+                }}
+              >
+                Справочники
               </Button>
             </Box>
           </Grid>
@@ -170,9 +228,14 @@ export default function DomainsPage() {
           <Grid item xs={12} md={5}>
             <Paper
               variant="outlined"
-              sx={{ p: 2.5, borderRadius: 2.5, bgcolor: 'background.paper' }}
+              sx={{
+                p: 2.5,
+                borderRadius: 3,
+                bgcolor: 'background.paper',
+                boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
+              }}
             >
-              <Box sx={{ display: 'flex', gap: 1 }}>
+              <Box sx={{ display: 'flex', gap: 1, alignItems: 'stretch' }}>
                 <StatPill value={domains.length} label="Доменов" />
                 <Divider orientation="vertical" flexItem />
                 <StatPill value={totalL2} label="L2" />
@@ -195,29 +258,314 @@ export default function DomainsPage() {
         </Grid>
       </Paper>
 
-      {/* Grouped domain cards */}
-      {grouped.map(({ category, items }) => (
-        <Box key={category} sx={{ mb: 4 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              {CATEGORY_LABEL[category] || category}
-            </Typography>
-            <Chip
-              label={`${items.length} ${items.length === 1 ? 'домен' : items.length < 5 ? 'домена' : 'доменов'}`}
-              size="small"
-              variant="outlined"
-              sx={{ fontWeight: 500 }}
-            />
-          </Box>
-          <Grid container spacing={2}>
-            {items.map((d) => (
-              <Grid item xs={12} sm={6} md={4} key={d.id}>
-                <DomainCard domain={d} stats={domainStats[d.id]} />
-              </Grid>
-            ))}
-          </Grid>
+      {/* Domains in architecture order */}
+      <Box
+        sx={{
+          pt: SECTION_GAP,
+          borderTop: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
+        {scaffoldError && (
+          <Alert severity="error" sx={{ mb: 2 }} onClose={() => setScaffoldError(null)}>
+            {scaffoldError}
+          </Alert>
+        )}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: { xs: 'flex-start', sm: 'center' },
+            flexDirection: { xs: 'column', sm: 'row' },
+            gap: 1.25,
+            mb: 2,
+            flexWrap: 'wrap',
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            Домены
+          </Typography>
+          <Chip
+            label={`${domains.length} ${domains.length === 1 ? 'домен' : domains.length < 5 ? 'домена' : 'доменов'}`}
+            size="small"
+            variant="outlined"
+            sx={{ fontWeight: 500 }}
+          />
+          <Chip
+            label={`Категории ${categoryCoverageCount} / ${REQUIRED_CATEGORY_SLUGS.length}`}
+            size="small"
+            variant="outlined"
+            color={categoryCoverageCount >= REQUIRED_CATEGORY_SLUGS.length ? 'success' : 'default'}
+            sx={{ fontWeight: 500 }}
+          />
         </Box>
-      ))}
+        <Paper
+          variant="outlined"
+          sx={{
+            borderRadius: 2.5,
+            overflow: 'hidden',
+            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '2fr 1fr 1fr',
+                md: '2.5fr 3fr 0.8fr 0.8fr 0.8fr',
+              },
+              gap: 1,
+              px: { xs: 1.5, md: 2 },
+              py: 1,
+              bgcolor: 'background.paper',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+              position: 'sticky',
+              top: 0,
+              zIndex: 1,
+            }}
+          >
+            <Typography variant="caption" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 0.4 }}>
+              Домен
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                display: { xs: 'none', md: 'block' },
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: 0.4,
+              }}
+            >
+              Описание
+            </Typography>
+            <Typography variant="caption" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 0.4 }}>
+              L2
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: 0.4,
+                display: { xs: 'none', md: 'block' },
+              }}
+            >
+              L3
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: 0.4,
+                display: { xs: 'none', md: 'block' },
+              }}
+            >
+              SOP
+            </Typography>
+          </Box>
+
+          {domains.map((d, index) => {
+            const stats = domainStats[d.id] || {};
+            const l2 = stats.total_l2 ?? '–';
+            const l3 = stats.total_l3 ?? '–';
+            const sop = stats.total_sop ?? '–';
+
+            return (
+              <Box
+                key={d.id}
+                component={RouterLink}
+                to={companyClientPath(companyId, `domain/${d.id}`)}
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '2fr 1fr 1fr',
+                    md: '2.5fr 3fr 0.8fr 0.8fr 0.8fr',
+                  },
+                  gap: 1,
+                  px: { xs: 1.5, md: 2 },
+                  py: 1,
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  bgcolor: index % 2 === 0 ? 'background.paper' : 'rgba(15, 23, 42, 0.02)',
+                  borderTop: '1px solid',
+                  borderColor: 'divider',
+                  '&:hover': {
+                    bgcolor: 'action.hover',
+                    transform: 'translateY(-1px)',
+                    transition: 'background-color 120ms ease, transform 120ms ease',
+                  },
+                }}
+              >
+                <Box sx={{ minWidth: 0 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 0 }}>
+                    <Box
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        bgcolor: d.color || 'primary.main',
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {d.name_ru}
+                    </Typography>
+                    <ChevronRightIcon
+                      fontSize="small"
+                      sx={{
+                        ml: 'auto',
+                        color: 'text.disabled',
+                        display: { xs: 'inline-flex', md: 'none' },
+                      }}
+                    />
+                  </Box>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{
+                      display: { xs: 'block', md: 'none' },
+                      mt: 0.25,
+                      maxHeight: 32,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {d.description_ru}
+                  </Typography>
+                </Box>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    display: { xs: 'none', md: 'block' },
+                    maxHeight: 40,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {d.description_ru}
+                </Typography>
+
+                <Typography variant="body2" sx={{ fontVariantNumeric: 'tabular-nums', textAlign: 'right' }}>
+                  {l2}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontVariantNumeric: 'tabular-nums',
+                    textAlign: 'right',
+                    display: { xs: 'none', md: 'block' },
+                  }}
+                >
+                  {l3}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontVariantNumeric: 'tabular-nums',
+                    textAlign: 'right',
+                    display: { xs: 'none', md: 'block' },
+                  }}
+                >
+                  {sop}
+                </Typography>
+              </Box>
+            );
+          })}
+
+          {missingCatalogEntries.map((cat) => (
+            <Box
+              key={`missing-${cat.categorySlug}`}
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '2fr 1fr 1fr',
+                  md: '2.5fr 3fr 0.8fr 0.8fr 0.8fr',
+                },
+                gap: 1,
+                px: { xs: 1.5, md: 2 },
+                py: 1,
+                alignItems: 'center',
+                bgcolor: 'rgba(15, 23, 42, 0.03)',
+                borderTop: '1px solid',
+                borderColor: 'divider',
+                opacity: 0.72,
+              }}
+            >
+              <Box sx={{ minWidth: 0 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      bgcolor: cat.color || 'action.disabled',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                    {cat.name_ru}
+                  </Typography>
+                  <Chip label="Не создан" size="small" variant="outlined" color="default" />
+                </Box>
+                <Typography
+                  variant="caption"
+                  color="text.disabled"
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                    mt: 0.25,
+                    maxHeight: 32,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {cat.description_ru}
+                </Typography>
+              </Box>
+              <Typography
+                variant="body2"
+                color="text.disabled"
+                sx={{
+                  display: { xs: 'none', md: 'block' },
+                  fontStyle: 'italic',
+                  maxHeight: 40,
+                  overflow: 'hidden',
+                }}
+              >
+                {cat.description_ru}
+              </Typography>
+              <Typography variant="body2" color="text.disabled" sx={{ textAlign: 'right' }}>
+                –
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.disabled"
+                sx={{ textAlign: 'right', display: { xs: 'none', md: 'block' } }}
+              >
+                –
+              </Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  disableElevation
+                  disabled={scaffoldCat === cat.categorySlug}
+                  onClick={() => scaffoldCategory(cat.categorySlug)}
+                >
+                  {scaffoldCat === cat.categorySlug ? 'Создание…' : 'Создать'}
+                </Button>
+              </Box>
+            </Box>
+          ))}
+        </Paper>
+      </Box>
     </Box>
   );
 }

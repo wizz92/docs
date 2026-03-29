@@ -1,0 +1,69 @@
+{
+  "name": "Как подготовить competitive landscape report",
+  "type": "sop",
+  "purpose": "Структурировать данные в actionable отчёт.",
+  "description": "Структурировать данные в actionable отчёт.",
+  "main_goal": "Структурировать данные в actionable отчёт.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Данные о конкурентах собраны"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Построить positioning map",
+      "description": ""
+    },
+    {
+      "step": "Выделить strengths и weaknesses каждого конкурента",
+      "description": ""
+    },
+    {
+      "step": "Определить whitespace opportunities",
+      "description": ""
+    },
+    {
+      "step": "Подготовить executive summary",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с Head of BD",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Market analyst",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

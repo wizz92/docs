@@ -8,19 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 
-function normalizeRows(items, failures, deviations) {
-  if (items?.length) return items;
-  if (failures?.length) {
-    return failures.map((f, i) => ({
-      failure: f,
-      action: deviations?.[i] || '—',
-    }));
-  }
-  return [];
-}
-
-export default function FailuresTable({ items, failures, deviations }) {
-  const rows = normalizeRows(items, failures, deviations);
+export default function FailuresTable({ items }) {
+  const rows = items || [];
   if (!rows.length) return null;
 
   return (

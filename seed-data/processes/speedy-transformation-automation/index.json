@@ -1,0 +1,18 @@
+{
+  "name": "Transformation & Automation",
+  "type": "process_index",
+  "description": "Master index of all processes and SOPs with relative file paths.",
+  "base_path": "processes/speedy-transformation-automation",
+  "l1": {
+    "name": "Трансформация и автоматизация",
+    "path": "processes/speedy-transformation-automation/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [],
+  "summary": {
+    "total_l2": 0,
+    "total_l3": 0,
+    "total_sop": 0,
+    "total_files": 2
+  }
+}

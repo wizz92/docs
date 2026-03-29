@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useMatch } from 'react-router-dom';
+import { Outlet, useMatch, useNavigate, useParams } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
@@ -7,25 +7,42 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Slide from '@mui/material/Slide';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from './Sidebar';
 import BreadcrumbsNav from './Breadcrumbs';
 import useProcessData from '../hooks/useProcessData';
+import { companyLabelFromSlug, DEFAULT_COMPANY_SLUG } from '../../shared/companies.js';
 
-const DRAWER_WIDTH = 280;
+export const DRAWER_WIDTH = 280;
 
 export default function Layout() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hideAppBar, setHideAppBar] = useState(false);
   const { masterIndex, loading, loadDomainIndex } = useProcessData();
 
-  const domainMatch = useMatch('/domain/:domainId/*');
-  const domainId = domainMatch?.params?.domainId || null;
+  const routeParams = useParams();
+  const domainMatch = useMatch('/company/:companyId/domain/:domainId/*');
+  /** Prefer leaf route `useParams().domainId` so nested routes always resolve (useMatch can be null in some nested cases). */
+  const domainId = routeParams.domainId ?? domainMatch?.params?.domainId ?? null;
+  const companyId = routeParams.companyId ?? null;
   const [domainIndex, setDomainIndex] = useState(null);
   const domainMeta = masterIndex?.domains?.find((d) => d.id === domainId) || null;
+
+  const [backendInfo, setBackendInfo] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/backend')
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => data && setBackendInfo({ mongodbConnected: data.mongodbConnected }))
+      .catch(() => setBackendInfo(null));
+  }, []);
 
   useEffect(() => {
     if (!domainId || !masterIndex) {
@@ -39,9 +56,26 @@ export default function Layout() {
 
   const domainName = domainMeta?.name_ru || domainIndex?.l1?.name || 'Process Portal';
 
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      setHideAppBar(scrollingDown && currentScrollY > 64);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const drawer = (
     <Sidebar
       masterIndex={masterIndex}
+      companyId={companyId}
       domainId={domainId}
       domainIndex={domainIndex}
       domainMeta={domainMeta}
@@ -52,41 +86,68 @@ export default function Layout() {
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}
-        elevation={1}
-      >
-        <Toolbar>
-          {!isDesktop && (
-            <IconButton
+      <Slide appear={false} direction="down" in={!hideAppBar}>
+        <AppBar
+          position="fixed"
+          sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}
+          elevation={1}
+        >
+          <Toolbar>
+            {!isDesktop && (
+              <IconButton
+                color="inherit"
+                edge="start"
+                onClick={() => setMobileOpen(true)}
+                sx={{ mr: 1 }}
+                aria-label="Открыть меню"
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" noWrap>
+                Портал документации процессов
+              </Typography>
+            </Box>
+            <Button
               color="inherit"
-              edge="start"
-              onClick={() => setMobileOpen(true)}
-              sx={{ mr: 1 }}
-              aria-label="Открыть меню"
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h6" noWrap>
-              Портал документации процессов
-            </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.8 }} noWrap>
-              {domainMeta ? domainMeta.description_ru : 'Все домены компании'}
-            </Typography>
-          </Box>
-          {domainMeta && (
-            <Chip
-              label={domainName}
+              variant="outlined"
               size="small"
-              color="secondary"
-              icon={<Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: domainMeta.color || '#4caf50', ml: 1 }} />}
-            />
-          )}
-        </Toolbar>
-      </AppBar>
+              sx={{ mr: 1 }}
+              onClick={() => {
+                const cid = companyId || DEFAULT_COMPANY_SLUG;
+                navigate(`/company/${cid}/create`);
+              }}
+            >
+              Создать процесс
+            </Button>
+            {backendInfo && (
+              <Chip
+                label={backendInfo.mongodbConnected ? 'Data: MongoDB' : 'Data: MongoDB (offline)'}
+                size="small"
+                variant="outlined"
+                sx={{ mr: 1, opacity: 0.9 }}
+              />
+            )}
+            {companyId && (
+              <Chip
+                label={companyLabelFromSlug(companyId)}
+                size="small"
+                variant="outlined"
+                sx={{ mr: 1 }}
+              />
+            )}
+            {domainMeta && (
+              <Chip
+                label={domainName}
+                size="small"
+                color="secondary"
+                icon={<Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: domainMeta.color || '#4caf50', ml: 1 }} />}
+              />
+            )}
+          </Toolbar>
+        </AppBar>
+      </Slide>
 
       {isDesktop ? (
         <Drawer
@@ -125,6 +186,7 @@ export default function Layout() {
       >
         <Toolbar />
         <BreadcrumbsNav
+          companyId={companyId}
           domainId={domainId}
           domainIndex={domainIndex}
           domainMeta={domainMeta}

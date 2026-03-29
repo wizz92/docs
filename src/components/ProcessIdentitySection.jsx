@@ -4,12 +4,15 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Field from './Field';
 import ChipList from './ChipList';
+import DoneCriteriaList from './DoneCriteriaList';
 
-export default function ProcessIdentitySection({ data }) {
+/**
+ * @param {{ data: object, variant?: 'standard' | 'sop' }} props
+ */
+export default function ProcessIdentitySection({ data, variant = 'standard' }) {
   if (!data) return null;
 
-  const triggers = data.triggers
-    || (data.trigger && (Array.isArray(data.trigger) ? data.trigger : [data.trigger]));
+  const triggers = data.triggers;
 
   return (
     <Paper variant="outlined" sx={{ p: { xs: 2, md: 3 }, mb: 3 }}>
@@ -23,41 +26,44 @@ export default function ProcessIdentitySection({ data }) {
 
       <Divider sx={{ my: 2.5 }} />
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={3}>
-          <Field label="Владелец" value={data.owner} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Field label="Когда используется" value={data.when_used} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <ChipList label="Триггеры" items={triggers} color="primary" />
-        </Grid>
-      </Grid>
-
-      <ChipList label="Участники / роли" items={data.participants} />
-
-      {(data.inputs?.length > 0 || data.outputs?.length > 0) && (
+      {variant === 'sop' ? (
         <>
-          <Divider sx={{ my: 2.5 }} />
-          <Typography variant="overline" color="text.secondary" sx={{ mb: 1.5, display: 'block' }}>
-            Входы и выходы
-          </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <ChipList label="Входы (inputs)" items={data.inputs} />
+            <Grid item xs={12} sm={6} md={3}>
+              <Field label="Владелец" value={data.owner} />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <ChipList label="Выходы (outputs)" items={data.outputs} color="secondary" />
+            <Grid item xs={12} sm={6} md={3}>
+              <Field label="SLA" value={data.sla} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <ChipList label="Триггеры" items={triggers} color="primary" />
             </Grid>
           </Grid>
+
+          <ChipList label="Preconditions" items={data.preconditions} />
+        </>
+      ) : (
+        <>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={3}>
+              <Field label="Владелец" value={data.owner} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Field label="Когда используется" value={data.when_used} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <ChipList label="Триггеры" items={triggers} color="primary" />
+            </Grid>
+          </Grid>
+
+          <ChipList label="Участники / роли" items={data.participants} />
         </>
       )}
 
       {data.done_criteria?.length > 0 && (
         <>
           <Divider sx={{ my: 2.5 }} />
-          <ChipList label="Done criteria" items={data.done_criteria} color="success" />
+          <DoneCriteriaList label="Done criteria" items={data.done_criteria} />
         </>
       )}
     </Paper>

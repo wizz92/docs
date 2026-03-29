@@ -1,0 +1,66 @@
+{
+  "name": "Межкомандная координация",
+  "type": "process_l3",
+  "purpose": "Синхронизировать работу команд в точках зависимости, handoff и совместного результата.",
+  "description": "Inter-team syncs, handoff coordination, dependency review, согласование ожиданий по результату.",
+  "main_goal": "Потери от рассинхронизации, неясных ожиданий и плохо управляемых зависимостей — минимальны.",
+  "when_used": "Постоянно при наличии cross-team work и shared deliverables.",
+  "cadence": "Weekly / per sprint",
+  "triggers": [
+    "Shared deliverables / dependencies / handoffs"
+  ],
+  "inputs": [
+    "Plans and statuses from teams",
+    "Dependencies",
+    "Handoff expectations"
+  ],
+  "outputs": [
+    "Inter-team agreements",
+    "Updated dependency view",
+    "Resolved handoff issues"
+  ],
+  "owner": "Operations lead",
+  "participants": [
+    "Team Leads",
+    "Heads of Functions",
+    "Initiative owners"
+  ],
+  "linked_meetings": [
+    "Inter-team sync",
+    "Dependency review"
+  ],
+  "linked_artifacts": [
+    "Dependency list",
+    "Handoff agreements",
+    "Cross-team action list"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как проводить inter-team sync",
+    "Как организовать handoff между командами",
+    "Как вести dependency review",
+    "Как согласовать ожидания между командами"
+  ],
+  "done_criteria": [
+    "Dependencies актуальны",
+    "Handoffs согласованы",
+    "Conflicts resolved"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Dependencies не отслеживаются — blockers-surprise",
+      "symptom": "",
+      "action": "При blocked dependency > 3 дней — эскалировать"
+    },
+    {
+      "failure": "Handoffs не формализованы — потеря качества",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

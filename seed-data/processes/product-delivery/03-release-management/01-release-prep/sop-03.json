@@ -1,0 +1,65 @@
+{
+  "name": "Как пройти release readiness checklist",
+  "type": "sop",
+  "purpose": "Проверить все пункты готовности.",
+  "description": "Проверить все пункты готовности.",
+  "main_goal": "Проверить все пункты готовности.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Release candidate + release notes готовы"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Пройти по каждому пункту checklist",
+      "description": ""
+    },
+    {
+      "step": "Отметить pass/fail",
+      "description": ""
+    },
+    {
+      "step": "При fail — определить action и blocker",
+      "description": ""
+    },
+    {
+      "step": "Получить go/no-go решение от Release Manager",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Release Manager",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

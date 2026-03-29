@@ -1,0 +1,69 @@
+{
+  "name": "Как подготовить и провести initiative review",
+  "type": "sop",
+  "purpose": "Как подготовить и провести initiative review.",
+  "description": "Практическая инструкция: как подготовить и провести initiative review.",
+  "main_goal": "Подготовить и провести initiative review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Bi-weekly / monthly (зависит от portfolio)"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Собрать актуальные initiative summaries от owners (status, milestones, risks, confidence)",
+      "description": ""
+    },
+    {
+      "step": "Сформировать agenda: фокус на at risk / behind инициативах, blocked dependencies, decisions needed",
+      "description": ""
+    },
+    {
+      "step": "Highlight problem areas: инициативы с confidence level low или с missed milestones",
+      "description": ""
+    },
+    {
+      "step": "Провести review: owner каждой problem initiative даёт 3-5 мин update + recommendation",
+      "description": ""
+    },
+    {
+      "step": "Принять решения: continue as-is / adjust plan / add resources / escalate / kill",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать решения и action items",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Все инициативы обсуждаются одинаково — время тратится на healthy ones",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Owner не подготовил summary — review вслепую",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Решения не принимаются — «подождём ещё»",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Initiative review agenda",
+    "Initiative summary template"
+  ],
+  "owner": "COO / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

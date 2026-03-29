@@ -1,0 +1,74 @@
+{
+  "name": "Как подготовить и провести weekly ops review",
+  "type": "sop",
+  "purpose": "Как подготовить и провести weekly ops review.",
+  "description": "Практическая инструкция: как подготовить и провести weekly ops review.",
+  "main_goal": "Подготовить и провести weekly ops review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Еженедельно, фиксированный день/время"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "За 1 день до review: собрать входные данные — статусы инициатив, open escalations, blockers, capacity issues",
+      "description": ""
+    },
+    {
+      "step": "Подготовить agenda: top issues (не более 5), key decisions needed, escalations",
+      "description": ""
+    },
+    {
+      "step": "Правило: не обсуждаем on-track items. Фокус на problems, decisions, blockers",
+      "description": ""
+    },
+    {
+      "step": "Провести review (30-45 мин): пройти по agenda, принять решения, зафиксировать actions",
+      "description": ""
+    },
+    {
+      "step": "В конце: зачитать actions с owners и due dates",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать meeting notes и action items в тот же день",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "Notes опубликованы в тот же день",
+  "typical_failures": [
+    {
+      "failure": "Review без agenda — превращается в хаотичное обсуждение",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Обсуждение on-track items — время тратится, решения не принимаются",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Notes не публикуются — решения теряются",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Review длится > 1 часа — неэффективно",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Weekly ops review agenda template",
+    "Meeting notes template"
+  ],
+  "owner": "COO / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

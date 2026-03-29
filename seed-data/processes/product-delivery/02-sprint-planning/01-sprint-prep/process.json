@@ -1,0 +1,59 @@
+{
+  "name": "Подготовка к планированию спринта",
+  "type": "process_l3",
+  "purpose": "Убедиться, что все inputs для sprint planning готовы.",
+  "description": "Проверка backlog readiness, capacity, carry-over и priorities.",
+  "main_goal": "Все inputs для sprint planning подготовлены.",
+  "when_used": "За 1–2 дня до sprint planning.",
+  "cadence": "Per sprint",
+  "triggers": [
+    "Приближение sprint planning"
+  ],
+  "inputs": [
+    "Refined backlog",
+    "Team capacity",
+    "Previous sprint results"
+  ],
+  "outputs": [
+    "Sprint planning prep checklist"
+  ],
+  "owner": "Scrum Master",
+  "participants": [
+    "Scrum Master",
+    "Product Owner",
+    "Tech Lead"
+  ],
+  "linked_meetings": [
+    "Pre-planning sync"
+  ],
+  "linked_artifacts": [
+    "Sprint prep checklist"
+  ],
+  "linked_systems": [
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как проверить readiness к sprint planning",
+    "Как определить capacity команды на спринт",
+    "Как обработать carry-over items"
+  ],
+  "done_criteria": [
+    "Checklist пройден",
+    "Backlog ready",
+    "Capacity известна"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Backlog не ready",
+      "symptom": "",
+      "action": "Начать prep за 2 дня"
+    },
+    {
+      "failure": "Capacity неизвестна",
+      "symptom": "",
+      "action": "Блокировать planning если backlog не ready"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

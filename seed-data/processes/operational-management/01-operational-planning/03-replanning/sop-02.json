@@ -1,0 +1,61 @@
+{
+  "name": "Что делать, если capacity ниже ожидаемой",
+  "type": "sop",
+  "purpose": "Что делать, если capacity ниже ожидаемой.",
+  "description": "Практическая инструкция: что делать, если capacity ниже ожидаемой.",
+  "main_goal": "Что делать, если capacity ниже ожидаемой — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Capacity пересчёт показал значительный deficit vs план"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Пересчитать реальный capacity: учесть незапланированные отпуска, болезни, аллокации",
+      "description": ""
+    },
+    {
+      "step": "Сопоставить с planned scope: какой deficit?",
+      "description": ""
+    },
+    {
+      "step": "Если deficit < 15%: убрать lowest-priority items из sprint backlog",
+      "description": ""
+    },
+    {
+      "step": "Если deficit > 15%: эскалировать на Operations lead — обсудить варианты: сократить scope, сдвинуть сроки, перебросить ресурсы",
+      "description": ""
+    },
+    {
+      "step": "Обновить sprint backlog и sprint goal, уведомить стейкхолдеров об изменениях",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать причину capacity drop для анализа на ретро",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Capacity drop игнорируется — команда берёт прежний объём и срывает commitments",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Причина не анализируется — ситуация повторяется",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

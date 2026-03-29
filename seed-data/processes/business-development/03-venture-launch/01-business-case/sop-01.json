@@ -1,0 +1,73 @@
+{
+  "name": "Как подготовить business case для нового направления",
+  "type": "sop",
+  "purpose": "Написать структурированный business case.",
+  "description": "Написать структурированный business case.",
+  "main_goal": "Написать структурированный business case.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Решение о подготовке business case"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Собрать validation data и market insights",
+      "description": ""
+    },
+    {
+      "step": "Описать opportunity и target customer",
+      "description": ""
+    },
+    {
+      "step": "Построить financial model: 3 сценария",
+      "description": ""
+    },
+    {
+      "step": "Определить required resources и timeline",
+      "description": ""
+    },
+    {
+      "step": "Описать ключевые risks и mitigations",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с CFO",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

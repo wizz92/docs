@@ -1,24 +1,33 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import LockIcon from '@mui/icons-material/Lock';
 import UpdateIcon from '@mui/icons-material/Update';
 import ProcessIdentitySection from '../components/ProcessIdentitySection';
 import ProcessDiagram from '../components/ProcessDiagram';
+import SipocDiagram from '../components/SipocDiagram';
 import ProcessSteps from '../components/ProcessSteps';
 import RhythmTable from '../components/RhythmTable';
 import SubprocessTable from '../components/SubprocessTable';
 import ProcessConnectionsSection from '../components/ProcessConnectionsSection';
+import ProcessMediaSection from '../components/ProcessMediaSection';
 import FailuresTable from '../components/FailuresTable';
 import SectionHeading from '../components/SectionHeading';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
+import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 function MetaItem({ icon: Icon, children }) {
   if (!children) return null;
@@ -31,7 +40,8 @@ function MetaItem({ icon: Icon, children }) {
 }
 
 export default function L2Page() {
-  const { domainId, l2Folder } = useParams();
+  const { domainId, l2Folder, companyId } = useParams();
+  const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [l2Data, setL2Data] = useState(null);
 
@@ -49,8 +59,51 @@ export default function L2Page() {
 
   return (
     <Box>
-      <Chip label="L2 Процесс" size="small" color="primary" sx={{ mb: 1 }} />
-      <Typography variant="h4" gutterBottom>{l2Entry.name}</Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1.5,
+          mb: 2,
+          flexWrap: 'wrap',
+        }}
+      >
+        <Typography variant="h4" sx={{ mr: 1 }}>
+          {l2Entry.name}
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Chip label="L2 Процесс" size="small" color="primary" />
+          <IconButton
+            component={RouterLink}
+            to={companyClientPath(companyId, `domain/${domainId}/l2/${l2Folder}/edit`)}
+            size="small"
+            color="primary"
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+          {!l2Data?.archived && (
+            <Button
+              size="small"
+              color="error"
+              onClick={async () => {
+                const confirmed = confirmArchive(
+                  'Вы уверены, что хотите скрыть этот L2 процесс (мягкое удаление)? Он будет удалён из навигации.',
+                );
+                if (!confirmed) return;
+                try {
+                  const redirect = await archiveProcess('process_l2', { domainId, l2Folder, companyId });
+                  if (redirect) navigate(redirect);
+                } catch (e) {
+                  alertArchiveFailure(e, 'Не удалось заархивировать процесс');
+                }
+              }}
+            >
+              Archive
+            </Button>
+          )}
+        </Box>
+      </Box>
 
       {l2Data ? (
         <>
@@ -62,6 +115,7 @@ export default function L2Page() {
             Схема процесса
           </SectionHeading>
           <ProcessDiagram data={l2Data} />
+          <SipocDiagram data={l2Data} />
 
           {/* 3. Логика процесса */}
           {(l2Data.process_steps?.length > 0 || l2Data.process_rhythm?.length > 0) && (
@@ -75,14 +129,25 @@ export default function L2Page() {
           )}
 
           {/* 4. Подпроцессы */}
-          <SectionHeading caption="Дочерние процессы следующего уровня">
-            Подпроцессы
-          </SectionHeading>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 5, mb: 2 }}>
+            <SectionHeading caption="Дочерние процессы следующего уровня">
+              Подпроцессы
+            </SectionHeading>
+            <Button
+              component={RouterLink}
+              to={`${companyClientPath(companyId, `domain/${domainId}/create`)}?level=process_l3&l2=${encodeURIComponent(l2Folder)}`}
+              size="small"
+              variant="outlined"
+              startIcon={<AddIcon />}
+            >
+              Create L3
+            </Button>
+          </Box>
           <SubprocessTable
             rows={l2Entry.l3_processes?.map((l3) => ({
               key: l3.folder,
               name: l3.name,
-              to: `/domain/${domainId}/l3/${l2Folder}/${l3.folder}`,
+              to: companyClientPath(companyId, `domain/${domainId}/l3/${l2Folder}/${l3.folder}`),
               sopCount: l3.sops?.length || 0,
             }))}
           />
@@ -93,7 +158,10 @@ export default function L2Page() {
           </SectionHeading>
           <ProcessConnectionsSection data={l2Data} />
 
-          {/* 6. Риски и реагирование */}
+          {/* 6. Материалы */}
+          <ProcessMediaSection data={l2Data} />
+
+          {/* 7. Риски и реагирование */}
           {l2Data.typical_failures?.length > 0 && (
             <>
               <SectionHeading caption="Типовые отклонения и алгоритмы реагирования">

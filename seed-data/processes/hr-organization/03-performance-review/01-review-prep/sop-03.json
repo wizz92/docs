@@ -1,0 +1,69 @@
+{
+  "name": "Как оценить результаты подготовка к review cycle",
+  "type": "sop",
+  "purpose": "Проверить качество и полноту результатов.",
+  "description": "Проверить качество и полноту результатов.",
+  "main_goal": "Проверить качество и полноту результатов.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Завершение подготовка к review cycle"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Сравнить результат с done criteria",
+      "description": ""
+    },
+    {
+      "step": "Выявить отклонения и gaps",
+      "description": ""
+    },
+    {
+      "step": "Подготовить summary для stakeholders",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать lessons learned",
+      "description": ""
+    },
+    {
+      "step": "Обновить процесс при необходимости",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "HR BP / Head of HR",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

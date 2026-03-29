@@ -1,0 +1,62 @@
+{
+  "name": "Как выявить и проанализировать bottleneck",
+  "type": "sop",
+  "purpose": "Как выявить и проанализировать bottleneck.",
+  "description": "Практическая инструкция: как выявить и проанализировать bottleneck.",
+  "main_goal": "Выявить и проанализировать bottleneck — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Обнаружение паттерна recurring delays или blocked work"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Определить симптомы: recurring blocked items, одна роль/команда всегда задерживает, work piling up перед одним этапом",
+      "description": ""
+    },
+    {
+      "step": "Собрать данные: сколько items blocked, как долго, кто/что blocking",
+      "description": ""
+    },
+    {
+      "step": "Провести root cause analysis: ресурсный дефицит? Процессная проблема? Skill gap? Внешняя зависимость?",
+      "description": ""
+    },
+    {
+      "step": "Оценить impact: high (блокирует > 1 команду / критичную инициативу), medium, low",
+      "description": ""
+    },
+    {
+      "step": "Задокументировать в bottleneck register: описание, root cause, impact, affected teams",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Симптом принимается за root cause — лечится следствие",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Impact не оценён — не понятно, насколько критично",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не задокументировано — проблема «известна всем», но никто не решает",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead / Team Lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

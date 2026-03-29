@@ -408,7 +408,7 @@ For Goal Control:
 - Выявление рисков по целям
 
 MASTER PROMPT FOR ANOTHER LLM
-We also created a “master prompt” for an AI writer / process writer.
+We also created a “master prompt” for an AI writer / process writer. 
 
 Core instruction:
 Write company documentation as a management system, not as formal documents.

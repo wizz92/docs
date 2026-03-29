@@ -1,0 +1,62 @@
+{
+  "name": "Как вести multi-team delivery board и собирать статусы",
+  "type": "sop",
+  "purpose": "Как вести multi-team delivery board и собирать статусы.",
+  "description": "Практическая инструкция: как вести multi-team delivery board и собирать статусы.",
+  "main_goal": "Вести multi-team delivery board и собирать статусы — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Каждый спринт для multi-team инициатив"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Создать delivery board для multi-team инициативы: команды в строках, deliverables / milestones в столбцах",
+      "description": ""
+    },
+    {
+      "step": "Каждый спринт: собрать status update от каждой команды (done / in progress / blocked / not started)",
+      "description": ""
+    },
+    {
+      "step": "Выявить gaps: одна команда blocked, пока другая не delivery — это gap",
+      "description": ""
+    },
+    {
+      "step": "Для gaps: зафиксировать, кто blocking, что нужно, к какому сроку",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать общий confidence level по инициативе: high / medium / low",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Не все команды дают статус — картина неполная",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Gaps выявляются только на review — поздно для коррекции",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Confidence level завышается — проблемы скрываются",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Initiative owner / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

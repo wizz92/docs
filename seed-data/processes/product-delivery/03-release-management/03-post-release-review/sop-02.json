@@ -1,0 +1,69 @@
+{
+  "name": "Как провести post-release review meeting",
+  "type": "sop",
+  "purpose": "Обсудить результаты и извлечь уроки.",
+  "description": "Обсудить результаты и извлечь уроки.",
+  "main_goal": "Обсудить результаты и извлечь уроки.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Metrics собраны"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Презентовать release metrics",
+      "description": ""
+    },
+    {
+      "step": "Обсудить: что прошло хорошо, что нет",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать lessons learned",
+      "description": ""
+    },
+    {
+      "step": "Определить improvement actions",
+      "description": ""
+    },
+    {
+      "step": "Добавить improvements в backlog",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Release Manager",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

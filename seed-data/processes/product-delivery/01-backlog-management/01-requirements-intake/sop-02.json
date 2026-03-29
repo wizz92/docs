@@ -1,0 +1,69 @@
+{
+  "name": "Как провести weekly intake review",
+  "type": "sop",
+  "purpose": "Обработать накопившиеся requests.",
+  "description": "Обработать накопившиеся requests.",
+  "main_goal": "Обработать накопившиеся requests.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Наступление weekly review"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Пройти по всем новым items",
+      "description": ""
+    },
+    {
+      "step": "Уточнить описание при необходимости",
+      "description": ""
+    },
+    {
+      "step": "Подтвердить или изменить priority",
+      "description": ""
+    },
+    {
+      "step": "Объединить дубликаты",
+      "description": ""
+    },
+    {
+      "step": "Определить кандидатов на refinement",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Product Owner",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

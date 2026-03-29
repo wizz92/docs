@@ -1,0 +1,73 @@
+{
+  "name": "Как провести sprint planning meeting",
+  "type": "sop",
+  "purpose": "Эффективно провести sprint planning.",
+  "description": "Эффективно провести sprint planning.",
+  "main_goal": "Эффективно провести sprint planning.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Наступление planning"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Начать с review sprint goal предыдущего спринта",
+      "description": ""
+    },
+    {
+      "step": "PO представляет предлагаемый sprint goal",
+      "description": ""
+    },
+    {
+      "step": "Команда обсуждает и принимает goal",
+      "description": ""
+    },
+    {
+      "step": "Выбрать items из backlog под goal",
+      "description": ""
+    },
+    {
+      "step": "Проверить fit с capacity",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать sprint backlog в Jira",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Scrum Master",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

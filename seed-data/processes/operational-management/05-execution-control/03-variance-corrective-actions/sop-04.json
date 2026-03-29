@@ -1,0 +1,62 @@
+{
+  "name": "Как определить и эскалировать риски по целям",
+  "type": "sop",
+  "purpose": "Как определить и эскалировать риски по целям.",
+  "description": "Практическая инструкция: как определить и эскалировать риски по целям.",
+  "main_goal": "Определить и эскалировать риски по целям — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "При каждом status update цели/инициативы"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "При каждом status update: оценить, есть ли risk signals (темп ниже плана, blockers, resource loss, dependency at risk)",
+      "description": ""
+    },
+    {
+      "step": "Для целей at risk: обновить risk notes — что угрожает, вероятность, impact",
+      "description": ""
+    },
+    {
+      "step": "При red status (off track, высокий risk): немедленно эскалировать на management level",
+      "description": ""
+    },
+    {
+      "step": "При yellow status (behind, moderate risk): вынести на ближайший review для discussion",
+      "description": ""
+    },
+    {
+      "step": "При green → yellow transition: уведомить goal owner и Operations lead",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Risk signals игнорируются — «ещё есть время»",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Red status не эскалируется — management узнаёт слишком поздно",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Risk notes не обновляются — решения принимаются на устаревших данных",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Goal owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

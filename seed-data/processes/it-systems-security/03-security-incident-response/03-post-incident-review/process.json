@@ -1,0 +1,63 @@
+{
+  "name": "Post-incident review",
+  "type": "process_l3",
+  "purpose": "Обеспечить выполнение post-incident review в рамках реагирование на инциденты безопасности.",
+  "description": "Процесс подготовки, проведения и контроля качества post-incident review.",
+  "main_goal": "Результат post-incident review соответствует стандартам и ожиданиям.",
+  "when_used": "В рамках реагирование на инциденты безопасности, по расписанию или по событию.",
+  "cadence": "Per cycle",
+  "triggers": [
+    "Наступление срока post-incident review",
+    "Запрос от руководства"
+  ],
+  "inputs": [
+    "Данные для post-incident review",
+    "Регламент процесса",
+    "Предыдущие результаты"
+  ],
+  "outputs": [
+    "Результат post-incident review",
+    "Отчёт / summary",
+    "Action items"
+  ],
+  "owner": "Security Engineer / Head of IT",
+  "participants": [
+    "Security Engineer",
+    "DevOps",
+    "Head of IT",
+    "Legal"
+  ],
+  "linked_meetings": [
+    "Post-incident review meeting"
+  ],
+  "linked_artifacts": [
+    "Post-incident review template"
+  ],
+  "linked_systems": [
+    "Confluence / wiki",
+    "Jira"
+  ],
+  "linked_sop": [
+    "Как подготовиться к post-incident review",
+    "Как провести post-incident review",
+    "Как оценить результаты post-incident review"
+  ],
+  "done_criteria": [
+    "Результат post-incident review принят",
+    "Отчёт подготовлен"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Задержка в post-incident review",
+      "symptom": "",
+      "action": "Эскалировать на owner"
+    },
+    {
+      "failure": "Неполные данные",
+      "symptom": "",
+      "action": "Перенести на следующий цикл с причиной"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

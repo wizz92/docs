@@ -1,0 +1,57 @@
+{
+  "name": "Как эскалировать risk to milestone",
+  "type": "sop",
+  "purpose": "Как эскалировать risk to milestone.",
+  "description": "Практическая инструкция: как эскалировать risk to milestone.",
+  "main_goal": "Эскалировать risk to milestone — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Обнаружение риска пропуска milestone"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "При обнаружении risk to milestone: немедленно отметить в tracker (не ждать следующего review)",
+      "description": ""
+    },
+    {
+      "step": "Описать risk: что угрожает, какой impact, что нужно для митигации",
+      "description": ""
+    },
+    {
+      "step": "Уведомить initiative owner и Operations lead",
+      "description": ""
+    },
+    {
+      "step": "Вынести на ближайший initiative review / weekly ops review для решения",
+      "description": ""
+    },
+    {
+      "step": "Если milestone missed: зафиксировать причину, определить new date или escalate",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В тот же рабочий день",
+  "typical_failures": [
+    {
+      "failure": "Risk замалчивается — milestone просто молча пропускается",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Нет analysis причины miss — проблема повторяется",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Team Lead / Initiative owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

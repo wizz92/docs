@@ -1,0 +1,18 @@
+{
+  "name": "IT / Systems / Security",
+  "type": "process_index",
+  "description": "Master index of all processes and SOPs with relative file paths.",
+  "base_path": "processes/speedy-it-systems-security",
+  "l1": {
+    "name": "ИТ, системы и безопасность",
+    "path": "processes/speedy-it-systems-security/process.json",
+    "type": "process_l1"
+  },
+  "l2_processes": [],
+  "summary": {
+    "total_l2": 0,
+    "total_l3": 0,
+    "total_sop": 0,
+    "total_files": 2
+  }
+}

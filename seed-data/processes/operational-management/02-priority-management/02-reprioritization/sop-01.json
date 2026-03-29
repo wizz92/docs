@@ -1,0 +1,62 @@
+{
+  "name": "Как инициировать reprioritization и оценить влияние",
+  "type": "sop",
+  "purpose": "Как инициировать reprioritization и оценить влияние.",
+  "description": "Практическая инструкция: как инициировать reprioritization и оценить влияние.",
+  "main_goal": "Инициировать reprioritization и оценить влияние — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Значительное изменение условий, влияющее на текущие приоритеты"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Описать причину reprioritization: что изменилось и почему текущие приоритеты больше не актуальны",
+      "description": ""
+    },
+    {
+      "step": "Определить scope: какие инициативы, команды и commitments затронуты",
+      "description": ""
+    },
+    {
+      "step": "Оценить impact на текущие commitments: что сдвинется, что отменится, кто пострадает",
+      "description": ""
+    },
+    {
+      "step": "Подготовить 2-3 варианта нового приоритетного порядка с описанием trade-offs каждого",
+      "description": ""
+    },
+    {
+      "step": "Вынести на обсуждение с COO / Heads (или на weekly ops review при масштабных изменениях)",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Reprioritization без оценки impact — сюрпризы для команд",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Один вариант без альтернатив — нет осознанного выбора",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Не указаны конкретные последствия — решение абстрактное",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Инициатор / Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

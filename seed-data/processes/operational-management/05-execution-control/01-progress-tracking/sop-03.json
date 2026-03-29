@@ -1,0 +1,57 @@
+{
+  "name": "Как привязать sprint results к целям",
+  "type": "sop",
+  "purpose": "Как привязать sprint results к целям.",
+  "description": "Практическая инструкция: как привязать sprint results к целям.",
+  "main_goal": "Привязать sprint results к целям — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "После sprint review"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "После sprint review: определить, какие sprint deliverables вносят вклад в какие цели/инициативы",
+      "description": ""
+    },
+    {
+      "step": "Обновить goal tracker: отметить progress (числовой или качественный)",
+      "description": ""
+    },
+    {
+      "step": "Если sprint не продвинул цель — зафиксировать причину (работа была на другие цели / blockers / scope change)",
+      "description": ""
+    },
+    {
+      "step": "Оценить: при текущем темпе — уложимся ли в цель к дедлайну?",
+      "description": ""
+    },
+    {
+      "step": "Если нет — отметить risk и инициировать discussion на ближайшем review",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Sprint results не привязаны к целям — execution идёт, но непонятно к чему",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Темп не оценивается — проблема обнаруживается в последний момент",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Team Lead / Goal owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

@@ -1,0 +1,87 @@
+{
+  "name": "Ритм управления и координация",
+  "type": "process_l2",
+  "purpose": "Создать регулярный управленческий цикл и обеспечить координацию между командами.",
+  "description": "Регулярные management reviews, подготовка отчётности, межкомандная координация, escalation management, follow-up решений.",
+  "main_goal": "Управление регулярное и дисциплинированное. Координация работает, проблемы решаются, решения исполняются.",
+  "when_used": "Постоянно, по установленному management cadence.",
+  "triggers": [
+    "Weekly/sprint/monthly review cycle",
+    "Межкомандная зависимость",
+    "Escalation",
+    "Конфликт"
+  ],
+  "inputs": [
+    "Reports and statuses",
+    "Risks and escalations",
+    "Dependencies",
+    "Conflicts"
+  ],
+  "outputs": [
+    "Review decisions",
+    "Resolved escalations",
+    "Inter-team agreements",
+    "Action items"
+  ],
+  "owner": "COO / Operations lead",
+  "participants": [
+    "CEO",
+    "Heads of Functions",
+    "Team Leads",
+    "Relevant owners"
+  ],
+  "linked_l3_subprocesses": [
+    "Регулярные review",
+    "Межкомандная координация",
+    "Управление эскалациями",
+    "Follow-up решений"
+  ],
+  "linked_sop": [
+    "Как подготовить и провести weekly ops review",
+    "Как подготовить management summary по итогам спринта",
+    "Как подготовить и провести initiative review",
+    "Как провести function review",
+    "Как готовить отчётность для review",
+    "Как проводить inter-team sync",
+    "Как организовать handoff между командами",
+    "Как вести dependency review",
+    "Как согласовать ожидания между командами",
+    "Как определить необходимость эскалации и попробовать решить по горизонтали",
+    "Как подготовить факты и варианты для эскалации",
+    "Как провести эскалацию к руководителю",
+    "Как зафиксировать решение в Jira и закрыть эскалацию",
+    "Как фиксировать review decisions и назначать owners",
+    "Как контролировать исполнение решений",
+    "Как разрешать межкомандные конфликты"
+  ],
+  "linked_meetings": [
+    "Weekly ops review",
+    "Sprint-to-management review",
+    "Initiative review",
+    "Function review",
+    "Inter-team sync",
+    "Escalation review"
+  ],
+  "linked_artifacts": [
+    "Management summaries",
+    "Decision logs",
+    "Escalation log",
+    "Dependency list",
+    "Action lists"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence",
+    "Dashboards"
+  ],
+  "metrics_signals": [
+    "Review completion cadence",
+    "Decision follow-up closure rate",
+    "Time to resolve escalation",
+    "Blocked dependency duration"
+  ],
+  "review_cadence": "Built into process: weekly / sprint / monthly layers",
+  "access_level": "Management / leads",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

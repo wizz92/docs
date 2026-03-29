@@ -1,0 +1,59 @@
+{
+  "name": "Как обновить capacity review",
+  "type": "sop",
+  "purpose": "Как обновить capacity review.",
+  "description": "Практическая инструкция: как обновить capacity review.",
+  "main_goal": "Обновить capacity review — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Конец каждого planning cycle"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "После каждого planning cycle: обновить capacity tracker с фактическими данными",
+      "description": ""
+    },
+    {
+      "step": "Сравнить plan vs fact: точность предыдущего расчёта",
+      "description": ""
+    },
+    {
+      "step": "Выделить критичные роли с хронически высокой загрузкой (> 90% 3+ спринта подряд)",
+      "description": ""
+    },
+    {
+      "step": "Зафиксировать recommendations: нужен ли найм, перераспределение, снижение scope",
+      "description": ""
+    },
+    {
+      "step": "Представить на monthly ops review",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Capacity review не обновляется — данные устаревают",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Хронический перегруз не выявляется — люди выгорают",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Capacity review template"
+  ],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

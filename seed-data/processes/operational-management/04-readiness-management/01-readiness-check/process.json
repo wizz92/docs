@@ -1,0 +1,67 @@
+{
+  "name": "Проверка готовности",
+  "type": "process_l3",
+  "purpose": "Убедиться, что работа входит в execution только при достаточной готовности.",
+  "description": "Универсальный процесс проверки готовности для разных контекстов: backlog, спринт, релиз, запуск. Один паттерн — разные чек-листы.",
+  "main_goal": "Работа не стартует в сыром виде — проблемы выявляются до начала, а не в процессе.",
+  "when_used": "Перед стартом спринта, релиза, запуска или включением work item в plan.",
+  "cadence": "Per sprint / per release / per launch",
+  "triggers": [
+    "Приближение старта работы (спринт, релиз, запуск)"
+  ],
+  "inputs": [
+    "Work items / backlog",
+    "Capacity",
+    "Dependencies",
+    "Readiness checklist"
+  ],
+  "outputs": [
+    "Readiness status (ready / not ready / conditional)",
+    "Список blockers",
+    "Решение о старте"
+  ],
+  "owner": "Team Lead / Product Owner / Delivery owner (зависит от контекста)",
+  "participants": [
+    "Team Lead",
+    "Product Owner",
+    "Delivery owners",
+    "Relevant functions"
+  ],
+  "linked_meetings": [
+    "Readiness review"
+  ],
+  "linked_artifacts": [
+    "Readiness checklist",
+    "Blocker list"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как проверить готовность backlog",
+    "Как проверить готовность к спринту",
+    "Как проверить готовность релиза",
+    "Как проверить готовность запуска",
+    "Как документировать результат readiness check"
+  ],
+  "done_criteria": [
+    "Readiness check проведён",
+    "Not-ready items отмечены",
+    "Решение зафиксировано"
+  ],
+  "typical_failures": [
+    {
+      "failure": "Readiness check формальный — галочки без реальной проверки",
+      "symptom": "",
+      "action": "Если > 30% items not ready — эскалировать на Operations lead"
+    },
+    {
+      "failure": "Not-ready items берутся в работу",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

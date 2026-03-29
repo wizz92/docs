@@ -1,0 +1,65 @@
+{
+  "name": "Как оформить budget request для venture",
+  "type": "sop",
+  "purpose": "Подготовить запрос на бюджет.",
+  "description": "Подготовить запрос на бюджет.",
+  "main_goal": "Подготовить запрос на бюджет.",
+  "when_used": "По триггеру процесса.",
+  "triggers": [
+    "Business case утверждён"
+  ],
+  "preconditions": [
+    "Определены ответственные",
+    "Доступны необходимые данные и инструменты"
+  ],
+  "inputs": [
+    "Данные предыдущего этапа",
+    "Регламент / шаблон"
+  ],
+  "process_steps": [
+    {
+      "step": "Детализировать budget по категориям",
+      "description": ""
+    },
+    {
+      "step": "Определить milestones для release бюджета",
+      "description": ""
+    },
+    {
+      "step": "Согласовать с CFO процесс финансирования",
+      "description": ""
+    },
+    {
+      "step": "Оформить в финансовой системе",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    "Результат выполнения",
+    "Обновлённый статус"
+  ],
+  "result_location": "Confluence / wiki или рабочая система",
+  "done_criteria": [
+    "Результат зафиксирован",
+    "Stakeholders уведомлены"
+  ],
+  "sla": "Согласно регламенту процесса",
+  "typical_failures": [
+    {
+      "failure": "Пропущен шаг процедуры",
+      "symptom": "",
+      "action": "Уведомить owner процесса"
+    },
+    {
+      "failure": "Неполные входные данные",
+      "symptom": "",
+      "action": "Зафиксировать отклонение и причину"
+    }
+  ],
+  "linked_templates_forms_links": [
+    "Шаблон в Confluence"
+  ],
+  "owner": "Venture lead",
+  "version": "1.0",
+  "updated_at": "2026-03-12"
+}

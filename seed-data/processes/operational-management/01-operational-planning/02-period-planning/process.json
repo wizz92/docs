@@ -1,0 +1,78 @@
+{
+  "name": "Планирование периода (месяц / спринт)",
+  "type": "process_l3",
+  "purpose": "Перевести roadmap и приоритеты квартала в конкретный план работы на месяц и ближайший спринт.",
+  "description": "Включает monthly planning review, sprint planning и межкомандную синхронизацию. Результат — согласованный план с понятными commitments, capacity check и зависимостями.",
+  "main_goal": "Команды входят в период (месяц/спринт) с согласованным, реалистичным планом.",
+  "when_used": "Перед началом каждого месяца и каждого спринта.",
+  "cadence": "Monthly + per sprint",
+  "triggers": [
+    "Начало месяца / начало спринта"
+  ],
+  "inputs": [
+    "Roadmap",
+    "Текущий статус инициатив",
+    "Capacity команд",
+    "Backlog",
+    "Зависимости"
+  ],
+  "outputs": [
+    "Monthly operational plan",
+    "Sprint backlog",
+    "Sprint goal",
+    "Список зависимостей и assumptions"
+  ],
+  "owner": "COO / Operations lead",
+  "participants": [
+    "Heads of Functions",
+    "Team Leads",
+    "Product Owners",
+    "Delivery Leads"
+  ],
+  "linked_meetings": [
+    "Monthly planning review",
+    "Sprint planning",
+    "Cross-team planning sync"
+  ],
+  "linked_artifacts": [
+    "Monthly operational plan",
+    "Sprint backlog",
+    "Dependency list"
+  ],
+  "linked_systems": [
+    "Jira",
+    "Confluence"
+  ],
+  "linked_sop": [
+    "Как подготовить и провести monthly planning review",
+    "Как подготовить backlog и проверить capacity к спринту",
+    "Как провести sprint planning и зафиксировать sprint goal",
+    "Как согласовать план между командами",
+    "Как опубликовать monthly operational plan"
+  ],
+  "done_criteria": [
+    "Monthly plan согласован между командами",
+    "Sprint backlog утверждён",
+    "Sprint goal зафиксирован",
+    "Capacity проверен"
+  ],
+  "typical_failures": [
+    {
+      "failure": "План не согласован — команды работают по разным приоритетам",
+      "symptom": "",
+      "action": "Провести экстренный sync между затронутыми командами"
+    },
+    {
+      "failure": "Capacity не проверен — commitments нереалистичны",
+      "symptom": "",
+      "action": "Пересмотреть scope спринта при нехватке capacity"
+    },
+    {
+      "failure": "Зависимости не обсуждены — блокеры в середине спринта",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

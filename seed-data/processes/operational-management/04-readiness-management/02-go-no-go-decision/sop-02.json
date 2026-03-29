@@ -1,0 +1,62 @@
+{
+  "name": "Как зафиксировать условия и коммуницировать решение",
+  "type": "sop",
+  "purpose": "Как зафиксировать условия и коммуницировать решение.",
+  "description": "Практическая инструкция: как зафиксировать условия и коммуницировать решение.",
+  "main_goal": "Зафиксировать условия и коммуницировать решение — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Go/no-go решение принято"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Зафиксировать решение: GO / CONDITIONAL GO / NO GO",
+      "description": ""
+    },
+    {
+      "step": "Для CONDITIONAL GO: перечислить conditions с owners и дедлайнами (что должно быть выполнено до/после старта)",
+      "description": ""
+    },
+    {
+      "step": "Для NO GO: указать, что нужно исправить и когда пересмотреть решение",
+      "description": ""
+    },
+    {
+      "step": "Опубликовать decision record в Confluence",
+      "description": ""
+    },
+    {
+      "step": "Уведомить все затронутые команды и стейкхолдеров",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "CONDITIONAL GO без конкретных conditions — conditions забываются",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "NO GO без плана пересмотра — решение зависает",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Стейкхолдеры не уведомлены — ожидания не скорректированы",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Launch owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

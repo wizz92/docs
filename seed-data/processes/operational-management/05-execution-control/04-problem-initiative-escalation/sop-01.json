@@ -1,0 +1,62 @@
+{
+  "name": "Как инициировать escalation и оформить recovery plan",
+  "type": "sop",
+  "purpose": "Как инициировать escalation и оформить recovery plan.",
+  "description": "Практическая инструкция: как инициировать escalation и оформить recovery plan.",
+  "main_goal": "Инициировать escalation и оформить recovery plan — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Инициатива в red status / critical blocker"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Описать проблему: что пошло не так, какой impact, что уже пробовали",
+      "description": ""
+    },
+    {
+      "step": "Подготовить recovery plan: 3-5 конкретных actions для возвращения инициативы on track",
+      "description": ""
+    },
+    {
+      "step": "Для каждого action: owner, due date, expected result",
+      "description": ""
+    },
+    {
+      "step": "Определить: при каких условиях инициативу нужно pivot / kill вместо recovery",
+      "description": ""
+    },
+    {
+      "step": "Представить на initiative review / ops review для management decision",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Escalation без recovery plan — «у нас проблема, решайте»",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Kill option не рассматривается — тратим ресурсы на безнадёжную инициативу",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Recovery plan нереалистичный — те же действия, но «стараемся сильнее»",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Initiative owner",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

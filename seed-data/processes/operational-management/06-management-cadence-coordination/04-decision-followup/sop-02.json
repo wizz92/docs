@@ -1,0 +1,57 @@
+{
+  "name": "Как контролировать исполнение решений",
+  "type": "sop",
+  "purpose": "Как контролировать исполнение решений.",
+  "description": "Практическая инструкция: как контролировать исполнение решений.",
+  "main_goal": "Контролировать исполнение решений — выполнено.",
+  "when_used": "По наступлении триггера.",
+  "triggers": [
+    "Перед каждым weekly ops review"
+  ],
+  "preconditions": [],
+  "inputs": [],
+  "process_steps": [
+    {
+      "step": "Перед каждым weekly review: пройти по open actions — проверить статус",
+      "description": ""
+    },
+    {
+      "step": "Для done actions: подтвердить completion, закрыть",
+      "description": ""
+    },
+    {
+      "step": "Для in progress: проверить, что on track к due date",
+      "description": ""
+    },
+    {
+      "step": "Для overdue: вынести на review — owner объясняет причину, новый due date или escalation",
+      "description": ""
+    },
+    {
+      "step": "Вести простую статистику: closure rate, average time to close (для отслеживания дисциплины)",
+      "description": ""
+    }
+  ],
+  "outputs": [],
+  "result_location": "Jira / Confluence / трекер",
+  "done_criteria": [
+    "Все шаги выполнены, результат зафиксирован"
+  ],
+  "sla": "В рамках текущего цикла",
+  "typical_failures": [
+    {
+      "failure": "Actions не проверяются — list растёт бесконечно",
+      "symptom": "",
+      "action": ""
+    },
+    {
+      "failure": "Overdue actions не обсуждаются — дисциплина падает",
+      "symptom": "",
+      "action": ""
+    }
+  ],
+  "linked_templates_forms_links": [],
+  "owner": "Operations lead",
+  "version": "2.0",
+  "updated_at": "2026-03-12"
+}

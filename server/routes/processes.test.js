@@ -1,12 +1,20 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
-import { createApp } from '../createApp.js';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('processes routes', () => {
   let app;
+  let mongod;
 
-  beforeEach(() => {
+  beforeAll(async () => {
+    mongod = await MongoMemoryServer.create();
+    process.env.MONGODB_URI = mongod.getUri();
+    const { createApp } = await import('../createApp.js');
     app = createApp();
+  });
+
+  afterAll(async () => {
+    await mongod?.stop();
   });
 
   it('GET /api/backend sets X-Request-Id', async () => {

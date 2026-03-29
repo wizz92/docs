@@ -11,9 +11,9 @@
  *   MONGODB_URI  Required. MongoDB connection string.
  *
  * What it does:
- *   1. Seeds the dictionary from public/dictionaries/dictionaries.json.
- *   2. Seeds the master index from public/processes/index.json.
- *   3. Walks the public/processes/<domainId>/ tree and inserts every process/SOP document.
+ *   1. Seeds the dictionary from seed-data/dictionaries/dictionaries.json.
+ *   2. Seeds the master index from seed-data/processes/index.json.
+ *   3. Walks the seed-data/processes/<domainId>/ tree and inserts every process/SOP document.
  *
  * Idempotent when --upsert is used: keyed on domainPath (processes) and key (dictionary, master index).
  */
@@ -25,8 +25,8 @@ import mongoose from 'mongoose';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const PROCESSES_DIR = path.join(ROOT, 'public', 'processes');
-const DICT_PATH = path.join(ROOT, 'public', 'dictionaries', 'dictionaries.json');
+const PROCESSES_DIR = path.join(ROOT, 'seed-data', 'processes');
+const DICT_PATH = path.join(ROOT, 'seed-data', 'dictionaries', 'dictionaries.json');
 
 // Import models after mongoose is imported so schemas register
 import { ProcessDocument } from '../server/services/db/models/ProcessDocument.js';

@@ -29,12 +29,10 @@ router.use(requestIdMiddleware);
 // ─── Backend status ───────────────────────────────────────────
 
 router.get('/backend', (_req, res) => {
-  const backend = process.env.DATA_BACKEND || 'json';
-  const payload = { backend };
-  if (backend === 'mongodb') {
-    payload.mongodbConnected = mongoose.connection.readyState === 1;
-  }
-  res.json(payload);
+  res.json({
+    backend: 'mongodb',
+    mongodbConnected: mongoose.connection.readyState === 1,
+  });
 });
 
 /**

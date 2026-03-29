@@ -1,4 +1,3 @@
-import { templateRepository } from './dataLayer/index.js';
 import { schemas } from '../validation/schemas.js';
 import { validate } from '../validation/validator.js';
 import { sanitizeImportedJson } from '../../shared/sanitizeImportedJson.js';
@@ -136,6 +135,7 @@ export async function parseTextToProcess(text, type) {
     throw new Error('OPENAI_API_KEY is not configured');
   }
 
+  const { templateRepository } = await import('./dataLayer/index.js');
   const template = await templateRepository.getTemplate(type);
   const baseUrl = (process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1').replace(/\/$/, '');
   const model = process.env.OPENAI_MODEL || 'gpt-4o';

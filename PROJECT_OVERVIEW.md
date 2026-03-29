@@ -84,7 +84,7 @@ Use this file as the first stop for any new AI agent or developer learning the p
     - Fetch process JSON.
     - Set `archived: true`.
     - Save via PUT and rebuild the domain index.
-  - Index builder (`indexUpdater`) excludes archived items from navigation trees.
+  - Domain index rebuild (Mongo) excludes archived items from navigation trees.
   - UI shows an “Архивный” chip where appropriate.
 
 ### Caching & freshness
@@ -123,17 +123,14 @@ Use this file as the first stop for any new AI agent or developer learning the p
 
 - **Entrypoint**: `server/routes/processes.js` exposes:
   - `GET /api/processes` – master index.
-  - `GET /api/processes/:domainId` – domain index (built from `ProcessDocument`s via `indexUpdater`).
+  - `GET /api/processes/:domainId` – domain index (built from `ProcessDocument`s in MongoDB).
   - `GET /api/processes/:domainId/*rest` – raw process/SOP JSON (with dictionary labels resolved, schema defaults applied).
   - `POST /api/processes/:domainId/l2` – create L2 process.
   - `POST /api/processes/:domainId/:l2Folder/l3` – create L3.
   - `POST /api/processes/:domainId/:l2Folder/:l3Folder/sop` – create SOP.
   - `PUT /api/processes/:domainId/*rest` – update existing process/SOP.
   - `POST /api/validate` – dry‑run validation.
-- **Process repository abstraction** (`server/services/dataLayer`):
-  - `JsonProcessRepository` – filesystem‑backed (original implementation).
-  - `MongoProcessRepository` – MongoDB‑backed (current main path).
-  - Both implement `getMasterIndex`, `getDomainIndex`, `getProcessByPath`, `createL2/L3/Sop`, `updateProcess`, `rebuildDomainIndex`.
+- **Process repository** (`server/services/dataLayer`): `MongoProcessRepository` implements `getMasterIndex`, `getDomainIndex`, `getProcessByPath`, `createDomain`, `createL2/L3/Sop`, `updateProcess`, `rebuildDomainIndex`.
 - **Database models** (`server/services/db/models`):
   - `ProcessDocument` – stores:
     - `domainId`, `level` (`l1|l2|l3|sop`), `folderPath`, `fileName`, `type` (process_type ref), `data` (validated sub‑document), `domainPath` (unique key).
@@ -197,7 +194,7 @@ Use this file as the first stop for any new AI agent or developer learning the p
 4. **Backend structure**:
    - `server/routes/processes.js`.
    - `server/validation/schemas.js`, `server/validation/validator.js`.
-   - `server/services/dataLayer/mongoProcessRepository.js`, `server/services/indexUpdater.js`.
+   - `server/services/dataLayer/mongoProcessRepository.js`.
    - `server/services/processDictionaryRefs.js`, `server/services/dictionaryTerms.js`.
 
 Understanding these pieces will give a new agent enough context to safely extend the system (e.g. adding new fields, new views, or new validation rules) without breaking the existing behavior.   

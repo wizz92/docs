@@ -21,10 +21,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 async function start() {
-  if (process.env.DATA_BACKEND === 'mongodb') {
-    await connectMongo();
-    console.log('MongoDB connected');
-  }
+  await connectMongo();
+  console.log('MongoDB connected');
   app.listen(PORT, () => {
     console.log(`Process Editor API running on http://localhost:${PORT}`);
   });

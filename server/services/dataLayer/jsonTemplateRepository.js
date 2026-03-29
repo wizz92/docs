@@ -1,13 +1,13 @@
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { readJson } from '../folderManager.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** Repo root `templates/` (not `server/templates`). From dataLayer: ../../../ = project root. */
 const TEMPLATES_DIR = path.resolve(__dirname, '../../../templates');
 
 /**
- * JSON/Filesystem-backed implementation of TemplateRepository.
+ * Filesystem-backed implementation of TemplateRepository (authoring JSON under `templates/`).
  */
 export class JsonTemplateRepository {
   /** Type id (process_l1, process_l2, process_l3, sop) or template key (l1, l2, l3, sop). */
@@ -35,7 +35,8 @@ export class JsonTemplateRepository {
     if (!file) {
       throw new Error('Type must be one of: l1, l2, l3, sop (or process_l1, process_l2, process_l3)');
     }
-    return readJson(path.join(TEMPLATES_DIR, file));
+    const abs = path.join(TEMPLATES_DIR, file);
+    const raw = await fs.readFile(abs, 'utf-8');
+    return JSON.parse(raw);
   }
 }
-

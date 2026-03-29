@@ -1,6 +1,6 @@
 /**
  * Repository interfaces for the data layer.
- * These are storage-agnostic contracts; the current implementation is JSON/FS.
+ * Runtime implementations: MongoDB (processes + dictionaries); templates read from `templates/*.json`.
  */
 
 /**
@@ -32,9 +32,7 @@
  * @property {(next: any) => Promise<any>} saveDictionaries
  */
 
-// Implementations: jsonProcessRepository (JSON/FS), mongoProcessRepository (MongoDB/Mongoose),
-// jsonDictionaryRepository (JSON/FS), mongoDictionaryRepository (MongoDB/Mongoose),
-// jsonTemplateRepository (JSON/FS, used for all backends).
+// Implementations: mongoProcessRepository, mongoDictionaryRepository, jsonTemplateRepository (authoring templates on disk).
 
 export {};
 

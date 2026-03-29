@@ -4,6 +4,8 @@
 
 Правила написания процессов — в `prompt.md` (корень проекта).
 
+**Хранение:** данные процессов — в **MongoDB** (`MONGODB_URI`). Создание и правка — через UI, API (`/api/processes/...`) или миграции. Каталог `seed-data/processes/` — только снимок для первичного импорта (`npm run db:seed-mongo`). Ниже — **логическая структура** путей `processes/{domain-id}/...`, как в API и UI, а не обязательная файловая раскладка в репозитории.
+
 ---
 
 ## 1. Определи уровень процесса
@@ -22,7 +24,7 @@
 ## 2. Структура файлов и папок
 
 ```
-public/processes/
+processes/
 ├── index.json                          ← master index (все домены)
 ├── {domain-id}/
 │   ├── index.json                      ← domain index (L2, L3, SOP)
@@ -51,13 +53,13 @@ public/processes/
 
 1. **Определи следующий номер** L2 в домене. Посмотри существующие папки:
    ```
-   ls public/processes/{domain-id}/
+   ls processes/{domain-id}/
    ```
    Если последний — `03-revenue-analysis`, новый будет `04-...`.
 
 2. **Создай папку** L2:
    ```
-   mkdir -p public/processes/{domain-id}/{NN}-{l2-slug}
+   mkdir -p processes/{domain-id}/{NN}-{l2-slug}
    ```
 
 3. **Создай `process.json`** на основе `templates/template-l2.json`. Замени все поля `___REQUIRED___` и `___OPTIONAL___` реальными данными.
@@ -83,7 +85,7 @@ public/processes/
 
 2. **Создай папку**:
    ```
-   mkdir -p public/processes/{domain-id}/{l2-folder}/{NN}-{l3-slug}
+   mkdir -p processes/{domain-id}/{l2-folder}/{NN}-{l3-slug}
    ```
 
 3. **Создай `process.json`** на основе `templates/template-l3.json`.
@@ -133,14 +135,14 @@ public/processes/
 
 2. **Создай структуру папок**:
    ```
-   mkdir -p public/processes/{domain-id}
+   mkdir -p processes/{domain-id}
    ```
 
 3. **Создай `process.json`** (L1) на основе `templates/template-l1.json`.
 
 4. **Создай `index.json`** в папке домена по образцу существующих (см. `revenue-operations/index.json`).
 
-5. **Обнови `public/processes/index.json`** (master index) — добавь новый домен в массив `domains`:
+5. **Обнови `processes/index.json`** (master index) — добавь новый домен в массив `domains`:
    ```json
    {
      "id": "{domain-id}",
@@ -183,7 +185,7 @@ public/processes/
 
 ## 5. Файлы-индексы: формат
 
-### Master index (`public/processes/index.json`)
+### Master index (`processes/index.json`)
 
 ```json
 {
@@ -202,7 +204,7 @@ public/processes/
 }
 ```
 
-### Domain index (`public/processes/{domain-id}/index.json`)
+### Domain index (`processes/{domain-id}/index.json`)
 
 ```json
 {

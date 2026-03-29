@@ -40,7 +40,7 @@ export default function Layout() {
   useEffect(() => {
     fetch('/api/backend')
       .then((r) => r.ok ? r.json() : null)
-      .then((data) => data && setBackendInfo({ backend: data.backend, mongodbConnected: data.mongodbConnected }))
+      .then((data) => data && setBackendInfo({ mongodbConnected: data.mongodbConnected }))
       .catch(() => setBackendInfo(null));
   }, []);
 
@@ -121,9 +121,9 @@ export default function Layout() {
             >
               Создать процесс
             </Button>
-            {backendInfo?.backend && (
+            {backendInfo && (
               <Chip
-                label={backendInfo.backend === 'mongodb' ? 'Data: MongoDB' : 'Data: JSON'}
+                label={backendInfo.mongodbConnected ? 'Data: MongoDB' : 'Data: MongoDB (offline)'}
                 size="small"
                 variant="outlined"
                 sx={{ mr: 1, opacity: 0.9 }}

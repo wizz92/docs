@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { PROCESS_TYPE_LABELS } from '../../shared/processTypeLabels.js';
+import { companyClientPath } from '../../shared/companies.js';
 
 const cache = new Map();
 
@@ -76,7 +77,7 @@ export function getSaveRequest(mode, processType, params, formData) {
  * @returns {Promise<string|null>}
  */
 export async function archiveProcess(processType, params) {
-  const { domainId, l2Folder, l3Folder, sopFile } = params;
+  const { domainId, l2Folder, l3Folder, sopFile, companyId } = params;
   const editPath = getEditApiPath(processType, { l2Folder, l3Folder, sopFile });
   const url = `/api/processes/${domainId}/${editPath}`;
 
@@ -101,17 +102,18 @@ export async function archiveProcess(processType, params) {
     throw new Error(message);
   }
 
+  const p = (suffix) => companyClientPath(companyId, suffix);
   if (processType === 'process_l1') {
-    return `/domain/${domainId}`;
+    return p(`domain/${domainId}`);
   }
   if (processType === 'process_l2') {
-    return `/domain/${domainId}`;
+    return p(`domain/${domainId}`);
   }
   if (processType === 'process_l3') {
-    return `/domain/${domainId}/l2/${l2Folder}`;
+    return p(`domain/${domainId}/l2/${l2Folder}`);
   }
   if (processType === 'sop') {
-    return `/domain/${domainId}/l3/${l2Folder}/${l3Folder}`;
+    return p(`domain/${domainId}/l3/${l2Folder}/${l3Folder}`);
   }
   return null;
 }
@@ -125,16 +127,17 @@ export async function archiveProcess(processType, params) {
  * @returns {string}
  */
 export function getRedirectAfterSave(mode, processType, params, result) {
-  const { domainId, l2Folder, l3Folder, sopFile } = params;
+  const { domainId, l2Folder, l3Folder, sopFile, companyId } = params;
+  const path = (suffix) => companyClientPath(companyId, suffix);
   if (mode === 'create') {
-    if (processType === 'process_l2') return `/domain/${domainId}/l2/${result.folder}`;
-    if (processType === 'process_l3') return `/domain/${domainId}/l3/${l2Folder}/${result.folder}`;
-    return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${result.file}`;
+    if (processType === 'process_l2') return path(`domain/${domainId}/l2/${result.folder}`);
+    if (processType === 'process_l3') return path(`domain/${domainId}/l3/${l2Folder}/${result.folder}`);
+    return path(`domain/${domainId}/sop/${l2Folder}/${l3Folder}/${result.file}`);
   }
-  if (processType === 'process_l1') return `/domain/${domainId}`;
-  if (processType === 'sop') return `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}`;
-  if (processType === 'process_l3') return `/domain/${domainId}/l3/${l2Folder}/${l3Folder}`;
-  return `/domain/${domainId}/l2/${l2Folder}`;
+  if (processType === 'process_l1') return path(`domain/${domainId}`);
+  if (processType === 'sop') return path(`domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}`);
+  if (processType === 'process_l3') return path(`domain/${domainId}/l3/${l2Folder}/${l3Folder}`);
+  return path(`domain/${domainId}/l2/${l2Folder}`);
 }
 
 async function fetchJson(path) {
@@ -156,7 +159,9 @@ async function fetchJson(path) {
  * @param {string} [opts.sopFile]
  * @param {string} [opts.existingPath] - relative path for edit mode (e.g. "processes/dom/01-x/process.json")
  */
-export default function useProcessEditor({ mode, processType, domainId, l2Folder, l3Folder, sopFile }) {
+export default function useProcessEditor({
+  mode, processType, domainId, companyId, l2Folder, l3Folder, sopFile,
+}) {
   const [formData, setFormData] = useState({
     type: PROCESS_TYPE_LABELS[processType] ?? processType,
   });
@@ -273,14 +278,14 @@ export default function useProcessEditor({ mode, processType, domainId, l2Folder
 
       setWarnings(result.warnings || []);
       setSaving(false);
-      return getRedirectAfterSave(mode, processType, params, result);
+      return getRedirectAfterSave(mode, processType, { ...params, companyId }, result);
     } catch (err) {
       setErrors([err.message]);
       setErrorsByField({});
       setSaving(false);
       return null;
     }
-  }, [mode, processType, domainId, l2Folder, l3Folder, sopFile, slug, formData]);
+  }, [mode, processType, domainId, companyId, l2Folder, l3Folder, sopFile, slug, formData]);
 
   return {
     formData, setFormData, setField,

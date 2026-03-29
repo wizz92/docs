@@ -14,12 +14,15 @@ export const TYPE_LABEL = {
  * @param {string} pathname
  */
 export function resolveContext(params, pathname) {
+  const { domainId, l2Folder, l3Folder, sopFile, companyId } = params;
+
   /** Create without `:domainId` in URL — domain (L1) is chosen in the same «Уровень и родитель» block. */
   if (pathname === '/create') {
     return {
       mode: 'create',
       processType: 'process_l2',
       domainId: undefined,
+      companyId: undefined,
       l2Folder: undefined,
       l3Folder: undefined,
       sopFile: undefined,
@@ -27,15 +30,29 @@ export function resolveContext(params, pathname) {
     };
   }
 
-  const { domainId, l2Folder, l3Folder, sopFile } = params;
+  if (/^\/company\/[^/]+\/create$/.test(pathname)) {
+    return {
+      mode: 'create',
+      processType: 'process_l2',
+      domainId: undefined,
+      companyId,
+      l2Folder: undefined,
+      l3Folder: undefined,
+      sopFile: undefined,
+      createFlow: 'unified',
+    };
+  }
 
-  const isUnifiedCreate = /^\/domain\/[^/]+\/create$/.test(pathname);
+  const isUnifiedCreate =
+    /^\/domain\/[^/]+\/create$/.test(pathname)
+    || /^\/company\/[^/]+\/domain\/[^/]+\/create$/.test(pathname);
 
   if (isUnifiedCreate) {
     return {
       mode: 'create',
       processType: 'process_l2',
       domainId,
+      companyId,
       l2Folder: undefined,
       l3Folder: undefined,
       sopFile,
@@ -48,6 +65,7 @@ export function resolveContext(params, pathname) {
       mode: 'create',
       processType: 'process_l2',
       domainId,
+      companyId,
       l2Folder: undefined,
       l3Folder: undefined,
       sopFile,
@@ -59,6 +77,7 @@ export function resolveContext(params, pathname) {
       mode: 'create',
       processType: 'process_l3',
       domainId,
+      companyId,
       l2Folder,
       l3Folder,
       sopFile,
@@ -70,6 +89,7 @@ export function resolveContext(params, pathname) {
       mode: 'create',
       processType: 'sop',
       domainId,
+      companyId,
       l2Folder,
       l3Folder,
       sopFile,
@@ -82,6 +102,7 @@ export function resolveContext(params, pathname) {
       mode: 'edit',
       processType,
       domainId,
+      companyId,
       l2Folder,
       l3Folder,
       sopFile,
@@ -92,7 +113,7 @@ export function resolveContext(params, pathname) {
   if (sopFile) {
     const processType = 'sop';
     return {
-      mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+      mode: 'edit', processType, domainId, companyId, l2Folder, l3Folder, sopFile,
       existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
       createFlow: null,
     };
@@ -100,14 +121,14 @@ export function resolveContext(params, pathname) {
   if (l3Folder) {
     const processType = 'process_l3';
     return {
-      mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+      mode: 'edit', processType, domainId, companyId, l2Folder, l3Folder, sopFile,
       existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
       createFlow: null,
     };
   }
   const processType = 'process_l2';
   return {
-    mode: 'edit', processType, domainId, l2Folder, l3Folder, sopFile,
+    mode: 'edit', processType, domainId, companyId, l2Folder, l3Folder, sopFile,
     existingPath: `processes/${domainId}/${getEditApiPath(processType, { l2Folder, l3Folder, sopFile })}`,
     createFlow: null,
   };

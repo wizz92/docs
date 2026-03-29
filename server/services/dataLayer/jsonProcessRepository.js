@@ -1,13 +1,17 @@
+import fs from 'fs/promises';
 import path from 'path';
 import {
   PROCESSES_DIR,
   readJson,
+  writeJson,
   createL2Folder,
   createL3Folder,
   createSopFile,
   updateFile,
 } from '../folderManager.js';
 import { rebuildDomainIndex as rebuildDomainIndexImpl } from '../indexUpdater.js';
+import { getCategorySlugForDomain } from '../../../shared/domainCatalog.js';
+import { DEFAULT_COMPANY_SLUG } from '../../../shared/companies.js';
 
 /**
  * JSON/Filesystem-backed implementation of ProcessRepository.
@@ -40,6 +44,65 @@ export class JsonProcessRepository {
   async getProcessByPath(domainId, relativePath) {
     const rel = path.join(domainId, relativePath);
     return readJson(rel);
+  }
+
+  /**
+   * Create a new domain directory, L1 process.json, domain index.json, and append to master index.
+   * @param {object} domainEntry - master index domain row
+   * @param {object} l1Data - process_l1 JSON
+   */
+  async createDomain(domainEntry, l1Data) {
+    const { id: domainId } = domainEntry;
+    const domainDir = path.join(PROCESSES_DIR, domainId);
+    const masterPath = path.join(PROCESSES_DIR, 'index.json');
+    const master = await readJson('index.json');
+    if (!master.domains) master.domains = [];
+    const domains = master.domains;
+    if (domains.some((d) => d.id === domainId)) {
+      throw new Error(`Domain id already in master index: ${domainId}`);
+    }
+    const companySlug = domainEntry.companyId || DEFAULT_COMPANY_SLUG;
+    const cat = domainEntry.categorySlug;
+    if (cat && domains.some(
+      (d) => (d.companyId || DEFAULT_COMPANY_SLUG) === companySlug
+        && getCategorySlugForDomain(d) === cat,
+    )) {
+      throw new Error(`Category already exists for company: ${companySlug} / ${cat}`);
+    }
+    try {
+      await fs.access(path.join(domainDir, 'process.json'));
+      throw new Error(`Domain folder already exists: ${domainId}`);
+    } catch (e) {
+      if (e.code !== 'ENOENT') throw e;
+    }
+
+    await fs.mkdir(domainDir, { recursive: true });
+    await writeJson(path.join(domainDir, 'process.json'), l1Data);
+
+    const indexStub = {
+      name: domainEntry.name,
+      type: 'process_index',
+      description: 'Master index of all processes and SOPs with relative file paths.',
+      base_path: `processes/${domainId}`,
+      l1: {
+        name: l1Data.name,
+        path: `processes/${domainId}/process.json`,
+        type: 'process_l1',
+      },
+      l2_processes: [],
+      summary: {
+        total_l2: 0,
+        total_l3: 0,
+        total_sop: 0,
+        total_files: 2,
+      },
+    };
+    await writeJson(path.join(domainDir, 'index.json'), indexStub);
+    await rebuildDomainIndexImpl(domainId);
+
+    domains.push({ ...domainEntry });
+    await writeJson(masterPath, master);
+    return { domainId, path: `processes/${domainId}/process.json` };
   }
 
   /**

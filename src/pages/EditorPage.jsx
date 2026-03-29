@@ -21,6 +21,7 @@ import useProcessEditor, { getCreateBlockingErrors } from '../hooks/useProcessEd
 import { clearProcessApiCache } from '../hooks/useProcessData';
 import { sortDomains } from '../utils/domainOrder';
 import { TYPE_LABEL, resolveContext } from './editor/editorContext';
+import { DEFAULT_COMPANY_SLUG, companyClientPath } from '../../shared/companies.js';
 
 export default function EditorPage() {
   const params = useParams();
@@ -62,10 +63,15 @@ export default function EditorPage() {
       .catch(() => setMasterIndex(null));
   }, [ctx.mode]);
 
-  const masterDomains = useMemo(
-    () => sortDomains(masterIndex?.domains || [], masterIndex),
-    [masterIndex],
-  );
+  const companyId = params.companyId;
+
+  const masterDomains = useMemo(() => {
+    const all = masterIndex?.domains || [];
+    const filtered = companyId
+      ? all.filter((d) => (d.companyId || DEFAULT_COMPANY_SLUG) === companyId)
+      : all;
+    return sortDomains(filtered, masterIndex);
+  }, [masterIndex, companyId]);
 
   useEffect(() => {
     if (ctx.mode !== 'create') return;
@@ -139,6 +145,7 @@ export default function EditorPage() {
     loadExisting, validate, clearValidation, save,
   } = useProcessEditor({
     ...ctx,
+    companyId: ctx.companyId ?? companyId,
     domainId: ctx.mode === 'create' ? effectiveDomainId : ctx.domainId,
     processType: ctx.mode === 'create' ? createType : ctx.processType,
     l2Folder: effectiveL2,
@@ -212,12 +219,13 @@ export default function EditorPage() {
       setCreateDomainId('');
       return;
     }
-    if (location.pathname === '/create') {
+    if (location.pathname === '/create' || /^\/company\/[^/]+\/create$/.test(location.pathname)) {
       setCreateDomainId(id);
       return;
     }
     if (id === domainIdParam) return;
-    navigate(`/domain/${id}/create${location.search}`, { replace: true });
+    const cid = companyId || DEFAULT_COMPANY_SLUG;
+    navigate(`${companyClientPath(cid, `domain/${id}/create`)}${location.search}`, { replace: true });
   };
 
   if (ctx.mode === 'edit' && !loaded) return <LoadingSkeleton />;
@@ -267,10 +275,14 @@ export default function EditorPage() {
                 labelId="create-domain-l1-label"
                 label="Домен (L1)"
                 value={effectiveDomainId || ''}
-                displayEmpty={location.pathname === '/create'}
+                displayEmpty={
+                  location.pathname === '/create'
+                  || /^\/company\/[^/]+\/create$/.test(location.pathname)
+                }
                 onChange={handleCreateDomainChange}
               >
-                {location.pathname === '/create' && (
+                {(location.pathname === '/create'
+                  || /^\/company\/[^/]+\/create$/.test(location.pathname)) && (
                   <MenuItem value="">
                     <em>Выберите домен…</em>
                   </MenuItem>

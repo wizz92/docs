@@ -18,6 +18,9 @@ import { asyncRoute, HttpError } from './routeUtils.js';
 import { sendError } from './apiErrors.js';
 import { parseTextToProcess } from '../services/textToProcessParser.js';
 import { requestIdMiddleware } from '../middleware/requestId.js';
+import { COMPANY_SLUGS, DEFAULT_COMPANY_SLUG } from '../../shared/companies.js';
+import { REQUIRED_CATEGORY_SLUGS } from '../../shared/domainCatalog.js';
+import { scaffoldCompanyDomains } from '../services/scaffoldCompanyDomains.js';
 
 const router = Router();
 
@@ -63,6 +66,52 @@ async function createProcessPipeline(req, res, typeKey, runCreate) {
     throw err;
   }
 }
+
+// ─── Companies (L0 dictionary) ───────────────────────────────
+
+router.get('/companies', asyncRoute(async (_req, res) => {
+  const dict = await dictionaryRepository.getDictionaries();
+  const terms = Array.isArray(dict.company) ? dict.company : [];
+  const labelToSlug = new Map(Object.entries(COMPANY_SLUGS).map(([slug, label]) => [label, slug]));
+  const out = terms.map((t) => {
+    const label = typeof t === 'string' ? t : (t && t.label) || '';
+    const id = typeof t === 'string' ? '' : String(t?.id ?? '');
+    const slug = labelToSlug.get(label) || DEFAULT_COMPANY_SLUG;
+    return { id, label, slug };
+  });
+  res.json(out);
+}));
+
+/**
+ * Scaffold missing L1 domains for a company from the domain catalog (9 categories).
+ * Body (optional): `{ "categorySlugs": ["operational-management", ...] }` — limit which categories to create.
+ */
+router.post('/companies/:companySlug/scaffold', asyncRoute(async (req, res) => {
+  const { companySlug } = req.params;
+  if (!COMPANY_SLUGS[companySlug]) {
+    throw new HttpError(404, 'Unknown company', 'not_found');
+  }
+  const raw = req.body?.categorySlugs;
+  if (raw !== undefined && !Array.isArray(raw)) {
+    sendError(res, 400, 'categorySlugs must be an array', 'bad_request');
+    return;
+  }
+  if (Array.isArray(raw)) {
+    for (const s of raw) {
+      if (typeof s !== 'string' || !REQUIRED_CATEGORY_SLUGS.includes(s)) {
+        sendError(res, 400, `Unknown category slug: ${String(s)}`, 'bad_request');
+        return;
+      }
+    }
+  }
+  const result = await scaffoldCompanyDomains(
+    processRepository,
+    companySlug,
+    raw,
+  );
+  const status = result.created.length > 0 ? 201 : 200;
+  res.status(status).json(result);
+}));
 
 // ─── Dictionaries ────────────────────────────────────────────
 

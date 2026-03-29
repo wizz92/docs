@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -14,6 +14,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import useProcessData from '../hooks/useProcessData';
 import { sortDomains } from '../utils/domainOrder';
+import {
+  companyLabelFromSlug,
+  companyClientPath,
+  DEFAULT_COMPANY_SLUG,
+} from '../../shared/companies.js';
+import { DOMAIN_CATALOG, getCategorySlugForDomain, REQUIRED_CATEGORY_SLUGS } from '../../shared/domainCatalog.js';
 
 const SECTION_SPACING = 4;
 const SECTION_GAP = 3;
@@ -32,24 +38,67 @@ function StatPill({ value, label }) {
 }
 
 export default function DomainsPage() {
-  const { masterIndex, loading, error, loadDomainIndex } = useProcessData();
+  const { companyId } = useParams();
+  const { masterIndex, loading, error, loadDomainIndex, refreshMasterIndex } = useProcessData();
   const [domainStats, setDomainStats] = useState({});
+  const [scaffoldCat, setScaffoldCat] = useState(null);
+  const [scaffoldError, setScaffoldError] = useState(null);
+
+  const domains = useMemo(() => {
+    const all = masterIndex?.domains || [];
+    const inCompany = all.filter(
+      (d) => (d.companyId || DEFAULT_COMPANY_SLUG) === companyId,
+    );
+    return sortDomains(inCompany, masterIndex);
+  }, [masterIndex, companyId]);
+
+  const presentCategorySlugs = useMemo(() => {
+    const s = new Set(domains.map((d) => getCategorySlugForDomain(d)));
+    return s;
+  }, [domains]);
+
+  const missingCatalogEntries = useMemo(
+    () => DOMAIN_CATALOG.filter((c) => !presentCategorySlugs.has(c.categorySlug)),
+    [presentCategorySlugs],
+  );
+
+  const categoryCoverageCount = useMemo(
+    () => REQUIRED_CATEGORY_SLUGS.filter((s) => presentCategorySlugs.has(s)).length,
+    [presentCategorySlugs],
+  );
+
+  async function scaffoldCategory(categorySlug) {
+    if (!companyId) return;
+    setScaffoldError(null);
+    setScaffoldCat(categorySlug);
+    try {
+      const res = await fetch(`/api/companies/${companyId}/scaffold`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ categorySlugs: [categorySlug] }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `HTTP ${res.status}`);
+      }
+      await refreshMasterIndex();
+    } catch (e) {
+      setScaffoldError(e.message || String(e));
+    } finally {
+      setScaffoldCat(null);
+    }
+  }
 
   useEffect(() => {
-    if (!masterIndex?.domains) return;
-    masterIndex.domains.forEach((d) => {
+    if (!domains.length) return;
+    domains.forEach((d) => {
       loadDomainIndex(d.id)
         .then((idx) => {
           if (idx?.summary) setDomainStats((prev) => ({ ...prev, [d.id]: idx.summary }));
         })
         .catch(() => {});
     });
-  }, [masterIndex, loadDomainIndex]);
-
-  const domains = useMemo(
-    () => sortDomains(masterIndex?.domains || [], masterIndex),
-    [masterIndex],
-  );
+  }, [domains, loadDomainIndex]);
 
   const totalL2 = Object.values(domainStats).reduce((n, s) => n + (s.total_l2 || 0), 0);
   const totalL3 = Object.values(domainStats).reduce((n, s) => n + (s.total_l3 || 0), 0);
@@ -58,6 +107,11 @@ export default function DomainsPage() {
 
   if (loading) return <LoadingSkeleton />;
   if (error) return <Alert severity="error">Ошибка загрузки: {error.message}</Alert>;
+  if (!companyId) {
+    return <Alert severity="warning">Не указана компания.</Alert>;
+  }
+
+  const companyTitle = companyLabelFromSlug(companyId);
 
   return (
     <Box
@@ -119,15 +173,15 @@ export default function DomainsPage() {
                 fontSize: { xs: 26, sm: 30, md: 34 },
               }}
             >
-              Портал процессов компании
+              {companyTitle}
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
               sx={{ maxWidth: 560, mb: 2.5, fontSize: { xs: 14, md: 15 } }}
             >
-              Единая архитектура от стратегии до операций. Каждый домен — это набор L2-процессов,
-              L3-подпроцессов и пошаговых SOP-инструкций для операционной дисциплины.
+              Домены уровня L1 внутри компании (L0). Каждый домен — набор L2-процессов,
+              L3-подпроцессов и пошаговых SOP-инструкций.
             </Typography>
             <Box
               sx={{
@@ -212,6 +266,11 @@ export default function DomainsPage() {
           borderColor: 'divider',
         }}
       >
+        {scaffoldError && (
+          <Alert severity="error" sx={{ mb: 2 }} onClose={() => setScaffoldError(null)}>
+            {scaffoldError}
+          </Alert>
+        )}
         <Box
           sx={{
             display: 'flex',
@@ -219,6 +278,7 @@ export default function DomainsPage() {
             flexDirection: { xs: 'column', sm: 'row' },
             gap: 1.25,
             mb: 2,
+            flexWrap: 'wrap',
           }}
         >
           <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -228,6 +288,13 @@ export default function DomainsPage() {
             label={`${domains.length} ${domains.length === 1 ? 'домен' : domains.length < 5 ? 'домена' : 'доменов'}`}
             size="small"
             variant="outlined"
+            sx={{ fontWeight: 500 }}
+          />
+          <Chip
+            label={`Категории ${categoryCoverageCount} / ${REQUIRED_CATEGORY_SLUGS.length}`}
+            size="small"
+            variant="outlined"
+            color={categoryCoverageCount >= REQUIRED_CATEGORY_SLUGS.length ? 'success' : 'default'}
             sx={{ fontWeight: 500 }}
           />
         </Box>
@@ -308,7 +375,7 @@ export default function DomainsPage() {
               <Box
                 key={d.id}
                 component={RouterLink}
-                to={`/domain/${d.id}`}
+                to={companyClientPath(companyId, `domain/${d.id}`)}
                 sx={{
                   display: 'grid',
                   gridTemplateColumns: {
@@ -413,6 +480,90 @@ export default function DomainsPage() {
               </Box>
             );
           })}
+
+          {missingCatalogEntries.map((cat) => (
+            <Box
+              key={`missing-${cat.categorySlug}`}
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '2fr 1fr 1fr',
+                  md: '2.5fr 3fr 0.8fr 0.8fr 0.8fr',
+                },
+                gap: 1,
+                px: { xs: 1.5, md: 2 },
+                py: 1,
+                alignItems: 'center',
+                bgcolor: 'rgba(15, 23, 42, 0.03)',
+                borderTop: '1px solid',
+                borderColor: 'divider',
+                opacity: 0.72,
+              }}
+            >
+              <Box sx={{ minWidth: 0 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      bgcolor: cat.color || 'action.disabled',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                    {cat.name_ru}
+                  </Typography>
+                  <Chip label="Не создан" size="small" variant="outlined" color="default" />
+                </Box>
+                <Typography
+                  variant="caption"
+                  color="text.disabled"
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                    mt: 0.25,
+                    maxHeight: 32,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {cat.description_ru}
+                </Typography>
+              </Box>
+              <Typography
+                variant="body2"
+                color="text.disabled"
+                sx={{
+                  display: { xs: 'none', md: 'block' },
+                  fontStyle: 'italic',
+                  maxHeight: 40,
+                  overflow: 'hidden',
+                }}
+              >
+                {cat.description_ru}
+              </Typography>
+              <Typography variant="body2" color="text.disabled" sx={{ textAlign: 'right' }}>
+                –
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.disabled"
+                sx={{ textAlign: 'right', display: { xs: 'none', md: 'block' } }}
+              >
+                –
+              </Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  disableElevation
+                  disabled={scaffoldCat === cat.categorySlug}
+                  onClick={() => scaffoldCategory(cat.categorySlug)}
+                >
+                  {scaffoldCat === cat.categorySlug ? 'Создание…' : 'Создать'}
+                </Button>
+              </Box>
+            </Box>
+          ))}
         </Paper>
       </Box>
     </Box>

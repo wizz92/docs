@@ -15,6 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from './Sidebar';
 import BreadcrumbsNav from './Breadcrumbs';
 import useProcessData from '../hooks/useProcessData';
+import { companyLabelFromSlug, DEFAULT_COMPANY_SLUG } from '../../shared/companies.js';
 
 export const DRAWER_WIDTH = 280;
 
@@ -27,9 +28,10 @@ export default function Layout() {
   const { masterIndex, loading, loadDomainIndex } = useProcessData();
 
   const routeParams = useParams();
-  const domainMatch = useMatch('/domain/:domainId/*');
-  /** Prefer leaf route `useParams().domainId` so `/domain/:id/create` and other nested routes always resolve (useMatch can be null in some nested cases). */
+  const domainMatch = useMatch('/company/:companyId/domain/:domainId/*');
+  /** Prefer leaf route `useParams().domainId` so nested routes always resolve (useMatch can be null in some nested cases). */
   const domainId = routeParams.domainId ?? domainMatch?.params?.domainId ?? null;
+  const companyId = routeParams.companyId ?? null;
   const [domainIndex, setDomainIndex] = useState(null);
   const domainMeta = masterIndex?.domains?.find((d) => d.id === domainId) || null;
 
@@ -73,6 +75,7 @@ export default function Layout() {
   const drawer = (
     <Sidebar
       masterIndex={masterIndex}
+      companyId={companyId}
       domainId={domainId}
       domainIndex={domainIndex}
       domainMeta={domainMeta}
@@ -112,7 +115,8 @@ export default function Layout() {
               size="small"
               sx={{ mr: 1 }}
               onClick={() => {
-                navigate('/create');
+                const cid = companyId || DEFAULT_COMPANY_SLUG;
+                navigate(`/company/${cid}/create`);
               }}
             >
               Создать процесс
@@ -123,6 +127,14 @@ export default function Layout() {
                 size="small"
                 variant="outlined"
                 sx={{ mr: 1, opacity: 0.9 }}
+              />
+            )}
+            {companyId && (
+              <Chip
+                label={companyLabelFromSlug(companyId)}
+                size="small"
+                variant="outlined"
+                sx={{ mr: 1 }}
               />
             )}
             {domainMeta && (
@@ -174,6 +186,7 @@ export default function Layout() {
       >
         <Toolbar />
         <BreadcrumbsNav
+          companyId={companyId}
           domainId={domainId}
           domainIndex={domainIndex}
           domainMeta={domainMeta}

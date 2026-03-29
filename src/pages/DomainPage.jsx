@@ -22,6 +22,7 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 function StatCard({ label, value }) {
   return (
@@ -50,7 +51,7 @@ function computeStats(index) {
 }
 
 export default function DomainPage() {
-  const { domainId } = useParams();
+  const { domainId, companyId } = useParams();
   const navigate = useNavigate();
   const { domainIndex, domainMeta, loading, error, loadJson } = useDomainData(domainId);
   const [l1Data, setL1Data] = useState(null);
@@ -83,7 +84,7 @@ export default function DomainPage() {
               )}
               <IconButton
                 component={RouterLink}
-                to={`/domain/${domainId}/l1/edit`}
+                to={companyClientPath(companyId, `domain/${domainId}/l1/edit`)}
                 size="small"
                 color="primary"
               >
@@ -99,7 +100,7 @@ export default function DomainPage() {
                     );
                     if (!confirmed) return;
                     try {
-                      const redirect = await archiveProcess('process_l1', { domainId });
+                      const redirect = await archiveProcess('process_l1', { domainId, companyId });
                       if (redirect) navigate(redirect);
                     } catch (e) {
                       alertArchiveFailure(e, 'Не удалось заархивировать процесс');
@@ -158,7 +159,7 @@ export default function DomainPage() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/create`}
+              to={companyClientPath(companyId, `domain/${domainId}/create`)}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}
@@ -171,7 +172,7 @@ export default function DomainPage() {
             rows={domainIndex.l2_processes?.map((l2) => ({
               key: l2.folder,
               name: l2.name,
-              to: `/domain/${domainId}/l2/${l2.folder}`,
+              to: companyClientPath(companyId, `domain/${domainId}/l2/${l2.folder}`),
               l3Count: l2.l3_processes?.length || 0,
               sopCount: l2.l3_processes?.reduce((n, l3) => n + (l3.sops?.length || 0), 0) || 0,
             }))}

@@ -8,7 +8,9 @@
       "category": "Operations",
       "description_ru": "Процессы ежедневного и еженедельного управления выполнением целей, проектами, эскалациями и зависимостями.",
       "index_path": "processes/operational-management/index.json",
-      "color": "#1976d2"
+      "color": "#1976d2",
+      "companyId": "qwerty",
+      "categorySlug": "operational-management"
     },
     {
       "id": "strategy-governance",
@@ -17,7 +19,9 @@
       "category": "Strategy",
       "description_ru": "Процессы, через которые компания определяет направление, распределяет ресурсы и задаёт управленческие правила.",
       "index_path": "processes/strategy-governance/index.json",
-      "color": "#7b1fa2"
+      "color": "#7b1fa2",
+      "companyId": "qwerty",
+      "categorySlug": "strategy-governance"
     },
     {
       "id": "business-development",
@@ -26,7 +30,9 @@
       "category": "Growth",
       "description_ru": "Процессы поиска новых направлений, тестирования гипотез роста и запуска новых бизнес-инициатив.",
       "index_path": "processes/business-development/index.json",
-      "color": "#e65100"
+      "color": "#e65100",
+      "companyId": "qwerty",
+      "categorySlug": "business-development"
     },
     {
       "id": "product-delivery",
@@ -35,7 +41,9 @@
       "category": "Core",
       "description_ru": "Процессы создания продукта, delivery результатов, выполнения спринтов, релизов и производственного цикла.",
       "index_path": "processes/product-delivery/index.json",
-      "color": "#2e7d32"
+      "color": "#2e7d32",
+      "companyId": "qwerty",
+      "categorySlug": "product-delivery"
     },
     {
       "id": "revenue-operations",
@@ -44,7 +52,9 @@
       "category": "Revenue",
       "description_ru": "Процессы монетизации, коммерческих операций, работы с партнёрами и оптимизации unit economics.",
       "index_path": "processes/revenue-operations/index.json",
-      "color": "#c62828"
+      "color": "#c62828",
+      "companyId": "qwerty",
+      "categorySlug": "revenue-operations"
     },
     {
       "id": "hr-organization",
@@ -53,7 +63,9 @@
       "category": "Support",
       "description_ru": "Процессы, которые обеспечивают компанию людьми, ролями, адаптацией, развитием и организационной устойчивостью.",
       "index_path": "processes/hr-organization/index.json",
-      "color": "#00695c"
+      "color": "#00695c",
+      "companyId": "qwerty",
+      "categorySlug": "hr-organization"
     },
     {
       "id": "finance-control",
@@ -62,7 +74,9 @@
       "category": "Support",
       "description_ru": "Процессы управления бюджетом, расходами, платежами и финансовой дисциплиной компании.",
       "index_path": "processes/finance-control/index.json",
-      "color": "#37474f"
+      "color": "#37474f",
+      "companyId": "qwerty",
+      "categorySlug": "finance-control"
     },
     {
       "id": "it-systems-security",
@@ -71,7 +85,9 @@
       "category": "Support",
       "description_ru": "Процессы обеспечения сотрудников системами, доступами, поддержкой, инфраструктурой и базовой безопасностью.",
       "index_path": "processes/it-systems-security/index.json",
-      "color": "#0d47a1"
+      "color": "#0d47a1",
+      "companyId": "qwerty",
+      "categorySlug": "it-systems-security"
     },
     {
       "id": "transformation-automation",
@@ -80,7 +96,108 @@
       "category": "Development",
       "description_ru": "Процессы развития компании: улучшение процессов, автоматизация, внедрение ИИ и организационные изменения.",
       "index_path": "processes/transformation-automation/index.json",
-      "color": "#4a148c"
+      "color": "#4a148c",
+      "companyId": "qwerty",
+      "categorySlug": "transformation-automation"
+    },
+    {
+      "id": "speedy-operational-management",
+      "name": "Operational Management",
+      "name_ru": "Операционное управление",
+      "category": "Operations",
+      "description_ru": "Процессы ежедневного и еженедельного управления выполнением целей, проектами, эскалациями и зависимостями.",
+      "index_path": "processes/speedy-operational-management/index.json",
+      "color": "#1976d2",
+      "companyId": "speedy",
+      "categorySlug": "operational-management"
+    },
+    {
+      "id": "speedy-strategy-governance",
+      "name": "Strategy & Governance",
+      "name_ru": "Стратегия и управление",
+      "category": "Strategy",
+      "description_ru": "Процессы, через которые компания определяет направление, распределяет ресурсы и задаёт управленческие правила.",
+      "index_path": "processes/speedy-strategy-governance/index.json",
+      "color": "#7b1fa2",
+      "companyId": "speedy",
+      "categorySlug": "strategy-governance"
+    },
+    {
+      "id": "speedy-business-development",
+      "name": "Business Development & Growth",
+      "name_ru": "Развитие бизнеса и рост",
+      "category": "Growth",
+      "description_ru": "Процессы поиска новых направлений, тестирования гипотез роста и запуска новых бизнес-инициатив.",
+      "index_path": "processes/speedy-business-development/index.json",
+      "color": "#e65100",
+      "companyId": "speedy",
+      "categorySlug": "business-development"
+    },
+    {
+      "id": "speedy-product-delivery",
+      "name": "Product / Delivery / Production",
+      "name_ru": "Продукт и доставка",
+      "category": "Core",
+      "description_ru": "Процессы создания продукта, delivery результатов, выполнения спринтов, релизов и производственного цикла.",
+      "index_path": "processes/speedy-product-delivery/index.json",
+      "color": "#2e7d32",
+      "companyId": "speedy",
+      "categorySlug": "product-delivery"
+    },
+    {
+      "id": "speedy-revenue-operations",
+      "name": "Revenue & Commercial Operations",
+      "name_ru": "Выручка и коммерция",
+      "category": "Revenue",
+      "description_ru": "Процессы монетизации, коммерческих операций, работы с партнёрами и оптимизации unit economics.",
+      "index_path": "processes/speedy-revenue-operations/index.json",
+      "color": "#c62828",
+      "companyId": "speedy",
+      "categorySlug": "revenue-operations"
+    },
+    {
+      "id": "speedy-hr-organization",
+      "name": "HR & Organization",
+      "name_ru": "HR и организация",
+      "category": "Support",
+      "description_ru": "Процессы, которые обеспечивают компанию людьми, ролями, адаптацией, развитием и организационной устойчивостью.",
+      "index_path": "processes/speedy-hr-organization/index.json",
+      "color": "#00695c",
+      "companyId": "speedy",
+      "categorySlug": "hr-organization"
+    },
+    {
+      "id": "speedy-finance-control",
+      "name": "Finance & Control",
+      "name_ru": "Финансы и контроль",
+      "category": "Support",
+      "description_ru": "Процессы управления бюджетом, расходами, платежами и финансовой дисциплиной компании.",
+      "index_path": "processes/speedy-finance-control/index.json",
+      "color": "#37474f",
+      "companyId": "speedy",
+      "categorySlug": "finance-control"
+    },
+    {
+      "id": "speedy-it-systems-security",
+      "name": "IT / Systems / Security",
+      "name_ru": "ИТ, системы и безопасность",
+      "category": "Support",
+      "description_ru": "Процессы обеспечения сотрудников системами, доступами, поддержкой, инфраструктурой и базовой безопасностью.",
+      "index_path": "processes/speedy-it-systems-security/index.json",
+      "color": "#0d47a1",
+      "companyId": "speedy",
+      "categorySlug": "it-systems-security"
+    },
+    {
+      "id": "speedy-transformation-automation",
+      "name": "Transformation & Automation",
+      "name_ru": "Трансформация и автоматизация",
+      "category": "Development",
+      "description_ru": "Процессы развития компании: улучшение процессов, автоматизация, внедрение ИИ и организационные изменения.",
+      "index_path": "processes/speedy-transformation-automation/index.json",
+      "color": "#4a148c",
+      "companyId": "speedy",
+      "categorySlug": "transformation-automation"
     }
   ]
 }

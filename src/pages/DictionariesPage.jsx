@@ -11,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import DictionaryEditor from '../components/dictionary/DictionaryEditor';
 
 const LABELS = {
+  company: 'Компании (company)',
   owner: 'Владельцы (owner)',
   participants: 'Участники / роли (participants)',
   linked_systems: 'Системы (linked_systems)',

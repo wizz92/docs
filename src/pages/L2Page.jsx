@@ -27,6 +27,7 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 function MetaItem({ icon: Icon, children }) {
   if (!children) return null;
@@ -39,7 +40,7 @@ function MetaItem({ icon: Icon, children }) {
 }
 
 export default function L2Page() {
-  const { domainId, l2Folder } = useParams();
+  const { domainId, l2Folder, companyId } = useParams();
   const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [l2Data, setL2Data] = useState(null);
@@ -75,7 +76,7 @@ export default function L2Page() {
           <Chip label="L2 Процесс" size="small" color="primary" />
           <IconButton
             component={RouterLink}
-            to={`/domain/${domainId}/l2/${l2Folder}/edit`}
+            to={companyClientPath(companyId, `domain/${domainId}/l2/${l2Folder}/edit`)}
             size="small"
             color="primary"
           >
@@ -91,7 +92,7 @@ export default function L2Page() {
                 );
                 if (!confirmed) return;
                 try {
-                  const redirect = await archiveProcess('process_l2', { domainId, l2Folder });
+                  const redirect = await archiveProcess('process_l2', { domainId, l2Folder, companyId });
                   if (redirect) navigate(redirect);
                 } catch (e) {
                   alertArchiveFailure(e, 'Не удалось заархивировать процесс');
@@ -134,7 +135,7 @@ export default function L2Page() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/create?level=process_l3&l2=${encodeURIComponent(l2Folder)}`}
+              to={`${companyClientPath(companyId, `domain/${domainId}/create`)}?level=process_l3&l2=${encodeURIComponent(l2Folder)}`}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}
@@ -146,7 +147,7 @@ export default function L2Page() {
             rows={l2Entry.l3_processes?.map((l3) => ({
               key: l3.folder,
               name: l3.name,
-              to: `/domain/${domainId}/l3/${l2Folder}/${l3.folder}`,
+              to: companyClientPath(companyId, `domain/${domainId}/l3/${l2Folder}/${l3.folder}`),
               sopCount: l3.sops?.length || 0,
             }))}
           />

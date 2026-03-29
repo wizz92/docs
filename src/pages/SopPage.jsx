@@ -20,9 +20,10 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 export default function SopPage() {
-  const { domainId, l2Folder, l3Folder, sopFile } = useParams();
+  const { domainId, l2Folder, l3Folder, sopFile, companyId } = useParams();
   const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [sopData, setSopData] = useState(null);
@@ -60,7 +61,7 @@ export default function SopPage() {
           <Chip label="SOP Инструкция" size="small" color="warning" />
           <IconButton
             component={RouterLink}
-            to={`/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}/edit`}
+            to={companyClientPath(companyId, `domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sopFile}/edit`)}
             size="small"
             color="primary"
           >
@@ -76,7 +77,7 @@ export default function SopPage() {
                 );
                 if (!confirmed) return;
                 try {
-                  const redirect = await archiveProcess('sop', { domainId, l2Folder, l3Folder, sopFile });
+                  const redirect = await archiveProcess('sop', { domainId, l2Folder, l3Folder, sopFile, companyId });
                   if (redirect) navigate(redirect);
                 } catch (e) {
                   alertArchiveFailure(e, 'Не удалось заархивировать SOP');

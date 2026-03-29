@@ -16,7 +16,25 @@ describe('resolveContext', () => {
     expect(ctx.processType).toBe('process_l2');
   });
 
-  it('unified create under /domain/:id/create', () => {
+  it('unified create at /company/:companyId/create', () => {
+    const ctx = resolveContext({ companyId: 'qwerty' }, '/company/qwerty/create');
+    expect(ctx.mode).toBe('create');
+    expect(ctx.createFlow).toBe('unified');
+    expect(ctx.companyId).toBe('qwerty');
+  });
+
+  it('unified create under /company/:c/domain/:id/create', () => {
+    const ctx = resolveContext(
+      { companyId: 'qwerty', domainId: 'revenue-operations' },
+      '/company/qwerty/domain/revenue-operations/create',
+    );
+    expect(ctx.mode).toBe('create');
+    expect(ctx.createFlow).toBe('unified');
+    expect(ctx.domainId).toBe('revenue-operations');
+    expect(ctx.companyId).toBe('qwerty');
+  });
+
+  it('unified create under legacy /domain/:id/create', () => {
     const ctx = resolveContext(
       { domainId: 'revenue-operations' },
       '/domain/revenue-operations/create',
@@ -28,8 +46,8 @@ describe('resolveContext', () => {
 
   it('legacy L2 create', () => {
     const ctx = resolveContext(
-      { domainId: 'd' },
-      '/domain/d/create/l2',
+      { domainId: 'd', companyId: 'qwerty' },
+      '/company/qwerty/domain/d/create/l2',
     );
     expect(ctx.createFlow).toBe('legacy-l2');
     expect(ctx.processType).toBe('process_l2');
@@ -38,6 +56,7 @@ describe('resolveContext', () => {
   it('edit SOP', () => {
     const ctx = resolveContext(
       {
+        companyId: 'qwerty',
         domainId: 'dom',
         l2Folder: 'l2',
         l3Folder: 'l3',
@@ -52,8 +71,8 @@ describe('resolveContext', () => {
 
   it('edit L1', () => {
     const ctx = resolveContext(
-      { domainId: 'dom' },
-      '/domain/dom/l1/edit',
+      { domainId: 'dom', companyId: 'qwerty' },
+      '/company/qwerty/domain/dom/l1/edit',
     );
     expect(ctx.processType).toBe('process_l1');
     expect(ctx.existingPath).toBe('processes/dom/process.json');

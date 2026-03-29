@@ -1,9 +1,11 @@
 import path from 'path';
 import { ProcessDocument, MasterIndex, Dictionary } from '../db/mongoClient.js';
 import { PROCESS_TYPE_LABELS } from '../dictionaryTerms.js';
+import { getCategorySlugForDomain } from '../../../shared/domainCatalog.js';
+import { DEFAULT_COMPANY_SLUG } from '../../../shared/companies.js';
 import { buildDomainTree, nextNumberedFolder, nextSopFileName, toKebab } from './processRepositoryHelpers.js';
 
-const LEVEL_TO_TYPE_KEY = { l2: 'process_l2', l3: 'process_l3', sop: 'sop' };
+const LEVEL_TO_TYPE_KEY = { l1: 'process_l1', l2: 'process_l2', l3: 'process_l3', sop: 'sop' };
 
 /**
  * MongoDB-backed implementation of ProcessRepository (Mongoose).
@@ -77,6 +79,50 @@ export class MongoProcessRepository {
       throw new Error(`Process not found: ${domainPath}`);
     }
     return doc.data;
+  }
+
+  /**
+   * Create a new domain (L1 only): ProcessDocument + master index row.
+   * @param {object} domainEntry - master index domain object
+   * @param {object} l1Data - process_l1 JSON
+   */
+  async createDomain(domainEntry, l1Data) {
+    const { id: domainId } = domainEntry;
+    const dup = await ProcessDocument.findOne({ domainId }).lean().exec();
+    if (dup) {
+      throw new Error(`Domain already exists: ${domainId}`);
+    }
+    const master = await MasterIndex.findOne({ key: 'master' }).exec();
+    if (!master?.data?.domains) {
+      throw new Error('Master index not found');
+    }
+    const domains = master.data.domains;
+    if (domains.some((d) => d.id === domainId)) {
+      throw new Error(`Domain id already in master index: ${domainId}`);
+    }
+    const companySlug = domainEntry.companyId || DEFAULT_COMPANY_SLUG;
+    const cat = domainEntry.categorySlug;
+    if (cat && domains.some(
+      (d) => (d.companyId || DEFAULT_COMPANY_SLUG) === companySlug
+        && getCategorySlugForDomain(d) === cat,
+    )) {
+      throw new Error(`Category already exists for company: ${companySlug} / ${cat}`);
+    }
+
+    const typeOid = await this._getTypeObjectId('l1');
+    await ProcessDocument.create({
+      domainId,
+      level: 'l1',
+      folderPath: '',
+      fileName: 'process.json',
+      type: typeOid,
+      data: l1Data,
+      domainPath: `${domainId}/process.json`,
+    });
+    domains.push({ ...domainEntry });
+    master.markModified('data');
+    await master.save();
+    return { domainId, path: `processes/${domainId}/process.json` };
   }
 
   async createL2(domainId, slug, data) {

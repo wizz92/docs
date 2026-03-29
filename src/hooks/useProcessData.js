@@ -45,6 +45,14 @@ export default function useProcessData() {
     return () => { mounted.current = false; };
   }, []);
 
+  const refreshMasterIndex = useCallback(async () => {
+    clearProcessApiCache();
+    const res = await fetch('/api/processes');
+    if (!res.ok) throw new Error(`Failed to refresh master index: ${res.status}`);
+    const data = await res.json();
+    setMasterIndex(data);
+  }, []);
+
   const loadJson = useCallback((path) => {
     const normalized = path.startsWith('/') ? path : `/${path}`;
     if (normalized.startsWith('/processes/')) {
@@ -58,7 +66,7 @@ export default function useProcessData() {
     [],
   );
 
-  return { masterIndex, loading, error, loadJson, loadDomainIndex };
+  return { masterIndex, loading, error, loadJson, loadDomainIndex, refreshMasterIndex };
 }
 
 export function useDomainData(domainId) {

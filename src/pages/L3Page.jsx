@@ -21,9 +21,10 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import { archiveProcess } from '../hooks/useProcessEditor';
 import { useDomainData } from '../hooks/useProcessData';
 import { alertArchiveFailure, confirmArchive } from '../utils/confirmArchive';
+import { companyClientPath } from '../../shared/companies.js';
 
 export default function L3Page() {
-  const { domainId, l2Folder, l3Folder } = useParams();
+  const { domainId, l2Folder, l3Folder, companyId } = useParams();
   const navigate = useNavigate();
   const { domainIndex, loading, error, loadJson } = useDomainData(domainId);
   const [l3Data, setL3Data] = useState(null);
@@ -60,7 +61,7 @@ export default function L3Page() {
           <Chip label="L3 Подпроцесс" size="small" color="secondary" />
           <IconButton
             component={RouterLink}
-            to={`/domain/${domainId}/l3/${l2Folder}/${l3Folder}/edit`}
+            to={companyClientPath(companyId, `domain/${domainId}/l3/${l2Folder}/${l3Folder}/edit`)}
             size="small"
             color="primary"
           >
@@ -76,7 +77,7 @@ export default function L3Page() {
                 );
                 if (!confirmed) return;
                 try {
-                  const redirect = await archiveProcess('process_l3', { domainId, l2Folder, l3Folder });
+                  const redirect = await archiveProcess('process_l3', { domainId, l2Folder, l3Folder, companyId });
                   if (redirect) navigate(redirect);
                 } catch (e) {
                   alertArchiveFailure(e, 'Не удалось заархивировать подпроцесс');
@@ -122,7 +123,7 @@ export default function L3Page() {
             </SectionHeading>
             <Button
               component={RouterLink}
-              to={`/domain/${domainId}/create?level=sop&l2=${encodeURIComponent(l2Folder)}&l3=${encodeURIComponent(l3Folder)}`}
+              to={`${companyClientPath(companyId, `domain/${domainId}/create`)}?level=sop&l2=${encodeURIComponent(l2Folder)}&l3=${encodeURIComponent(l3Folder)}`}
               size="small"
               variant="outlined"
               startIcon={<AddIcon />}
@@ -136,7 +137,7 @@ export default function L3Page() {
                 rows={l3Entry.sops.map((sop) => ({
                   key: sop.file,
                   name: sop.name,
-                  to: `/domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sop.file}`,
+                  to: companyClientPath(companyId, `domain/${domainId}/sop/${l2Folder}/${l3Folder}/${sop.file}`),
                   sopCount: 1,
                 }))}
               />

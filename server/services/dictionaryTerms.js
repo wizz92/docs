@@ -11,7 +11,11 @@ export const DICTIONARY_KEYS = [
   'linked_artifacts',
   'metrics_signals',
   'process_type',
+  'company',
 ];
+
+/** Fixed company labels (L0); master index domains reference these via slug in {@link ../../shared/companies.js}. */
+export const FIXED_COMPANY_LABELS = ['Qwerty', 'Speedy', 'MONO', 'K2', 'LORN'];
 
 /** The fixed set of process_type labels that must always exist in the dictionary. */
 const FIXED_PROCESS_TYPE_LABELS = Object.values(PROCESS_TYPE_LABELS);
@@ -23,6 +27,14 @@ export function getProcessTypeTerms() {
   return PROCESS_TYPE_ORDER.map((key) => ({
     id: new mongoose.Types.ObjectId(),
     label: PROCESS_TYPE_LABELS[key],
+  }));
+}
+
+/** Default L0 company terms for dictionary `company` field. */
+export function getCompanyTerms() {
+  return FIXED_COMPANY_LABELS.map((label) => ({
+    id: new mongoose.Types.ObjectId(),
+    label,
   }));
 }
 
@@ -82,6 +94,25 @@ export function normalizeDictionaryToTerms(raw = {}) {
         result[key] = getProcessTypeTerms();
         continue;
       }
+    }
+    if (key === 'company') {
+      const arrRaw = Array.isArray(raw[key]) ? raw[key] : [];
+      if (arrRaw.length === 0) {
+        result[key] = getCompanyTerms();
+        continue;
+      }
+      const terms = [];
+      for (const item of arrRaw) {
+        const term = normalizeTerm(item, terms);
+        if (term) terms.push(term);
+      }
+      const fixedSeed = getCompanyTerms();
+      const byLabel = new Map(terms.map((t) => [t.label, t]));
+      const merged = FIXED_COMPANY_LABELS.map((lbl) => byLabel.get(lbl) || fixedSeed.find((f) => f.label === lbl)).filter(Boolean);
+      const fixedLabels = new Set(FIXED_COMPANY_LABELS);
+      const extra = terms.filter((t) => !fixedLabels.has(t.label));
+      result[key] = [...merged, ...extra];
+      continue;
     }
     const arr = Array.isArray(raw[key]) ? raw[key] : [];
     const terms = [];
